@@ -1,0 +1,518 @@
+---
+// contact.astro
+// Premium 3D Consultation Experience
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact & Book a Consultation — Dr. Sylvia Shitsama"
+  description="Book a neurosurgical consultation with Dr. Sylvia Shitsama in Nairobi. Self-referrals and physician referrals are welcome."
+  canonicalUrl="/contact"
+>
+  
+  <!-- Cinematic Hero & 3D Experience -->
+  <section class="relative min-h-[90vh] bg-midnight overflow-hidden flex items-center pt-24 pb-12 select-none">
+    
+    <!-- Deep background atmosphere -->
+    <div class="absolute inset-0 pointer-events-none z-0">
+      <div class="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-copper/5 rounded-full blur-[120px] mix-blend-screen"></div>
+      <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[100px]"></div>
+      <div class="absolute inset-0 opacity-[0.02] bg-[url('/images/noise.png')] mix-blend-overlay"></div>
+    </div>
+
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full h-full">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
+        
+        <!-- Left: Typography & CTAs -->
+        <div class="fade-up relative z-20">
+          <span class="font-mono-label text-copper tracking-[0.2em] uppercase mb-6 block">Get in Touch</span>
+          <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold text-ivory leading-[1.1] mb-6 tracking-tight">
+            Book a Consultation
+          </h1>
+          <p class="text-sage text-lg sm:text-xl font-light max-w-lg leading-relaxed mb-10">
+            Consultations available in Nairobi. Self-referrals and physician referrals are welcome.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <a href="#consultation-form" class="inline-flex items-center justify-center gap-3 bg-copper hover:bg-copper-dark text-white px-8 py-4 rounded-lg font-medium transition-all hover:-translate-y-1 shadow-lg hover:shadow-copper/20 group cursor-pointer">
+              Book a Consultation
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="https://wa.me/254110090116" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 border border-ivory/20 hover:border-ivory/50 text-ivory px-8 py-4 rounded-lg font-medium transition-all hover:bg-ivory/5 group">
+              <svg class="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp Enquiry
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Abstract 3D Medical Sculpture -->
+        <div class="hidden lg:flex justify-end items-center relative h-[600px] perspective-container hero-sculpture fade-up">
+          <div class="relative w-full max-w-lg aspect-square transform-style-3d sculpture-rig animate-slow-spin">
+            
+            <!-- Core Geometry -->
+            <div class="absolute inset-0 rounded-full border border-ivory/10 transform-style-3d" style="transform: rotateX(60deg) rotateY(20deg);"></div>
+            <div class="absolute inset-4 rounded-full border border-copper/10 transform-style-3d" style="transform: rotateX(45deg) rotateY(-20deg);"></div>
+            <div class="absolute inset-8 rounded-full border border-gold/10 transform-style-3d" style="transform: rotateX(75deg) rotateY(10deg);"></div>
+            
+            <!-- Abstract Neural Pathway -->
+            <svg class="absolute inset-0 w-full h-full transform-style-3d opacity-60 pointer-events-none" viewBox="0 0 100 100" fill="none">
+              <path d="M50 10 C 20 20, 10 50, 30 80 C 50 100, 80 80, 90 50 C 100 20, 80 10, 50 10" stroke="#C17A3E" stroke-width="0.2" stroke-dasharray="1 2"/>
+              <path d="M30 30 C 50 40, 70 30, 80 50 C 90 70, 70 80, 50 70 C 30 60, 20 40, 30 30" stroke="#F3EFE6" stroke-width="0.3"/>
+              <circle cx="30" cy="30" r="1.5" fill="#F3EFE6"/>
+              <circle cx="80" cy="50" r="2" fill="#C17A3E"/>
+              <circle cx="50" cy="70" r="1.5" fill="#F3EFE6"/>
+            </svg>
+
+            <!-- Floating Interactive Nodes -->
+            <!-- Consultation Node -->
+            <div class="absolute top-[20%] left-[20%] group cursor-pointer" style="transform: translateZ(50px);">
+              <div class="w-3 h-3 rounded-full bg-copper shadow-[0_0_15px_rgba(193,122,62,0.8)] relative z-20"></div>
+              <div class="absolute top-1/2 left-full ml-4 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div class="bg-midnight-light/90 backdrop-blur border border-ivory/10 rounded px-3 py-1.5 whitespace-nowrap">
+                  <div class="font-mono text-[9px] uppercase tracking-widest text-copper">Nairobi</div>
+                  <div class="text-ivory text-xs font-medium">Consultation</div>
+                </div>
+                <!-- Connector line -->
+                <div class="absolute top-1/2 -left-4 w-4 h-[1px] bg-copper/50"></div>
+              </div>
+            </div>
+
+            <!-- Referral Node -->
+            <div class="absolute bottom-[30%] right-[15%] group cursor-pointer" style="transform: translateZ(80px);">
+              <div class="w-2.5 h-2.5 rounded-full bg-ivory shadow-[0_0_15px_rgba(243,239,230,0.8)] relative z-20"></div>
+              <div class="absolute top-1/2 right-full mr-4 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div class="bg-midnight-light/90 backdrop-blur border border-ivory/10 rounded px-3 py-1.5 whitespace-nowrap text-right">
+                  <div class="text-ivory text-xs font-medium">Referrals</div>
+                  <div class="font-mono text-[9px] uppercase tracking-widest text-sage">Welcome</div>
+                </div>
+                <!-- Connector line -->
+                <div class="absolute top-1/2 -right-4 w-4 h-[1px] bg-ivory/30"></div>
+              </div>
+            </div>
+            
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(193,122,62,0.15)_0%,_transparent_50%)] transform-style-3d"></div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <section class="bg-midnight-light relative z-10" id="consultation-form">
+    
+    <!-- Floating Consultation Panel (Overrides borders to float up) -->
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 -mt-16 lg:-mt-24 relative z-30 fade-up">
+      <div class="bg-midnight/80 backdrop-blur-xl border border-ivory/10 shadow-2xl rounded-2xl p-8 lg:p-12">
+        <div class="text-center mb-10">
+          <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ivory mb-3">Start Your Consultation Journey</h2>
+          <p class="text-sage font-light max-w-xl mx-auto">
+            Whether you are seeking specialist assessment or have been referred by another physician, our team is ready to assist you.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-ivory/[0.02] border border-ivory/5 hover:border-copper/30 transition-colors p-6 rounded-xl text-center group cursor-pointer" onclick="document.getElementById('form-type').value='self'; document.getElementById('step-1').style.display='none'; document.getElementById('step-2').style.display='block'; window.Alpine.store('form').step = 2;">
+            <div class="font-mono-label text-[10px] tracking-widest uppercase text-copper mb-4">Self-Referral</div>
+            <p class="text-sage text-sm font-light mb-6">Begin your consultation journey directly.</p>
+            <div class="text-ivory text-xs font-medium uppercase tracking-widest font-mono-label group-hover:text-copper transition-colors inline-flex items-center gap-2">
+              Request Appointment <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </div>
+          
+          <div class="bg-ivory/[0.02] border border-ivory/5 hover:border-copper/30 transition-colors p-6 rounded-xl text-center group cursor-pointer" onclick="document.getElementById('form-type').value='physician'; document.getElementById('step-1').style.display='none'; document.getElementById('step-2').style.display='block'; window.Alpine.store('form').step = 2;">
+            <div class="font-mono-label text-[10px] tracking-widest uppercase text-copper mb-4">Physician Referral</div>
+            <p class="text-sage text-sm font-light mb-6">Referring physicians are welcome.</p>
+            <div class="text-ivory text-xs font-medium uppercase tracking-widest font-mono-label group-hover:text-copper transition-colors inline-flex items-center gap-2">
+              Make an Enquiry <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </div>
+          
+          <a href="https://wa.me/254110090116" target="_blank" rel="noopener noreferrer" class="block bg-ivory/[0.02] border border-ivory/5 hover:border-[#25D366]/30 transition-colors p-6 rounded-xl text-center group">
+            <div class="font-mono-label text-[10px] tracking-widest uppercase text-[#25D366] mb-4">WhatsApp</div>
+            <p class="text-sage text-sm font-light mb-6">Speak to the practice directly.</p>
+            <div class="text-ivory text-xs font-medium uppercase tracking-widest font-mono-label group-hover:text-[#25D366] transition-colors inline-flex items-center gap-2">
+              WhatsApp Enquiry <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Grid: Info + Progressive Form -->
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        
+        <!-- Left: Contact Info & Interactive Location -->
+        <div class="lg:col-span-5 fade-up">
+          <h2 class="font-display text-3xl sm:text-4xl font-semibold text-ivory mb-12">Contact Information</h2>
+          
+          <div class="space-y-8 mb-12">
+            <div>
+              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-copper block mb-2">Visit</span>
+              <div class="text-ivory font-medium text-lg">Nairobi, Kenya</div>
+              <div class="text-sage font-light text-sm mt-1">KNH Doctors' Plaza, KMA Centre, Suite 43</div>
+            </div>
+            
+            <div class="w-12 h-px bg-ivory/10"></div>
+            
+            <div>
+              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-copper block mb-2">Call</span>
+              <a href="tel:0110090116" class="text-ivory font-display text-2xl hover:text-copper transition-colors">0110 090 116</a>
+            </div>
+            
+            <div class="w-12 h-px bg-ivory/10"></div>
+            
+            <div>
+              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-[#25D366] block mb-2">WhatsApp</span>
+              <a href="https://wa.me/254110090116" target="_blank" rel="noopener noreferrer" class="text-ivory font-display text-2xl hover:text-[#25D366] transition-colors">+254 110 090 116</a>
+            </div>
+            
+            <div class="w-12 h-px bg-ivory/10"></div>
+            
+            <div>
+              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-copper block mb-2">Referrals</span>
+              <div class="text-sage font-light">Self-referrals & physician referrals welcome</div>
+            </div>
+          </div>
+
+          <!-- Premium 3D-inspired Nairobi Location Visual -->
+          <div class="relative w-full h-64 rounded-xl overflow-hidden bg-midnight border border-ivory/10 shadow-lg group perspective-container">
+            <!-- Dark map surface -->
+            <div class="absolute inset-0 bg-midnight transform-style-3d transition-transform duration-700 group-hover:rotate-x-12 group-hover:scale-105 origin-bottom">
+              <!-- Minimal Map Geometry -->
+              <svg class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M 0 50 Q 20 40 40 50 T 100 30 M 0 60 Q 30 70 50 60 T 100 80 M 30 0 L 20 100 M 70 0 L 80 100" stroke="#C17A3E" stroke-width="0.5" fill="none"/>
+              </svg>
+              <!-- 3D Terrain Depth Simulation -->
+              <div class="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-midnight"></div>
+              
+              <!-- Glowing Location Marker (Center) -->
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                <div class="w-3 h-3 bg-copper rounded-full shadow-[0_0_20px_rgba(193,122,62,1)] relative z-10"></div>
+                <!-- Animated Pulse -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border border-copper/50 rounded-full animate-ping opacity-75"></div>
+                <!-- Label -->
+                <div class="mt-2 bg-midnight/90 backdrop-blur border border-ivory/10 rounded px-2 py-1">
+                  <div class="font-mono text-[9px] uppercase tracking-widest text-ivory">Nairobi</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- Right: Progressive Disclosure Form -->
+        <div class="lg:col-span-7 fade-up relative z-20">
+          <div 
+            class="bg-midnight border border-ivory/10 rounded-2xl p-8 lg:p-12 shadow-2xl relative overflow-hidden"
+            x-data="{
+              step: window.Alpine?.store('form')?.step || 1,
+              type: '',
+              submitting: false,
+              submitted: false,
+              error: false,
+              async submitForm(e) {
+                this.submitting = true;
+                this.error = false;
+                try {
+                  const formData = new FormData(e.target);
+                  formData.append('type', this.type);
+                  // Simulate fetch for Formspree placeholder
+                  await new Promise(r => setTimeout(r, 1500));
+                  this.submitted = true;
+                  e.target.reset();
+                } catch {
+                  this.error = true;
+                }
+                this.submitting = false;
+              }
+            }"
+            x-init="$store.form = { step: 1 }"
+          >
+            <!-- Progress Indicator -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-ivory/5">
+              <div class="h-full bg-copper transition-all duration-500" :style="`width: ${(step / 4) * 100}%`"></div>
+            </div>
+            
+            <div x-show="!submitted" class="flex justify-between items-center mb-8">
+              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-sage">Enquiry</span>
+              <span class="font-mono text-xs text-copper" x-text="`Step ${step} of 4`"></span>
+            </div>
+
+            <!-- Success State -->
+            <div x-show="submitted" x-transition.opacity.duration.500ms class="text-center py-12" style="display: none;">
+              <div class="w-20 h-20 rounded-full bg-copper/10 border border-copper/30 flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <h3 class="font-display text-3xl font-semibold text-ivory mb-4">Request Received</h3>
+              <p class="text-sage text-lg font-light leading-relaxed max-w-md mx-auto">
+                Thank you for your enquiry. Our team will contact you confidentially within 24-48 hours to arrange the next steps.
+              </p>
+            </div>
+
+            <!-- Form -->
+            <form x-show="!submitted" @submit.prevent="submitForm" class="relative">
+              
+              <input type="hidden" id="form-type" x-model="type">
+
+              <!-- Step 1: Intent -->
+              <div id="step-1" x-show="step === 1" x-transition.opacity.duration.300ms>
+                <h3 class="font-display text-2xl font-medium text-ivory mb-6">How can we help?</h3>
+                <div class="space-y-4">
+                  <button type="button" @click="type = 'consultation'; step = 2" class="w-full text-left bg-midnight-light border border-ivory/10 hover:border-copper/50 transition-colors p-5 rounded-xl group flex justify-between items-center">
+                    <div>
+                      <div class="text-ivory font-medium mb-1">Book a consultation</div>
+                      <div class="text-sage text-sm font-light">I am a patient seeking specialist care.</div>
+                    </div>
+                    <svg class="w-5 h-5 text-copper opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  </button>
+                  <button type="button" @click="type = 'physician'; step = 2" class="w-full text-left bg-midnight-light border border-ivory/10 hover:border-copper/50 transition-colors p-5 rounded-xl group flex justify-between items-center">
+                    <div>
+                      <div class="text-ivory font-medium mb-1">Physician referral</div>
+                      <div class="text-sage text-sm font-light">I am a doctor referring a patient.</div>
+                    </div>
+                    <svg class="w-5 h-5 text-copper opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  </button>
+                  <button type="button" @click="type = 'general'; step = 2" class="w-full text-left bg-midnight-light border border-ivory/10 hover:border-copper/50 transition-colors p-5 rounded-xl group flex justify-between items-center">
+                    <div>
+                      <div class="text-ivory font-medium mb-1">General enquiry</div>
+                      <div class="text-sage text-sm font-light">Academic, research, or other enquiries.</div>
+                    </div>
+                    <svg class="w-5 h-5 text-copper opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 2: Details -->
+              <div id="step-2" x-show="step === 2" x-transition.opacity.duration.300ms style="display: none;">
+                <h3 class="font-display text-2xl font-medium text-ivory mb-6">Your details</h3>
+                <div class="space-y-6">
+                  <div>
+                    <label class="block text-sage text-sm mb-2 font-light">Full Name</label>
+                    <input type="text" required class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors">
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block text-sage text-sm mb-2 font-light">Phone Number</label>
+                      <input type="tel" required class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors">
+                    </div>
+                    <div>
+                      <label class="block text-sage text-sm mb-2 font-light">Email Address</label>
+                      <input type="email" required class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors">
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center mt-8 pt-6 border-t border-ivory/10">
+                    <button type="button" @click="step = 1" class="text-sage hover:text-ivory text-sm font-medium transition-colors">Back</button>
+                    <button type="button" @click="step = 3" class="bg-ivory text-midnight px-6 py-2.5 rounded-lg font-medium hover:bg-white transition-colors">Continue</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Message -->
+              <div id="step-3" x-show="step === 3" x-transition.opacity.duration.300ms style="display: none;">
+                <h3 class="font-display text-2xl font-medium text-ivory mb-6">Your message</h3>
+                <div class="space-y-6">
+                  <div>
+                    <label class="block text-sage text-sm mb-2 font-light">Brief enquiry</label>
+                    <textarea rows="4" required placeholder="Please do not include sensitive medical information..." class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors resize-none"></textarea>
+                  </div>
+                  <div>
+                    <label class="block text-sage text-sm mb-2 font-light">Preferred contact method</label>
+                    <select class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors appearance-none">
+                      <option value="phone">Phone Call</option>
+                      <option value="whatsapp">WhatsApp</option>
+                      <option value="email">Email</option>
+                    </select>
+                  </div>
+                  <div class="flex justify-between items-center mt-8 pt-6 border-t border-ivory/10">
+                    <button type="button" @click="step = 2" class="text-sage hover:text-ivory text-sm font-medium transition-colors">Back</button>
+                    <button type="button" @click="step = 4" class="bg-ivory text-midnight px-6 py-2.5 rounded-lg font-medium hover:bg-white transition-colors">Review</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4: Review -->
+              <div id="step-4" x-show="step === 4" x-transition.opacity.duration.300ms style="display: none;">
+                <h3 class="font-display text-2xl font-medium text-ivory mb-6">Review & Send</h3>
+                <div class="bg-midnight-light p-6 rounded-xl border border-ivory/5 mb-8">
+                  <p class="text-sage text-sm font-light leading-relaxed mb-4">
+                    By submitting this enquiry, you agree to our team contacting you to arrange a consultation. All information is held in strict confidence.
+                  </p>
+                  <p class="text-copper text-sm font-medium">Ready to submit?</p>
+                </div>
+
+                <div x-show="error" x-transition class="text-red-400 text-sm mb-6 bg-red-900/20 border border-red-900/50 p-4 rounded-lg">
+                  An error occurred. Please try again or use WhatsApp.
+                </div>
+                
+                <div class="flex justify-between items-center pt-6 border-t border-ivory/10">
+                  <button type="button" @click="step = 3" :disabled="submitting" class="text-sage hover:text-ivory text-sm font-medium transition-colors">Back</button>
+                  
+                  <button 
+                    type="submit" 
+                    :disabled="submitting"
+                    class="bg-copper hover:bg-copper-dark text-white px-8 py-3 rounded-lg font-medium transition-colors shadow-lg shadow-copper/20 flex items-center gap-2"
+                    :class="submitting ? 'opacity-75 cursor-wait' : ''"
+                  >
+                    <span x-show="!submitting">Submit Enquiry</span>
+                    <span x-show="submitting">Sending...</span>
+                    <svg x-show="!submitting" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="py-20 bg-midnight border-t border-ivory/5">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up">
+      <h3 class="font-display text-3xl font-medium text-ivory mb-4 italic">Exceptional care begins with the right conversation.</h3>
+      <p class="text-sage font-light max-w-2xl mx-auto mb-16">
+        Dr. Shitsama combines specialist neurosurgical expertise with a patient-centred approach to care.
+      </p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto border-t border-ivory/10 pt-12">
+        <div>
+          <div class="font-display text-4xl sm:text-5xl font-semibold text-ivory mb-2">20<span class="text-copper">+</span></div>
+          <div class="font-mono-label text-copper text-[10px] uppercase tracking-widest">Years<br/>Experience</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl sm:text-5xl font-semibold text-ivory mb-2">13</div>
+          <div class="font-mono-label text-copper text-[10px] uppercase tracking-widest">Peer-Reviewed<br/>Publications</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl sm:text-5xl font-semibold text-ivory mb-2">34<span class="text-copper">+</span></div>
+          <div class="font-mono-label text-copper text-[10px] uppercase tracking-widest">Citations</div>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <svg class="w-10 h-10 text-ivory mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div class="font-mono-label text-copper text-[10px] uppercase tracking-widest">International<br/>Training</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-24 sm:py-32 bg-midnight-light relative overflow-hidden text-center border-t border-ivory/5">
+    <div class="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-up">
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-ivory mb-6 tracking-tight">
+        Ready to take the next step?
+      </h2>
+      <p class="text-sage text-lg mb-12 font-light max-w-xl mx-auto">
+        Book a consultation with Dr. Sylvia Shitsama.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+        <button onclick="document.getElementById('consultation-form').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-copper hover:bg-copper-dark text-white px-8 py-4 rounded-lg font-medium transition-all hover:-translate-y-1 shadow-lg hover:shadow-copper/20 group">
+          Book a Consultation
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </button>
+        
+        <a href="https://wa.me/254110090116" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 border border-ivory/20 hover:border-[#25D366]/50 text-ivory px-8 py-4 rounded-lg font-medium transition-all hover:bg-[#25D366]/10 group">
+          <svg class="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Enquiry
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .perspective-container {
+    perspective: 1200px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .rotate-x-12 {
+    transform: rotateX(12deg);
+  }
+  
+  @keyframes slow-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes slow-spin-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+  .animate-slow-spin {
+    animation: slow-spin 60s linear infinite;
+  }
+  .animate-slow-spin-reverse {
+    animation: slow-spin-reverse 60s linear infinite;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      document.querySelectorAll('.fade-up').forEach(el => {
+        if (el instanceof HTMLElement) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+      return;
+    }
+
+    // Standard Fade Ups
+    gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+    });
+
+    // 3D Mouse Parallax for Hero Sculpture
+    const container = document.querySelector('.hero-sculpture');
+    const rig = document.querySelector('.sculpture-rig');
+    
+    if (container && rig) {
+      container.addEventListener('mousemove', (e) => {
+        const ev = e as MouseEvent;
+        const rect = container.getBoundingClientRect();
+        const x = (ev.clientX - rect.left) / rect.width - 0.5;
+        const y = (ev.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(rig, {
+          rotationY: x * 30,
+          rotationX: -y * 30,
+          duration: 1.5,
+          ease: 'power1.out'
+        });
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        gsap.to(rig, { rotationY: 0, rotationX: 0, duration: 2, ease: 'power2.out' });
+      });
+    }
+  });
+</script>

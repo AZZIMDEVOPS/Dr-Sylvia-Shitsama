@@ -1,0 +1,249 @@
+---
+const categories = ['All', 'Brain Health', 'Spine', 'Neurosurgery', 'Research', 'Patient Education'];
+
+const featuredArticle = {
+  category: 'Brain Health',
+  title: 'Understanding Hydrocephalus: When Should You Seek Specialist Care?',
+  excerpt: 'What every family needs to know about hydrocephalus — from early warning signs to modern treatment options and long-term care management.',
+  image: '/images/blog/hydrocephalus.png',
+  date: '08 AUG 2026',
+  href: '/blog/understanding-hydrocephalus',
+};
+
+const recentArticles = [
+  {
+    category: 'Neurosurgery',
+    title: 'Breaking the Glass Ceiling in African Neurosurgery',
+    excerpt: 'Reflections on becoming Kenya\'s first female neurosurgeon and why mentorship is the key to lasting change.',
+    image: '/images/blog/women_in_medicine.png',
+    date: '15 JUL 2026',
+    href: '/blog/breaking-glass-ceiling',
+  },
+  {
+    category: 'Patient Education',
+    title: 'When to See a Neurosurgeon After a Head Injury',
+    excerpt: 'Not every bump on the head requires surgery — but knowing the critical warning signs can save a life.',
+    image: '/images/blog/head_injury.png',
+    date: '22 JUN 2026',
+    href: '/blog/head-injury-warning-signs',
+  }
+];
+---
+
+<section class="section-padding bg-midnight relative overflow-hidden" id="insights">
+  <!-- Subtle background texture/gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-midnight via-midnight to-midnight-light/30 -z-10"></div>
+  <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-copper/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 fade-up">
+      <div class="max-w-2xl">
+        <span class="font-mono-label text-copper tracking-[0.2em] uppercase mb-4 block">Latest</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold text-ivory mb-6">
+          Insights & Articles
+        </h2>
+        <p class="text-sage text-lg leading-relaxed max-w-xl">
+          Perspectives on neurosurgery, brain and spine health, research, innovation and patient care.
+        </p>
+      </div>
+      <div class="hidden md:block">
+        <a href="/blog" class="inline-flex items-center gap-2 text-ivory hover:text-copper transition-colors font-medium border-b border-copper/30 hover:border-copper pb-1">
+          View All Insights
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="mb-12 fade-up">
+      <div class="flex items-center gap-2 sm:gap-6 overflow-x-auto pb-4 sm:pb-0 hide-scrollbar border-b border-ivory/10">
+        {categories.map((cat, index) => (
+          <button 
+            class={`whitespace-nowrap px-1 pb-4 text-sm font-medium tracking-wide transition-colors relative ${index === 0 ? 'text-copper' : 'text-sage hover:text-ivory'}`}
+          >
+            {cat}
+            {index === 0 && (
+              <div class="absolute bottom-0 left-0 w-full h-[2px] bg-copper"></div>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Articles Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-20">
+      
+      <!-- Featured Article (65% width) -->
+      <article class="lg:col-span-7 group cursor-pointer flex flex-col h-full fade-up-stagger">
+        <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-xl mb-8 shadow-xl">
+          <img 
+            src={featuredArticle.image} 
+            alt={featuredArticle.title}
+            class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-midnight/20 group-hover:bg-transparent transition-colors duration-500"></div>
+        </div>
+        
+        <div class="flex-grow flex flex-col justify-center">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-mono-label text-xs tracking-widest text-copper uppercase">{featuredArticle.category}</span>
+            <span class="w-1 h-1 rounded-full bg-sage/50"></span>
+            <span class="font-mono-label text-xs tracking-widest text-sage uppercase">{featuredArticle.date}</span>
+          </div>
+          
+          <h3 class="font-display text-3xl sm:text-4xl font-semibold text-ivory mb-5 group-hover:text-copper transition-colors duration-300 leading-tight">
+            {featuredArticle.title}
+          </h3>
+          
+          <p class="text-sage text-lg leading-relaxed mb-8 max-w-2xl font-light">
+            {featuredArticle.excerpt}
+          </p>
+          
+          <div class="mt-auto">
+            <a href={featuredArticle.href} class="inline-flex items-center gap-3 text-ivory text-sm font-medium tracking-wide uppercase">
+              Read Article
+              <svg class="w-5 h-5 text-copper transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Secondary Articles (35% width) -->
+      <div class="lg:col-span-5 flex flex-col gap-12 sm:gap-16">
+        {recentArticles.map((article) => (
+          <article class="group cursor-pointer flex flex-col fade-up-stagger">
+            <div class="relative w-full aspect-[16/9] overflow-hidden rounded-xl mb-6 shadow-lg">
+              <img 
+                src={article.image} 
+                alt={article.title}
+                class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-midnight/20 group-hover:bg-transparent transition-colors duration-500"></div>
+            </div>
+            
+            <div class="flex flex-col flex-grow">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="font-mono-label text-[10px] sm:text-xs tracking-widest text-copper uppercase">{article.category}</span>
+                <span class="w-1 h-1 rounded-full bg-sage/50"></span>
+                <span class="font-mono-label text-[10px] sm:text-xs tracking-widest text-sage uppercase">{article.date}</span>
+              </div>
+              
+              <h3 class="font-display text-2xl font-semibold text-ivory mb-4 group-hover:text-copper transition-colors duration-300 leading-snug">
+                {article.title}
+              </h3>
+              
+              <p class="text-sage text-base leading-relaxed mb-6 font-light line-clamp-2">
+                {article.excerpt}
+              </p>
+              
+              <div class="mt-auto">
+                <a href={article.href} class="inline-flex items-center gap-2 text-ivory text-xs sm:text-sm font-medium tracking-wide uppercase">
+                  Read Article
+                  <svg class="w-4 h-4 text-copper transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      
+    </div>
+
+    <!-- Trust & Authority Element + Final CTA -->
+    <div class="border-t border-ivory/10 pt-16 flex flex-col md:flex-row md:items-center justify-between gap-8 fade-up">
+      <div class="max-w-2xl">
+        <h4 class="font-display text-2xl sm:text-3xl font-medium text-ivory mb-4">Knowledge that empowers better decisions.</h4>
+        <p class="text-sage text-base sm:text-lg leading-relaxed">
+          Dr. Shitsama shares evidence-informed perspectives to help patients, families, and fellow healthcare professionals better understand neurological health.
+        </p>
+      </div>
+      
+      <div class="shrink-0">
+        <p class="text-sm text-sage mb-4 hidden md:block">Explore the complete collection</p>
+        <a href="/blog" class="inline-flex items-center justify-center gap-2 bg-copper hover:bg-copper-dark text-white px-8 py-4 rounded-lg font-medium transition-colors w-full md:w-auto">
+          View All Insights
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Hide scrollbar for category filters */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      document.querySelectorAll('.fade-up, .fade-up-stagger').forEach(el => {
+        if (el instanceof HTMLElement) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+      return;
+    }
+
+    // Standard fade up for headers and bottom section
+    gsap.utils.toArray<HTMLElement>('#insights .fade-up').forEach((el) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+    });
+
+    // Staggered fade up for articles
+    ScrollTrigger.create({
+      trigger: '#insights .grid',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(gsap.utils.toArray('#insights .fade-up-stagger'),
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power2.out',
+          }
+        );
+      }
+    });
+  });
+</script>

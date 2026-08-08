@@ -1,0 +1,252 @@
+---
+const reasons = [
+  {
+    num: '01',
+    label: 'Pioneering Excellence',
+    description: 'First qualified female neurosurgeon in Kenya, trained at the University of Nairobi and the University of Toronto. A trailblazer whose career has helped open doors for the next generation of neurosurgeons.',
+  },
+  {
+    num: '02',
+    label: 'Brain & Spine Mastery',
+    description: 'From hydrocephalus and brain tumours to complex spinal conditions and trauma surgery, bringing more than two decades of specialist experience, surgical precision and patient-centred care.',
+  },
+  {
+    num: '03',
+    label: 'Beyond the Theatre',
+    description: 'Researcher. Educator. Mentor. Policy advocate. As a Senior Lecturer at JKUAT and board member of the Hydrocephalus Society of Kenya, Dr. Shitsama contributes to the continued development of neurosurgery across Africa.',
+  },
+];
+---
+
+<section id="why-dr-shitsama" class="section-padding bg-midnight relative overflow-hidden">
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+      
+      <!-- Left: Visual / Personal Brand -->
+      <div class="lg:col-span-5 lg:sticky lg:top-32 z-10">
+        <div class="flex items-center gap-4 mb-6 fade-up">
+          <div class="w-8 h-[1px] bg-copper"></div>
+          <span class="font-mono-label text-copper tracking-[0.2em] uppercase">Why Dr. Shitsama</span>
+        </div>
+        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-ivory leading-[1.1] mb-6 fade-up">
+          Why Dr. Shitsama
+        </h2>
+        <p class="text-lg text-sage max-w-md leading-relaxed mb-10 fade-up">
+          Experience. Precision. Leadership. A legacy of advancing neurosurgical care in Africa.
+        </p>
+
+        <!-- Portrait -->
+        <div class="relative w-full max-w-md portrait-parallax fade-up">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+            <img 
+              src="/images/dr-shitsama-headshot.jpg" 
+              alt="Dr. Sylvia Shitsama Nyamweya" 
+              class="w-full h-auto block relative z-10"
+              width="800"
+              height="909"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-tr from-copper/10 to-transparent mix-blend-overlay z-20 pointer-events-none"></div>
+          </div>
+          <!-- Architectural background treatment -->
+          <div class="absolute -inset-6 sm:-inset-8 bg-midnight-light/50 backdrop-blur-sm rounded-3xl -z-10 border border-ivory/5 hidden sm:block"></div>
+          <div class="absolute -inset-x-4 -inset-y-6 bg-midnight-light/50 backdrop-blur-sm rounded-3xl -z-10 border border-ivory/5 sm:hidden"></div>
+        </div>
+      </div>
+
+      <!-- Right: Vertical Editorial Timeline -->
+      <div class="lg:col-span-7 pt-8 lg:pt-0 relative z-20">
+        <div class="space-y-0">
+          {reasons.map((reason, index) => (
+            <div class="timeline-item relative pl-8 sm:pl-16 py-12 border-l border-ivory/10 group">
+              
+              <!-- Subtle vertical accent line that fills on scroll -->
+              <div class="timeline-progress absolute left-[-1px] top-0 bottom-0 w-[2px] bg-copper scale-y-0 origin-top"></div>
+              
+              <!-- Oversized Translucent Number -->
+              <div class="absolute left-[-2rem] sm:left-[-3rem] top-12 text-6xl sm:text-8xl font-display font-bold text-ivory/5 -z-10 group-hover:text-copper/10 transition-colors duration-500 timeline-number select-none">
+                {reason.num}
+              </div>
+
+              <!-- Content -->
+              <div class="relative z-10 fade-up-timeline">
+                <div class="flex items-center gap-4 mb-4">
+                  <span class="font-mono-label text-copper text-sm tracking-widest uppercase">{reason.label}</span>
+                </div>
+                
+                <p class="text-xl sm:text-2xl text-ivory leading-relaxed mb-8 font-light">
+                  {reason.description}
+                </p>
+
+                <div class="w-full h-[1px] bg-ivory/10 relative overflow-hidden mt-8 divider-container">
+                  <div class="absolute inset-y-0 left-0 bg-copper w-full -translate-x-full divider-line"></div>
+                </div>
+                
+                <div class="absolute right-0 bottom-0 translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 text-copper arrow-icon hidden sm:block">
+                   <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <!-- Credibility Strip -->
+        <div class="mt-20 pt-12 border-t border-ivory/10 grid grid-cols-2 sm:grid-cols-4 gap-8 fade-up relative z-20">
+          <div>
+            <div class="text-3xl font-display font-semibold text-ivory mb-2">20+</div>
+            <div class="text-xs text-sage font-mono-label uppercase tracking-widest">Years of<br/>Experience</div>
+          </div>
+          <div>
+            <div class="text-3xl font-display font-semibold text-copper mb-2">01</div>
+            <div class="text-xs text-sage font-mono-label uppercase tracking-widest">Pioneering Female<br/>Neurosurgeon</div>
+          </div>
+          <div>
+            <div class="text-3xl font-display font-semibold text-ivory mb-2">2+</div>
+            <div class="text-xs text-sage font-mono-label uppercase tracking-widest">Decades of<br/>Specialist Practice</div>
+          </div>
+          <div>
+            <div class="text-3xl font-display font-semibold text-ivory mb-2">Africa</div>
+            <div class="text-xs text-sage font-mono-label uppercase tracking-widest">Advancing<br/>Neurosurgical Care</div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-16 fade-up relative z-20">
+          <p class="text-xl text-ivory mb-6 font-display italic">Exceptional care begins with the right specialist.</p>
+          <a href="/contact" class="inline-flex items-center gap-3 text-copper hover:text-ivory transition-colors font-medium text-lg group">
+            Meet Dr. Shitsama
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      document.querySelectorAll('.fade-up, .fade-up-timeline').forEach(el => {
+        if (el instanceof HTMLElement) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+      document.querySelectorAll('.timeline-progress').forEach(el => {
+        if (el instanceof HTMLElement) {
+          el.style.transform = 'scaleY(1)';
+        }
+      });
+      return;
+    }
+
+    // Fade up intro elements
+    gsap.utils.toArray<HTMLElement>('#why-dr-shitsama .fade-up').forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+    });
+
+    // Parallax portrait
+    const portrait = document.querySelector('.portrait-parallax');
+    if (portrait) {
+      gsap.fromTo(portrait, 
+        { y: -30 }, 
+        { 
+          y: 30, 
+          ease: 'none', 
+          scrollTrigger: {
+            trigger: '#why-dr-shitsama',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        }
+      );
+    }
+
+    // Timeline Items Animation
+    gsap.utils.toArray<HTMLElement>('.timeline-item').forEach((item) => {
+      
+      const content = item.querySelector('.fade-up-timeline');
+      const progressLine = item.querySelector('.timeline-progress');
+      const dividerLine = item.querySelector('.divider-line');
+      const number = item.querySelector('.timeline-number');
+
+      // Enter animation
+      gsap.fromTo(content,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 80%',
+            once: true,
+          },
+        }
+      );
+
+      // Scroll progress tracking for the vertical accent line
+      if (progressLine) {
+        gsap.fromTo(progressLine,
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top center',
+              end: 'bottom center',
+              scrub: true,
+            }
+          }
+        );
+      }
+
+      // Scroll active state tracking for text and numbers
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top center',
+        end: 'bottom center',
+        onEnter: () => {
+          if (number) gsap.to(number, { color: 'rgba(193, 122, 62, 0.15)', duration: 0.4 });
+          if (dividerLine) gsap.to(dividerLine, { x: '0%', duration: 0.8, ease: 'power2.out' });
+        },
+        onLeaveBack: () => {
+          if (number) gsap.to(number, { color: 'rgba(243, 239, 230, 0.05)', duration: 0.4 });
+          if (dividerLine) gsap.to(dividerLine, { x: '-100%', duration: 0.4 });
+        },
+        onEnterBack: () => {
+          if (number) gsap.to(number, { color: 'rgba(193, 122, 62, 0.15)', duration: 0.4 });
+        },
+        onLeave: () => {
+          if (number) gsap.to(number, { color: 'rgba(243, 239, 230, 0.05)', duration: 0.4 });
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,374 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { insights } from '../../data/insights';
+
+import MedicalVisualization from '../../components/MedicalVisualization.astro';
+import ArticleAuthor from '../../components/ArticleAuthor.astro';
+import ArticleShare from '../../components/ArticleShare.astro';
+import MobileTOC from '../../components/MobileTOC.astro';
+
+export async function getStaticPaths() {
+  return insights.map((insight) => ({
+    params: { slug: insight.slug },
+    props: { insight },
+  }));
+}
+
+const { insight } = Astro.props;
+
+// Related Articles logic
+const relatedInsights = insights
+  .filter(i => i.category === insight.category && i.slug !== insight.slug)
+  .slice(0, 3);
+if (relatedInsights.length < 3) {
+  const backfill = insights.filter(i => i.slug !== insight.slug && !relatedInsights.includes(i));
+  relatedInsights.push(...backfill.slice(0, 3 - relatedInsights.length));
+}
+
+// Contextual Visual
+const visualTopic = insight.medicalTopic || 'brain';
+---
+
+<Layout
+  title={`${insight.title} — Insights — Dr. Sylvia Shitsama`}
+  description={insight.excerpt}
+  canonicalUrl={`/blog/${insight.slug}`}
+  isArticle={true}
+  articlePublishDate={insight.date}
+  articleAuthor="Dr. Sylvia Shitsama"
+>
+  
+  <!-- Reading Progress Bar -->
+  <div class="fixed top-0 left-0 h-1 bg-bg-primary z-[100] w-full" aria-hidden="true">
+    <div id="reading-progress" class="h-full bg-accent w-0 transition-all duration-150 ease-out"></div>
+  </div>
+
+  <!-- Breadcrumbs -->
+  <div class="absolute top-24 left-0 w-full z-20">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center gap-2 font-mono-label text-[10px] text-text-muted" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent outline-none">Home</a>
+        <span aria-hidden="true">→</span>
+        <a href="/blog" class="hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent outline-none">Insights</a>
+        <span aria-hidden="true">→</span>
+        <span class="text-text-primary line-clamp-1" aria-current="page">{insight.title}</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- 60/40 Hero Section -->
+  <section class="pt-32 pb-16 bg-bg-primary min-h-[70vh] flex items-center relative border-b border-border-subtle overflow-hidden">
+    <div class="absolute top-0 right-0 w-full md:w-1/2 h-full bg-bg-secondary/30 pointer-events-none" aria-hidden="true"></div>
+    
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Text Content (60%) -->
+        <div class="lg:col-span-7 fade-up">
+          <span class="font-mono-label text-accent tracking-[0.2em] uppercase mb-4 block">INSIGHTS / {insight.category}</span>
+          
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-[1.05] mb-8">
+            {insight.title}
+          </h1>
+          
+          <div class="flex flex-wrap items-center gap-6 border-t border-border-subtle pt-8 mt-8">
+            <div class="flex items-center gap-4">
+              <img src="/images/dr-shitsama-headshot.jpg" alt="Dr. Sylvia Shitsama" class="w-12 h-12 rounded-full border-2 border-border-strong" />
+              <div>
+                <div class="font-mono-label text-text-primary text-[11px] mb-1">Dr. Sylvia Shitsama</div>
+                <div class="font-mono-label text-text-muted text-[9px]">Author</div>
+              </div>
+            </div>
+            
+            <div class="hidden sm:block w-px h-8 bg-border-strong" aria-hidden="true"></div>
+            
+            <div>
+              <div class="font-mono-label text-text-muted text-[9px] mb-1">Published</div>
+              <div class="font-mono-label text-text-primary text-[10px]">{insight.date}</div>
+            </div>
+            
+            <div class="hidden sm:block w-px h-8 bg-border-strong" aria-hidden="true"></div>
+            
+            <div>
+              <div class="font-mono-label text-text-muted text-[9px] mb-1">Reading Time</div>
+              <div class="font-mono-label text-text-primary text-[10px]">{insight.readTime}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Anatomical Visual (40%) -->
+        <div class="lg:col-span-5 h-[400px] lg:h-[500px] relative flex items-center justify-center fade-up">
+          <MedicalVisualization condition={visualTopic} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-Column Body: Share/TOC (L) | Content (C) | Sticky Anatomy (R) -->
+  <section class="py-16 bg-bg-primary relative" id="article-body">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative">
+        
+        <!-- Left: Sharing & TOC (Desktop) -->
+        <aside class="hidden lg:block lg:col-span-3 relative">
+          <div class="sticky top-32">
+            <ArticleShare title={insight.title} url={`/blog/${insight.slug}`} />
+            
+            <div class="mt-12">
+              <span class="font-mono-label text-text-muted text-[10px] tracking-widest block mb-4 uppercase">In This Article</span>
+              <nav id="desktop-toc" class="flex flex-col gap-3 border-l border-border-strong pl-4" aria-label="Table of contents">
+                <!-- Dynamically populated by JS -->
+              </nav>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Center: Main Article Content -->
+        <article class="lg:col-span-6 w-full max-w-[700px] mx-auto lg:mx-0">
+          
+          <MobileTOC />
+
+          <div class="editorial-content" id="article-content" set:html={insight.content}></div>
+
+          <!-- Mobile Share (Horizontal) -->
+          <div class="lg:hidden mt-12 pt-8 border-t border-border-subtle">
+            <ArticleShare title={insight.title} url={`/blog/${insight.slug}`} />
+          </div>
+
+          <ArticleAuthor />
+          
+        </article>
+
+        <!-- Right: Sticky 3D Interaction (Desktop) -->
+        <aside class="hidden lg:block lg:col-span-3 relative h-full">
+          <MedicalVisualization condition={visualTopic} />
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Content & Consult CTA -->
+  <section class="py-24 bg-bg-secondary border-t border-border-subtle relative overflow-hidden">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Split Layout: Articles & Research -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
+        
+        <!-- Related Articles -->
+        <div class="lg:col-span-8">
+          <div class="flex items-center justify-between border-b border-border-subtle pb-4 mb-8">
+            <h3 class="font-display text-2xl font-semibold text-text-primary">Continue Reading</h3>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {relatedInsights.slice(0, 2).map(article => (
+              <a href={`/blog/${article.slug}`} class="block group rounded-xl bg-bg-primary border border-border-subtle overflow-hidden hover:border-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent outline-none">
+                <div class="p-6">
+                  <span class="font-mono-label text-[10px] text-accent block mb-2">{article.category}</span>
+                  <h4 class="font-display text-lg font-semibold text-text-primary mb-3 leading-snug group-hover:text-accent transition-colors line-clamp-2">{article.title}</h4>
+                  <p class="text-text-secondary text-sm font-light line-clamp-2 mb-4">{article.excerpt}</p>
+                  <div class="text-link font-mono-label text-[10px] inline-flex items-center">
+                    Read Article 
+                    <svg class="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Related Research -->
+        <div class="lg:col-span-4">
+          <div class="flex items-center justify-between border-b border-border-subtle pb-4 mb-8">
+            <h3 class="font-display text-2xl font-semibold text-text-primary">Related Research</h3>
+          </div>
+          
+          {insight.relatedResearch ? (
+            <div class="p-6 rounded-xl bg-bg-primary border border-border-subtle group hover:border-accent transition-colors">
+              <span class="font-mono-label text-[10px] text-text-muted block mb-3 uppercase tracking-widest">Published</span>
+              <h4 class="font-display text-lg font-semibold text-text-primary mb-4 leading-snug">{insight.relatedResearch}</h4>
+              <a href={insight.relatedResearchSlug} class="btn-ghost-dark text-xs py-2 w-full text-center">Explore Research</a>
+            </div>
+          ) : (
+            <div class="p-6 rounded-xl bg-bg-primary border border-border-subtle text-center">
+              <p class="text-text-muted text-sm font-light">Explore the full research repository for more academic publications.</p>
+              <a href="/research" class="btn-ghost-dark text-xs py-2 w-full mt-4">View All Research</a>
+            </div>
+          )}
+        </div>
+
+      </div>
+
+      <!-- Consultation CTA -->
+      <div class="max-w-4xl mx-auto bg-bg-primary rounded-3xl border border-border-strong p-10 sm:p-16 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(193,122,62,0.05)_0%,_transparent_70%)] pointer-events-none" aria-hidden="true"></div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-text-primary mb-4 relative z-10">Have Questions About Your Care?</h2>
+        <p class="text-text-secondary text-lg font-light mb-8 max-w-2xl mx-auto relative z-10">Speak with a specialist about your concerns and explore the appropriate next step for your neurological health.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+          <a href="/contact" class="btn-primary">Book a Consultation</a>
+          <a href="https://wa.me/254110090116" target="_blank" rel="noopener noreferrer" class="btn-ghost-dark flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Enquiry
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style is:global>
+  /* Editorial Content Styles (reused from before) */
+  .editorial-content {
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  .editorial-content h2 {
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  
+  .editorial-content p {
+    margin-bottom: 1.75rem;
+    font-weight: 300;
+  }
+  
+  .editorial-content blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding: 1.5rem 2rem;
+    margin: 2.5rem 0;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+    border-radius: 0 0.5rem 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  /* Key Information Callouts */
+  .key-callout {
+    background: var(--color-bg-secondary);
+    border: 1px solid rgba(138, 155, 176, 0.2);
+    border-left: 4px solid var(--color-accent);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin: 2.5rem 0;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
+  }
+
+  .key-callout-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .key-callout p {
+    margin-bottom: 0;
+    font-size: 1.15rem;
+    color: var(--color-text-primary);
+    font-weight: 400;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate fade-up elements using IntersectionObserver (safest for CSS transitions)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Reading Progress
+    const progressBar = document.getElementById('reading-progress');
+    const articleBody = document.getElementById('article-body');
+    
+    if (progressBar && articleBody) {
+      window.addEventListener('scroll', () => {
+        const rect = articleBody.getBoundingClientRect();
+        const top = rect.top - window.innerHeight / 2;
+        const height = rect.height;
+        
+        let percentage = 0;
+        if (top < 0) {
+          percentage = Math.min(100, Math.max(0, (Math.abs(top) / height) * 100));
+        }
+        
+        progressBar.style.width = `${percentage}%`;
+      });
+    }
+
+    // Dynamic TOC generation for both Desktop and Mobile
+    const content = document.getElementById('article-content');
+    const desktopToc = document.getElementById('desktop-toc');
+    const mobileToc = document.getElementById('mobile-toc-list');
+    
+    if (content) {
+      const headings = content.querySelectorAll('h2');
+      
+      headings.forEach((heading, index) => {
+        if (!heading.id) heading.id = `section-${index}`;
+        
+        const createLink = () => {
+          const link = document.createElement('a');
+          link.href = `#${heading.id}`;
+          link.className = 'font-mono-label text-[11px] text-text-muted hover:text-accent transition-colors py-1.5 relative toc-link flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-accent outline-none';
+          link.innerHTML = `<span class="text-[9px] opacity-50">0${index + 1}</span> ${heading.textContent}`;
+          link.dataset.target = heading.id;
+          return link;
+        };
+        
+        if (desktopToc) desktopToc.appendChild(createLink());
+        if (mobileToc) {
+          const mLink = createLink();
+          mLink.className = 'font-mono-label text-[12px] text-text-primary hover:text-accent transition-colors py-2 border-b border-border-subtle last:border-0 block';
+          mobileToc.appendChild(mLink);
+        }
+      });
+
+      // Highlight active TOC item (Intersection Observer)
+      const tocLinks = document.querySelectorAll('.toc-link');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(link => {
+              if (link.getAttribute('data-target') === entry.target.id) {
+                link.classList.add('text-accent');
+                link.classList.remove('text-text-muted');
+              } else {
+                link.classList.remove('text-accent');
+                link.classList.add('text-text-muted');
+              }
+            });
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+
+      headings.forEach(h => observer.observe(h));
+    }
+  });
+</script>

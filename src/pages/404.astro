@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page Not Found — Dr. Sylvia Shitsama"
+  description="The page you're looking for doesn't exist. Navigate back to Dr. Sylvia Shitsama's website."
+>
+  <section class="relative min-h-screen flex items-center justify-center bg-midnight overflow-hidden">
+    <!-- Neural Network Background -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 600" fill="none" style="opacity: 0.06;" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <path d="M100,300 C200,100 350,200 400,300" stroke="#D4A853" stroke-width="1.5" fill="none"/>
+      <path d="M400,300 C450,400 550,350 600,200" stroke="#C17A3E" stroke-width="1" fill="none"/>
+      <path d="M400,300 C380,450 500,500 650,450" stroke="#D4A853" stroke-width="1" fill="none"/>
+      <circle cx="100" cy="300" r="4" fill="#D4A853" class="neural-pulse"/>
+      <circle cx="400" cy="300" r="6" fill="#C17A3E" class="neural-pulse" style="animation-delay: 0.5s"/>
+      <circle cx="600" cy="200" r="4" fill="#D4A853" class="neural-pulse" style="animation-delay: 1s"/>
+      <circle cx="650" cy="450" r="3" fill="#C17A3E" class="neural-pulse" style="animation-delay: 0.7s"/>
+    </svg>
+
+    <div class="text-center relative z-10 px-4">
+      <!-- 404 Number -->
+      <div class="font-mono text-8xl sm:text-9xl font-medium text-copper/20 mb-4" aria-hidden="true">
+        404
+      </div>
+
+      <!-- Headline -->
+      <h1 id="error-title" class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory mb-4">
+        Lost in the <span class="text-copper">Neural Pathways</span>
+      </h1>
+
+      <!-- Description -->
+      <p id="error-desc" class="text-sage text-lg max-w-md mx-auto mb-10 leading-relaxed">
+        The page you're looking for seems to have disconnected. Let's get you back on track.
+      </p>
+
+      <!-- Actions -->
+      <div id="error-actions" class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="btn-primary">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+          </svg>
+          Return Home
+        </a>
+        <a href="/contact" class="btn-ghost" id="secondary-btn">
+          Contact Us
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const path = window.location.pathname;
+      if (path.startsWith('/blog/')) {
+        const title = document.getElementById('error-title');
+        const desc = document.getElementById('error-desc');
+        const secBtn = document.getElementById('secondary-btn');
+        
+        if (title) title.innerHTML = 'Article <span class="text-copper">Not Found</span>';
+        if (desc) desc.textContent = "We couldn't find this insight. It may have been moved or removed.";
+        if (secBtn) {
+          secBtn.href = '/blog';
+          secBtn.innerHTML = 'Explore All Insights <svg class="w-4 h-4 inline-block ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>';
+        }
+      }
+    });
+  </script>
+</Layout>

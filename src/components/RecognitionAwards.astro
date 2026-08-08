@@ -1,0 +1,615 @@
+---
+// RecognitionAwards.astro
+// Advanced Immersive 3D Orbital Recognition Gallery
+
+const centralRecognition = {
+  id: 'top-40',
+  title: 'Top 40 Under 40 Women in Kenya',
+  subtitle: 'Awarded twice for outstanding leadership in medicine.',
+  category: 'Awards',
+  type: 'hero-medallion',
+};
+
+const recognitions = [
+  {
+    id: 'rec-01',
+    title: 'Board Member',
+    org: 'Hydrocephalus Society of Kenya',
+    year: 'Present',
+    category: 'Leadership',
+    type: 'plaque',
+    desc: 'Serving on the board to guide national strategy and advocate for improved paediatric neurosurgical care.',
+  },
+  {
+    id: 'rec-02',
+    title: 'Committee Member',
+    org: 'Global Surgery, SSK',
+    year: 'Present',
+    category: 'Advocacy',
+    type: 'seal',
+    desc: 'Affiliate of the Surgical Society of Kenya, contributing to global surgery initiatives.',
+  },
+  {
+    id: 'rec-03',
+    title: 'Mentorship Speaker',
+    org: 'AFAN',
+    year: 'Ongoing',
+    category: 'Academic',
+    type: 'glass',
+    desc: 'Regular speaker for the Association of Future African Neurosurgeons, guiding the next generation of surgical talent.',
+  },
+  {
+    id: 'rec-04',
+    title: 'Clinical & Research Fellow',
+    org: 'University of Toronto',
+    year: '2019',
+    category: 'Fellowships',
+    type: 'glass',
+    desc: 'Completed a prestigious Fellowship in General Neurosurgery at one of the world\'s leading neurosurgical centres.',
+  },
+  {
+    id: 'rec-05',
+    title: 'STEM Advocate',
+    org: 'Women in Surgery',
+    year: 'Ongoing',
+    category: 'Advocacy',
+    type: 'plaque',
+    desc: 'A dedicated champion for women in surgery, advocating for health policy reform and robust mentorship structures in medicine.',
+  },
+  {
+    id: 'rec-06',
+    title: 'Senior Lecturer',
+    org: 'JKUAT',
+    year: '2016 – Present',
+    category: 'Academic',
+    type: 'seal',
+    desc: 'Educating and mentoring medical students at the School of Medicine, Jomo Kenyatta University of Agriculture and Technology.',
+  },
+  {
+    id: 'rec-07',
+    title: 'Pioneering Excellence',
+    org: 'Kenya Medical Board',
+    year: '2014',
+    category: 'Awards',
+    type: 'medallion',
+    desc: 'Recognised historically as the first qualified female neurosurgeon in the Republic of Kenya.',
+  },
+  {
+    id: 'rec-08',
+    title: 'Honorary Consultant',
+    org: 'Thika Level V Hospital',
+    year: '2021',
+    category: 'Leadership',
+    type: 'plaque',
+    desc: 'Providing specialised neurosurgical care and expanding public health capacity at a leading Level V facility.',
+  }
+];
+
+const categories = ['All', 'Awards', 'Fellowships', 'Leadership', 'Academic', 'Advocacy'];
+
+// Helpers for CSS styles based on type
+const getTypeClasses = (type: string) => {
+  switch(type) {
+    case 'medallion': return 'w-32 h-32 rounded-full border-2 border-gold/30 bg-midnight-light/90 shadow-[0_0_20px_rgba(212,168,83,0.15)] flex flex-col items-center justify-center text-center p-4';
+    case 'plaque': return 'w-48 h-28 rounded-sm border border-ivory/20 bg-midnight/90 shadow-lg flex flex-col justify-center p-5';
+    case 'glass': return 'w-40 h-48 rounded-xl border border-ivory/10 bg-ivory/[0.03] backdrop-blur-md flex flex-col justify-end p-5';
+    case 'seal': return 'w-24 h-24 rounded-full border border-copper/40 bg-midnight-light/80 shadow-inner flex items-center justify-center text-center p-3';
+    default: return 'w-40 h-32 rounded-lg border border-ivory/10 bg-midnight';
+  }
+};
+---
+
+<section 
+  id="recognition-hall" 
+  class="bg-midnight relative overflow-hidden py-32 border-t border-ivory/5 select-none"
+  x-data="{ 
+    showDirectory: false, 
+    activeFilter: 'All', 
+    activeNode: null,
+    getNodeData(id) {
+      if (id === 'top-40') return { title: 'Top 40 Under 40 Women in Kenya', org: 'Outstanding Leadership in Medicine', year: '', desc: 'Awarded twice for exceptional leadership and contributions to the medical field in Kenya.', category: 'Awards' };
+      return this.recognitions.find(r => r.id === id);
+    },
+    recognitions: [
+      { id: 'rec-01', title: 'Board Member', org: 'Hydrocephalus Society of Kenya', year: 'Present', category: 'Leadership', desc: 'Serving on the board to guide national strategy and advocate for improved paediatric neurosurgical care.' },
+      { id: 'rec-02', title: 'Committee Member', org: 'Global Surgery, SSK', year: 'Present', category: 'Advocacy', desc: 'Affiliate of the Surgical Society of Kenya, contributing to global surgery initiatives.' },
+      { id: 'rec-03', title: 'Mentorship Speaker', org: 'AFAN', year: 'Ongoing', category: 'Academic', desc: 'Regular speaker for the Association of Future African Neurosurgeons, guiding the next generation of surgical talent.' },
+      { id: 'rec-04', title: 'Clinical & Research Fellow', org: 'University of Toronto', year: '2019', category: 'Fellowships', desc: 'Completed a prestigious Fellowship in General Neurosurgery at one of the world\'s leading neurosurgical centres.' },
+      { id: 'rec-05', title: 'STEM Advocate', org: 'Women in Surgery', year: 'Ongoing', category: 'Advocacy', desc: 'A dedicated champion for women in surgery, advocating for health policy reform and robust mentorship structures in medicine.' },
+      { id: 'rec-06', title: 'Senior Lecturer', org: 'JKUAT', year: '2016 – Present', category: 'Academic', desc: 'Educating and mentoring medical students at the School of Medicine, Jomo Kenyatta University of Agriculture and Technology.' },
+      { id: 'rec-07', title: 'Pioneering Excellence', org: 'Kenya Medical Board', year: '2014', category: 'Awards', desc: 'Recognised historically as the first qualified female neurosurgeon in the Republic of Kenya.' },
+      { id: 'rec-08', title: 'Honorary Consultant', org: 'Thika Level V Hospital', year: '2021', category: 'Leadership', desc: 'Providing specialised neurosurgical care and expanding public health capacity at a leading Level V facility.' }
+    ]
+  }"
+>
+  
+  <!-- Atmospheric 3D Environment Background -->
+  <div class="absolute inset-0 z-0 pointer-events-none environment-bg transition-transform duration-1000 ease-out">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(15,23,42,1)_0%,_rgba(5,10,20,1)_100%)]"></div>
+    <div class="absolute top-[20%] left-[30%] w-96 h-96 bg-copper/5 rounded-full blur-[100px] mix-blend-screen"></div>
+    <div class="absolute bottom-[20%] right-[30%] w-[500px] h-[500px] bg-gold/5 rounded-full blur-[150px] mix-blend-screen"></div>
+    <div class="absolute inset-0 opacity-[0.03] bg-[url('/images/noise.png')] mix-blend-overlay"></div>
+    <!-- Fine illuminated lines -->
+    <svg class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path d="M 0 50 L 100 50 M 50 0 L 50 100" stroke="#C17A3E" stroke-width="0.05" stroke-dasharray="1 3"/>
+    </svg>
+  </div>
+
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex flex-col">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-12 fade-up relative z-30 pointer-events-none">
+      <span class="font-mono-label text-copper tracking-[0.2em] uppercase mb-6 block">Recognition</span>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-ivory leading-tight mb-8">
+        Awards & Leadership
+      </h2>
+      <p class="text-sage text-lg font-light max-w-2xl mx-auto leading-relaxed">
+        A career defined by pioneering achievement, academic excellence, leadership and a commitment to advancing neurosurgical care.
+      </p>
+    </div>
+
+    <!-- UI Guidance -->
+    <div class="hidden lg:flex justify-center items-center gap-6 mb-8 fade-up relative z-30 pointer-events-none opacity-50 ui-guidance transition-opacity duration-500">
+      <div class="flex items-center gap-2 text-xs font-mono tracking-widest text-copper uppercase">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+        Drag to Rotate
+      </div>
+      <div class="w-1 h-1 bg-ivory/20 rounded-full"></div>
+      <div class="flex items-center gap-2 text-xs font-mono tracking-widest text-copper uppercase">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+        Click to Focus
+      </div>
+    </div>
+
+    <!-- 3D Desktop Orbital Gallery -->
+    <div class="hidden lg:block relative w-full h-[600px] perspective-container mx-auto max-w-6xl hall-scene fade-up cursor-grab active:cursor-grabbing">
+      
+      <!-- The Rotating Orbit Container -->
+      <div class="absolute inset-0 transform-style-3d orbit-rig transition-transform duration-[3000ms] ease-out">
+        
+        <!-- Central Hero Award -->
+        <div 
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform-style-3d cursor-pointer hover:scale-105 transition-transform duration-500 central-node"
+          @click="activeNode = 'top-40'"
+        >
+          <div class="relative w-[340px] h-[340px] rounded-full bg-midnight-light border-4 border-gold/40 shadow-[0_0_80px_rgba(212,168,83,0.15)] flex flex-col items-center justify-center text-center p-10 transform-style-3d">
+            <!-- Metallic inner rings -->
+            <div class="absolute inset-3 rounded-full border border-ivory/10 shadow-[inset_0_0_30px_rgba(0,0,0,0.5)]"></div>
+            <div class="absolute inset-0 rounded-full border border-copper/20 animate-slow-spin-reverse"></div>
+            
+            <div class="font-display text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#F3EFE6] to-[#C17A3E] mb-3 tracking-tighter" style="transform: translateZ(40px);">
+              TOP 40
+            </div>
+            <div class="w-16 h-[2px] bg-gold/50 mx-auto my-4" style="transform: translateZ(30px);"></div>
+            <h3 class="font-display text-xl font-medium text-ivory leading-snug" style="transform: translateZ(30px);">
+              Top 40 Under 40<br/>Women in Kenya
+            </h3>
+          </div>
+        </div>
+
+        <!-- Dynamically Distributed Orbiting Objects -->
+        {recognitions.map((item, index) => (
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform-style-3d orbit-item-wrapper" data-index={index}>
+            <div 
+              class={`orbit-item cursor-pointer transform-style-3d hover:scale-110 transition-transform duration-300 group ${getTypeClasses(item.type)}`}
+              @click={`activeNode = '${item.id}'`}
+            >
+              <!-- Glassmorphism specific inner structure -->
+              {item.type === 'glass' && (
+                <>
+                  <div class="absolute inset-0 bg-gradient-to-b from-ivory/5 to-transparent rounded-xl"></div>
+                  <div class="font-display text-lg font-medium text-ivory mb-1 leading-tight" style="transform: translateZ(10px);">{item.title}</div>
+                  <div class="font-mono text-[9px] uppercase tracking-widest text-copper" style="transform: translateZ(5px);">{item.year}</div>
+                </>
+              )}
+              
+              <!-- Plaque specific inner structure -->
+              {item.type === 'plaque' && (
+                <>
+                  <div class="font-mono text-[9px] uppercase tracking-widest text-gold mb-2" style="transform: translateZ(5px);">{item.category}</div>
+                  <div class="font-display text-lg font-medium text-ivory leading-tight" style="transform: translateZ(10px);">{item.title}</div>
+                  <div class="w-6 h-[1px] bg-copper/30 mt-3" style="transform: translateZ(5px);"></div>
+                </>
+              )}
+
+              <!-- Medallion/Seal specific inner structure -->
+              {(item.type === 'medallion' || item.type === 'seal') && (
+                <>
+                  <div class="font-display text-sm font-medium text-ivory leading-tight" style="transform: translateZ(10px);">{item.title}</div>
+                  <div class="font-mono text-[8px] uppercase tracking-widest text-copper mt-2" style="transform: translateZ(5px);">{item.year}</div>
+                </>
+              )}
+              
+              <!-- Hover Glow -->
+              <div class="absolute -inset-4 bg-copper/0 group-hover:bg-copper/20 rounded-full blur-xl transition-colors duration-500 -z-10" style="transform: translateZ(-10px);"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Active Node Information Modal (Cinematic Focus) -->
+    <div 
+      x-show="activeNode !== null"
+      x-transition:enter="transition ease-out duration-700"
+      x-transition:enter-start="opacity-0 backdrop-blur-none"
+      x-transition:enter-end="opacity-100 backdrop-blur-md"
+      x-transition:leave="transition ease-in duration-500"
+      x-transition:leave-start="opacity-100 backdrop-blur-md"
+      x-transition:leave-end="opacity-0 backdrop-blur-none"
+      class="fixed inset-0 z-50 flex items-center justify-center lg:items-center px-4 pointer-events-none"
+      style="display: none;"
+    >
+      <!-- Click out to close -->
+      <div class="absolute inset-0 bg-midnight/80 pointer-events-auto" @click="activeNode = null"></div>
+      
+      <div 
+        class="relative z-10 w-full max-w-2xl bg-midnight-light border border-ivory/10 rounded-2xl p-8 sm:p-12 shadow-2xl pointer-events-auto transform transition-all"
+        x-transition:enter="transition ease-out duration-700 delay-100"
+        x-transition:enter-start="opacity-0 scale-95 translate-y-10"
+        x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+        x-transition:leave-end="opacity-0 scale-95 translate-y-4"
+      >
+        <button @click="activeNode = null" class="absolute top-6 right-6 text-sage hover:text-ivory transition-colors">
+          <span class="sr-only">Close</span>
+          <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+
+        <template x-if="activeNode">
+          <div>
+            <div class="inline-flex items-center gap-2 border border-copper/20 bg-copper/5 px-3 py-1 rounded-full mb-6">
+              <span class="font-mono-label text-[10px] tracking-[0.2em] text-copper uppercase" x-text="getNodeData(activeNode).category"></span>
+            </div>
+            
+            <h3 class="font-display text-3xl sm:text-4xl font-semibold text-ivory mb-2 pr-8 leading-tight" x-text="getNodeData(activeNode).title"></h3>
+            
+            <div class="flex items-center gap-3 mb-8">
+              <span class="text-copper font-medium" x-text="getNodeData(activeNode).org"></span>
+              <template x-if="getNodeData(activeNode).year">
+                <div class="flex items-center gap-3">
+                  <span class="w-1 h-1 rounded-full bg-ivory/20"></span>
+                  <span class="font-mono text-sm text-sage" x-text="getNodeData(activeNode).year"></span>
+                </div>
+              </template>
+            </div>
+            
+            <div class="w-12 h-[1px] bg-ivory/10 mb-8"></div>
+            
+            <p class="text-sage text-lg leading-relaxed font-light" x-text="getNodeData(activeNode).desc"></p>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <!-- Mobile Vertical Recognitions -->
+    <div class="lg:hidden relative pb-16">
+      <div class="space-y-6">
+        <!-- Hero Mobile -->
+        <div class="bg-midnight-light border border-gold/30 p-8 rounded-2xl shadow-xl text-center fade-up">
+          <div class="font-mono-label text-[10px] tracking-[0.2em] text-copper uppercase mb-4">Awards</div>
+          <div class="font-display text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-ivory to-copper mb-2">TOP 40</div>
+          <h3 class="font-display text-xl font-medium text-ivory mb-2">Top 40 Under 40 Women in Kenya</h3>
+          <p class="text-sage text-sm font-light">Awarded twice for outstanding leadership in medicine.</p>
+        </div>
+
+        {recognitions.slice(0, 4).map((item) => (
+          <div class="bg-midnight-light/50 border border-ivory/10 p-6 rounded-xl fade-up-stagger">
+            <div class="font-mono-label text-[10px] tracking-[0.2em] text-copper uppercase mb-2">{item.category}</div>
+            <h3 class="font-display text-xl font-medium text-ivory mb-1">{item.title}</h3>
+            <div class="text-sage text-sm mb-3">{item.org} <span class="text-ivory/30 mx-1">·</span> {item.year}</div>
+            <p class="text-sage font-light text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- "Explore All" Control -->
+    <div class="text-center mt-8 lg:mt-16 relative z-30 fade-up">
+      <button 
+        @click="showDirectory = true; document.body.style.overflow = 'hidden';"
+        class="inline-flex items-center gap-3 bg-transparent border border-copper/40 hover:border-copper text-ivory px-8 py-4 rounded-lg font-medium transition-all hover:bg-copper/5 group"
+      >
+        Explore All Awards & Leadership
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </button>
+    </div>
+
+  </div>
+  
+  <!-- Impact Statement & Final CTA -->
+  <div class="mt-32 pt-24 border-t border-ivory/10 max-w-4xl mx-auto text-center fade-up relative z-10 px-4">
+    <h3 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium text-ivory mb-8 leading-tight italic">
+      "Recognition is part of the journey — impact is the destination."
+    </h3>
+    <p class="text-sage text-lg sm:text-xl leading-relaxed font-light mb-12">
+      Through clinical excellence, research, mentorship and advocacy, Dr. Shitsama continues to contribute to the advancement of neurosurgical care.
+    </p>
+    
+    <a href="/about" class="inline-flex items-center gap-3 bg-copper hover:bg-copper-dark text-white px-8 py-4 rounded-lg font-medium transition-all hover:-translate-y-1 shadow-lg hover:shadow-copper/20 group">
+      Explore Her Journey
+      <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+
+  <!-- Full-Screen Interactive Directory (Alpine.js Modal) -->
+  <div 
+    x-show="showDirectory"
+    x-transition:enter="transition ease-out duration-500"
+    x-transition:enter-start="opacity-0 translate-y-full"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 translate-y-full"
+    class="fixed inset-0 z-[100] bg-midnight overflow-y-auto"
+    style="display: none;"
+  >
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 border-b border-ivory/10 pb-8 mb-10">
+        <div>
+          <span class="font-mono-label text-copper tracking-[0.2em] uppercase mb-2 block text-xs">Directory</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-semibold text-ivory">Awards & Leadership</h2>
+        </div>
+        <button 
+          @click="showDirectory = false; document.body.style.overflow = '';"
+          class="flex items-center gap-2 text-sage hover:text-ivory transition-colors font-mono uppercase tracking-widest text-sm"
+        >
+          Close
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap items-center gap-4 mb-12">
+        {categories.map(cat => (
+          <button 
+            @click={`activeFilter = '${cat}'`}
+            :class={`activeFilter === '${cat}' ? 'bg-copper text-white border-copper' : 'bg-transparent border-ivory/20 text-sage hover:border-ivory/50'`}
+            class="px-5 py-2 rounded-full border text-sm font-medium transition-all"
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Directory Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-20">
+        <!-- Always show Hero Award if 'All' or 'Awards' is selected -->
+        <div 
+          x-show="activeFilter === 'All' || activeFilter === 'Awards'"
+          x-transition
+          class="bg-midnight-light border border-gold/30 p-8 rounded-2xl flex flex-col justify-between"
+        >
+          <div>
+            <div class="font-mono-label text-[10px] tracking-[0.2em] text-copper uppercase mb-4">Awards</div>
+            <h3 class="font-display text-2xl font-semibold text-ivory mb-2">Top 40 Under 40 Women in Kenya</h3>
+            <div class="text-gold text-sm font-medium mb-4">Outstanding Leadership in Medicine</div>
+          </div>
+          <p class="text-sage font-light leading-relaxed">Awarded twice for exceptional leadership and contributions to the medical field in Kenya.</p>
+        </div>
+
+        <template x-for="item in recognitions" :key="item.id">
+          <div 
+            x-show="activeFilter === 'All' || activeFilter === item.category"
+            x-transition
+            class="bg-midnight-light border border-ivory/10 p-8 rounded-2xl flex flex-col justify-between hover:border-copper/30 transition-colors"
+          >
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <span class="font-mono-label text-[10px] tracking-[0.2em] text-copper uppercase" x-text="item.category"></span>
+                <span class="font-mono text-xs text-sage" x-text="item.year"></span>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-ivory mb-2" x-text="item.title"></h3>
+              <div class="text-sage text-sm font-medium mb-4" x-text="item.org"></div>
+            </div>
+            <p class="text-sage font-light leading-relaxed text-sm" x-text="item.desc"></p>
+          </div>
+        </template>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .perspective-container {
+    perspective: 1500px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  @keyframes slow-spin-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+  .animate-slow-spin-reverse {
+    animation: slow-spin-reverse 60s linear infinite;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { Draggable } from 'gsap/Draggable';
+
+  gsap.registerPlugin(ScrollTrigger, Draggable);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      document.querySelectorAll('.fade-up, .fade-up-stagger').forEach(el => {
+        if (el instanceof HTMLElement) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+      return;
+    }
+
+    // Standard Fade Ups
+    gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+    });
+
+    // Mobile Stagger
+    ScrollTrigger.create({
+      trigger: '.space-y-6',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(gsap.utils.toArray('.fade-up-stagger'),
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out' }
+        );
+      }
+    });
+
+    // --- 3D Orbital Engine (Vanilla JS + GSAP) ---
+    const scene = document.querySelector('.hall-scene');
+    if (!scene) return;
+
+    const orbitRig = document.querySelector('.orbit-rig') as HTMLElement;
+    const items = gsap.utils.toArray<HTMLElement>('.orbit-item-wrapper');
+    const totalItems = items.length;
+    
+    // Engine State
+    let currentRotationY = 0;
+    const radius = 350; // Distance from center
+    
+    // Position items in a 3D circle/cylinder around the center
+    items.forEach((item, i) => {
+      // Calculate angle
+      const angle = (i / totalItems) * Math.PI * 2;
+      
+      // Calculate X and Z positions on a circle
+      const x = Math.sin(angle) * radius;
+      const z = Math.cos(angle) * radius;
+      
+      // Add slight vertical staggering for a more dynamic look
+      const y = Math.sin(angle * 3) * 50; 
+      
+      // Initial positioning in 3D space
+      gsap.set(item, {
+        x: x,
+        y: y,
+        z: z,
+        rotationY: (angle * 180) / Math.PI, // Face outwards initially
+      });
+      
+      // The inner .orbit-item must rotate BACKwards by the negative orbit rotation 
+      // so that it always faces the camera. We handle this in the update function.
+    });
+
+    function updateOrbit() {
+      // Rotate the entire rig
+      gsap.set(orbitRig, { rotationY: currentRotationY });
+      
+      // Counter-rotate the contents so they face the camera
+      items.forEach((item) => {
+        const inner = item.querySelector('.orbit-item');
+        if (inner) {
+          gsap.set(inner, { rotationY: -currentRotationY });
+        }
+      });
+
+      // Also counter-rotate the central hero so it faces the camera
+      const centralNode = document.querySelector('.central-node');
+      if (centralNode) {
+        gsap.set(centralNode, { rotationY: -currentRotationY });
+      }
+    }
+
+    // Initialize layout
+    updateOrbit();
+
+    // Scene Entrance Animation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: scene,
+        start: 'top 70%',
+        once: true,
+      }
+    });
+
+    tl.fromTo(orbitRig, 
+      { z: -1000, opacity: 0, rotationX: 20 },
+      { z: 0, opacity: 1, rotationX: 0, duration: 2, ease: 'power3.out' }
+    )
+    .fromTo(items,
+      { scale: 0 },
+      { scale: 1, duration: 1, stagger: 0.1, ease: 'back.out(1.5)' },
+      "-=1.5"
+    );
+
+    // Interactive Drag-to-Rotate using GSAP Draggable
+    // We create a proxy div to track drag values
+    const proxy = document.createElement('div');
+    
+    Draggable.create(proxy, {
+      type: "x",
+      trigger: scene,
+      inertia: true,
+      onDragStart: () => {
+        const uiGuidance = document.querySelector('.ui-guidance');
+        if (uiGuidance) uiGuidance.classList.add('opacity-0');
+      },
+      onDrag: function() {
+        // Map drag X movement to rotation Y
+        currentRotationY -= this.deltaX * 0.3;
+        updateOrbit();
+      },
+      onThrowUpdate: function() {
+        currentRotationY -= this.deltaX * 0.3;
+        updateOrbit();
+      }
+    });
+
+    // Subtle parallax on mousemove when not dragging
+    const envBg = document.querySelector('.environment-bg') as HTMLElement;
+    scene.addEventListener('mousemove', (e) => {
+      const ev = e as MouseEvent;
+      // Only apply parallax if we aren't actively clicking/dragging
+      if (ev.buttons === 0) {
+        const rect = scene.getBoundingClientRect();
+        const x = (ev.clientX - rect.left) / rect.width - 0.5;
+        const y = (ev.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(orbitRig, {
+          x: x * 30,
+          y: y * 30,
+          duration: 1,
+          ease: 'power1.out'
+        });
+        
+        gsap.to(envBg, {
+          x: -x * 40,
+          y: -y * 40,
+          duration: 2,
+          ease: 'power1.out'
+        });
+      }
+    });
+
+    scene.addEventListener('mouseleave', () => {
+      gsap.to(orbitRig, { x: 0, y: 0, duration: 1, ease: 'power1.out' });
+      gsap.to(envBg, { x: 0, y: 0, duration: 2, ease: 'power1.out' });
+    });
+  });
+</script>

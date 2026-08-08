@@ -1,0 +1,110 @@
+---
+export interface Props {
+  condition?: string; // e.g., 'brain', 'spinal-conditions', 'hydrocephalus', 'brain-tumours'
+  type?: string; // Legacy prop, mapping it to condition
+}
+
+const { condition, type } = Astro.props;
+const currentTopic = condition || type || 'brain';
+
+let imagePath = '';
+let altText = '';
+
+switch (currentTopic) {
+  case 'spinal-conditions':
+  case 'spine':
+  case 'spina-bifida': // Fallback if no specific asset
+    imagePath = '/images/medical/spine.png';
+    altText = '3D anatomical human spine illustrating spinal conditions';
+    break;
+  case 'hydrocephalus':
+    imagePath = '/images/medical/hydrocephalus.png';
+    altText = '3D anatomical brain showing the ventricular system in hydrocephalus';
+    break;
+  case 'brain-tumours':
+  case 'neurological-oncology':
+    imagePath = '/images/medical/brain_tumour.png';
+    altText = '3D anatomical brain illustrating neurological oncology';
+    break;
+  case 'head-injury-trauma':
+  case 'trauma':
+    imagePath = '/images/medical/head_injury.png';
+    altText = '3D anatomical head and brain structure illustrating trauma';
+    break;
+  case 'research':
+    imagePath = '/images/medical/brain.png';
+    altText = '3D anatomical visualization for neurosurgical research';
+    break;
+  case 'brain':
+  default:
+    imagePath = '/images/medical/brain.png';
+    altText = 'Premium 3D anatomical visualization of the human brain';
+}
+
+// Generate unique ID for this instance to prevent GSAP collisions
+const uid = Math.random().toString(36).substr(2, 9);
+---
+
+<div class="medical-container sticky top-[30vh] w-full h-[40vh] flex items-center justify-center opacity-0 transition-opacity duration-1000" id={`sticky-container-${uid}`} data-uid={uid}>
+  <div class={`relative w-full h-full perspective-1000 medical-visual-${uid}`}>
+    <img 
+      src={imagePath} 
+      alt={altText} 
+      class="absolute inset-0 w-full h-full object-contain filter drop-shadow-xl mix-blend-screen opacity-50"
+      loading="lazy"
+    />
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    // Find all medical containers on the page
+    document.querySelectorAll('.medical-container').forEach(container => {
+      const uid = container.getAttribute('data-uid');
+      if (!uid) return;
+      
+      const model = document.querySelector(`.medical-visual-${uid}`);
+      
+      // We only apply this on desktop where there's room
+      if (model && window.innerWidth > 1024) {
+        try {
+          ScrollTrigger.create({
+            trigger: "#article-content", // if this exists on the page
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => container.style.opacity = '1',
+            onLeave: () => container.style.opacity = '0',
+            onEnterBack: () => container.style.opacity = '1',
+            onLeaveBack: () => container.style.opacity = '0'
+          });
+
+          if (!prefersReducedMotion) {
+            gsap.to(model, {
+              scrollTrigger: {
+                trigger: "#article-body", // if this exists on the page
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true,
+              },
+              rotationY: 45,
+              rotationZ: -5,
+              y: 100
+            });
+          } else {
+            container.style.opacity = '1';
+          }
+        } catch (e) {
+          console.error("GSAP failed to initialize", e);
+          container.style.opacity = '1';
+        }
+      }
+    });
+  });
+</script>

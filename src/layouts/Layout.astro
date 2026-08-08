@@ -1,0 +1,178 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  isArticle?: boolean;
+  articlePublishDate?: string;
+  articleAuthor?: string;
+}
+
+const { 
+  title, 
+  description, 
+  ogImage = '/images/og-default.jpg', 
+  canonicalUrl,
+  isArticle = false,
+  articlePublishDate,
+  articleAuthor = "Dr. Sylvia Shitsama"
+} = Astro.props;
+const siteUrl = 'https://drsylviashitsama.com';
+const fullCanonical = canonicalUrl ? `${siteUrl}${canonicalUrl}` : `${siteUrl}${Astro.url.pathname}`;
+
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={fullCanonical} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={isArticle ? "article" : "website"} />
+  <meta property="og:url" content={fullCanonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+  <meta property="og:site_name" content="Dr. Sylvia Shitsama Nyamweya" />
+  
+  {isArticle && (
+    <>
+      <meta property="article:author" content={articleAuthor} />
+      {articlePublishDate && <meta property="article:published_time" content={articlePublishDate} />}
+    </>
+  )}
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Alpine.js Plugins -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Theme Detection (prevents FOUC) -->
+  <script is:inline>
+    const theme = localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <!-- JSON-LD Structured Data: Person -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dr. Sylvia Shitsama Nyamweya",
+    "jobTitle": "Consultant Neurosurgeon",
+    "description": "Kenya's first qualified female neurosurgeon. Consultant at KNH, Senior Lecturer at JKUAT, Co-founder Sage Brain & Spine Clinic.",
+    "url": siteUrl,
+    "image": `${siteUrl}/images/dr-shitsama-portrait.jpg`,
+    "sameAs": [
+      "https://www.linkedin.com/in/sylvia-shitsama",
+      "https://www.researchgate.net/profile/Sylvia-Shitsama"
+    ],
+    "worksFor": [
+      {
+        "@type": "Hospital",
+        "name": "Kenyatta National Referral Hospital"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Jomo Kenyatta University of Agriculture & Technology"
+      }
+    ],
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Nairobi"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Toronto"
+      }
+    ],
+    "knowsAbout": ["Neurosurgery", "Brain Tumours", "Hydrocephalus", "Spinal Surgery", "Neuro-oncology"]
+  })} />
+
+  <!-- JSON-LD Structured Data: MedicalOrganization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Sage Brain and Spine Clinic",
+    "description": "Specialist neurosurgical clinic led by Dr. Sylvia Shitsama in Nairobi, Kenya.",
+    "url": siteUrl,
+    "telephone": "0110090116",
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "KMA Centre, Suite 43",
+        "addressLocality": "Nairobi",
+        "addressCountry": "KE"
+      }
+    ],
+    "medicalSpecialty": "Neurosurgery"
+  })} />
+
+  {isArticle && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "image": `${siteUrl}${ogImage}`,
+      "author": {
+        "@type": "Person",
+        "name": articleAuthor
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Dr. Sylvia Shitsama Nyamweya",
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/images/dr-shitsama-portrait.jpg`
+        }
+      },
+      "datePublished": articlePublishDate || new Date().toISOString()
+    })} />
+  )}
+
+  <slot name="head" />
+</head>
+<body class="bg-bg-primary text-text-primary antialiased selection:bg-accent/20 selection:text-accent font-body min-h-screen flex flex-col overflow-x-hidden">
+  <!-- Skip to main content (accessibility) -->
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+  <Header />
+
+  <main id="main-content" class="flex-1">
+    <slot />
+  </main>
+
+  <Footer />
+  <WhatsAppFloat />
+</body>
+</html>

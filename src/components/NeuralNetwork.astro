@@ -1,0 +1,71 @@
+---
+// NeuralNetwork SVG - Abstract neural pathway animation
+// Used as a background element in the hero section
+---
+
+<svg
+  id="neural-network"
+  class="absolute inset-0 w-full h-full pointer-events-none"
+  viewBox="0 0 800 600"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  style="opacity: 0.08;"
+  aria-hidden="true"
+  preserveAspectRatio="xMidYMid slice"
+>
+  <!-- Neural Pathways (Lines) -->
+  <path class="neural-line" d="M100,300 C200,100 350,200 400,300" stroke="#D4A853" stroke-width="1.5" fill="none" data-length="450"/>
+  <path class="neural-line" d="M400,300 C450,400 550,350 600,200" stroke="#D4A853" stroke-width="1.5" fill="none" data-length="380" style="animation-delay: 0.2s"/>
+  <path class="neural-line" d="M400,300 C380,450 500,500 650,450" stroke="#C17A3E" stroke-width="1" fill="none" data-length="420" style="animation-delay: 0.4s"/>
+  <path class="neural-line" d="M100,300 C50,150 150,50 300,100" stroke="#C17A3E" stroke-width="1" fill="none" data-length="380" style="animation-delay: 0.3s"/>
+  <path class="neural-line" d="M300,100 C400,80 500,150 600,200" stroke="#D4A853" stroke-width="1" fill="none" data-length="350" style="animation-delay: 0.5s"/>
+  <path class="neural-line" d="M600,200 C700,180 750,300 700,400" stroke="#C17A3E" stroke-width="1" fill="none" data-length="300" style="animation-delay: 0.6s"/>
+  <path class="neural-line" d="M650,450 C700,500 750,480 780,420" stroke="#D4A853" stroke-width="0.8" fill="none" data-length="200" style="animation-delay: 0.7s"/>
+  <path class="neural-line" d="M100,300 C120,400 200,500 350,520" stroke="#D4A853" stroke-width="0.8" fill="none" data-length="350" style="animation-delay: 0.5s"/>
+  <path class="neural-line" d="M350,520 C450,530 550,490 650,450" stroke="#C17A3E" stroke-width="0.8" fill="none" data-length="320" style="animation-delay: 0.8s"/>
+
+  <!-- Secondary thinner pathways -->
+  <path class="neural-line" d="M200,200 C250,150 300,120 350,150" stroke="#D4A853" stroke-width="0.5" fill="none" data-length="200" style="animation-delay: 0.9s"/>
+  <path class="neural-line" d="M500,400 C530,380 580,390 620,350" stroke="#D4A853" stroke-width="0.5" fill="none" data-length="170" style="animation-delay: 1s"/>
+
+  <!-- Neural Nodes (Circles) -->
+  <circle cx="100" cy="300" r="4" fill="#D4A853" class="neural-pulse"/>
+  <circle cx="400" cy="300" r="6" fill="#C17A3E" class="neural-pulse" style="animation-delay: 0.5s"/>
+  <circle cx="600" cy="200" r="4" fill="#D4A853" class="neural-pulse" style="animation-delay: 1s"/>
+  <circle cx="300" cy="100" r="3" fill="#C17A3E" class="neural-pulse" style="animation-delay: 0.3s"/>
+  <circle cx="650" cy="450" r="5" fill="#D4A853" class="neural-pulse" style="animation-delay: 0.7s"/>
+  <circle cx="700" cy="400" r="3" fill="#C17A3E" class="neural-pulse" style="animation-delay: 1.2s"/>
+  <circle cx="350" cy="520" r="3" fill="#D4A853" class="neural-pulse" style="animation-delay: 0.9s"/>
+  <circle cx="200" cy="200" r="2.5" fill="#C17A3E" class="neural-pulse" style="animation-delay: 0.4s"/>
+  <circle cx="500" cy="400" r="2.5" fill="#D4A853" class="neural-pulse" style="animation-delay: 0.6s"/>
+  <circle cx="780" cy="420" r="2" fill="#C17A3E" class="neural-pulse" style="animation-delay: 1.1s"/>
+</svg>
+
+<script>
+  import { gsap } from 'gsap';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const paths = document.querySelectorAll('#neural-network .neural-line');
+
+    paths.forEach((path, index) => {
+      const pathEl = path as SVGPathElement;
+      const length = pathEl.getTotalLength();
+
+      // Set initial state
+      pathEl.style.strokeDasharray = String(length);
+      pathEl.style.strokeDashoffset = String(length);
+
+      // Animate draw-in with GSAP
+      gsap.to(pathEl, {
+        strokeDashoffset: 0,
+        duration: 1.2,
+        delay: index * 0.1,
+        ease: 'power2.out',
+      });
+    });
+  });
+</script>

@@ -1,0 +1,460 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS — Dr. Sylvia Shitsama Brand
+   ============================================ */
+
+@theme {
+  /* =========================================
+     SEMANTIC DESIGN TOKENS (WCAG 2.2 Checked)
+     ========================================= */
+  
+  /* Backgrounds */
+  --color-bg-primary: #08111B; /* Deepest Navy (Near Black) for max contrast */
+  --color-bg-secondary: #0D1B2A; /* Deep Navy */
+  --color-surface: #152638; /* Midnight */
+  --color-surface-elevated: #1B3048; /* Dark Slate */
+
+  /* Text */
+  --color-text-primary: #F7F4EF; /* Off-white for high contrast headings/content */
+  --color-text-secondary: #B8C7D9; /* Brightened blue-grey (WCAG AA compliant 4.5:1) */
+  --color-text-muted: #8A9BB0; /* Only for disabled/meta text */
+
+  /* Accents & UI */
+  --color-accent: #C17A3E; /* Warm Copper/Gold */
+  --color-accent-hover: #D4904F;
+  --color-border-subtle: rgba(247, 244, 239, 0.08);
+  --color-border-strong: rgba(247, 244, 239, 0.25);
+  --color-focus: rgba(193, 122, 62, 0.6);
+  --color-success: #1A9E8F;
+  --color-error: #D94A4A;
+
+  /* =========================================
+     LEGACY TOKEN ALIASES
+     (Mapped to new WCAG semantic values)
+     ========================================= */
+  --color-midnight: var(--color-bg-primary);
+  --color-midnight-light: var(--color-bg-secondary);
+  --color-midnight-lighter: var(--color-surface);
+  --color-copper: var(--color-accent);
+  --color-copper-light: var(--color-accent-hover);
+  --color-ivory: var(--color-text-primary);
+  --color-sage: var(--color-text-secondary);
+  --color-sage-light: #D0DBE8;
+  --color-gold: #D4A853;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Dark Mode Variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background-color: var(--color-ivory);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  color: var(--color-ivory);
+  background-color: var(--color-midnight);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-midnight);
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4 {
+  color: var(--color-ivory);
+}
+
+.font-mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   CUSTOM COMPONENTS
+   ============================================ */
+
+/* Glassmorphism Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dark .glass {
+  background: rgba(13, 27, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Copper Glow on Hover */
+.copper-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.copper-glow:hover {
+  box-shadow: 0 0 24px rgba(193, 122, 62, 0.25), 0 8px 32px rgba(193, 122, 62, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Card Base */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.dark .card {
+  background: var(--color-midnight-light);
+}
+
+.card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Card with Copper Top Border */
+.card-copper {
+  border-top: 4px solid var(--color-copper);
+}
+
+/* Primary Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  background: var(--color-accent);
+  color: var(--color-bg-primary); /* Dark navy text for contrast against gold */
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--color-focus);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Secondary / Ghost Button */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  background: rgba(247, 244, 239, 0.02);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1.5px solid rgba(247, 244, 239, 0.3);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-accent);
+  background: rgba(193, 122, 62, 0.12); /* Slight accent fill */
+  transform: translateY(-2px);
+  color: var(--color-text-primary);
+}
+
+.btn-ghost svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-ghost:hover svg {
+  transform: translateX(4px);
+}
+
+/* Light-surface ghost button */
+.btn-ghost-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  background: transparent;
+  color: var(--color-bg-primary);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1.5px solid rgba(8, 17, 27, 0.4);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-ghost-dark:hover {
+  border-color: var(--color-accent);
+  background: rgba(193, 122, 62, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Global Link Animation */
+.text-link {
+  color: var(--color-accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.text-link:hover {
+  color: var(--color-text-primary);
+}
+.text-link svg {
+  transition: transform 0.2s ease;
+}
+.text-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* Section Spacing */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 7rem 2rem;
+  }
+}
+
+/* Container */
+.container-custom {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Neural Pulse Animation */
+@keyframes neuralPulse {
+  0%, 100% { opacity: 0.3; r: 3; }
+  50% { opacity: 0.8; r: 5; }
+}
+
+.neural-pulse {
+  animation: neuralPulse 3s ease-in-out infinite;
+}
+
+/* Scroll Indicator Pulse */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scrollPulse 3s ease-in-out infinite;
+}
+
+/* WhatsApp Bounce */
+@keyframes whatsappBounce {
+  0%, 100% { transform: translateY(0); }
+  15% { transform: translateY(-8px); }
+  30% { transform: translateY(0); }
+  45% { transform: translateY(-4px); }
+  60% { transform: translateY(0); }
+}
+
+.whatsapp-bounce {
+  animation: whatsappBounce 3s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Fade Up for GSAP */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* SVG Draw Animation */
+.neural-line {
+  stroke-dasharray: var(--line-length, 1000);
+  stroke-dashoffset: var(--line-length, 1000);
+}
+
+.neural-line.is-drawn {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.2s ease-out;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+  }
+
+  .neural-line {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+
+.form-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: white;
+  border: 1.5px solid rgba(138, 155, 176, 0.4);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #111;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.form-input:hover {
+  border-color: rgba(138, 155, 176, 0.7);
+}
+
+.form-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.dark .form-input {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border-color: rgba(247, 244, 239, 0.15);
+}
+
+.dark .form-input:hover {
+  border-color: rgba(247, 244, 239, 0.3);
+}
+
+.dark .form-input:focus {
+  border-color: var(--color-accent);
+  background: var(--color-bg-primary);
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--color-charcoal);
+  margin-bottom: 0.375rem;
+}
+
+.dark .form-label {
+  color: var(--color-sage-light);
+}
+
+/* ============================================
+   SKIP TO MAIN CONTENT (Accessibility)
+   ============================================ */
+
+.skip-to-main {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-copper);
+  color: white;
+  font-weight: 600;
+  border-radius: 0 0 8px 8px;
+  z-index: 9999;
+  transition: top 0.2s ease;
+}
+
+.skip-to-main:focus {
+  top: 0;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-midnight);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-midnight-lighter);
+}
