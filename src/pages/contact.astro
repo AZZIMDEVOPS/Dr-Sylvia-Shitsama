@@ -177,28 +177,16 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
 
-          <!-- Premium 3D-inspired Nairobi Location Visual -->
-          <div class="relative w-full h-64 rounded-xl overflow-hidden bg-midnight border border-ivory/10 shadow-lg group perspective-container">
-            <!-- Dark map surface -->
-            <div class="absolute inset-0 bg-midnight transform-style-3d transition-transform duration-700 group-hover:rotate-x-12 group-hover:scale-105 origin-bottom">
-              <!-- Minimal Map Geometry -->
-              <svg class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <path d="M 0 50 Q 20 40 40 50 T 100 30 M 0 60 Q 30 70 50 60 T 100 80 M 30 0 L 20 100 M 70 0 L 80 100" stroke="#C17A3E" stroke-width="0.5" fill="none"/>
-              </svg>
-              <!-- 3D Terrain Depth Simulation -->
-              <div class="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-midnight"></div>
-              
-              <!-- Glowing Location Marker (Center) -->
-              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                <div class="w-3 h-3 bg-copper rounded-full shadow-[0_0_20px_rgba(193,122,62,1)] relative z-10"></div>
-                <!-- Animated Pulse -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border border-copper/50 rounded-full animate-ping opacity-75"></div>
-                <!-- Label -->
-                <div class="mt-2 bg-midnight/90 backdrop-blur border border-ivory/10 rounded px-2 py-1">
-                  <div class="font-mono text-[9px] uppercase tracking-widest text-ivory">Nairobi</div>
-                </div>
-              </div>
-            </div>
+          <!-- Interactive Google Maps Nairobi Location -->
+          <div class="relative w-full h-64 rounded-xl overflow-hidden bg-midnight border border-ivory/10 shadow-lg">
+            <iframe
+              title="Sage Brain & Spine Clinic - Nairobi Location"
+              src="https://maps.google.com/maps?q=KMA+Centre,+Chyulu+Rd,+Nairobi,+Kenya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              class="w-full h-full border-0 filter invert-[90%] hue-rotate-[180deg] contrast-[90%] brightness-[85%]"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
           
         </div>
