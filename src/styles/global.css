@@ -9,29 +9,28 @@
      SEMANTIC DESIGN TOKENS (WCAG 2.2 Checked)
      ========================================= */
   
-  /* Backgrounds */
-  --color-bg-primary: #08111B; /* Deepest Navy (Near Black) for max contrast */
-  --color-bg-secondary: #0D1B2A; /* Deep Navy */
-  --color-surface: #152638; /* Midnight */
-  --color-surface-elevated: #1B3048; /* Dark Slate */
+  /* Backgrounds & Depth Hierarchy */
+  --color-bg-primary: #071522; /* Deep Navy Page Background */
+  --color-bg-secondary: #0F2032; /* Midnight Section Surface */
+  --color-surface: #14283E; /* High-contrast Card Surface */
+  --color-surface-elevated: #1B334F; /* Elevated Card Hover Surface */
 
-  /* Text */
-  --color-text-primary: #F7F4EF; /* Off-white for high contrast headings/content */
-  --color-text-secondary: #B8C7D9; /* Brightened blue-grey (WCAG AA compliant 4.5:1) */
-  --color-text-muted: #8A9BB0; /* Only for disabled/meta text */
+  /* Text & Typography Hierarchy */
+  --color-text-primary: #F5F1E8; /* Bright Warm Ivory (Primary Headings & Titles) */
+  --color-text-secondary: #B8C4D2; /* Crisp Light Grey-Blue (Body Copy & Subheadings) */
+  --color-text-muted: #93A4B8; /* Readable Muted Metadata & Labels */
 
-  /* Accents & UI */
-  --color-accent: #C17A3E; /* Warm Copper/Gold */
+  /* Accents & UI Energy */
+  --color-accent: #C17A3E; /* Warm Copper/Gold Energy Source */
   --color-accent-hover: #D4904F;
-  --color-border-subtle: rgba(247, 244, 239, 0.08);
-  --color-border-strong: rgba(247, 244, 239, 0.25);
+  --color-border-subtle: rgba(247, 244, 239, 0.12); /* Clear 1px Card Border */
+  --color-border-strong: rgba(247, 244, 239, 0.28);
   --color-focus: rgba(193, 122, 62, 0.6);
   --color-success: #1A9E8F;
   --color-error: #D94A4A;
 
   /* =========================================
      LEGACY TOKEN ALIASES
-     (Mapped to new WCAG semantic values)
      ========================================= */
   --color-midnight: var(--color-bg-primary);
   --color-midnight-light: var(--color-bg-secondary);
@@ -40,7 +39,7 @@
   --color-copper-light: var(--color-accent-hover);
   --color-ivory: var(--color-text-primary);
   --color-sage: var(--color-text-secondary);
-  --color-sage-light: #D0DBE8;
+  --color-sage-light: #D5E0ED;
   --color-gold: #D4A853;
 
   /* Typography */

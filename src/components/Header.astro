@@ -54,8 +54,8 @@ const navLinks = [
             class:list={[
               'text-sm font-medium transition-colors duration-200 relative',
               currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-                ? 'text-copper'
-                : 'text-ivory/80 hover:text-copper',
+                ? 'text-copper font-semibold'
+                : 'text-ivory hover:text-copper',
             ]}
           >
             {link.label}
@@ -135,8 +135,8 @@ const navLinks = [
             class:list={[
               'px-4 py-3 rounded-lg text-sm font-medium transition-colors',
               currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-                ? 'text-copper bg-copper/10'
-                : 'text-ivory/80 hover:text-copper hover:bg-ivory/5',
+                ? 'text-copper bg-copper/10 font-semibold'
+                : 'text-ivory hover:text-copper hover:bg-ivory/5',
             ]}
           >
             {link.label}

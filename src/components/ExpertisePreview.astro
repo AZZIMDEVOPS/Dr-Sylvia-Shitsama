@@ -103,7 +103,7 @@ const specialties = [
               <div class="flex items-center gap-8 relative z-10">
                 <span 
                   class="font-display text-xl transition-colors duration-300"
-                  :class={`activeSpecialty === '${specialty.id}' ? 'text-copper' : 'text-sage/50'`}
+                  :class={`activeSpecialty === '${specialty.id}' ? 'text-copper' : 'text-sage'`}
                 >{specialty.num}</span>
                 <h3 class="text-2xl font-display font-medium tracking-wide">{specialty.title}</h3>
               </div>
@@ -128,7 +128,7 @@ const specialties = [
                 <div class="flex items-center gap-6">
                   <span 
                     class="font-display text-lg transition-colors duration-300"
-                    :class={`activeSpecialty === '${specialty.id}' ? 'text-copper' : 'text-sage/50'`}
+                    :class={`activeSpecialty === '${specialty.id}' ? 'text-copper' : 'text-sage'`}
                   >{specialty.num}</span>
                   <h3 class="text-xl sm:text-2xl font-display font-medium">{specialty.title}</h3>
                 </div>
