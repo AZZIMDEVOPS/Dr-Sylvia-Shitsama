@@ -61,16 +61,16 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-charcoal);
-  background-color: var(--color-ivory);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .dark body {
-  color: var(--color-ivory);
-  background-color: var(--color-midnight);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
 }
 
 /* ============================================
@@ -81,11 +81,11 @@ h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.15;
-  color: var(--color-midnight);
+  color: var(--color-text-primary);
 }
 
 .dark h1, .dark h2, .dark h3, .dark h4 {
-  color: var(--color-ivory);
+  color: var(--color-text-primary);
 }
 
 .font-mono-label {
