@@ -66,7 +66,7 @@ const uid = Math.random().toString(36).substr(2, 9);
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     // Find all medical containers on the page
-    document.querySelectorAll('.medical-container').forEach(container => {
+    document.querySelectorAll<HTMLElement>('.medical-container').forEach(container => {
       const uid = container.getAttribute('data-uid');
       if (!uid) return;
       

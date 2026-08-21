@@ -58,7 +58,7 @@ import Layout from '../layouts/Layout.astro';
       if (path.startsWith('/blog/')) {
         const title = document.getElementById('error-title');
         const desc = document.getElementById('error-desc');
-        const secBtn = document.getElementById('secondary-btn');
+        const secBtn = document.getElementById('secondary-btn') as HTMLAnchorElement | null;
         
         if (title) title.innerHTML = 'Article <span class="text-copper">Not Found</span>';
         if (desc) desc.textContent = "We couldn't find this insight. It may have been moved or removed.";

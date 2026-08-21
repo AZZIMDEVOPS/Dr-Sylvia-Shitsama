@@ -39,7 +39,7 @@ const milestones = [
     id: '05',
     title: 'Leadership & Advocacy',
     institution: 'Global Surgical Equity',
-    description: 'Board member of the Hydrocephalus Society of Kenya and a tireless advocate for global surgical equity, mentorship, and advancing neurosurgery across Africa.',
+    description: 'Former board member of the Hydrocephalus Society and a tireless advocate for global surgical equity, mentorship, and advancing neurosurgery across Africa.',
     year: 'Present',
     align: 'right'
   }
@@ -63,7 +63,7 @@ const milestones = [
       The Journey So Far
     </h1>
     <p class="text-sage text-lg sm:text-xl font-light max-w-3xl mx-auto leading-relaxed">
-      From medical training to pioneering neurosurgery, research, mentorship and advocacy — a journey shaped by purpose, precision and a commitment to advancing care.
+      From medical training to pioneering neurosurgery, research, mentorship and advocacy — a journey shaped by purpose and a commitment to advancing care.
     </p>
   </div>
 </section>
@@ -136,7 +136,7 @@ const milestones = [
             `}>
               <div class="journey-panel bg-midnight-light/40 backdrop-blur-xl border border-ivory/10 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl opacity-50 lg:opacity-0 lg:translate-y-10 transition-all duration-700 hover:border-copper/30 group-hover:bg-midnight-light/60">
                 <span class="font-mono text-gold text-sm font-medium tracking-wide block mb-2">{milestone.year}</span>
-                <span class="font-mono-label text-copper text-[10px] tracking-widest uppercase block mb-4">{milestone.institution}</span>
+                <span class="font-mono-label text-copper text-[10px] tracking-widest uppercase block mb-4" style={milestone.id === '03' ? 'color: #8B7355;' : ''}>{milestone.institution}</span>
                 <h3 class="font-display text-2xl font-semibold text-ivory mb-4 leading-snug">
                   {milestone.title}
                 </h3>

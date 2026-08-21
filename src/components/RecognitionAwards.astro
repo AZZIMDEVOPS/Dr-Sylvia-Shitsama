@@ -13,12 +13,12 @@ const centralRecognition = {
 const recognitions = [
   {
     id: 'rec-01',
-    title: 'Board Member',
-    org: 'Hydrocephalus Society of Kenya',
-    year: 'Present',
+    title: 'Former Board Member',
+    org: 'Hydrocephalus Society',
+    year: 'Former',
     category: 'Leadership',
     type: 'plaque',
-    desc: 'Serving on the board to guide national strategy and advocate for improved paediatric neurosurgical care.',
+    desc: 'Served on the board to guide national strategy and advocate for improved paediatric neurosurgical care.',
   },
   {
     id: 'rec-02',
@@ -111,7 +111,7 @@ const getTypeClasses = (type: string) => {
       return this.recognitions.find(r => r.id === id);
     },
     recognitions: [
-      { id: 'rec-01', title: 'Board Member', org: 'Hydrocephalus Society of Kenya', year: 'Present', category: 'Leadership', desc: 'Serving on the board to guide national strategy and advocate for improved paediatric neurosurgical care.' },
+      { id: 'rec-01', title: 'Former Board Member', org: 'Hydrocephalus Society', year: 'Former', category: 'Leadership', desc: 'Served on the board to guide national strategy and advocate for improved paediatric neurosurgical care.' },
       { id: 'rec-02', title: 'Committee Member', org: 'Global Surgery, SSK', year: 'Present', category: 'Advocacy', desc: 'Affiliate of the Surgical Society of Kenya, contributing to global surgery initiatives.' },
       { id: 'rec-03', title: 'Mentorship Speaker', org: 'AFAN', year: 'Ongoing', category: 'Academic', desc: 'Regular speaker for the Association of Future African Neurosurgeons, guiding the next generation of surgical talent.' },
       { id: 'rec-04', title: 'Clinical & Research Fellow', org: 'University of Toronto', year: '2019', category: 'Fellowships', desc: 'Completed a prestigious Fellowship in General Neurosurgery at one of the world\'s leading neurosurgical centres.' },
