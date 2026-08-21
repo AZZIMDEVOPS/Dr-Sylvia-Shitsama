@@ -16,7 +16,7 @@ const {
   canonicalUrl,
   isArticle = false,
   articlePublishDate,
-  articleAuthor = "Dr. Sylvia Shitsama"
+  articleAuthor = "Dr. Sylvia V. Shitsama"
 } = Astro.props;
 const siteUrl = 'https://drsylviashitsama.com';
 const fullCanonical = canonicalUrl ? `${siteUrl}${canonicalUrl}` : `${siteUrl}${Astro.url.pathname}`;
@@ -47,7 +47,7 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={`${siteUrl}${ogImage}`} />
-  <meta property="og:site_name" content="Dr. Sylvia Shitsama" />
+  <meta property="og:site_name" content="Dr. Sylvia V. Shitsama" />
   
   {isArticle && (
     <>
@@ -86,10 +86,12 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Dr. Sylvia Shitsama",
+    "name": "Dr. Sylvia V. Shitsama",
     "jobTitle": "Consultant Neurosurgeon",
     "description": "Kenya's first qualified female neurosurgeon. Consultant at KNH, Senior Lecturer at JKUAT, Co-founder Sage Brain & Spine Clinic.",
     "url": siteUrl,
+    "email": "info@drsylviashitsama.com",
+    "telephone": "+254704889211",
     "image": `${siteUrl}/images/dr-shitsama-portrait.jpg`,
     "sameAs": [
       "https://www.linkedin.com/in/sylvia-shitsama",
@@ -123,13 +125,14 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     "name": "Sage Brain and Spine Clinic",
-    "description": "Specialist neurosurgical clinic led by Dr. Sylvia Shitsama in Nairobi, Kenya.",
+    "description": "Specialist neurosurgical clinic led by Dr. Sylvia V. Shitsama in Nairobi, Kenya.",
     "url": siteUrl,
+    "email": "info@drsylviashitsama.com",
     "telephone": "0110090116",
     "address": [
       {
         "@type": "PostalAddress",
-        "streetAddress": "KNH Doctors' Plaza, Suite 43",
+        "streetAddress": "KNH Doctors Plaza, Suite 43, Hospital Road",
         "addressLocality": "Nairobi",
         "addressCountry": "KE"
       }
@@ -149,7 +152,7 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Dr. Sylvia Shitsama",
+        "name": "Dr. Sylvia V. Shitsama",
         "logo": {
           "@type": "ImageObject",
           "url": `${siteUrl}/images/dr-shitsama-portrait.jpg`
