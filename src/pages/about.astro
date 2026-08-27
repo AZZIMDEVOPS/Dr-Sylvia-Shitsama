@@ -185,23 +185,36 @@ const chapters = [
           </a>
         </div>
 
-        <!-- Mini Interactive Anatomy Viewer -->
-        <div class="relative aspect-square bg-midnight-light border border-ivory/5 rounded-3xl shadow-2xl flex items-center justify-center fade-up delay-200 overflow-hidden group perspective-container" x-data="{ view: 'brain' }">
+        <!-- Mini Interactive Anatomy & Surgical Theatre Viewer -->
+        <div class="relative aspect-square bg-midnight-light border border-ivory/10 rounded-3xl shadow-2xl flex items-center justify-center fade-up delay-200 overflow-hidden group perspective-container" x-data="{ view: 'brain' }">
           
           <!-- Toggle -->
-          <div class="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex bg-midnight border border-ivory/10 rounded-full p-1">
-            <button @click="view = 'brain'" class="px-4 py-1.5 rounded-full text-xs font-mono tracking-widest transition-colors" :class="view === 'brain' ? 'bg-copper text-white' : 'text-sage hover:text-ivory'">BRAIN</button>
-            <button @click="view = 'spine'" class="px-4 py-1.5 rounded-full text-xs font-mono tracking-widest transition-colors" :class="view === 'spine' ? 'bg-copper text-white' : 'text-sage hover:text-ivory'">SPINE</button>
+          <div class="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex bg-midnight/90 backdrop-blur-md border border-ivory/15 rounded-full p-1 shadow-lg">
+            <button @click="view = 'brain'" class="px-4 py-1.5 rounded-full text-xs font-mono tracking-widest transition-colors cursor-pointer" :class="view === 'brain' ? 'bg-copper text-white' : 'text-sage hover:text-ivory'">BRAIN SURGERY</button>
+            <button @click="view = 'spine'" class="px-4 py-1.5 rounded-full text-xs font-mono tracking-widest transition-colors cursor-pointer" :class="view === 'spine' ? 'bg-copper text-white' : 'text-sage hover:text-ivory'">SPINE SURGERY</button>
           </div>
 
-          <!-- Brain -->
-          <div class="absolute inset-0 flex items-center justify-center transition-all duration-700 transform-style-3d group-hover:rotate-x-12" :class="view === 'brain' ? 'opacity-100 scale-100' : 'opacity-0 scale-90 blur-sm pointer-events-none'">
-            <img src="/images/brain.png" alt="Brain Anatomy Preview" class="w-[70%] h-[70%] object-contain drop-shadow-[0_0_30px_rgba(193,122,62,0.15)] transform-style-3d" style="transform: translateZ(30px);" />
+          <!-- Brain Surgery Operating Theatre -->
+          <div class="absolute inset-0 transition-all duration-700 overflow-hidden" :class="view === 'brain' ? 'opacity-100 scale-100' : 'opacity-0 scale-95 blur-sm pointer-events-none'">
+            <img src="/images/dr-sylvia-neurosurgery-theatre.jpg" alt="Dr. Sylvia Shitsama performing brain surgery in the operating theatre" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-midnight/90 backdrop-blur-md border border-copper/30">
+              <span class="text-[10px] font-mono text-copper uppercase tracking-wider block mb-0.5">Cranial Neurosurgery</span>
+              <p class="text-xs text-ivory/90 font-light">
+                Microsurgical precision in cranial tumour resection & brain surgery under surgical loupes.
+              </p>
+            </div>
           </div>
           
           <!-- Spine -->
           <div class="absolute inset-0 flex items-center justify-center transition-all duration-700 transform-style-3d group-hover:rotate-x-12" :class="view === 'spine' ? 'opacity-100 scale-100' : 'opacity-0 scale-90 blur-sm pointer-events-none'">
             <img src="/images/spine.png" alt="Spine Anatomy Preview" class="w-[70%] h-[70%] object-contain drop-shadow-[0_0_30px_rgba(193,122,62,0.15)] transform-style-3d" style="transform: translateZ(30px);" />
+            <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-midnight/90 backdrop-blur-md border border-copper/30">
+              <span class="text-[10px] font-mono text-copper uppercase tracking-wider block mb-0.5">Spinal Reconstruction</span>
+              <p class="text-xs text-ivory/90 font-light">
+                Decompression and stabilisation for degenerative spinal pathologies and trauma.
+              </p>
+            </div>
           </div>
         </div>
 

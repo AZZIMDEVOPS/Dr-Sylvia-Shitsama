@@ -43,18 +43,31 @@ const gridArticles = insights.slice(1);
           </p>
         </div>
 
-        <!-- Right: 3D Composition (Interactive Parallax via GSAP) -->
-        <div class="lg:col-span-6 hidden lg:flex items-center justify-center relative h-[600px] fade-up" style="animation-delay: 200ms;" id="hero-3d-container">
-          <div class="absolute inset-0 w-full h-full perspective-1000">
-            <img 
-              src="/images/medical/brain.png" 
-              alt="Premium Anatomical Brain Visualization" 
-              class="absolute inset-0 w-full h-full object-contain filter drop-shadow-2xl mix-blend-screen opacity-70"
-              id="hero-brain"
-              loading="eager"
-            />
-            <!-- Simulated particles -->
-            <div id="hero-particles" class="absolute inset-0 w-full h-full mix-blend-screen opacity-40 bg-[url('/images/premium_clinic_map.png')] bg-cover bg-center"></div>
+        <!-- Right: Authentic Neurosurgery Operating Theatre Feature -->
+        <div class="lg:col-span-6 hidden lg:flex items-center justify-end relative fade-up" style="animation-delay: 200ms;" id="hero-3d-container">
+          <div class="relative w-full max-w-lg">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-ivory/15 bg-bg-secondary group">
+              <img 
+                src="/images/dr-sylvia-neurosurgery-theatre.jpg" 
+                alt="Dr. Sylvia Shitsama performing neurosurgery in the operating theatre" 
+                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 block"
+                id="hero-brain"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-bg-primary/90 backdrop-blur-md border border-accent/30 shadow-xl">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                  <span class="text-[10px] font-mono text-accent uppercase tracking-wider font-semibold">In the Operating Theatre</span>
+                </div>
+                <p class="text-xs text-text-primary/95 font-light">
+                  Precision microsurgery, patient outcomes & clinical insights shared by Dr. Sylvia Shitsama.
+                </p>
+              </div>
+            </div>
+            <!-- Framing accents -->
+            <div class="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-accent/30 rounded-3xl -z-10 hidden sm:block"></div>
+            <div class="absolute -top-4 -left-4 w-20 h-20 bg-accent/10 rounded-3xl -z-10 hidden sm:block"></div>
           </div>
         </div>
       </div>

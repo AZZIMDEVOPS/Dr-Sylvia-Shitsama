@@ -124,15 +124,33 @@ const categories = [
           </div>
         </div>
 
-        <!-- Right: 3D Hero Visual (Realistic Brain) -->
-        <div class="hidden lg:flex justify-end items-center relative h-[600px] perspective-container hero-anatomy fade-up">
-          <div class="relative w-full max-w-lg aspect-square transform-style-3d anatomy-rig animate-slow-spin">
-            <!-- Render the realistic brain image on a 3D plane -->
-            <img src="/images/brain.png" alt="3D Human Brain" class="absolute inset-0 w-full h-full object-cover rounded-full shadow-[0_0_80px_rgba(193,122,62,0.1)] transform-style-3d" style="transform: translateZ(50px);" />
+        <!-- Right: Authentic Neurosurgery Operating Theatre Feature -->
+        <div class="hidden lg:flex justify-end items-center relative fade-up">
+          <div class="relative w-full max-w-lg">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-ivory/15 bg-midnight-light group">
+              <img
+                src="/images/dr-sylvia-neurosurgery-theatre.jpg"
+                alt="Dr. Sylvia Shitsama performing cranial neurosurgery in the operating theatre"
+                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 block"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-transparent to-transparent pointer-events-none"></div>
+              
+              <!-- Floating Surgical Theatre Card -->
+              <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-midnight/90 backdrop-blur-md border border-copper/30 shadow-xl">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-copper animate-pulse"></span>
+                  <span class="text-[11px] font-mono text-copper uppercase tracking-wider font-semibold">Cranial Neurosurgery Theatre</span>
+                </div>
+                <p class="text-xs text-ivory/95 font-light">
+                  Dr. Sylvia Shitsama performing microsurgical cranial tumour resection under surgical loupes & precision theatre illumination.
+                </p>
+              </div>
+            </div>
             
-            <!-- Atmospheric glow rings -->
-            <div class="absolute inset-4 rounded-full border border-copper/20 transform-style-3d" style="transform: rotateX(60deg) rotateY(20deg) translateZ(-20px);"></div>
-            <div class="absolute inset-8 rounded-full border border-gold/10 transform-style-3d" style="transform: rotateX(45deg) rotateY(-20deg) translateZ(-40px);"></div>
+            <!-- Framing accent -->
+            <div class="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-copper/30 rounded-3xl -z-10 hidden sm:block"></div>
+            <div class="absolute -top-4 -left-4 w-20 h-20 bg-copper/10 rounded-3xl -z-10 hidden sm:block"></div>
           </div>
         </div>
         
