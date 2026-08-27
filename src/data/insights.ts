@@ -70,27 +70,27 @@ export const insights: Insight[] = [
     date: '15 JUL 2026',
     readTime: '8 min read',
     excerpt: 'Reflections on becoming Kenya\'s first female neurosurgeon and why mentorship is the key to lasting change.',
-    image: '/images/medical/brain.png',
+    image: '/images/dr-sylvia-amee-speaker-podium.jpg',
     medicalTopic: 'research',
-    relatedResearch: 'Women in neurosurgery: A global workforce analysis',
+    relatedResearch: 'Faculty perspectives on mentorship and culture in Sub-Saharan Africa',
     relatedResearchSlug: '/research',
     content: `
       <h2>The Global Workforce Gap</h2>
-      <p>Neurosurgery remains one of the most male-dominated medical specialties worldwide. While the pipeline of female medical students is robust, a distinct attrition occurs at the residency and fellowship levels. Our global workforce analysis highlights that structural barriers—rather than a lack of interest or capability—are the primary drivers of this disparity.</p>
+      <p>Neurosurgery remains one of the most demanding and historically male-dominated specialties in medicine. While female enrollment in medical schools across East Africa continues to grow, a steep attrition occurs during residency and specialized surgical fellowship training. Structural barriers, limited institutional mentorship, and inflexible training culture are key drivers of this disparity.</p>
       
-      <h2>Redefining Surgical Culture</h2>
-      <p>Building an inclusive surgical department requires deliberate cultural shifts. It involves moving beyond traditional, hierarchical models of mentorship towards active sponsorship. Sponsors don't just offer advice; they actively open doors to research opportunities, high-complexity cases, and academic publishing.</p>
+      <h2>Redefining Surgical Culture & Active Sponsorship</h2>
+      <p>Creating sustainable pathways for women in neurosurgery requires moving beyond passive mentorship toward intentional sponsorship. Sponsors actively advocate for candidates in crucial appointment committees, open doors to complex surgical rotations, and facilitate international research collaborations.</p>
       
       <div class="key-callout">
         <div class="key-callout-header">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          KEY INFORMATION
+          KEY RESEARCH TAKEAWAY
         </div>
-        <p>Sponsorship accelerates career trajectories. A sponsor uses their own influence to advocate for a junior colleague's advancement in critical decision-making rooms.</p>
+        <p>In our qualitative study with Maastricht University presented at AMEE Vienna, faculty across Sub-Saharan Africa emphasized that mentorship must be tailored to local institutional realities, resource constraints, and cultural contexts.</p>
       </div>
       
-      <h2>The Impact of Diverse Teams</h2>
-      <p>Diversity in the operating theatre is not merely a metric of equality; it is a clinical necessity. Diverse surgical teams consistently demonstrate improved problem-solving, enhanced communication, and a broader perspective on patient care, ultimately leading to better surgical outcomes.</p>
+      <h2>Diverse Teams Drive Superior Surgical Outcomes</h2>
+      <p>Diversity in the operating theatre is not merely an equity metric—it directly enhances clinical outcomes. Multidisciplinary surgical teams with diverse perspectives demonstrate higher situational awareness, enhanced patient communication, and greater diagnostic precision.</p>
     `
   },
   {

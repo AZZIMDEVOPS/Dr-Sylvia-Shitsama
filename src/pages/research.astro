@@ -218,38 +218,33 @@ const allTopics = ['All Research', 'Neurosurgery', 'Global Surgery', 'Health Pol
           </div>
         </div>
         
-        <!-- Right: Abstract Research Visual -->
-        <div class="lg:col-span-6 hidden lg:flex justify-end items-center relative fade-up">
-          <div class="relative w-full max-w-lg aspect-square">
-            <!-- Layers of research/academic visualization -->
-            <svg class="absolute inset-0 w-full h-full text-copper opacity-40 animate-slow-spin origin-center" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 4"/>
-              <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
-              <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-            </svg>
-            
-            <div class="absolute inset-10 border border-ivory/20 rounded-full flex items-center justify-center bg-midnight-light/50 backdrop-blur-sm">
-              <svg viewBox="0 0 100 100" class="w-2/3 h-2/3 drop-shadow-lg text-ivory opacity-80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Abstract Neural Network/Brain -->
-                <path d="M50 15 C30 15, 20 30, 30 55 C40 80, 60 80, 70 55 C80 30, 70 15, 50 15 Z" fill="none" stroke="currentColor" stroke-width="1"/>
-                <path d="M50 15 L50 75 M30 35 L70 35 M30 55 L70 55" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
-                <circle cx="50" cy="35" r="2" fill="currentColor"/>
-                <circle cx="35" cy="55" r="2" fill="currentColor"/>
-                <circle cx="65" cy="55" r="2" fill="currentColor"/>
-                <circle cx="45" cy="20" r="1.5" fill="#C17A3E"/>
-                <circle cx="55" cy="45" r="1.5" fill="#C17A3E"/>
-                <!-- Connecting lines to nodes -->
-                <path d="M50 35 L45 20 M50 35 L35 55 L55 45 M50 35 L65 55" stroke="#C17A3E" stroke-width="0.5" opacity="0.8"/>
-              </svg>
-            </div>
-            
-            <div class="absolute right-0 bottom-10 bg-ivory/5 backdrop-blur-md border border-ivory/10 p-4 rounded-lg shadow-xl font-mono text-[10px] text-sage">
-              <div>DATA.IDX_REV: 13.00</div>
-              <div>IMPACT.FACTOR: HIGH</div>
-              <div class="w-full h-1 bg-ivory/20 mt-2 rounded-full overflow-hidden">
-                <div class="h-full bg-copper w-[85%]"></div>
+        <!-- Right: Authentic Research Keynote Feature -->
+        <div class="lg:col-span-6 flex justify-center lg:justify-end items-center relative fade-up">
+          <div class="relative w-full max-w-lg">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-ivory/15 bg-midnight-light group">
+              <img
+                src="/images/dr-sylvia-amee-presentation-wide.jpg"
+                alt="Dr. Sylvia Shitsama presenting research at AMEE Vienna"
+                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 block"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-transparent to-transparent pointer-events-none"></div>
+              
+              <!-- Spotlight Research Card -->
+              <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-midnight/90 backdrop-blur-md border border-copper/30 shadow-xl">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-copper animate-pulse"></span>
+                  <span class="text-[11px] font-mono text-copper uppercase tracking-wider font-semibold">AMEE Vienna Keynote Presentation</span>
+                </div>
+                <p class="text-xs text-ivory/95 font-light">
+                  "Faculty Perspectives on Mentorship & Culture in Sub-Saharan Africa" — Maastricht University & UoN
+                </p>
               </div>
             </div>
+            
+            <!-- Framing accent -->
+            <div class="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-copper/30 rounded-3xl -z-10 hidden sm:block"></div>
+            <div class="absolute -top-4 -left-4 w-20 h-20 bg-copper/10 rounded-3xl -z-10 hidden sm:block"></div>
           </div>
         </div>
         

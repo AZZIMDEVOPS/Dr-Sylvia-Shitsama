@@ -1,0 +1,483 @@
+---
+// GlobalImpactGallery.astro
+// Interactive Showcase of Dr. Sylvia Shitsama on the International Stage (AMEE Vienna / Global Research)
+
+interface PhotoItem {
+  id: string;
+  src: string;
+  alt: string;
+  title: string;
+  subtitle: string;
+  badge: string;
+  location: string;
+  event: string;
+  description: string;
+  researchLink?: string;
+  researchLabel?: string;
+}
+
+const photos: PhotoItem[] = [
+  {
+    id: 'amee-presentation-wide',
+    src: '/images/dr-sylvia-amee-presentation-wide.jpg',
+    alt: 'Dr. Sylvia Shitsama presenting her research on mentorship and culture at AMEE Vienna',
+    title: 'Faculty Perspectives on Mentorship & Culture',
+    subtitle: 'Qualitative Study in Sub-Saharan Africa',
+    badge: 'Research Presentation',
+    location: 'Vienna, Austria',
+    event: 'AMEE International Health Professions Education',
+    description: 'Dr. Shitsama presenting collaborative findings from Maastricht University School of Health Professions Education and University of Nairobi on transforming surgical training and faculty mentorship.',
+    researchLink: '/research',
+    researchLabel: 'Explore Research Publication'
+  },
+  {
+    id: 'amee-speaker-podium',
+    src: '/images/dr-sylvia-amee-speaker-podium.jpg',
+    alt: 'Dr. Sylvia Shitsama speaking at the podium during AMEE Vienna',
+    title: 'Neurosurgical Leadership & Mentorship',
+    subtitle: 'Championing Inclusive Surgical Culture',
+    badge: 'Keynote Speaker',
+    location: 'Vienna, Austria',
+    event: 'AMEE Vienna Conference',
+    description: 'Advocating for evidence-based mentorship frameworks and cultural adaptation to nurture the next generation of surgeons in East Africa.',
+    researchLink: '/about#research',
+    researchLabel: 'View Academic Journey'
+  },
+  {
+    id: 'amee-keynote',
+    src: '/images/dr-sylvia-amee-keynote.jpg',
+    alt: 'Dr. Sylvia Shitsama addressing the international medical education assembly',
+    title: 'Global Health Professions Assembly',
+    subtitle: 'Cross-Continental Medical Education',
+    badge: 'Plenary Session',
+    location: 'Vienna, Austria',
+    event: 'AMEE Annual Conference',
+    description: 'Delivering strategic insights on medical education equity, clinical mentorship models, and institutional capacity building across Sub-Saharan Africa.',
+    researchLink: '/research',
+    researchLabel: 'See Published Papers'
+  },
+  {
+    id: 'amee-vienna-connect',
+    src: '/images/dr-sylvia-amee-vienna-connect.jpg',
+    alt: 'Dr. Sylvia Shitsama at the AMEE Connect Grow Inspire installation',
+    title: 'Connect · Grow · Inspire',
+    subtitle: 'International Association for Health Professions Education',
+    badge: 'Global Collaboration',
+    location: 'Vienna, Austria',
+    event: 'AMEE Exhibition Centre',
+    description: 'Strengthening international clinical partnerships between East African neurosurgical programs and global academic medical centres.',
+    researchLink: '/contact',
+    researchLabel: 'Inquire for Speaking'
+  },
+  {
+    id: 'amee-conference-hall',
+    src: '/images/dr-sylvia-amee-conference-hall.jpg',
+    alt: 'Dr. Sylvia Shitsama at the AMEE Vienna exhibition hall',
+    title: 'Advancing Global Surgical Equity',
+    subtitle: 'Academic & Clinical Exchange',
+    badge: 'International Delegation',
+    location: 'Vienna, Austria',
+    event: 'AMEE Vienna Forum',
+    description: 'Representing Kenya on the world stage, fostering medical innovation, mentorship structures, and surgical workforce expansion.',
+    researchLink: '/about#impact',
+    researchLabel: 'Read About Her Impact'
+  }
+];
+---
+
+<section id="global-impact-gallery" class="py-20 lg:py-28 bg-[#071522] relative overflow-hidden border-t border-b border-ivory/10">
+  <!-- Subtle Ambient Glow -->
+  <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-copper/5 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="absolute bottom-10 right-10 w-[450px] h-[450px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-6">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-px bg-copper"></span>
+          <span class="font-mono-label text-copper tracking-[0.2em] uppercase">Global Stage & Academic Leadership</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-ivory leading-[1.15]">
+          Pioneering Research.<br />
+          <span class="text-copper italic">Global Recognition.</span>
+        </h2>
+      </div>
+      <p class="text-sage text-base sm:text-lg max-w-lg font-light leading-relaxed">
+        From neurosurgical theatres in Nairobi to international podiums in Vienna. Dr. Shitsama presents pioneering research in surgical education, mentorship, and clinical culture.
+      </p>
+    </div>
+
+    <!-- Interactive Photo Showcase Component (Vanilla JS + Clean Responsive UI) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch" id="impactGalleryRoot">
+      
+      <!-- Main Spotlight Image Display (7 Cols) -->
+      <div class="lg:col-span-7 flex flex-col justify-between rounded-3xl bg-[#0F2032] border border-ivory/15 p-4 sm:p-6 shadow-2xl relative group overflow-hidden">
+        
+        <!-- Large Active Photo Container -->
+        <div class="relative w-full aspect-[16/10] sm:aspect-[16/10] md:aspect-[16/9] rounded-2xl overflow-hidden bg-midnight-light border border-ivory/10 shadow-inner">
+          <img
+            id="spotlightImage"
+            src={photos[0].src}
+            alt={photos[0].alt}
+            class="w-full h-full object-cover transition-all duration-500 transform group-hover:scale-[1.02]"
+            loading="eager"
+          />
+          
+          <!-- Badge overlay -->
+          <div class="absolute top-4 left-4 z-20">
+            <span id="spotlightBadge" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#071522]/90 backdrop-blur-md border border-copper/40 text-copper text-xs font-mono tracking-wider font-semibold">
+              <span class="w-2 h-2 rounded-full bg-copper animate-pulse"></span>
+              {photos[0].badge}
+            </span>
+          </div>
+
+          <!-- Location overlay -->
+          <div class="absolute top-4 right-4 z-20">
+            <span id="spotlightLocation" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#071522]/85 backdrop-blur-md border border-ivory/15 text-ivory/90 text-xs font-mono">
+              <svg class="w-3.5 h-3.5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              {photos[0].location}
+            </span>
+          </div>
+
+          <!-- Bottom Gradient Vignette -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#071522] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+
+          <!-- Zoom / Fullscreen Button -->
+          <button
+            id="openModalBtn"
+            type="button"
+            class="absolute bottom-4 right-4 z-20 p-2.5 rounded-xl bg-midnight/80 hover:bg-copper text-ivory transition-all backdrop-blur-md border border-ivory/20 hover:border-copper cursor-pointer"
+            aria-label="View Fullscreen Photo"
+            title="Click to view full image"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Spotlight Meta Content -->
+        <div class="pt-6 sm:pt-8 flex flex-col justify-between flex-1">
+          <div>
+            <div class="text-xs font-mono uppercase tracking-widest text-copper mb-2" id="spotlightEvent">
+              {photos[0].event}
+            </div>
+            <h3 class="font-display text-2xl sm:text-3xl font-semibold text-ivory mb-3 leading-snug" id="spotlightTitle">
+              {photos[0].title}
+            </h3>
+            <p class="text-sage text-sm sm:text-base leading-relaxed mb-6 font-light" id="spotlightDesc">
+              {photos[0].description}
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-ivory/10">
+            <a
+              id="spotlightLink"
+              href={photos[0].researchLink}
+              class="inline-flex items-center gap-2 text-sm font-semibold text-copper hover:text-copper-light transition-colors group/link"
+            >
+              <span id="spotlightLinkLabel">{photos[0].researchLabel}</span>
+              <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+
+            <!-- Photo Navigation arrows -->
+            <div class="flex items-center gap-2">
+              <button
+                id="prevPhotoBtn"
+                type="button"
+                class="p-2 rounded-lg bg-surface hover:bg-surface-elevated text-ivory border border-ivory/10 transition-colors cursor-pointer"
+                aria-label="Previous Photo"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              <span class="text-xs font-mono text-sage px-2" id="photoIndexCounter">1 / {photos.length}</span>
+              <button
+                id="nextPhotoBtn"
+                type="button"
+                class="p-2 rounded-lg bg-surface hover:bg-surface-elevated text-ivory border border-ivory/10 transition-colors cursor-pointer"
+                aria-label="Next Photo"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thumbnail Selector & Key Highlights (5 Cols) -->
+      <div class="lg:col-span-5 flex flex-col gap-4 justify-between">
+        
+        <!-- Header & Instructions -->
+        <div class="bg-[#0F2032] border border-ivory/15 rounded-3xl p-5 sm:p-6 shadow-xl">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono-label text-copper uppercase tracking-wider">Conference Highlights</span>
+            <span class="text-[11px] font-mono text-sage bg-midnight px-2.5 py-1 rounded-full border border-ivory/10">5 Photos</span>
+          </div>
+          <p class="text-xs sm:text-sm text-sage leading-relaxed mb-4">
+            Click any photo below to inspect Dr. Shitsama's international keynote presentations, research symposiums, and medical education panels:
+          </p>
+
+          <!-- Interactive Thumbnail List -->
+          <div class="space-y-3" id="thumbnailsContainer">
+            {photos.map((item, idx) => (
+              <button
+                type="button"
+                class={`gallery-thumb-btn w-full text-left p-2.5 sm:p-3 rounded-2xl border transition-all flex items-center gap-3.5 cursor-pointer group ${
+                  idx === 0 
+                    ? 'bg-surface-elevated border-copper shadow-md ring-1 ring-copper/50' 
+                    : 'bg-surface/50 border-ivory/10 hover:bg-surface hover:border-ivory/25'
+                }`}
+                data-index={idx}
+                data-photo={JSON.stringify(item)}
+                id={`thumb-btn-${idx}`}
+              >
+                <!-- Thumbnail Image -->
+                <div class="relative w-16 h-12 sm:w-20 sm:h-14 rounded-xl overflow-hidden shrink-0 border border-ivory/15 bg-midnight">
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-copper/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+
+                <!-- Thumbnail Metadata -->
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between gap-2 mb-0.5">
+                    <span class="text-xs font-semibold text-ivory truncate group-hover:text-copper transition-colors">
+                      {item.title}
+                    </span>
+                    <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-midnight text-copper shrink-0 border border-copper/20">
+                      0{idx + 1}
+                    </span>
+                  </div>
+                  <p class="text-[11px] text-sage truncate">
+                    {item.subtitle}
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Academic Affiliation Callout Card -->
+        <div class="bg-gradient-to-br from-[#14283E] to-[#0F2032] border border-copper/30 rounded-3xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-2xl bg-copper/15 border border-copper/40 flex items-center justify-center text-copper shrink-0">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-ivory mb-1">Maastricht University Research Collaboration</h4>
+              <p class="text-xs text-sage leading-relaxed font-light mb-3">
+                Research conducted alongside global educators Prof. Subha Ramani, Dr. Lianne Loosveld, Dr. Daniel Ojuka, and Prof. Daniëlle Verstegen, published in <em>Medical Teacher</em> (2026).
+              </p>
+              <a href="/research" class="inline-flex items-center gap-1.5 text-xs font-semibold text-copper hover:underline">
+                <span>View All 20+ Peer-Reviewed Publications</span>
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Modal Lightbox for High-Res Viewing -->
+  <div id="galleryModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none transition-opacity duration-300" aria-modal="true" role="dialog">
+    <div class="relative max-w-5xl w-full bg-[#0F2032] border border-ivory/20 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+      <!-- Modal Close Bar -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-ivory/10 bg-midnight">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-copper"></span>
+          <span id="modalHeaderTitle" class="text-sm font-semibold text-ivory font-display">Dr. Sylvia Shitsama — Keynote</span>
+        </div>
+        <button id="closeModalBtn" type="button" class="p-2 rounded-xl text-sage hover:text-ivory hover:bg-surface transition-colors cursor-pointer" aria-label="Close Lightbox">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Image Viewport -->
+      <div class="relative aspect-[16/10] sm:aspect-[16/9] bg-midnight flex items-center justify-center overflow-hidden">
+        <img id="modalImage" src="" alt="" class="max-h-full max-w-full object-contain" />
+        
+        <!-- Modal Prev/Next Controls -->
+        <button id="modalPrevBtn" class="absolute left-4 p-3 rounded-full bg-midnight/80 hover:bg-copper text-ivory border border-ivory/20 transition-all cursor-pointer" aria-label="Previous image">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="modalNextBtn" class="absolute right-4 p-3 rounded-full bg-midnight/80 hover:bg-copper text-ivory border border-ivory/20 transition-all cursor-pointer" aria-label="Next image">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Modal Caption Details -->
+      <div class="p-6 bg-[#0F2032] flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-ivory/10">
+        <div>
+          <h4 id="modalCaptionTitle" class="text-lg font-semibold text-ivory font-display"></h4>
+          <p id="modalCaptionDesc" class="text-xs sm:text-sm text-sage mt-1 font-light"></p>
+        </div>
+        <div class="shrink-0 flex items-center gap-3">
+          <span id="modalCounter" class="text-xs font-mono text-sage"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Client-side Interactive Gallery Script -->
+<script is:inline define:vars={{ photos }}>
+  let currentIndex = 0;
+
+  const spotlightImage = document.getElementById('spotlightImage');
+  const spotlightBadge = document.getElementById('spotlightBadge');
+  const spotlightLocation = document.getElementById('spotlightLocation');
+  const spotlightEvent = document.getElementById('spotlightEvent');
+  const spotlightTitle = document.getElementById('spotlightTitle');
+  const spotlightDesc = document.getElementById('spotlightDesc');
+  const spotlightLink = document.getElementById('spotlightLink');
+  const spotlightLinkLabel = document.getElementById('spotlightLinkLabel');
+  const photoIndexCounter = document.getElementById('photoIndexCounter');
+
+  const thumbButtons = document.querySelectorAll('.gallery-thumb-btn');
+  const prevBtn = document.getElementById('prevPhotoBtn');
+  const nextBtn = document.getElementById('nextPhotoBtn');
+
+  // Modal elements
+  const openModalBtn = document.getElementById('openModalBtn');
+  const galleryModal = document.getElementById('galleryModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const modalImage = document.getElementById('modalImage');
+  const modalHeaderTitle = document.getElementById('modalHeaderTitle');
+  const modalCaptionTitle = document.getElementById('modalCaptionTitle');
+  const modalCaptionDesc = document.getElementById('modalCaptionDesc');
+  const modalCounter = document.getElementById('modalCounter');
+  const modalPrevBtn = document.getElementById('modalPrevBtn');
+  const modalNextBtn = document.getElementById('modalNextBtn');
+
+  function updateGallery(index) {
+    if (index < 0) index = photos.length - 1;
+    if (index >= photos.length) index = 0;
+    currentIndex = index;
+
+    const p = photos[currentIndex];
+
+    // Smooth transition
+    if (spotlightImage) {
+      spotlightImage.style.opacity = '0.3';
+      setTimeout(() => {
+        spotlightImage.src = p.src;
+        spotlightImage.alt = p.alt;
+        spotlightImage.style.opacity = '1';
+      }, 150);
+    }
+
+    if (spotlightBadge) {
+      spotlightBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-copper animate-pulse"></span>${p.badge}`;
+    }
+    if (spotlightLocation) {
+      spotlightLocation.innerHTML = `<svg class="w-3.5 h-3.5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>${p.location}`;
+    }
+    if (spotlightEvent) spotlightEvent.textContent = p.event;
+    if (spotlightTitle) spotlightTitle.textContent = p.title;
+    if (spotlightDesc) spotlightDesc.textContent = p.description;
+    if (spotlightLink && p.researchLink) {
+      spotlightLink.href = p.researchLink;
+      if (spotlightLinkLabel) spotlightLinkLabel.textContent = p.researchLabel || 'Explore More';
+    }
+    if (photoIndexCounter) {
+      photoIndexCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
+    }
+
+    // Update thumbnail styles
+    thumbButtons.forEach((btn, idx) => {
+      if (idx === currentIndex) {
+        btn.classList.remove('bg-surface/50', 'border-ivory/10');
+        btn.classList.add('bg-surface-elevated', 'border-copper', 'shadow-md', 'ring-1', 'ring-copper/50');
+      } else {
+        btn.classList.add('bg-surface/50', 'border-ivory/10');
+        btn.classList.remove('bg-surface-elevated', 'border-copper', 'shadow-md', 'ring-1', 'ring-copper/50');
+      }
+    });
+
+    // Update modal if open
+    if (modalImage && galleryModal && !galleryModal.classList.contains('pointer-events-none')) {
+      modalImage.src = p.src;
+      modalImage.alt = p.alt;
+      if (modalHeaderTitle) modalHeaderTitle.textContent = `${p.event} — ${p.title}`;
+      if (modalCaptionTitle) modalCaptionTitle.textContent = p.title;
+      if (modalCaptionDesc) modalCaptionDesc.textContent = p.description;
+      if (modalCounter) modalCounter.textContent = `${currentIndex + 1} of ${photos.length}`;
+    }
+  }
+
+  // Thumb clicks
+  thumbButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-index') || '0', 10);
+      updateGallery(idx);
+    });
+  });
+
+  if (prevBtn) prevBtn.addEventListener('click', () => updateGallery(currentIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => updateGallery(currentIndex + 1));
+
+  // Modal open/close
+  function openModal() {
+    const p = photos[currentIndex];
+    if (!modalImage || !galleryModal) return;
+    modalImage.src = p.src;
+    modalImage.alt = p.alt;
+    if (modalHeaderTitle) modalHeaderTitle.textContent = `${p.event} — ${p.title}`;
+    if (modalCaptionTitle) modalCaptionTitle.textContent = p.title;
+    if (modalCaptionDesc) modalCaptionDesc.textContent = p.description;
+    if (modalCounter) modalCounter.textContent = `${currentIndex + 1} of ${photos.length}`;
+
+    galleryModal.classList.remove('opacity-0', 'pointer-events-none');
+    galleryModal.classList.add('opacity-100');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!galleryModal) return;
+    galleryModal.classList.remove('opacity-100');
+    galleryModal.classList.add('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = '';
+  }
+
+  if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (modalPrevBtn) modalPrevBtn.addEventListener('click', () => updateGallery(currentIndex - 1));
+  if (modalNextBtn) modalNextBtn.addEventListener('click', () => updateGallery(currentIndex + 1));
+
+  if (galleryModal) {
+    galleryModal.addEventListener('click', (e) => {
+      if (e.target === galleryModal) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (galleryModal && !galleryModal.classList.contains('pointer-events-none')) {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') updateGallery(currentIndex - 1);
+      if (e.key === 'ArrowRight') updateGallery(currentIndex + 1);
+    }
+  });
+</script>
