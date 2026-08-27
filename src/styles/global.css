@@ -4,43 +4,91 @@
    DESIGN TOKENS — Dr. Sylvia Shitsama Brand
    ============================================ */
 
-@theme {
+:root {
   /* =========================================
-     SEMANTIC DESIGN TOKENS (WCAG 2.2 Checked)
+     LIGHT THEME (Luminous Clean White & Slate)
      ========================================= */
+  --bg-primary: #FFFFFF; /* Pure White Page Background */
+  --bg-secondary: #F8FAFC; /* Slate-50 Section Background */
+  --surface: #FFFFFF; /* Pure White Card Background */
+  --surface-elevated: #F1F5F9; /* Elevated Card / Interactive Surface */
+
+  --text-primary: #0A1626; /* Deep Slate-Navy (Headings & Primary Titles) */
+  --text-secondary: #334155; /* Slate-700 (Body Copy & Subheadings) */
+  --text-muted: #64748B; /* Slate-500 (Metadata & Captions) */
+
+  --accent: #C17A3E; /* Warm Copper Energy Source */
+  --accent-hover: #D4904F;
+  --accent-dark: #A6642E;
   
+  --border-subtle: rgba(15, 23, 42, 0.08); /* Crisp Subtle 1px Border */
+  --border-strong: rgba(15, 23, 42, 0.16);
+  --focus-ring: rgba(193, 122, 62, 0.5);
+  --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(15, 23, 42, 0.08);
+}
+
+.dark {
+  /* =========================================
+     DARK THEME (Signature Deep Navy & Copper)
+     ========================================= */
+  --bg-primary: #071522; /* Deep Navy Page Background */
+  --bg-secondary: #0F2032; /* Midnight Section Surface */
+  --surface: #14283E; /* High-contrast Card Surface */
+  --surface-elevated: #1B334F; /* Elevated Card Hover Surface */
+
+  --text-primary: #F5F1E8; /* Bright Warm Ivory (Primary Headings & Titles) */
+  --text-secondary: #B8C4D2; /* Crisp Light Grey-Blue (Body Copy & Subheadings) */
+  --text-muted: #93A4B8; /* Readable Muted Metadata & Labels */
+
+  --accent: #C17A3E;
+  --accent-hover: #D4904F;
+  --accent-dark: #A6642E;
+  
+  --border-subtle: rgba(247, 244, 239, 0.12);
+  --border-strong: rgba(247, 244, 239, 0.28);
+  --focus-ring: rgba(193, 122, 62, 0.6);
+  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(13, 27, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+@theme {
   /* Backgrounds & Depth Hierarchy */
-  --color-bg-primary: #071522; /* Deep Navy Page Background */
-  --color-bg-secondary: #0F2032; /* Midnight Section Surface */
-  --color-surface: #14283E; /* High-contrast Card Surface */
-  --color-surface-elevated: #1B334F; /* Elevated Card Hover Surface */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
 
   /* Text & Typography Hierarchy */
-  --color-text-primary: #F5F1E8; /* Bright Warm Ivory (Primary Headings & Titles) */
-  --color-text-secondary: #B8C4D2; /* Crisp Light Grey-Blue (Body Copy & Subheadings) */
-  --color-text-muted: #93A4B8; /* Readable Muted Metadata & Labels */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
 
   /* Accents & UI Energy */
-  --color-accent: #C17A3E; /* Warm Copper/Gold Energy Source */
-  --color-accent-hover: #D4904F;
-  --color-border-subtle: rgba(247, 244, 239, 0.12); /* Clear 1px Card Border */
-  --color-border-strong: rgba(247, 244, 239, 0.28);
-  --color-focus: rgba(193, 122, 62, 0.6);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-dark: var(--accent-dark);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-focus: var(--focus-ring);
   --color-success: #1A9E8F;
   --color-error: #D94A4A;
 
-  /* =========================================
-     LEGACY TOKEN ALIASES
-     ========================================= */
-  --color-midnight: var(--color-bg-primary);
-  --color-midnight-light: var(--color-bg-secondary);
-  --color-midnight-lighter: var(--color-surface);
-  --color-copper: var(--color-accent);
-  --color-copper-light: var(--color-accent-hover);
-  --color-ivory: var(--color-text-primary);
-  --color-sage: var(--color-text-secondary);
-  --color-sage-light: #D5E0ED;
+  /* Aliases */
+  --color-midnight: var(--bg-primary);
+  --color-midnight-light: var(--bg-secondary);
+  --color-midnight-lighter: var(--surface);
+  --color-copper: var(--accent);
+  --color-copper-light: var(--accent-hover);
+  --color-copper-dark: var(--accent-dark);
+  --color-ivory: var(--text-primary);
+  --color-sage: var(--text-secondary);
+  --color-sage-light: var(--text-muted);
   --color-gold: #D4A853;
+  --color-gold-light: #F4E8C1;
+  --color-charcoal: #0F172A;
 
   /* Typography */
   --font-display: 'Cormorant Garamond', serif;
@@ -66,6 +114,7 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark body {
@@ -82,6 +131,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
   line-height: 1.15;
   color: var(--color-text-primary);
+  transition: color 0.3s ease;
 }
 
 .dark h1, .dark h2, .dark h3, .dark h4 {
@@ -101,15 +151,11 @@ h1, h2, h3, h4 {
 
 /* Glassmorphism Effect */
 .glass {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--glass-bg);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.dark .glass {
-  background: rgba(13, 27, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Copper Glow on Hover */
@@ -124,18 +170,20 @@ h1, h2, h3, h4 {
 
 /* Card Base */
 .card {
-  background: white;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 12px;
   padding: 2rem;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.dark .card {
-  background: var(--color-midnight-light);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.dark .card:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
 }
 
 /* Card with Copper Top Border */
@@ -150,7 +198,7 @@ h1, h2, h3, h4 {
   gap: 0.5rem;
   padding: 0.875rem 2.25rem;
   background: var(--color-accent);
-  color: var(--color-bg-primary); /* Dark navy text for contrast against gold */
+  color: #FFFFFF; /* High contrast crisp white text on copper */
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.95rem;
@@ -165,6 +213,7 @@ h1, h2, h3, h4 {
   background: var(--color-accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px var(--color-focus);
+  color: #FFFFFF;
 }
 
 .btn-primary:focus-visible {
@@ -178,23 +227,23 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2.25rem;
-  background: rgba(247, 244, 239, 0.02);
+  background: transparent;
   color: var(--color-text-primary);
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.95rem;
   border-radius: 8px;
   text-decoration: none;
-  border: 1.5px solid rgba(247, 244, 239, 0.3);
+  border: 1.5px solid var(--color-border-strong);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
 .btn-ghost:hover {
   border-color: var(--color-accent);
-  background: rgba(193, 122, 62, 0.12); /* Slight accent fill */
+  background: rgba(193, 122, 62, 0.08);
   transform: translateY(-2px);
-  color: var(--color-text-primary);
+  color: var(--color-accent);
 }
 
 .btn-ghost svg {
@@ -212,13 +261,13 @@ h1, h2, h3, h4 {
   gap: 0.5rem;
   padding: 0.875rem 2.25rem;
   background: transparent;
-  color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.95rem;
   border-radius: 8px;
   text-decoration: none;
-  border: 1.5px solid rgba(8, 17, 27, 0.4);
+  border: 1.5px solid var(--color-border-strong);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
@@ -365,18 +414,18 @@ h1, h2, h3, h4 {
 .form-input {
   width: 100%;
   padding: 0.875rem 1rem;
-  background: white;
-  border: 1.5px solid rgba(138, 155, 176, 0.4);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-strong);
   border-radius: 8px;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: #111;
+  color: var(--color-text-primary);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
 }
 
 .form-input:hover {
-  border-color: rgba(138, 155, 176, 0.7);
+  border-color: var(--color-accent);
 }
 
 .form-input:focus {
@@ -384,32 +433,13 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 0 3px var(--color-focus);
 }
 
-.dark .form-input {
-  background: var(--color-bg-secondary);
-  color: var(--color-text-primary);
-  border-color: rgba(247, 244, 239, 0.15);
-}
-
-.dark .form-input:hover {
-  border-color: rgba(247, 244, 239, 0.3);
-}
-
-.dark .form-input:focus {
-  border-color: var(--color-accent);
-  background: var(--color-bg-primary);
-}
-
 .form-label {
   display: block;
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.875rem;
-  color: var(--color-charcoal);
+  color: var(--color-text-primary);
   margin-bottom: 0.375rem;
-}
-
-.dark .form-label {
-  color: var(--color-sage-light);
 }
 
 /* ============================================
@@ -442,18 +472,14 @@ h1, h2, h3, h4 {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-ivory);
+  background: var(--color-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-sage);
+  background: var(--color-border-strong);
   border-radius: 4px;
 }
 
-.dark ::-webkit-scrollbar-track {
-  background: var(--color-midnight);
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: var(--color-midnight-lighter);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
 }

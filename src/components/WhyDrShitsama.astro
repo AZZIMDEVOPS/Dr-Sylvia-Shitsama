@@ -233,18 +233,20 @@ const reasons = [
         start: 'top center',
         end: 'bottom center',
         onEnter: () => {
-          if (number) gsap.to(number, { color: 'rgba(193, 122, 62, 0.15)', duration: 0.4 });
+          if (number) gsap.to(number, { color: 'rgba(193, 122, 62, 0.2)', duration: 0.4 });
           if (dividerLine) gsap.to(dividerLine, { x: '0%', duration: 0.8, ease: 'power2.out' });
         },
         onLeaveBack: () => {
-          if (number) gsap.to(number, { color: 'rgba(243, 239, 230, 0.05)', duration: 0.4 });
+          const isDark = document.documentElement.classList.contains('dark');
+          if (number) gsap.to(number, { color: isDark ? 'rgba(243, 239, 230, 0.05)' : 'rgba(15, 23, 42, 0.06)', duration: 0.4 });
           if (dividerLine) gsap.to(dividerLine, { x: '-100%', duration: 0.4 });
         },
         onEnterBack: () => {
-          if (number) gsap.to(number, { color: 'rgba(193, 122, 62, 0.15)', duration: 0.4 });
+          if (number) gsap.to(number, { color: 'rgba(193, 122, 62, 0.2)', duration: 0.4 });
         },
         onLeave: () => {
-          if (number) gsap.to(number, { color: 'rgba(243, 239, 230, 0.05)', duration: 0.4 });
+          const isDark = document.documentElement.classList.contains('dark');
+          if (number) gsap.to(number, { color: isDark ? 'rgba(243, 239, 230, 0.05)' : 'rgba(15, 23, 42, 0.06)', duration: 0.4 });
         }
       });
     });

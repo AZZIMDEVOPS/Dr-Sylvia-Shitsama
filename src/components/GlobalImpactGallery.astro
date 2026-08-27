@@ -85,7 +85,7 @@ const photos: PhotoItem[] = [
 ];
 ---
 
-<section id="global-impact-gallery" class="py-20 lg:py-28 bg-[#071522] relative overflow-hidden border-t border-b border-ivory/10">
+<section id="global-impact-gallery" class="py-20 lg:py-28 bg-midnight relative overflow-hidden border-t border-b border-border-subtle transition-colors duration-300">
   <!-- Subtle Ambient Glow -->
   <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-copper/5 rounded-full blur-[140px] pointer-events-none"></div>
   <div class="absolute bottom-10 right-10 w-[450px] h-[450px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none"></div>
@@ -113,10 +113,10 @@ const photos: PhotoItem[] = [
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch" id="impactGalleryRoot">
       
       <!-- Main Spotlight Image Display (7 Cols) -->
-      <div class="lg:col-span-7 flex flex-col justify-between rounded-3xl bg-[#0F2032] border border-ivory/15 p-4 sm:p-6 shadow-2xl relative group overflow-hidden">
+      <div class="lg:col-span-7 flex flex-col justify-between rounded-3xl bg-midnight-light border border-border-subtle p-4 sm:p-6 shadow-xl relative group overflow-hidden">
         
         <!-- Large Active Photo Container -->
-        <div class="relative w-full aspect-[16/10] sm:aspect-[16/10] md:aspect-[16/9] rounded-2xl overflow-hidden bg-midnight-light border border-ivory/10 shadow-inner">
+        <div class="relative w-full aspect-[16/10] sm:aspect-[16/10] md:aspect-[16/9] rounded-2xl overflow-hidden bg-midnight border border-border-subtle shadow-inner">
           <img
             id="spotlightImage"
             src={photos[0].src}
@@ -127,7 +127,7 @@ const photos: PhotoItem[] = [
           
           <!-- Badge overlay -->
           <div class="absolute top-4 left-4 z-20">
-            <span id="spotlightBadge" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#071522]/90 backdrop-blur-md border border-copper/40 text-copper text-xs font-mono tracking-wider font-semibold">
+            <span id="spotlightBadge" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-midnight/90 backdrop-blur-md border border-copper/40 text-copper text-xs font-mono tracking-wider font-semibold">
               <span class="w-2 h-2 rounded-full bg-copper animate-pulse"></span>
               {photos[0].badge}
             </span>
@@ -135,7 +135,7 @@ const photos: PhotoItem[] = [
 
           <!-- Location overlay -->
           <div class="absolute top-4 right-4 z-20">
-            <span id="spotlightLocation" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#071522]/85 backdrop-blur-md border border-ivory/15 text-ivory/90 text-xs font-mono">
+            <span id="spotlightLocation" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-midnight/85 backdrop-blur-md border border-border-subtle text-ivory text-xs font-mono">
               <svg class="w-3.5 h-3.5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -145,13 +145,13 @@ const photos: PhotoItem[] = [
           </div>
 
           <!-- Bottom Gradient Vignette -->
-          <div class="absolute inset-0 bg-gradient-to-t from-[#071522] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-80 pointer-events-none"></div>
 
           <!-- Zoom / Fullscreen Button -->
           <button
             id="openModalBtn"
             type="button"
-            class="absolute bottom-4 right-4 z-20 p-2.5 rounded-xl bg-midnight/80 hover:bg-copper text-ivory transition-all backdrop-blur-md border border-ivory/20 hover:border-copper cursor-pointer"
+            class="absolute bottom-4 right-4 z-20 p-2.5 rounded-xl bg-midnight/80 hover:bg-copper text-ivory transition-all backdrop-blur-md border border-border-subtle hover:border-copper cursor-pointer"
             aria-label="View Fullscreen Photo"
             title="Click to view full image"
           >
@@ -175,7 +175,7 @@ const photos: PhotoItem[] = [
             </p>
           </div>
 
-          <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-ivory/10">
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-border-subtle">
             <a
               id="spotlightLink"
               href={photos[0].researchLink}
@@ -192,7 +192,7 @@ const photos: PhotoItem[] = [
               <button
                 id="prevPhotoBtn"
                 type="button"
-                class="p-2 rounded-lg bg-surface hover:bg-surface-elevated text-ivory border border-ivory/10 transition-colors cursor-pointer"
+                class="p-2 rounded-lg bg-surface hover:bg-surface-elevated text-ivory border border-border-subtle transition-colors cursor-pointer"
                 aria-label="Previous Photo"
               >
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -203,7 +203,7 @@ const photos: PhotoItem[] = [
               <button
                 id="nextPhotoBtn"
                 type="button"
-                class="p-2 rounded-lg bg-surface hover:bg-surface-elevated text-ivory border border-ivory/10 transition-colors cursor-pointer"
+                class="p-2 rounded-lg bg-surface hover:bg-surface-elevated text-ivory border border-border-subtle transition-colors cursor-pointer"
                 aria-label="Next Photo"
               >
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -219,10 +219,10 @@ const photos: PhotoItem[] = [
       <div class="lg:col-span-5 flex flex-col gap-4 justify-between">
         
         <!-- Header & Instructions -->
-        <div class="bg-[#0F2032] border border-ivory/15 rounded-3xl p-5 sm:p-6 shadow-xl">
+        <div class="bg-midnight-light border border-border-subtle rounded-3xl p-5 sm:p-6 shadow-xl">
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs font-mono-label text-copper uppercase tracking-wider">Conference Highlights</span>
-            <span class="text-[11px] font-mono text-sage bg-midnight px-2.5 py-1 rounded-full border border-ivory/10">5 Photos</span>
+            <span class="text-[11px] font-mono text-sage bg-midnight px-2.5 py-1 rounded-full border border-border-subtle">5 Photos</span>
           </div>
           <p class="text-xs sm:text-sm text-sage leading-relaxed mb-4">
             Click any photo below to inspect Dr. Shitsama's international keynote presentations, research symposiums, and medical education panels:
@@ -236,14 +236,14 @@ const photos: PhotoItem[] = [
                 class={`gallery-thumb-btn w-full text-left p-2.5 sm:p-3 rounded-2xl border transition-all flex items-center gap-3.5 cursor-pointer group ${
                   idx === 0 
                     ? 'bg-surface-elevated border-copper shadow-md ring-1 ring-copper/50' 
-                    : 'bg-surface/50 border-ivory/10 hover:bg-surface hover:border-ivory/25'
+                    : 'bg-surface/50 border-border-subtle hover:bg-surface hover:border-copper/40'
                 }`}
                 data-index={idx}
                 data-photo={JSON.stringify(item)}
                 id={`thumb-btn-${idx}`}
               >
                 <!-- Thumbnail Image -->
-                <div class="relative w-16 h-12 sm:w-20 sm:h-14 rounded-xl overflow-hidden shrink-0 border border-ivory/15 bg-midnight">
+                <div class="relative w-16 h-12 sm:w-20 sm:h-14 rounded-xl overflow-hidden shrink-0 border border-border-subtle bg-midnight">
                   <img
                     src={item.src}
                     alt={item.alt}
@@ -273,7 +273,7 @@ const photos: PhotoItem[] = [
         </div>
 
         <!-- Academic Affiliation Callout Card -->
-        <div class="bg-gradient-to-br from-[#14283E] to-[#0F2032] border border-copper/30 rounded-3xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
+        <div class="bg-surface border border-copper/30 rounded-3xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-2xl bg-copper/15 border border-copper/40 flex items-center justify-center text-copper shrink-0">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -300,10 +300,10 @@ const photos: PhotoItem[] = [
   </div>
 
   <!-- Fullscreen Modal Lightbox for High-Res Viewing -->
-  <div id="galleryModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none transition-opacity duration-300" aria-modal="true" role="dialog">
-    <div class="relative max-w-5xl w-full bg-[#0F2032] border border-ivory/20 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+  <div id="galleryModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none transition-opacity duration-300" aria-modal="true" role="dialog">
+    <div class="relative max-w-5xl w-full bg-midnight-light border border-border-subtle rounded-3xl overflow-hidden shadow-2xl flex flex-col">
       <!-- Modal Close Bar -->
-      <div class="flex items-center justify-between px-6 py-4 border-b border-ivory/10 bg-midnight">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-border-subtle bg-midnight">
         <div class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-copper"></span>
           <span id="modalHeaderTitle" class="text-sm font-semibold text-ivory font-display">Dr. Sylvia Shitsama — Keynote</span>
@@ -320,16 +320,16 @@ const photos: PhotoItem[] = [
         <img id="modalImage" src="" alt="" class="max-h-full max-w-full object-contain" />
         
         <!-- Modal Prev/Next Controls -->
-        <button id="modalPrevBtn" class="absolute left-4 p-3 rounded-full bg-midnight/80 hover:bg-copper text-ivory border border-ivory/20 transition-all cursor-pointer" aria-label="Previous image">
+        <button id="modalPrevBtn" class="absolute left-4 p-3 rounded-full bg-midnight/80 hover:bg-copper text-ivory border border-border-subtle transition-all cursor-pointer" aria-label="Previous image">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
         </button>
-        <button id="modalNextBtn" class="absolute right-4 p-3 rounded-full bg-midnight/80 hover:bg-copper text-ivory border border-ivory/20 transition-all cursor-pointer" aria-label="Next image">
+        <button id="modalNextBtn" class="absolute right-4 p-3 rounded-full bg-midnight/80 hover:bg-copper text-ivory border border-border-subtle transition-all cursor-pointer" aria-label="Next image">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
 
       <!-- Modal Caption Details -->
-      <div class="p-6 bg-[#0F2032] flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-ivory/10">
+      <div class="p-6 bg-midnight-light flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-border-subtle">
         <div>
           <h4 id="modalCaptionTitle" class="text-lg font-semibold text-ivory font-display"></h4>
           <p id="modalCaptionDesc" class="text-xs sm:text-sm text-sage mt-1 font-light"></p>

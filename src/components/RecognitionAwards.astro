@@ -125,7 +125,8 @@ const getTypeClasses = (type: string) => {
   
   <!-- Atmospheric 3D Environment Background -->
   <div class="absolute inset-0 z-0 pointer-events-none environment-bg transition-transform duration-1000 ease-out">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(15,23,42,1)_0%,_rgba(5,10,20,1)_100%)]"></div>
+    <div class="absolute inset-0 bg-midnight transition-colors duration-300"></div>
+    <div class="absolute inset-0 hidden dark:block bg-[radial-gradient(ellipse_at_center,_rgba(15,23,42,1)_0%,_rgba(5,10,20,1)_100%)]"></div>
     <div class="absolute top-[20%] left-[30%] w-96 h-96 bg-copper/5 rounded-full blur-[100px] mix-blend-screen"></div>
     <div class="absolute bottom-[20%] right-[30%] w-[500px] h-[500px] bg-gold/5 rounded-full blur-[150px] mix-blend-screen"></div>
     <div class="absolute inset-0 opacity-[0.03] bg-[url('/images/noise.png')] mix-blend-overlay"></div>
@@ -154,7 +155,7 @@ const getTypeClasses = (type: string) => {
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
         Drag to Rotate
       </div>
-      <div class="w-1 h-1 bg-ivory/20 rounded-full"></div>
+      <div class="w-1 h-1 bg-border-strong rounded-full"></div>
       <div class="flex items-center gap-2 text-xs font-mono tracking-widest text-copper uppercase">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
         Click to Focus
@@ -172,12 +173,12 @@ const getTypeClasses = (type: string) => {
           class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform-style-3d cursor-pointer hover:scale-105 transition-transform duration-500 central-node"
           @click="activeNode = 'top-40'"
         >
-          <div class="relative w-[340px] h-[340px] rounded-full bg-midnight-light border-4 border-gold/40 shadow-[0_0_80px_rgba(212,168,83,0.15)] flex flex-col items-center justify-center text-center p-10 transform-style-3d">
+          <div class="relative w-[340px] h-[340px] rounded-full bg-midnight-light border-4 border-gold/40 shadow-xl flex flex-col items-center justify-center text-center p-10 transform-style-3d">
             <!-- Metallic inner rings -->
-            <div class="absolute inset-3 rounded-full border border-ivory/10 shadow-[inset_0_0_30px_rgba(0,0,0,0.5)]"></div>
+            <div class="absolute inset-3 rounded-full border border-border-subtle shadow-inner"></div>
             <div class="absolute inset-0 rounded-full border border-copper/20 animate-slow-spin-reverse"></div>
             
-            <div class="font-display text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#F3EFE6] to-[#C17A3E] mb-3 tracking-tighter" style="transform: translateZ(40px);">
+            <div class="font-display text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-copper to-gold mb-3 tracking-tighter" style="transform: translateZ(40px);">
               TOP 40
             </div>
             <div class="w-16 h-[2px] bg-gold/50 mx-auto my-4" style="transform: translateZ(30px);"></div>
