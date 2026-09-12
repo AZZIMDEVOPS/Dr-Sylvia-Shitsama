@@ -5,7 +5,7 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/expertise', label: 'Expertise' },
   { href: '/research', label: 'Research' },
-  { href: '/blog', label: 'Insights' },
+  { href: '/insights', label: 'Insights & Articles' },
   { href: '/contact', label: 'Contact' },
 ];
 ---
@@ -47,23 +47,28 @@ const navLinks = [
       </a>
 
       <!-- Desktop Nav Links -->
-      <div class="hidden lg:flex items-center gap-8">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              'text-sm font-medium transition-colors duration-200 relative',
-              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-                ? 'text-copper font-semibold'
-                : 'text-ivory hover:text-copper',
-            ]}
-          >
-            {link.label}
-            {(currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))) && (
-              <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-copper rounded-full" />
-            )}
-          </a>
-        ))}
+      <div class="hidden lg:flex items-center gap-7">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href || 
+            (link.href !== '/' && currentPath.startsWith(link.href)) ||
+            (link.href === '/insights' && currentPath.startsWith('/blog'));
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                'text-sm font-medium transition-colors duration-200 relative whitespace-nowrap',
+                isActive
+                  ? 'text-copper font-semibold'
+                  : 'text-ivory hover:text-copper',
+              ]}
+            >
+              {link.label}
+              {isActive && (
+                <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-copper rounded-full" />
+              )}
+            </a>
+          );
+        })}
       </div>
 
       <!-- Right: Theme Toggle + CTA + Mobile Menu -->
@@ -96,7 +101,7 @@ const navLinks = [
         </div>
 
         <!-- CTA Button (Desktop) -->
-        <a href="/contact" class="hidden lg:inline-flex btn-primary text-sm !py-2.5 !px-5">
+        <a href="/contact" class="hidden lg:inline-flex btn-primary text-sm !py-2.5 !px-5 whitespace-nowrap">
           Book Consultation
         </a>
 
@@ -131,19 +136,24 @@ const navLinks = [
       style="display: none;"
     >
       <div class="flex flex-col gap-1 pt-4">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              'px-4 py-3 rounded-lg text-sm font-medium transition-colors',
-              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-                ? 'text-copper bg-copper/10 font-semibold'
-                : 'text-ivory hover:text-copper hover:bg-ivory/5',
-            ]}
-          >
-            {link.label}
-          </a>
-        ))}
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href || 
+            (link.href !== '/' && currentPath.startsWith(link.href)) ||
+            (link.href === '/insights' && currentPath.startsWith('/blog'));
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                'px-4 py-3 rounded-lg text-sm font-medium transition-colors',
+                isActive
+                  ? 'text-copper bg-copper/10 font-semibold'
+                  : 'text-ivory hover:text-copper hover:bg-ivory/5',
+              ]}
+            >
+              {link.label}
+            </a>
+          );
+        })}
         <div class="px-4 pt-3">
           <a href="/contact" class="btn-primary w-full text-center text-sm">
             Book Consultation

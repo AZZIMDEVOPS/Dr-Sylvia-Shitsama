@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:cpanel": "astro build && powershell -Command \"if (Test-Path cpanel_build.zip) { Remove-Item cpanel_build.zip }; Compress-Archive -Path 'dist\\*', 'dist\\.htaccess' -DestinationPath 'cpanel_build.zip'\"",
     "preview": "astro preview",
     "astro": "astro"
   },

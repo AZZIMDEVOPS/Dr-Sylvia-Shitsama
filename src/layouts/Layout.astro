@@ -28,7 +28,7 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -72,9 +72,9 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-  <!-- Theme Detection (prevents FOUC) -->
+  <!-- Theme Detection (defaults to light mode) -->
   <script is:inline>
-    const theme = localStorage.getItem('theme') || 'dark';
+    const theme = localStorage.getItem('theme') || 'light';
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {

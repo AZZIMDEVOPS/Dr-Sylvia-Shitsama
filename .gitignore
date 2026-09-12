@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# temporary build and scratch files
+cpanel_build.zip
+cpanel_build/
+scratch/
