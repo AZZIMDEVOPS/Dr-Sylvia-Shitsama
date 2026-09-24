@@ -1,12 +1,12 @@
 ---
 // NeuralNetwork SVG - Creative Synaptic & Neural Pathway Animation
-// Dynamic traveling action potentials, pulsating nodes, and interactive cursor engagement
+// Subtle, elegant traveling action potentials with delicate, compact node pings
 ---
 
 <div id="neural-canvas-container" class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
   <svg
     id="neural-network"
-    class="w-full h-full transition-opacity duration-700 opacity-85 dark:opacity-75"
+    class="w-full h-full transition-opacity duration-700 opacity-60 dark:opacity-50"
     viewBox="0 0 800 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -14,26 +14,9 @@
     preserveAspectRatio="xMidYMid slice"
   >
     <defs>
-      <!-- Glowing Blur Filters for Synaptic Action Potentials -->
-      <filter id="synapse-glow" x="-30%" y="-30%" width="160%" height="160%">
-        <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
-        <feMerge>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-
-      <filter id="spark-glow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="4.5" result="coloredBlur"/>
-        <feMerge>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-
-      <filter id="node-halo" x="-60%" y="-60%" width="220%" height="220%">
-        <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <!-- Delicate Glow Blur Filter -->
+      <filter id="synapse-glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
         <feMerge>
           <feMergeNode in="coloredBlur"/>
           <feMergeNode in="SourceGraphic"/>
@@ -42,86 +25,79 @@
 
       <!-- Pathway Base Gradients -->
       <linearGradient id="neural-grad-copper" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#C17A3E" stop-opacity="0.45"/>
-        <stop offset="50%" stop-color="#D4A853" stop-opacity="0.55"/>
-        <stop offset="100%" stop-color="#C17A3E" stop-opacity="0.35"/>
+        <stop offset="0%" stop-color="#C17A3E" stop-opacity="0.35"/>
+        <stop offset="50%" stop-color="#D4A853" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#C17A3E" stop-opacity="0.25"/>
       </linearGradient>
 
       <linearGradient id="neural-grad-gold" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#D4A853" stop-opacity="0.5"/>
-        <stop offset="50%" stop-color="#E8BE68" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#C17A3E" stop-opacity="0.4"/>
+        <stop offset="0%" stop-color="#D4A853" stop-opacity="0.4"/>
+        <stop offset="50%" stop-color="#E8BE68" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#C17A3E" stop-opacity="0.3"/>
       </linearGradient>
 
       <!-- Traveling Energy Stream Gradients (Comet Head & Tail) -->
       <linearGradient id="stream-energy-copper" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stop-color="#C17A3E" stop-opacity="0"/>
-        <stop offset="60%" stop-color="#D4A853" stop-opacity="0.8"/>
-        <stop offset="90%" stop-color="#FFF2D6" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="1"/>
+        <stop offset="65%" stop-color="#D4A853" stop-opacity="0.6"/>
+        <stop offset="92%" stop-color="#FFF2D6" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.9"/>
       </linearGradient>
 
       <linearGradient id="stream-energy-gold" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stop-color="#D4A853" stop-opacity="0"/>
-        <stop offset="65%" stop-color="#E8BE68" stop-opacity="0.85"/>
-        <stop offset="92%" stop-color="#FFFFFF" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#FFF8E7" stop-opacity="0.9"/>
+        <stop offset="70%" stop-color="#E8BE68" stop-opacity="0.65"/>
+        <stop offset="94%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#FFF8E7" stop-opacity="0.85"/>
       </linearGradient>
-
-      <!-- Radial Gradient for Node Glows -->
-      <radialGradient id="radial-node-copper" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
-        <stop offset="40%" stop-color="#C17A3E" stop-opacity="0.7"/>
-        <stop offset="100%" stop-color="#C17A3E" stop-opacity="0"/>
-      </radialGradient>
     </defs>
 
     <!-- ==========================================
-         LAYER 1: ANATOMICAL BASE PATHWAYS (Static)
+         LAYER 1: ANATOMICAL BASE PATHWAYS (Clean & Delicate)
          ========================================== -->
     <g class="neural-base-paths">
       <!-- 1. Left anchor to central nexus -->
-      <path id="path-1" class="neural-line" d="M100,300 C200,100 350,200 400,300" stroke="url(#neural-grad-gold)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <path id="path-1" class="neural-line" d="M100,300 C200,100 350,200 400,300" stroke="url(#neural-grad-gold)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
       
       <!-- 2. Central nexus curving up to top-right node (Arrow 1 in user screenshot) -->
-      <path id="path-2" class="neural-line" d="M400,300 C450,400 550,350 600,200" stroke="url(#neural-grad-copper)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <path id="path-2" class="neural-line" d="M400,300 C450,400 550,350 600,200" stroke="url(#neural-grad-copper)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
       
       <!-- 3. Central nexus swooping down towards right (Arrow 2 in user screenshot) -->
-      <path id="path-3" class="neural-line" d="M400,300 C380,450 500,500 650,450" stroke="url(#neural-grad-copper)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <path id="path-3" class="neural-line" d="M400,300 C380,450 500,500 650,450" stroke="url(#neural-grad-copper)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
       
       <!-- 4. Upper left loop arching across top -->
-      <path id="path-4" class="neural-line" d="M100,300 C50,150 150,50 300,100" stroke="url(#neural-grad-copper)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path id="path-4" class="neural-line" d="M100,300 C50,150 150,50 300,100" stroke="url(#neural-grad-copper)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
       
       <!-- 5. Top arch bridging upper nodes to node 600,200 -->
-      <path id="path-5" class="neural-line" d="M300,100 C400,80 500,150 600,200" stroke="url(#neural-grad-gold)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <path id="path-5" class="neural-line" d="M300,100 C400,80 500,150 600,200" stroke="url(#neural-grad-gold)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
       
       <!-- 6. Arch descending down toward surgery container -->
-      <path id="path-6" class="neural-line" d="M600,200 C700,180 750,300 700,400" stroke="url(#neural-grad-copper)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path id="path-6" class="neural-line" d="M600,200 C700,180 750,300 700,400" stroke="url(#neural-grad-copper)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
       
       <!-- 7. Lower branch curving to edge (Arrow 3 in user screenshot) -->
-      <path id="path-7" class="neural-line" d="M650,450 C700,500 750,480 780,420" stroke="url(#neural-grad-gold)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <path id="path-7" class="neural-line" d="M650,450 C700,500 750,480 780,420" stroke="url(#neural-grad-gold)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
       
       <!-- 8. Lower sweeping pelvic/spinal pathway -->
-      <path id="path-8" class="neural-line" d="M100,300 C120,400 200,500 350,520" stroke="url(#neural-grad-copper)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <path id="path-8" class="neural-line" d="M100,300 C120,400 200,500 350,520" stroke="url(#neural-grad-copper)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
       
       <!-- 9. Lower spine to lower-right branch -->
-      <path id="path-9" class="neural-line" d="M350,520 C450,530 550,490 650,450" stroke="url(#neural-grad-copper)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <path id="path-9" class="neural-line" d="M350,520 C450,530 550,490 650,450" stroke="url(#neural-grad-copper)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
 
       <!-- 10. Secondary connecting synapse branches -->
-      <path id="path-10" class="neural-line-subtle" d="M200,200 C250,150 300,120 350,150" stroke="url(#neural-grad-gold)" stroke-width="1.1" stroke-dasharray="3 3" fill="none"/>
-      <path id="path-11" class="neural-line-subtle" d="M500,400 C530,380 580,390 620,350" stroke="url(#neural-grad-copper)" stroke-width="1.1" stroke-dasharray="3 3" fill="none"/>
-      <path id="path-12" class="neural-line-subtle" d="M300,100 C350,220 380,260 400,300" stroke="url(#neural-grad-gold)" stroke-width="1.0" stroke-dasharray="4 4" fill="none"/>
+      <path id="path-10" class="neural-line-subtle" d="M200,200 C250,150 300,120 350,150" stroke="url(#neural-grad-gold)" stroke-width="0.8" stroke-dasharray="2 3" fill="none"/>
+      <path id="path-11" class="neural-line-subtle" d="M500,400 C530,380 580,390 620,350" stroke="url(#neural-grad-copper)" stroke-width="0.8" stroke-dasharray="2 3" fill="none"/>
+      <path id="path-12" class="neural-line-subtle" d="M300,100 C350,220 380,260 400,300" stroke="url(#neural-grad-gold)" stroke-width="0.8" stroke-dasharray="3 3" fill="none"/>
     </g>
 
     <!-- ==============================================================
-         LAYER 2: DYNAMIC TRAVELING SYNAPTIC STREAMS (Laser Light Pulses)
+         LAYER 2: TRAVELING SYNAPTIC STREAMS (Smooth & Refined)
          ============================================================== -->
     <g class="neural-impulse-streams">
       <!-- Synaptic Impulse 1: Left to Center (Length ~450) -->
       <path
         d="M100,300 C200,100 350,200 400,300"
         stroke="url(#stream-energy-gold)"
-        stroke-width="2.8"
+        stroke-width="2.2"
         stroke-linecap="round"
         fill="none"
         filter="url(#synapse-glow)"
@@ -132,10 +108,10 @@
       <path
         d="M400,300 C450,400 550,350 600,200"
         stroke="url(#stream-energy-copper)"
-        stroke-width="3.2"
+        stroke-width="2.4"
         stroke-linecap="round"
         fill="none"
-        filter="url(#spark-glow)"
+        filter="url(#synapse-glow)"
         class="synaptic-stream stream-p2"
       />
 
@@ -143,7 +119,7 @@
       <path
         d="M400,300 C380,450 500,500 650,450"
         stroke="url(#stream-energy-copper)"
-        stroke-width="3.0"
+        stroke-width="2.3"
         stroke-linecap="round"
         fill="none"
         filter="url(#synapse-glow)"
@@ -154,7 +130,7 @@
       <path
         d="M100,300 C50,150 150,50 300,100"
         stroke="url(#stream-energy-gold)"
-        stroke-width="2.6"
+        stroke-width="2.0"
         stroke-linecap="round"
         fill="none"
         filter="url(#synapse-glow)"
@@ -165,10 +141,10 @@
       <path
         d="M300,100 C400,80 500,150 600,200"
         stroke="url(#stream-energy-gold)"
-        stroke-width="3.2"
+        stroke-width="2.4"
         stroke-linecap="round"
         fill="none"
-        filter="url(#spark-glow)"
+        filter="url(#synapse-glow)"
         class="synaptic-stream stream-p5"
       />
 
@@ -176,7 +152,7 @@
       <path
         d="M600,200 C700,180 750,300 700,400"
         stroke="url(#stream-energy-copper)"
-        stroke-width="2.8"
+        stroke-width="2.0"
         stroke-linecap="round"
         fill="none"
         filter="url(#synapse-glow)"
@@ -187,7 +163,7 @@
       <path
         d="M650,450 C700,500 750,480 780,420"
         stroke="url(#stream-energy-gold)"
-        stroke-width="3.0"
+        stroke-width="2.2"
         stroke-linecap="round"
         fill="none"
         filter="url(#synapse-glow)"
@@ -198,7 +174,7 @@
       <path
         d="M100,300 C120,400 200,500 350,520"
         stroke="url(#stream-energy-copper)"
-        stroke-width="2.6"
+        stroke-width="1.9"
         stroke-linecap="round"
         fill="none"
         filter="url(#synapse-glow)"
@@ -209,7 +185,7 @@
       <path
         d="M350,520 C450,530 550,490 650,450"
         stroke="url(#stream-energy-gold)"
-        stroke-width="2.8"
+        stroke-width="2.0"
         stroke-linecap="round"
         fill="none"
         filter="url(#synapse-glow)"
@@ -218,14 +194,14 @@
     </g>
 
     <!-- ==============================================================
-         LAYER 3: TRAVELING PHOTON PARTICLES (Action Potential Bullets)
+         LAYER 3: TRAVELING PHOTON PARTICLES (Subtle Micro-sparks)
          ============================================================== -->
     <g class="neural-photons">
       <!-- Photon 1 on Top Arch (Heading towards Arrow 1 node) -->
       <g>
-        <circle r="7" fill="#C17A3E" opacity="0.35" filter="url(#node-halo)"/>
-        <circle r="3.5" fill="#FFFFFF" filter="url(#synapse-glow)"/>
-        <circle r="1.8" fill="#FFE5A3"/>
+        <circle r="4" fill="#C17A3E" opacity="0.2"/>
+        <circle r="2.2" fill="#FFFFFF" filter="url(#synapse-glow)"/>
+        <circle r="1.1" fill="#FFE5A3"/>
         <animateMotion dur="3.4s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1">
           <mpath href="#path-5"/>
         </animateMotion>
@@ -233,9 +209,9 @@
 
       <!-- Photon 2 on Path 2 (Ascending to node 600,200) -->
       <g>
-        <circle r="7" fill="#D4A853" opacity="0.4" filter="url(#node-halo)"/>
-        <circle r="3.5" fill="#FFFFFF" filter="url(#synapse-glow)"/>
-        <circle r="1.8" fill="#C17A3E"/>
+        <circle r="4" fill="#D4A853" opacity="0.2"/>
+        <circle r="2.2" fill="#FFFFFF" filter="url(#synapse-glow)"/>
+        <circle r="1.1" fill="#C17A3E"/>
         <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.8s" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1">
           <mpath href="#path-2"/>
         </animateMotion>
@@ -243,9 +219,9 @@
 
       <!-- Photon 3 on Path 3 (Descending loop under 'Every Time' - Arrow 2) -->
       <g>
-        <circle r="8" fill="#C17A3E" opacity="0.35" filter="url(#node-halo)"/>
-        <circle r="3.5" fill="#FFFFFF" filter="url(#synapse-glow)"/>
-        <circle r="2" fill="#E8BE68"/>
+        <circle r="4" fill="#C17A3E" opacity="0.2"/>
+        <circle r="2.2" fill="#FFFFFF" filter="url(#synapse-glow)"/>
+        <circle r="1.1" fill="#E8BE68"/>
         <animateMotion dur="3.6s" repeatCount="indefinite" begin="1.2s" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1">
           <mpath href="#path-3"/>
         </animateMotion>
@@ -253,9 +229,9 @@
 
       <!-- Photon 4 on Path 7 (Branching curve at bottom - Arrow 3) -->
       <g>
-        <circle r="6" fill="#D4A853" opacity="0.4" filter="url(#node-halo)"/>
-        <circle r="3" fill="#FFFFFF" filter="url(#synapse-glow)"/>
-        <circle r="1.5" fill="#C17A3E"/>
+        <circle r="3.5" fill="#D4A853" opacity="0.2"/>
+        <circle r="2" fill="#FFFFFF" filter="url(#synapse-glow)"/>
+        <circle r="1" fill="#C17A3E"/>
         <animateMotion dur="2.2s" repeatCount="indefinite" begin="1.8s" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1">
           <mpath href="#path-7"/>
         </animateMotion>
@@ -263,9 +239,9 @@
 
       <!-- Photon 5 on Path 1 (Incoming from left) -->
       <g>
-        <circle r="6" fill="#C17A3E" opacity="0.3" filter="url(#node-halo)"/>
-        <circle r="3" fill="#FFFFFF" filter="url(#synapse-glow)"/>
-        <circle r="1.5" fill="#FFE5A3"/>
+        <circle r="3.5" fill="#C17A3E" opacity="0.18"/>
+        <circle r="2" fill="#FFFFFF" filter="url(#synapse-glow)"/>
+        <circle r="1" fill="#FFE5A3"/>
         <animateMotion dur="4.0s" repeatCount="indefinite" begin="0.3s" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1">
           <mpath href="#path-1"/>
         </animateMotion>
@@ -273,105 +249,86 @@
     </g>
 
     <!-- ==============================================================
-         LAYER 4: SYNAPTIC NODES WITH EXPANDING RADAR RIPPLES & RADIANCE
+         LAYER 4: SYNAPTIC NODES (DIMMED, SUBTLE, PETITE JEWEL BEADS)
          ============================================================== -->
     <g class="neural-nodes">
       
       <!-- NODE A: (600, 200) - TOP-RIGHT APEX (Arrow 1 in user screenshot) -->
       <g class="synapse-node" transform="translate(600, 200)" id="node-600-200">
-        <!-- Expanding Radar Waves -->
-        <circle class="radar-wave wave-1" r="5" fill="none" stroke="#C17A3E" stroke-width="1.8"/>
-        <circle class="radar-wave wave-2" r="5" fill="none" stroke="#D4A853" stroke-width="1.4"/>
-        <circle class="radar-wave wave-3" r="5" fill="none" stroke="#FFFFFF" stroke-width="1.0"/>
-        <!-- Radiant Halo -->
-        <circle class="node-halo-circle" r="14" fill="#C17A3E" opacity="0.25" filter="url(#node-halo)"/>
-        <!-- Outer Metallic Ring -->
-        <circle r="6.5" fill="#C17A3E" stroke="#FFF2D6" stroke-width="1.5" filter="url(#synapse-glow)"/>
+        <!-- Subtle Compact Radar Ping -->
+        <circle class="radar-wave wave-1" r="3.5" fill="none" stroke="#C17A3E" stroke-width="0.8"/>
+        <!-- Petite Outer Ring -->
+        <circle r="3.5" fill="#C17A3E" stroke="#FFF2D6" stroke-width="0.8"/>
         <!-- Core Luminescent Bead -->
-        <circle class="node-core-ping" r="3.8" fill="#FFFFFF"/>
+        <circle class="node-core-ping" r="1.8" fill="#FFFFFF"/>
       </g>
 
       <!-- NODE B: (400, 300) - CENTRAL NEURAL JUNCTION -->
       <g class="synapse-node" transform="translate(400, 300)" id="node-400-300">
-        <!-- Expanding Radar Waves -->
-        <circle class="radar-wave wave-1" r="6" fill="none" stroke="#D4A853" stroke-width="2.0"/>
-        <circle class="radar-wave wave-2" r="6" fill="none" stroke="#C17A3E" stroke-width="1.5"/>
-        <!-- Radiant Halo -->
-        <circle class="node-halo-circle" r="18" fill="#D4A853" opacity="0.3" filter="url(#node-halo)"/>
-        <!-- Outer Metallic Ring -->
-        <circle r="7.5" fill="#D4A853" stroke="#FFFFFF" stroke-width="1.8" filter="url(#spark-glow)"/>
+        <!-- Subtle Compact Radar Ping -->
+        <circle class="radar-wave wave-2" r="4" fill="none" stroke="#D4A853" stroke-width="0.8"/>
+        <!-- Petite Outer Ring -->
+        <circle r="4.2" fill="#D4A853" stroke="#FFFFFF" stroke-width="0.9"/>
         <!-- Core Luminescent Bead -->
-        <circle class="node-core-ping" r="4.5" fill="#FFFFFF"/>
+        <circle class="node-core-ping" r="2.2" fill="#FFFFFF"/>
       </g>
 
       <!-- NODE C: (650, 450) - LOWER RIGHT JUNCTION (Arrows 2 & 3) -->
       <g class="synapse-node" transform="translate(650, 450)" id="node-650-450">
-        <!-- Expanding Radar Waves -->
-        <circle class="radar-wave wave-1" r="5" fill="none" stroke="#C17A3E" stroke-width="1.8"/>
-        <circle class="radar-wave wave-2" r="5" fill="none" stroke="#D4A853" stroke-width="1.4"/>
-        <!-- Radiant Halo -->
-        <circle class="node-halo-circle" r="15" fill="#C17A3E" opacity="0.28" filter="url(#node-halo)"/>
-        <!-- Outer Ring -->
-        <circle r="6.5" fill="#C17A3E" stroke="#FFF0D4" stroke-width="1.5" filter="url(#synapse-glow)"/>
+        <!-- Subtle Compact Radar Ping -->
+        <circle class="radar-wave wave-1" r="3.5" fill="none" stroke="#C17A3E" stroke-width="0.8"/>
+        <!-- Petite Outer Ring -->
+        <circle r="3.5" fill="#C17A3E" stroke="#FFF0D4" stroke-width="0.8"/>
         <!-- Core Bead -->
-        <circle class="node-core-ping" r="3.8" fill="#FFFFFF"/>
+        <circle class="node-core-ping" r="1.8" fill="#FFFFFF"/>
       </g>
 
       <!-- NODE D: (300, 100) - UPPER CREST -->
       <g class="synapse-node" transform="translate(300, 100)" id="node-300-100">
-        <circle class="radar-wave wave-2" r="4" fill="none" stroke="#D4A853" stroke-width="1.4"/>
-        <circle class="node-halo-circle" r="12" fill="#D4A853" opacity="0.25" filter="url(#node-halo)"/>
-        <circle r="5.5" fill="#D4A853" stroke="#FFFFFF" stroke-width="1.4" filter="url(#synapse-glow)"/>
-        <circle class="node-core-ping" r="3.2" fill="#FFFFFF"/>
+        <circle class="radar-wave wave-2" r="3" fill="none" stroke="#D4A853" stroke-width="0.7"/>
+        <circle r="3.2" fill="#D4A853" stroke="#FFFFFF" stroke-width="0.7"/>
+        <circle class="node-core-ping" r="1.5" fill="#FFFFFF"/>
       </g>
 
-      <!-- NODE E: (100, 300) - LEFT ANCHOR -->
+      <!-- NODE E: (100, 300) - LEFT ANCHOR (Circled by user) -->
       <g class="synapse-node" transform="translate(100, 300)">
-        <circle class="radar-wave wave-1" r="4" fill="none" stroke="#C17A3E" stroke-width="1.5"/>
-        <circle class="node-halo-circle" r="12" fill="#C17A3E" opacity="0.2" filter="url(#node-halo)"/>
-        <circle r="5" fill="#C17A3E" stroke="#FFFFFF" stroke-width="1.2"/>
-        <circle class="node-core-ping" r="2.8" fill="#FFFFFF"/>
+        <circle class="radar-wave wave-1" r="3" fill="none" stroke="#C17A3E" stroke-width="0.7"/>
+        <circle r="3" fill="#C17A3E" stroke="#FFFFFF" stroke-width="0.7"/>
+        <circle class="node-core-ping" r="1.5" fill="#FFFFFF"/>
       </g>
 
       <!-- NODE F: (700, 400) - THEATRE RIGHT NODE -->
       <g class="synapse-node" transform="translate(700, 400)">
-        <circle class="radar-wave wave-2" r="4" fill="none" stroke="#D4A853" stroke-width="1.3"/>
-        <circle class="node-halo-circle" r="11" fill="#D4A853" opacity="0.2" filter="url(#node-halo)"/>
-        <circle r="4.8" fill="#D4A853" stroke="#FFFFFF" stroke-width="1.2"/>
-        <circle class="node-core-ping" r="2.6" fill="#FFFFFF"/>
+        <circle r="2.6" fill="#D4A853" stroke="#FFFFFF" stroke-width="0.6"/>
+        <circle class="node-core-ping" r="1.3" fill="#FFFFFF"/>
       </g>
 
       <!-- NODE G: (350, 520) - LOWER SPINE APEX -->
       <g class="synapse-node" transform="translate(350, 520)">
-        <circle class="radar-wave wave-1" r="4" fill="none" stroke="#C17A3E" stroke-width="1.3"/>
-        <circle class="node-halo-circle" r="10" fill="#C17A3E" opacity="0.2" filter="url(#node-halo)"/>
-        <circle r="4.5" fill="#C17A3E" stroke="#FFFFFF" stroke-width="1.2"/>
-        <circle class="node-core-ping" r="2.5" fill="#FFFFFF"/>
+        <circle r="2.6" fill="#C17A3E" stroke="#FFFFFF" stroke-width="0.6"/>
+        <circle class="node-core-ping" r="1.3" fill="#FFFFFF"/>
       </g>
 
-      <!-- NODE H: (780, 420) - FAR RIGHT TIP (Arrow 3 branch terminus) -->
+      <!-- NODE H: (780, 420) - FAR RIGHT TIP -->
       <g class="synapse-node" transform="translate(780, 420)">
-        <circle class="radar-wave wave-1" r="3.5" fill="none" stroke="#D4A853" stroke-width="1.3"/>
-        <circle class="node-halo-circle" r="9" fill="#D4A853" opacity="0.2" filter="url(#node-halo)"/>
-        <circle r="4.2" fill="#D4A853" stroke="#FFFFFF" stroke-width="1.2"/>
-        <circle class="node-core-ping" r="2.4" fill="#FFFFFF"/>
+        <circle r="2.2" fill="#D4A853" stroke="#FFFFFF" stroke-width="0.6"/>
+        <circle class="node-core-ping" r="1.1" fill="#FFFFFF"/>
       </g>
 
       <!-- Secondary Micro-Nodes -->
       <g class="synapse-node" transform="translate(200, 200)">
-        <circle r="3.5" fill="#C17A3E" stroke="#FFFFFF" stroke-width="1"/>
+        <circle r="2" fill="#C17A3E"/>
       </g>
       <g class="synapse-node" transform="translate(500, 400)">
-        <circle r="3.5" fill="#D4A853" stroke="#FFFFFF" stroke-width="1"/>
+        <circle r="2" fill="#D4A853"/>
       </g>
     </g>
 
-    <!-- Interactive Cursor Spark Overlay -->
+    <!-- Interactive Cursor Spark Overlay (Subtle) -->
     <g id="interactive-cursor-burst" class="opacity-0 transition-opacity duration-300 pointer-events-none">
-      <circle id="cursor-halo" r="24" fill="#C17A3E" opacity="0.2" filter="url(#node-halo)"/>
-      <circle id="cursor-ring" r="8" fill="none" stroke="#D4A853" stroke-width="1.5"/>
-      <circle id="cursor-bead" r="3.5" fill="#FFFFFF"/>
-      <line id="cursor-axon" x1="0" y1="0" x2="0" y2="0" stroke="#C17A3E" stroke-width="1" stroke-dasharray="2 3" opacity="0.6"/>
+      <circle id="cursor-ring" r="5" fill="none" stroke="#D4A853" stroke-width="0.8" opacity="0.6"/>
+      <circle id="cursor-bead" r="2" fill="#FFFFFF"/>
+      <line id="cursor-axon" x1="0" y1="0" x2="0" y2="0" stroke="#C17A3E" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.4"/>
     </g>
   </svg>
 </div>
@@ -385,12 +342,12 @@
   .stream-p1 {
     stroke-dasharray: 85 450;
     stroke-dashoffset: 535;
-    animation: flowP1 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: flowP1 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
   @keyframes flowP1 {
     0% { stroke-dashoffset: 535; opacity: 0; }
-    15% { opacity: 1; }
-    80% { opacity: 1; }
+    15% { opacity: 0.85; }
+    80% { opacity: 0.85; }
     100% { stroke-dashoffset: -85; opacity: 0; }
   }
 
@@ -398,12 +355,12 @@
   .stream-p2 {
     stroke-dasharray: 90 380;
     stroke-dashoffset: 470;
-    animation: flowP2 3.0s cubic-bezier(0.35, 0, 0.25, 1) infinite 0.7s;
+    animation: flowP2 3.4s cubic-bezier(0.35, 0, 0.25, 1) infinite 0.7s;
   }
   @keyframes flowP2 {
     0% { stroke-dashoffset: 470; opacity: 0; }
-    18% { opacity: 1; }
-    82% { opacity: 1; }
+    18% { opacity: 0.9; }
+    82% { opacity: 0.9; }
     100% { stroke-dashoffset: -90; opacity: 0; }
   }
 
@@ -411,12 +368,12 @@
   .stream-p3 {
     stroke-dasharray: 95 420;
     stroke-dashoffset: 515;
-    animation: flowP3 3.4s cubic-bezier(0.35, 0, 0.25, 1) infinite 1.2s;
+    animation: flowP3 3.8s cubic-bezier(0.35, 0, 0.25, 1) infinite 1.2s;
   }
   @keyframes flowP3 {
     0% { stroke-dashoffset: 515; opacity: 0; }
-    15% { opacity: 1; }
-    85% { opacity: 1; }
+    15% { opacity: 0.85; }
+    85% { opacity: 0.85; }
     100% { stroke-dashoffset: -95; opacity: 0; }
   }
 
@@ -424,12 +381,12 @@
   .stream-p4 {
     stroke-dasharray: 75 380;
     stroke-dashoffset: 455;
-    animation: flowP4 4.0s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.4s;
+    animation: flowP4 4.4s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.4s;
   }
   @keyframes flowP4 {
     0% { stroke-dashoffset: 455; opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
     100% { stroke-dashoffset: -75; opacity: 0; }
   }
 
@@ -437,12 +394,12 @@
   .stream-p5 {
     stroke-dasharray: 100 350;
     stroke-dashoffset: 450;
-    animation: flowP5 3.2s cubic-bezier(0.3, 0, 0.2, 1) infinite 1.5s;
+    animation: flowP5 3.6s cubic-bezier(0.3, 0, 0.2, 1) infinite 1.5s;
   }
   @keyframes flowP5 {
     0% { stroke-dashoffset: 450; opacity: 0; }
-    15% { opacity: 1; }
-    85% { opacity: 1; }
+    15% { opacity: 0.9; }
+    85% { opacity: 0.9; }
     100% { stroke-dashoffset: -100; opacity: 0; }
   }
 
@@ -450,12 +407,12 @@
   .stream-p6 {
     stroke-dasharray: 70 300;
     stroke-dashoffset: 370;
-    animation: flowP6 3.0s cubic-bezier(0.4, 0, 0.2, 1) infinite 2.0s;
+    animation: flowP6 3.4s cubic-bezier(0.4, 0, 0.2, 1) infinite 2.0s;
   }
   @keyframes flowP6 {
     0% { stroke-dashoffset: 370; opacity: 0; }
-    15% { opacity: 1; }
-    85% { opacity: 1; }
+    15% { opacity: 0.8; }
+    85% { opacity: 0.8; }
     100% { stroke-dashoffset: -70; opacity: 0; }
   }
 
@@ -463,12 +420,12 @@
   .stream-p7 {
     stroke-dasharray: 60 200;
     stroke-dashoffset: 260;
-    animation: flowP7 2.4s cubic-bezier(0.3, 0, 0.2, 1) infinite 1.8s;
+    animation: flowP7 2.8s cubic-bezier(0.3, 0, 0.2, 1) infinite 1.8s;
   }
   @keyframes flowP7 {
     0% { stroke-dashoffset: 260; opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
+    20% { opacity: 0.85; }
+    80% { opacity: 0.85; }
     100% { stroke-dashoffset: -60; opacity: 0; }
   }
 
@@ -476,12 +433,12 @@
   .stream-p8 {
     stroke-dasharray: 80 350;
     stroke-dashoffset: 430;
-    animation: flowP8 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.9s;
+    animation: flowP8 4.6s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.9s;
   }
   @keyframes flowP8 {
     0% { stroke-dashoffset: 430; opacity: 0; }
-    15% { opacity: 1; }
-    85% { opacity: 1; }
+    15% { opacity: 0.8; }
+    85% { opacity: 0.8; }
     100% { stroke-dashoffset: -80; opacity: 0; }
   }
 
@@ -489,82 +446,64 @@
   .stream-p9 {
     stroke-dasharray: 75 320;
     stroke-dashoffset: 395;
-    animation: flowP9 3.6s cubic-bezier(0.35, 0, 0.2, 1) infinite 2.2s;
+    animation: flowP9 4.0s cubic-bezier(0.35, 0, 0.2, 1) infinite 2.2s;
   }
   @keyframes flowP9 {
     0% { stroke-dashoffset: 395; opacity: 0; }
-    18% { opacity: 1; }
-    82% { opacity: 1; }
+    18% { opacity: 0.8; }
+    82% { opacity: 0.8; }
     100% { stroke-dashoffset: -75; opacity: 0; }
   }
 
-  /* ===================================================
-     SYNAPTIC NODE RADAR EXPANDING WAVE RINGS
-     =================================================== */
+  /* ==================================================================
+     SYNAPTIC NODE RADAR EXPANDING WAVE RINGS (SUBTLE & COMPACT - 10px)
+     ================================================================== */
   .radar-wave {
     transform-origin: center;
     pointer-events: none;
   }
 
   .wave-1 {
-    animation: radarExpand 2.8s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
+    animation: radarExpand 3.4s cubic-bezier(0.2, 0.7, 0.4, 1) infinite;
   }
   .wave-2 {
-    animation: radarExpand 2.8s cubic-bezier(0.15, 0.85, 0.35, 1) infinite 0.95s;
-  }
-  .wave-3 {
-    animation: radarExpand 2.8s cubic-bezier(0.15, 0.85, 0.35, 1) infinite 1.9s;
+    animation: radarExpand 3.4s cubic-bezier(0.2, 0.7, 0.4, 1) infinite 1.7s;
   }
 
   @keyframes radarExpand {
     0% {
-      r: 5px;
-      opacity: 0.95;
-      stroke-width: 2px;
+      r: 3.5px;
+      opacity: 0.35;
+      stroke-width: 0.8px;
     }
-    60% {
-      opacity: 0.45;
+    50% {
+      opacity: 0.18;
     }
     100% {
-      r: 26px;
+      r: 10.5px;
       opacity: 0;
-      stroke-width: 0.4px;
+      stroke-width: 0.25px;
     }
   }
 
-  /* Core Ping Pulse */
+  /* Core Ping Pulse - Soft, Subtle Breath */
   .node-core-ping {
-    animation: corePulse 2.8s ease-in-out infinite;
+    animation: corePulse 3.4s ease-in-out infinite;
   }
   @keyframes corePulse {
     0%, 100% {
       transform: scale(1);
-      opacity: 0.9;
+      opacity: 0.8;
     }
     50% {
-      transform: scale(1.35);
+      transform: scale(1.15);
       opacity: 1;
-    }
-  }
-
-  /* Node Halo Breathing Glow */
-  .node-halo-circle {
-    animation: haloBreathe 3.5s ease-in-out infinite;
-  }
-  @keyframes haloBreathe {
-    0%, 100% {
-      transform: scale(0.9);
-      opacity: 0.2;
-    }
-    50% {
-      transform: scale(1.25);
-      opacity: 0.45;
     }
   }
 
   /* Ambient Gentle Network Shimmer */
   .neural-base-paths {
-    animation: networkShimmer 6s ease-in-out infinite alternate;
+    animation: networkShimmer 7s ease-in-out infinite alternate;
   }
   @keyframes networkShimmer {
     0% {
@@ -590,7 +529,6 @@
     const heroSection = document.getElementById('hero');
     const svgEl = document.getElementById('neural-network') as SVGSVGElement | null;
     const cursorBurst = document.getElementById('interactive-cursor-burst');
-    const cursorHalo = document.getElementById('cursor-halo');
     const cursorRing = document.getElementById('cursor-ring');
     const cursorBead = document.getElementById('cursor-bead');
     const cursorAxon = document.getElementById('cursor-axon') as SVGLineElement | null;
@@ -635,11 +573,9 @@
     const updateCursorPhysics = () => {
       if (!isInsideHero) return;
 
-      currentX += (targetX - currentX) * 0.18;
-      currentY += (targetY - currentY) * 0.18;
+      currentX += (targetX - currentX) * 0.16;
+      currentY += (targetY - currentY) * 0.16;
 
-      cursorHalo?.setAttribute('cx', String(currentX));
-      cursorHalo?.setAttribute('cy', String(currentY));
       cursorRing?.setAttribute('cx', String(currentX));
       cursorRing?.setAttribute('cy', String(currentY));
       cursorBead?.setAttribute('cx', String(currentX));
@@ -657,12 +593,12 @@
         }
       }
 
-      if (cursorAxon && minDistance < 180) {
+      if (cursorAxon && minDistance < 150) {
         cursorAxon.setAttribute('x1', String(currentX));
         cursorAxon.setAttribute('y1', String(currentY));
         cursorAxon.setAttribute('x2', String(closestNode.x));
         cursorAxon.setAttribute('y2', String(closestNode.y));
-        cursorAxon.style.opacity = String(Math.max(0, (180 - minDistance) / 180 * 0.7));
+        cursorAxon.style.opacity = String(Math.max(0, (150 - minDistance) / 150 * 0.4));
       } else if (cursorAxon) {
         cursorAxon.style.opacity = '0';
       }
@@ -699,17 +635,17 @@
       targetX = Math.max(20, Math.min(780, (e.clientX - rect.left) * scaleX));
       targetY = Math.max(20, Math.min(580, (e.clientY - rect.top) * scaleY));
 
-      // Trigger excitation ripple on nearest node if user hovers close
+      // Trigger subtle excitation ripple on nearest node if user hovers close
       for (const node of anchorNodes) {
         const dist = Math.hypot(node.x - targetX, node.y - targetY);
-        if (dist < 45 && node.id) {
+        if (dist < 40 && node.id) {
           const el = document.getElementById(node.id);
           if (el && !el.classList.contains('is-excited')) {
             el.classList.add('is-excited');
             gsap.fromTo(
               el.querySelectorAll('.radar-wave'),
-              { scale: 1, opacity: 1, stroke: '#FFFFFF' },
-              { scale: 2.2, opacity: 0, stroke: '#C17A3E', duration: 0.8, ease: 'power2.out', onComplete: () => {
+              { scale: 1, opacity: 0.5, stroke: '#FFFFFF' },
+              { scale: 1.4, opacity: 0, stroke: '#C17A3E', duration: 0.6, ease: 'power2.out', onComplete: () => {
                 el.classList.remove('is-excited');
               }}
             );
