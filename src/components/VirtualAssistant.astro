@@ -418,6 +418,18 @@
     const generateBotResponse = (query: string): string => {
       const q = query.toLowerCase().trim();
 
+      // Remove clinic/doctor names from semantic query so words like "brain" or "spine" in the clinic name don't trigger medical condition handlers
+      const cleanQ = q
+        .replace(/sage brain & spine clinic/gi, '')
+        .replace(/sage brain and spine clinic/gi, '')
+        .replace(/sage brain & spine/gi, '')
+        .replace(/sage brain and spine/gi, '')
+        .replace(/sage brain/gi, '')
+        .replace(/sage clinic/gi, '')
+        .replace(/dr\.?\s*sylvia\s*shitsama/gi, '')
+        .replace(/dr\.?\s*sylvia/gi, '')
+        .replace(/shitsama/gi, '');
+
       // 1. Emergency Warning Signs
       if (q.includes('emergency') || q.includes('urgent') || q.includes('unconscious') || q.includes('seizure') || q.includes('worst headache') || q.includes('paralysis') || q.includes('coma')) {
         return `
@@ -435,8 +447,29 @@
         `;
       }
 
-      // 2. Booking / Appointment
-      if (q.includes('book') || q.includes('appointment') || q.includes('consult') || q.includes('see dr') || q.includes('cost') || q.includes('fee') || q.includes('schedule')) {
+      // 2. Clinic Location, Address, Hours & Directions (Priority Match)
+      if (q.includes('where') || q.includes('location') || q.includes('address') || q.includes('hours') || q.includes('open') || q.includes('time') || q.includes('directions') || q.includes('knh') || q.includes('hospital road') || q.includes('plaza') || q.includes('suite 43')) {
+        return `
+          <p class="font-bold text-[#c17a3e] mb-1">Clinic Location &amp; Hours</p>
+          <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 space-y-1 mb-2 text-[11px]">
+            <div class="text-slate-900 font-bold">Sage Brain &amp; Spine Clinic</div>
+            <div class="text-slate-700">KNH Doctors Plaza, Suite 43, Hospital Road, Nairobi, Kenya</div>
+            <div class="text-[#c17a3e] font-semibold">Monday – Friday: 8:00 AM – 5:00 PM<br/>Saturday: 9:00 AM – 1:00 PM</div>
+          </div>
+          <p class="text-[11px] text-slate-500 mb-2">Secure patient parking available on-site with direct elevator access to Suite 43.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <a href="https://maps.google.com/?q=KNH+Doctors+Plaza+Nairobi" target="_blank" rel="noopener noreferrer" class="quick-chip bg-[#c17a3e] text-white hover:bg-[#a6642e]">
+              🗺️ Open in Google Maps
+            </a>
+            <a href="/contact" class="quick-chip">
+              🏥 Contact &amp; Parking Info &rarr;
+            </a>
+          </div>
+        `;
+      }
+
+      // 3. Booking / Appointment
+      if (q.includes('book') || q.includes('appointment') || q.includes('consult') || q.includes('see dr') || q.includes('cost') || q.includes('fee') || q.includes('price') || q.includes('schedule')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Consultation &amp; Appointment Booking</p>
           <p class="mb-1.5 text-slate-700">Consultations are conducted at <strong>Sage Brain &amp; Spine Clinic</strong> at <strong>KNH Doctors Plaza, Suite 43, Nairobi</strong>.</p>
@@ -457,7 +490,7 @@
         `;
       }
 
-      // 3. Insurance Panels (The 3 official providers)
+      // 4. Insurance Panels (The 3 official providers)
       if (q.includes('insurance') || q.includes('cover') || q.includes('cic') || q.includes('bupa') || q.includes('heritage') || q.includes('panel') || q.includes('direct billing') || q.includes('pay')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Accepted Insurance Panels</p>
@@ -497,7 +530,7 @@
         `;
       }
 
-      // 4. About Dr. Sylvia Shitsama
+      // 5. About Dr. Sylvia Shitsama
       if (q.includes('about') || q.includes('who is') || q.includes('sylvia') || q.includes('shitsama') || q.includes('qualif') || q.includes('experience') || q.includes('education') || q.includes('background') || q.includes('fellowship') || q.includes('toronto') || q.includes('jkuat')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">About Dr. Sylvia Shitsama</p>
@@ -519,8 +552,29 @@
         `;
       }
 
-      // 5. Brain Surgery & Conditions
-      if (q.includes('brain') || q.includes('tumor') || q.includes('meningioma') || q.includes('glioma') || q.includes('pituitary') || q.includes('head injury') || q.includes('concussion') || q.includes('trauma') || q.includes('hematoma') || q.includes('skull')) {
+      // 6. What conditions are treated / Specialties Overview
+      if (q.includes('treat') || q.includes('condition') || q.includes('specialt') || q.includes('service') || q.includes('what do you do') || q.includes('help with')) {
+        return `
+          <p class="font-bold text-[#c17a3e] mb-1">Clinical Care &amp; Surgical Specialties</p>
+          <p class="mb-1.5 text-slate-700">Dr. Sylvia Shitsama provides specialized neurosurgical evaluation and treatment across 3 core clinical pillars:</p>
+          <ul class="list-disc pl-3.5 space-y-1 mb-2 text-[11px] text-slate-600">
+            <li><strong>Brain &amp; Cranial Care:</strong> Resection of brain tumors (meningiomas, gliomas, pituitary adenomas), traumatic brain injury (TBI), acute hematomas, and vascular conditions.</li>
+            <li><strong>Spine Surgery:</strong> Herniated discs, sciatica, cervical/lumbar spinal stenosis, microdiscectomy, and spinal fusion.</li>
+            <li><strong>Pediatric Neurosurgery:</strong> Pediatric hydrocephalus (VP Shunts &amp; ETV), spina bifida, and congenital cranial anomalies.</li>
+          </ul>
+          <div class="flex flex-wrap gap-1.5">
+            <a href="/expertise" class="quick-chip">
+              🧠 All Clinical Specialties &rarr;
+            </a>
+            <button type="button" class="bot-action-chip quick-chip" data-prompt="How do I book a consultation with Dr. Sylvia?">
+              📅 Book Consultation
+            </button>
+          </div>
+        `;
+      }
+
+      // 7. Brain Surgery & Cranial Conditions (using cleanQ to prevent clinic name false positives)
+      if (cleanQ.includes('brain') || cleanQ.includes('tumor') || cleanQ.includes('tumour') || cleanQ.includes('meningioma') || cleanQ.includes('glioma') || cleanQ.includes('pituitary') || cleanQ.includes('head injury') || cleanQ.includes('concussion') || cleanQ.includes('trauma') || cleanQ.includes('hematoma') || cleanQ.includes('skull') || cleanQ.includes('cranial') || cleanQ.includes('aneurysm')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Brain Surgery &amp; Cranial Care</p>
           <p class="mb-1.5 text-slate-700">Dr. Sylvia Shitsama provides specialized microsurgical care for:</p>
@@ -541,8 +595,8 @@
         `;
       }
 
-      // 6. Spine Surgery & Back Pain
-      if (q.includes('spine') || q.includes('back') || q.includes('neck') || q.includes('disc') || q.includes('sciatica') || q.includes('lumbar') || q.includes('cervical') || q.includes('stenosis') || q.includes('pain') || q.includes('tingling') || q.includes('numbness')) {
+      // 8. Spine Surgery & Back Pain (using cleanQ to prevent clinic name false positives)
+      if (cleanQ.includes('spine') || cleanQ.includes('back') || cleanQ.includes('neck') || cleanQ.includes('disc') || cleanQ.includes('sciatica') || cleanQ.includes('lumbar') || cleanQ.includes('cervical') || cleanQ.includes('stenosis') || cleanQ.includes('pain') || cleanQ.includes('tingling') || cleanQ.includes('numbness') || cleanQ.includes('radiculopathy')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Spine Surgery &amp; Back Care</p>
           <p class="mb-1.5 text-slate-700">Evidence-based spine care prioritizing conservative management first, offering surgery when structural nerve decompression is indicated:</p>
@@ -563,7 +617,7 @@
         `;
       }
 
-      // 7. Pediatric Neurosurgery & Hydrocephalus
+      // 9. Pediatric Neurosurgery & Hydrocephalus
       if (q.includes('pediatric') || q.includes('child') || q.includes('baby') || q.includes('hydrocephalus') || q.includes('shunt') || q.includes('etv') || q.includes('spina bifida') || q.includes('head size')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Pediatric Neurosurgery &amp; Hydrocephalus</p>
@@ -585,28 +639,7 @@
         `;
       }
 
-      // 8. Location & Directions
-      if (q.includes('where') || q.includes('location') || q.includes('address') || q.includes('knh') || q.includes('directions') || q.includes('hospital road') || q.includes('plaza') || q.includes('suite 43')) {
-        return `
-          <p class="font-bold text-[#c17a3e] mb-1">Clinic Location &amp; Directions</p>
-          <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 space-y-1 mb-2 text-[11px]">
-            <div class="text-slate-900 font-bold">Sage Brain &amp; Spine Clinic</div>
-            <div class="text-slate-700">KNH Doctors Plaza, Suite 43, Hospital Road, Nairobi, Kenya</div>
-            <div class="text-[#c17a3e] font-semibold">Mon–Fri: 8:00 AM – 5:00 PM | Sat: 9:00 AM – 1:00 PM</div>
-          </div>
-          <p class="text-[11px] text-slate-500 mb-2">Secure patient parking available with elevator access to Suite 43.</p>
-          <div class="flex flex-wrap gap-1.5">
-            <a href="https://maps.google.com/?q=KNH+Doctors+Plaza+Nairobi" target="_blank" rel="noopener noreferrer" class="quick-chip">
-              🗺️ Open in Google Maps &rarr;
-            </a>
-            <a href="/contact" class="quick-chip">
-              🏥 Contact &amp; Parking Info &rarr;
-            </a>
-          </div>
-        `;
-      }
-
-      // 9. Hospitals where she operates
+      // 10. Operating Hospitals & Facilities
       if (q.includes('operate') || q.includes('theatre') || q.includes('hospital') || q.includes('admission')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Operating Hospitals &amp; Privileges</p>
@@ -624,7 +657,7 @@
         `;
       }
 
-      // 10. Research & Academic
+      // 11. Research & Academic
       if (q.includes('research') || q.includes('paper') || q.includes('publication') || q.includes('scholar') || q.includes('teach') || q.includes('lecture')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Academic &amp; Clinical Research</p>
