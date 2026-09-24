@@ -1,365 +1,279 @@
 ---
 // contact.astro
-// Premium 3D Consultation Experience
+// Clean, simplified contact and consultation booking page
+// Official clinic contact details, location prominence, interactive map, and WhatsApp CTA
 
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Contact & Book a Consultation — Dr. Sylvia V. Shitsama"
-  description="Book a neurosurgical consultation with Dr. Sylvia V. Shitsama in Nairobi. Self-referrals and physician referrals are welcome."
+  title="Contact & Book a Consultation — Dr. Sylvia Shitsama | Sage Brain & Spine Clinic"
+  description="Contact Sage Brain & Spine Clinic in Nairobi. Book a neurosurgical consultation with Dr. Sylvia Shitsama at KNH Doctors Plaza, Suite 43. Phone: 0110 090 116."
   canonicalUrl="/contact"
 >
-  
-  <!-- Cinematic Hero & 3D Experience -->
-  <section class="relative min-h-[90vh] bg-midnight overflow-hidden flex items-center pt-24 pb-12 select-none">
-    
-    <!-- Deep background atmosphere -->
-    <div class="absolute inset-0 pointer-events-none z-0">
-      <div class="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-copper/5 rounded-full blur-[120px] mix-blend-screen"></div>
-      <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[100px]"></div>
-      <div class="absolute inset-0 opacity-[0.02] bg-[url('/images/noise.png')] mix-blend-overlay"></div>
-    </div>
+  <!-- Page Header -->
+  <section class="pt-32 pb-16 bg-midnight border-b border-ivory/10 relative overflow-hidden">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-[1px] bg-copper"></span>
+        <span class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs">Consultation &amp; Inquiries</span>
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-ivory tracking-tight mb-6">
+        Contact Sage Brain &amp; Spine Clinic
+      </h1>
+      <p class="text-sage text-lg sm:text-xl font-light leading-relaxed max-w-2xl mb-8">
+        We welcome patients for consultations, surgical evaluations, second opinions, and physician referrals in Nairobi.
+      </p>
 
-    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full h-full">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
-        
-        <!-- Left: Typography & CTAs -->
-        <div class="fade-up relative z-20">
-          <span class="font-mono-label text-copper tracking-[0.2em] uppercase mb-6 block">Get in Touch</span>
-          <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold text-ivory leading-[1.1] mb-6 tracking-tight">
-            Book a Consultation
-          </h1>
-          <p class="text-sage text-lg sm:text-xl font-light max-w-lg leading-relaxed mb-10">
-            Consultations available in Nairobi. Self-referrals and physician referrals are welcome.
-          </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-            <a href="#consultation-form" class="inline-flex items-center justify-center gap-3 bg-copper hover:bg-copper-dark text-white px-8 py-4 rounded-lg font-medium transition-all hover:-translate-y-1 shadow-lg hover:shadow-copper/20 group cursor-pointer">
-              Book a Consultation
-              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </a>
-            <a href="https://wa.me/254704889211" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 border border-ivory/20 hover:border-ivory/50 text-ivory px-8 py-4 rounded-lg font-medium transition-all hover:bg-ivory/5 group">
-              <svg class="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              WhatsApp Enquiry
-            </a>
-          </div>
-        </div>
-
-        <!-- Right: Abstract 3D Medical Sculpture -->
-        <div class="hidden lg:flex justify-end items-center relative h-[600px] perspective-container hero-sculpture fade-up">
-          <div class="relative w-full max-w-lg aspect-square transform-style-3d sculpture-rig animate-slow-spin">
-            
-            <!-- Core Geometry -->
-            <div class="absolute inset-0 rounded-full border border-ivory/10 transform-style-3d" style="transform: rotateX(60deg) rotateY(20deg);"></div>
-            <div class="absolute inset-4 rounded-full border border-copper/10 transform-style-3d" style="transform: rotateX(45deg) rotateY(-20deg);"></div>
-            <div class="absolute inset-8 rounded-full border border-gold/10 transform-style-3d" style="transform: rotateX(75deg) rotateY(10deg);"></div>
-            
-            <!-- Abstract Neural Pathway -->
-            <svg class="absolute inset-0 w-full h-full transform-style-3d opacity-60 pointer-events-none" viewBox="0 0 100 100" fill="none">
-              <path d="M50 10 C 20 20, 10 50, 30 80 C 50 100, 80 80, 90 50 C 100 20, 80 10, 50 10" stroke="#C17A3E" stroke-width="0.2" stroke-dasharray="1 2"/>
-              <path d="M30 30 C 50 40, 70 30, 80 50 C 90 70, 70 80, 50 70 C 30 60, 20 40, 30 30" stroke="currentColor" class="text-text-primary" stroke-width="0.3"/>
-              <circle cx="30" cy="30" r="1.5" fill="currentColor" class="text-text-primary"/>
-              <circle cx="80" cy="50" r="2" fill="#C17A3E"/>
-              <circle cx="50" cy="70" r="1.5" fill="currentColor" class="text-text-primary"/>
-            </svg>
-
-            <!-- Floating Interactive Nodes -->
-            <!-- Consultation Node -->
-            <div class="absolute top-[20%] left-[20%] group cursor-pointer" style="transform: translateZ(50px);">
-              <div class="w-3 h-3 rounded-full bg-copper shadow-[0_0_15px_rgba(193,122,62,0.8)] relative z-20"></div>
-              <div class="absolute top-1/2 left-full ml-4 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div class="bg-midnight-light/90 backdrop-blur border border-border-subtle rounded px-3 py-1.5 whitespace-nowrap">
-                  <div class="font-mono text-[9px] uppercase tracking-widest text-copper">Nairobi</div>
-                  <div class="text-ivory text-xs font-medium">Consultation</div>
-                </div>
-                <!-- Connector line -->
-                <div class="absolute top-1/2 -left-4 w-4 h-[1px] bg-copper/50"></div>
-              </div>
-            </div>
-
-            <!-- Referral Node -->
-            <div class="absolute bottom-[30%] right-[15%] group cursor-pointer" style="transform: translateZ(80px);">
-              <div class="w-2.5 h-2.5 rounded-full bg-ivory shadow-[0_0_15px_rgba(243,239,230,0.8)] relative z-20"></div>
-              <div class="absolute top-1/2 right-full mr-4 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div class="bg-midnight-light/90 backdrop-blur border border-border-subtle rounded px-3 py-1.5 whitespace-nowrap text-right">
-                  <div class="text-ivory text-xs font-medium">Referrals</div>
-                  <div class="font-mono text-[9px] uppercase tracking-widest text-sage">Welcome</div>
-                </div>
-                <!-- Connector line -->
-                <div class="absolute top-1/2 -right-4 w-4 h-[1px] bg-ivory/30"></div>
-              </div>
-            </div>
-            
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(193,122,62,0.15)_0%,_transparent_50%)] transform-style-3d"></div>
-          </div>
-        </div>
-        
+      <!-- Primary Action CTA Banner -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+        <a 
+          href="https://wa.me/254110090116?text=Hello%20Sage%20Brain%20%26%20Spine%20Clinic%2C%20I%20would%20like%20to%20book%20a%20consultation%20with%20Dr.%20Sylvia%20Shitsama." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-primary flex items-center justify-center gap-2 text-base px-8 py-4"
+        >
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Book a Consultation (WhatsApp)
+        </a>
+        <a 
+          href="tel:0110090116" 
+          class="btn-ghost flex items-center justify-center gap-2 text-base px-6 py-4"
+        >
+          <svg class="w-5 h-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          Call Desk: 0110 090 116
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Main Content Area -->
-  <section class="bg-midnight-light relative z-10 transition-colors duration-300" id="consultation-form">
-    
-    <!-- Floating Consultation Panel (Overrides borders to float up) -->
-    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 -mt-16 lg:-mt-24 relative z-30 fade-up">
-      <div class="bg-surface border border-border-subtle shadow-2xl rounded-2xl p-8 lg:p-12 transition-colors duration-300">
-        <div class="text-center mb-10">
-          <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ivory mb-3">Start Your Consultation Journey</h2>
-          <p class="text-sage font-light max-w-xl mx-auto">
-            Whether you are seeking specialist assessment or have been referred by another physician, our team is ready to assist you.
-          </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-ivory/[0.02] border border-ivory/5 hover:border-copper/30 transition-colors p-6 rounded-xl text-center group cursor-pointer" onclick="document.getElementById('form-type').value='self'; document.getElementById('step-1').style.display='none'; document.getElementById('step-2').style.display='block'; window.Alpine.store('form').step = 2;">
-            <div class="font-mono-label text-[10px] tracking-widest uppercase text-copper mb-4">Self-Referral</div>
-            <p class="text-sage text-sm font-light mb-6">Begin your consultation journey directly.</p>
-            <div class="text-ivory text-xs font-medium uppercase tracking-widest font-mono-label group-hover:text-copper transition-colors inline-flex items-center gap-2">
-              Request Appointment <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </div>
-          </div>
-          
-          <div class="bg-ivory/[0.02] border border-ivory/5 hover:border-copper/30 transition-colors p-6 rounded-xl text-center group cursor-pointer" onclick="document.getElementById('form-type').value='physician'; document.getElementById('step-1').style.display='none'; document.getElementById('step-2').style.display='block'; window.Alpine.store('form').step = 2;">
-            <div class="font-mono-label text-[10px] tracking-widest uppercase text-copper mb-4">Physician Referral</div>
-            <p class="text-sage text-sm font-light mb-6">Referring physicians are welcome.</p>
-            <div class="text-ivory text-xs font-medium uppercase tracking-widest font-mono-label group-hover:text-copper transition-colors inline-flex items-center gap-2">
-              Make a Referral <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </div>
-          </div>
-          
-          <a href="https://wa.me/254704889211" target="_blank" rel="noopener noreferrer" class="block bg-ivory/[0.02] border border-ivory/5 hover:border-[#25D366]/30 transition-colors p-6 rounded-xl text-center group">
-            <div class="font-mono-label text-[10px] tracking-widest uppercase text-[#25D366] mb-4">WhatsApp (8am–5pm)</div>
-            <p class="text-sage text-sm font-light mb-6">+254 704 889 211</p>
-            <div class="text-ivory text-xs font-medium uppercase tracking-widest font-mono-label group-hover:text-[#25D366] transition-colors inline-flex items-center gap-2">
-              WhatsApp Enquiry <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
+  <!-- Main Grid: Clinic Details & Inquiry Options -->
+  <section class="py-20 bg-midnight-light border-b border-ivory/10">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-    <!-- Main Grid: Info + Progressive Form -->
-    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-        
-        <!-- Left: Contact Info & Interactive Location -->
-        <div class="lg:col-span-5 fade-up">
-          <h2 class="font-display text-3xl sm:text-4xl font-semibold text-ivory mb-12">Contact Information</h2>
-          
-          <div class="space-y-8 mb-12">
-            <div>
-              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-copper block mb-2">Visit</span>
-              <div class="text-ivory font-medium text-lg">Nairobi, Kenya</div>
-              <div class="text-sage font-light text-sm mt-1">KNH Doctors Plaza, Suite 43</div>
-              <div class="text-sage/80 font-light text-xs mt-0.5">Hospital Road, Nairobi</div>
-            </div>
-            
-            <div class="w-12 h-px bg-ivory/10"></div>
-            
-            <div>
-              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-copper block mb-2">Office Lines</span>
-              <div class="space-y-1">
-                <a href="tel:0110090116" class="text-ivory font-display text-xl hover:text-copper transition-colors block">0110 090 116</a>
-                <a href="tel:0793886357" class="text-ivory font-display text-xl hover:text-copper transition-colors block">0793 886 357</a>
+        <!-- Left Column: Official Contact Information (5 cols) -->
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <span class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs mb-3 block">Clinic Details</span>
+            <h2 class="font-display text-3xl font-semibold text-ivory mb-6">Official Practice Information</h2>
+          </div>
+
+          <!-- Physical Address Card -->
+          <div class="p-6 rounded-2xl bg-midnight border border-ivory/10 shadow-lg">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-copper/10 text-copper flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-lg font-semibold text-ivory mb-1">Physical Clinic Location</h3>
+                <p class="text-sm text-ivory font-medium">Sage Brain &amp; Spine Clinic</p>
+                <p class="text-sm text-sage font-light mt-0.5">KNH Doctors Plaza, Suite 43 (4th Floor)</p>
+                <p class="text-sm text-sage font-light">Hospital Road, Nairobi, Kenya</p>
+                <p class="text-xs text-copper/80 font-mono mt-2">Opposite Kenyatta National Hospital Main Entrance</p>
               </div>
             </div>
-            
-            <div class="w-12 h-px bg-ivory/10"></div>
-            
-            <div>
-              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-[#25D366] block mb-2">Mobile / WhatsApp (8am–5pm)</span>
-              <a href="https://wa.me/254704889211" target="_blank" rel="noopener noreferrer" class="text-ivory font-display text-xl hover:text-[#25D366] transition-colors block">+254 704 889 211</a>
-            </div>
-            
-            <div class="w-12 h-px bg-ivory/10"></div>
-            
-            <div>
-              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-copper block mb-2">Email</span>
-              <a href="mailto:info@drsylviashitsama.com" class="text-ivory text-base hover:text-copper transition-colors font-light">info@drsylviashitsama.com</a>
-            </div>
+          </div>
 
-            <div class="w-12 h-px bg-ivory/10"></div>
-            
-            <div>
-              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-copper block mb-2">Referrals</span>
-              <div class="text-sage font-light">Self-referrals & physician referrals welcome</div>
+          <!-- Phone Lines Card -->
+          <div class="p-6 rounded-2xl bg-midnight border border-ivory/10 shadow-lg">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-copper/10 text-copper flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                </svg>
+              </div>
+              <div class="space-y-1">
+                <h3 class="font-display text-lg font-semibold text-ivory mb-1">Telephone &amp; Office Lines</h3>
+                <div>
+                  <a href="tel:0110090116" class="text-ivory font-mono text-base hover:text-copper transition-colors block">
+                    0110 090 116
+                  </a>
+                  <a href="tel:0793886357" class="text-ivory font-mono text-base hover:text-copper transition-colors block">
+                    0793 886 357
+                  </a>
+                </div>
+                <p class="text-xs text-sage font-light pt-1">Mon – Fri: 8:00 AM – 5:00 PM</p>
+              </div>
             </div>
           </div>
 
-          <!-- Interactive Google Maps Nairobi Location -->
-          <div class="relative w-full h-64 rounded-xl overflow-hidden bg-midnight border border-ivory/10 shadow-lg">
-            <iframe
-              title="Sage Brain & Spine Clinic - Nairobi Location"
-              src="https://maps.google.com/maps?q=KNH+Doctors+Plaza,+Nairobi,+Kenya&t=&z=16&ie=UTF8&iwloc=&output=embed"
-              class="w-full h-full border-0 filter invert-[90%] hue-rotate-[180deg] contrast-[90%] brightness-[85%]"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <!-- WhatsApp Direct Card -->
+          <div class="p-6 rounded-2xl bg-midnight border border-[#25D366]/30 shadow-lg">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-[#25D366]/10 text-[#25D366] flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display text-lg font-semibold text-ivory mb-1">Official Clinic WhatsApp</h3>
+                <a 
+                  href="https://wa.me/254110090116?text=Hello%20Sage%20Brain%20%26%20Spine%20Clinic%2C%20I%20would%20like%20to%20book%20a%20consultation." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-[#25D366] font-mono text-base font-medium hover:underline block"
+                >
+                  +254 110 090 116
+                </a>
+                <p class="text-xs text-sage font-light mt-1">Direct messaging with clinic front desk</p>
+              </div>
+            </div>
           </div>
-          
+
+          <!-- Email Card (Retained primarily for international inquiries) -->
+          <div class="p-6 rounded-2xl bg-midnight border border-ivory/10 shadow-lg">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-copper/10 text-copper flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-lg font-semibold text-ivory mb-1">Email (International Inquiries)</h3>
+                <a href="mailto:info@drsylviashitsama.com" class="text-sage hover:text-copper transition-colors text-sm font-light block">
+                  info@drsylviashitsama.com
+                </a>
+                <p class="text-xs text-sage/70 font-light mt-1">Recommended for international second opinions and formal referrals</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Right: Progressive Disclosure Form -->
-        <div class="lg:col-span-7 fade-up relative z-20">
+        <!-- Right Column: Interactive Consultation Inquiry Form (7 cols) -->
+        <div class="lg:col-span-7">
           <div 
-            class="bg-midnight border border-ivory/10 rounded-2xl p-8 lg:p-12 shadow-2xl relative overflow-hidden"
+            class="bg-midnight border border-ivory/10 rounded-2xl p-8 lg:p-10 shadow-2xl relative"
             x-data="{
-              step: window.Alpine?.store('form')?.step || 1,
-              type: '',
+              step: 1,
+              type: 'consultation',
+              fullName: '',
+              phone: '',
+              email: '',
+              message: '',
               submitting: false,
               submitted: false,
               error: false,
-              async submitForm(e) {
+              submitInquiry() {
                 this.submitting = true;
-                this.error = false;
-                try {
-                  const formData = new FormData(e.target);
-                  formData.append('type', this.type);
-                  // Simulate fetch for Formspree placeholder
-                  await new Promise(r => setTimeout(r, 1500));
+                // Redirect user to WhatsApp with prefilled message containing their inquiry details
+                const text = `Hello Sage Brain & Spine Clinic,\n\nName: ${this.fullName}\nPhone: ${this.phone}\nEmail: ${this.email}\nInquiry Type: ${this.type}\nMessage: ${this.message}`;
+                const waUrl = `https://wa.me/254110090116?text=${encodeURIComponent(text)}`;
+                setTimeout(() => {
+                  this.submitting = false;
                   this.submitted = true;
-                  e.target.reset();
-                } catch {
-                  this.error = true;
-                }
-                this.submitting = false;
+                  window.open(waUrl, '_blank');
+                }, 500);
               }
             }"
-            x-init="$store.form = { step: 1 }"
           >
-            <!-- Progress Indicator -->
-            <div class="absolute top-0 left-0 right-0 h-1 bg-ivory/5">
-              <div class="h-full bg-copper transition-all duration-500" :style="`width: ${(step / 4) * 100}%`"></div>
-            </div>
-            
-            <div x-show="!submitted" class="flex justify-between items-center mb-8">
-              <span class="font-mono-label text-[10px] tracking-[0.2em] uppercase text-sage">Enquiry</span>
-              <span class="font-mono text-xs text-copper" x-text="`Step ${step} of 4`"></span>
-            </div>
-
-            <!-- Success State -->
-            <div x-show="submitted" x-transition.opacity.duration.500ms class="text-center py-12" style="display: none;">
-              <div class="w-20 h-20 rounded-full bg-copper/10 border border-copper/30 flex items-center justify-center mx-auto mb-6">
-                <svg class="w-8 h-8 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              </div>
-              <h3 class="font-display text-3xl font-semibold text-ivory mb-4">Request Received</h3>
-              <p class="text-sage text-lg font-light leading-relaxed max-w-md mx-auto">
-                Thank you for your enquiry. Our team will contact you confidentially within 24-48 hours to arrange the next steps.
+            <div class="mb-8">
+              <span class="font-mono text-xs text-copper uppercase tracking-wider block mb-2">Consultation Booking</span>
+              <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ivory">Send an Online Inquiry</h2>
+              <p class="text-xs sm:text-sm text-sage font-light mt-2 leading-relaxed">
+                Provide your details below to connect directly with the clinic front desk via WhatsApp or phone.
               </p>
             </div>
 
+            <!-- Success Message -->
+            <div x-show="submitted" class="text-center py-8" style="display: none;">
+              <div class="w-16 h-16 rounded-full bg-copper/10 border border-copper/30 flex items-center justify-center mx-auto mb-4 text-copper">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-ivory mb-2">Inquiry Forwarded</h3>
+              <p class="text-sage text-sm font-light max-w-md mx-auto mb-6">
+                Your consultation request has been forwarded to our WhatsApp clinic line. A team member will assist you shortly.
+              </p>
+              <button @click="submitted = false; step = 1" class="btn-ghost text-xs">
+                Submit Another Request
+              </button>
+            </div>
+
             <!-- Form -->
-            <form x-show="!submitted" @submit.prevent="submitForm" class="relative">
+            <form x-show="!submitted" @submit.prevent="submitInquiry" class="space-y-6">
               
-              <input type="hidden" id="form-type" x-model="type">
-
-              <!-- Step 1: Intent -->
-              <div id="step-1" x-show="step === 1" x-transition.opacity.duration.300ms>
-                <h3 class="font-display text-2xl font-medium text-ivory mb-6">How can we help?</h3>
-                <div class="space-y-4">
-                  <button type="button" @click="type = 'consultation'; step = 2" class="w-full text-left bg-midnight-light border border-ivory/10 hover:border-copper/50 transition-colors p-5 rounded-xl group flex justify-between items-center">
-                    <div>
-                      <div class="text-ivory font-medium mb-1">Book a consultation</div>
-                      <div class="text-sage text-sm font-light">I am a patient seeking specialist care.</div>
-                    </div>
-                    <svg class="w-5 h-5 text-copper opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                  </button>
-                  <button type="button" @click="type = 'physician'; step = 2" class="w-full text-left bg-midnight-light border border-ivory/10 hover:border-copper/50 transition-colors p-5 rounded-xl group flex justify-between items-center">
-                    <div>
-                      <div class="text-ivory font-medium mb-1">Physician referral</div>
-                      <div class="text-sage text-sm font-light">I am a doctor referring a patient.</div>
-                    </div>
-                    <svg class="w-5 h-5 text-copper opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                  </button>
-                  <button type="button" @click="type = 'general'; step = 2" class="w-full text-left bg-midnight-light border border-ivory/10 hover:border-copper/50 transition-colors p-5 rounded-xl group flex justify-between items-center">
-                    <div>
-                      <div class="text-ivory font-medium mb-1">General enquiry</div>
-                      <div class="text-sage text-sm font-light">Academic, research, or other enquiries.</div>
-                    </div>
-                    <svg class="w-5 h-5 text-copper opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                  </button>
+              <!-- Referral Type -->
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-sage mb-2">Inquiry Type</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <label class="p-3 rounded-xl border border-ivory/10 flex items-center gap-2 cursor-pointer transition-colors" :class="type === 'consultation' ? 'bg-copper/10 border-copper text-ivory' : 'text-sage hover:border-ivory/30'">
+                    <input type="radio" name="type" value="consultation" x-model="type" class="text-copper focus:ring-copper">
+                    <span class="text-xs">Patient Self-Referral</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-ivory/10 flex items-center gap-2 cursor-pointer transition-colors" :class="type === 'physician' ? 'bg-copper/10 border-copper text-ivory' : 'text-sage hover:border-ivory/30'">
+                    <input type="radio" name="type" value="physician" x-model="type" class="text-copper focus:ring-copper">
+                    <span class="text-xs">Physician Referral</span>
+                  </label>
+                  <label class="p-3 rounded-xl border border-ivory/10 flex items-center gap-2 cursor-pointer transition-colors" :class="type === 'general' ? 'bg-copper/10 border-copper text-ivory' : 'text-sage hover:border-ivory/30'">
+                    <input type="radio" name="type" value="general" x-model="type" class="text-copper focus:ring-copper">
+                    <span class="text-xs">General / Other</span>
+                  </label>
                 </div>
               </div>
 
-              <!-- Step 2: Details -->
-              <div id="step-2" x-show="step === 2" x-transition.opacity.duration.300ms style="display: none;">
-                <h3 class="font-display text-2xl font-medium text-ivory mb-6">Your details</h3>
-                <div class="space-y-6">
-                  <div>
-                    <label class="block text-sage text-sm mb-2 font-light">Full Name</label>
-                    <input type="text" required class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors">
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label class="block text-sage text-sm mb-2 font-light">Phone Number</label>
-                      <input type="tel" required class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors">
-                    </div>
-                    <div>
-                      <label class="block text-sage text-sm mb-2 font-light">Email Address</label>
-                      <input type="email" required class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors">
-                    </div>
-                  </div>
-                  <div class="flex justify-between items-center mt-8 pt-6 border-t border-ivory/10">
-                    <button type="button" @click="step = 1" class="text-sage hover:text-ivory text-sm font-medium transition-colors">Back</button>
-                    <button type="button" @click="step = 3" class="bg-ivory text-midnight px-6 py-2.5 rounded-lg font-medium hover:bg-white transition-colors">Continue</button>
-                  </div>
-                </div>
+              <!-- Full Name -->
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-sage mb-2">Patient / Doctor Full Name</label>
+                <input 
+                  type="text" 
+                  x-model="fullName" 
+                  required 
+                  placeholder="e.g. John Kamau"
+                  class="w-full bg-midnight-light border border-ivory/15 focus:border-copper rounded-xl px-4 py-3 text-ivory placeholder-sage/40 text-sm focus:outline-none transition-colors"
+                >
               </div>
 
-              <!-- Step 3: Message -->
-              <div id="step-3" x-show="step === 3" x-transition.opacity.duration.300ms style="display: none;">
-                <h3 class="font-display text-2xl font-medium text-ivory mb-6">Your message</h3>
-                <div class="space-y-6">
-                  <div>
-                    <label class="block text-sage text-sm mb-2 font-light">Brief enquiry</label>
-                    <textarea rows="4" required placeholder="Please do not include sensitive medical information..." class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors resize-none"></textarea>
-                  </div>
-                  <div>
-                    <label class="block text-sage text-sm mb-2 font-light">Preferred contact method</label>
-                    <select class="w-full bg-midnight-light border border-ivory/10 focus:border-copper rounded-lg px-4 py-3 text-ivory focus:outline-none transition-colors appearance-none">
-                      <option value="phone">Phone Call</option>
-                      <option value="whatsapp">WhatsApp</option>
-                      <option value="email">Email</option>
-                    </select>
-                  </div>
-                  <div class="flex justify-between items-center mt-8 pt-6 border-t border-ivory/10">
-                    <button type="button" @click="step = 2" class="text-sage hover:text-ivory text-sm font-medium transition-colors">Back</button>
-                    <button type="button" @click="step = 4" class="bg-ivory text-midnight px-6 py-2.5 rounded-lg font-medium hover:bg-white transition-colors">Review</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Step 4: Review -->
-              <div id="step-4" x-show="step === 4" x-transition.opacity.duration.300ms style="display: none;">
-                <h3 class="font-display text-2xl font-medium text-ivory mb-6">Review & Send</h3>
-                <div class="bg-midnight-light p-6 rounded-xl border border-ivory/5 mb-8">
-                  <p class="text-sage text-sm font-light leading-relaxed mb-4">
-                    By submitting this enquiry, you agree to be contacted by our team to arrange a consultation. All information is held in strict confidence.
-                  </p>
-                  <p class="text-copper text-sm font-medium">Ready to submit?</p>
-                </div>
-
-                <div x-show="error" x-transition class="text-red-400 text-sm mb-6 bg-red-900/20 border border-red-900/50 p-4 rounded-lg">
-                  An error occurred. Please try again or use WhatsApp.
-                </div>
-                
-                <div class="flex justify-between items-center pt-6 border-t border-ivory/10">
-                  <button type="button" @click="step = 3" :disabled="submitting" class="text-sage hover:text-ivory text-sm font-medium transition-colors">Back</button>
-                  
-                  <button 
-                    type="submit" 
-                    :disabled="submitting"
-                    class="bg-copper hover:bg-copper-dark text-white px-8 py-3 rounded-lg font-medium transition-colors shadow-lg shadow-copper/20 flex items-center gap-2"
-                    :class="submitting ? 'opacity-75 cursor-wait' : ''"
+              <!-- Phone & Email Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono uppercase tracking-wider text-sage mb-2">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    x-model="phone" 
+                    required 
+                    placeholder="e.g. 0712 345 678"
+                    class="w-full bg-midnight-light border border-ivory/15 focus:border-copper rounded-xl px-4 py-3 text-ivory placeholder-sage/40 text-sm focus:outline-none transition-colors"
                   >
-                    <span x-show="!submitting">Submit Enquiry</span>
-                    <span x-show="submitting">Sending...</span>
-                    <svg x-show="!submitting" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                  </button>
                 </div>
+                <div>
+                  <label class="block text-xs font-mono uppercase tracking-wider text-sage mb-2">Email Address</label>
+                  <input 
+                    type="email" 
+                    x-model="email" 
+                    placeholder="e.g. name@example.com"
+                    class="w-full bg-midnight-light border border-ivory/15 focus:border-copper rounded-xl px-4 py-3 text-ivory placeholder-sage/40 text-sm focus:outline-none transition-colors"
+                  >
+                </div>
+              </div>
+
+              <!-- Brief Message -->
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-sage mb-2">Brief Summary of Condition or Referral</label>
+                <textarea 
+                  rows="3" 
+                  x-model="message"
+                  placeholder="Briefly state symptoms, duration, or whether you have recent MRI/CT scans..."
+                  class="w-full bg-midnight-light border border-ivory/15 focus:border-copper rounded-xl px-4 py-3 text-ivory placeholder-sage/40 text-sm focus:outline-none transition-colors resize-none"
+                ></textarea>
+                <p class="text-[11px] text-sage/60 font-light mt-1">Please do not include sensitive financial or private records in this message.</p>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="pt-2">
+                <button 
+                  type="submit" 
+                  :disabled="submitting"
+                  class="w-full btn-primary py-3.5 flex items-center justify-center gap-2 text-sm font-medium"
+                >
+                  <span x-show="!submitting">Continue to WhatsApp Booking &rarr;</span>
+                  <span x-show="submitting">Connecting...</span>
+                </button>
               </div>
 
             </form>
@@ -370,201 +284,48 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Academic, Speaking & Institutional Engagements -->
-  <section class="py-20 bg-midnight-light border-t border-ivory/10">
-    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        <div class="lg:col-span-6 rounded-3xl overflow-hidden border border-ivory/15 bg-midnight shadow-2xl relative group">
-          <img
-            src="/images/dr-sylvia-amee-conference-hall.jpg"
-            alt="Dr. Sylvia Shitsama at the AMEE Vienna global healthcare education conference"
-            class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 block"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-transparent to-transparent pointer-events-none"></div>
-          <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-midnight/90 backdrop-blur-md border border-copper/30">
-            <span class="text-[10px] font-mono text-copper uppercase tracking-wider block mb-1">Global Medical Education</span>
-            <p class="text-xs text-ivory font-light">
-              Representing Kenya on the international stage at AMEE Vienna and global surgical forums.
-            </p>
-          </div>
-        </div>
-
-        <div class="lg:col-span-6 space-y-6">
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-px bg-copper"></span>
-            <span class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs">Speaking & Collaborations</span>
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-semibold text-ivory leading-tight">
-            Keynote Lectures, Academic Panels & Institutional Mentorship
-          </h2>
-          <p class="text-sage text-sm sm:text-base font-light leading-relaxed">
-            In addition to clinical consultations, Dr. Shitsama delivers keynote addresses, academic symposium lectures, and faculty development workshops globally on mentorship, neurosurgical capacity building, and surgical culture.
-          </p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div class="p-4 rounded-2xl bg-midnight border border-ivory/5">
-              <h4 class="text-sm font-semibold text-ivory mb-1">Keynote Speaking</h4>
-              <p class="text-xs text-sage font-light">International conferences, surgical congresses, and global health forums.</p>
-            </div>
-            <div class="p-4 rounded-2xl bg-midnight border border-ivory/5">
-              <h4 class="text-sm font-semibold text-ivory mb-1">Faculty & Mentorship</h4>
-              <p class="text-xs text-sage font-light">Institutional workshops on inclusive surgical culture and mentorship systems.</p>
-            </div>
-          </div>
-
-          <div class="pt-2">
-            <a href="mailto:info@drsylviashitsama.com?subject=Keynote%20/%20Academic%20Speaking%20Inquiry" class="inline-flex items-center gap-2 text-xs font-semibold text-copper hover:text-copper-light transition-colors uppercase tracking-wider font-mono">
-              Inquire via Academic Email →
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Section -->
-  <section class="py-20 bg-midnight border-t border-ivory/5">
-    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up">
-      <h3 class="font-display text-3xl font-medium text-ivory mb-4 italic">Exceptional care begins with the right conversation.</h3>
-      <p class="text-sage font-light max-w-2xl mx-auto mb-16">
-        Dr. Shitsama combines specialist neurosurgical expertise with a patient-centred approach to care.
-      </p>
+  <!-- Interactive Map & Physical Location Section -->
+  <section class="py-20 bg-midnight" id="clinic-map">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
       
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto border-t border-ivory/10 pt-12">
-        <div>
-          <div class="font-display text-4xl sm:text-5xl font-semibold text-ivory mb-2">20<span class="text-copper">+</span></div>
-          <div class="font-mono-label text-copper text-[10px] uppercase tracking-widest">Years<br/>Experience</div>
-        </div>
-        <div>
-          <div class="font-display text-4xl sm:text-5xl font-semibold text-ivory mb-2">20</div>
-          <div class="font-mono-label text-copper text-[10px] uppercase tracking-widest">Peer-Reviewed<br/>Publications</div>
-        </div>
-        <div>
-          <div class="font-display text-4xl sm:text-5xl font-semibold text-ivory mb-2">58<span class="text-copper">+</span></div>
-          <div class="font-mono-label text-copper text-[10px] uppercase tracking-widest">Citations</div>
-        </div>
-        <div class="flex flex-col items-center justify-center">
-          <svg class="w-10 h-10 text-ivory mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <div class="font-mono-label text-copper text-[10px] uppercase tracking-widest">International<br/>Training</div>
-        </div>
+      <div class="mb-10 text-center max-w-2xl mx-auto">
+        <span class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs mb-2 block">Map &amp; Directions</span>
+        <h2 class="font-display text-3xl font-semibold text-ivory mb-3">Clinic Location Map</h2>
+        <p class="text-sage text-sm font-light leading-relaxed">
+          KNH Doctors Plaza, Suite 43, Hospital Road, Nairobi. Easily accessible via Hospital Road or Mbagathi Way. Secure parking available on-site.
+        </p>
       </div>
-    </div>
-  </section>
 
-  <!-- Final CTA -->
-  <section class="py-24 sm:py-32 bg-midnight-light relative overflow-hidden text-center border-t border-ivory/5">
-    <div class="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
-    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-up">
-      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-ivory mb-6 tracking-tight">
-        Ready to take the next step?
-      </h2>
-      <p class="text-sage text-lg mb-12 font-light max-w-xl mx-auto">
-        Book a consultation with Dr. Sylvia Shitsama.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
-        <button onclick="document.getElementById('consultation-form').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-copper hover:bg-copper-dark text-white px-8 py-4 rounded-lg font-medium transition-all hover:-translate-y-1 shadow-lg hover:shadow-copper/20 group">
-          Book a Consultation
-          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </button>
-        
-        <a href="https://wa.me/254704889211" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 border border-ivory/20 hover:border-[#25D366]/50 text-ivory px-8 py-4 rounded-lg font-medium transition-all hover:bg-[#25D366]/10 group">
-          <svg class="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp Enquiry
+      <!-- Google Maps Embed -->
+      <div class="relative w-full h-96 sm:h-[480px] rounded-3xl overflow-hidden bg-midnight-light border border-ivory/15 shadow-2xl">
+        <iframe
+          title="Sage Brain & Spine Clinic - KNH Doctors Plaza Nairobi"
+          src="https://maps.google.com/maps?q=KNH+Doctors+Plaza,+Hospital+Road,+Nairobi,+Kenya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          class="w-full h-full border-0 filter invert-[90%] hue-rotate-[180deg] contrast-[90%] brightness-[85%]"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <!-- Directions Footnote -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-midnight-light border border-ivory/10 text-xs text-sage">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-copper shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Visiting Suite 43: Take the main elevators to the 4th Floor of KNH Doctors Plaza.</span>
+        </div>
+        <a 
+          href="https://maps.google.com/?q=KNH+Doctors+Plaza+Nairobi" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="text-copper hover:text-white uppercase font-mono tracking-wider font-semibold shrink-0"
+        >
+          Open in Google Maps &rarr;
         </a>
       </div>
+
     </div>
   </section>
-
 </Layout>
-
-<style>
-  .perspective-container {
-    perspective: 1200px;
-  }
-  .transform-style-3d {
-    transform-style: preserve-3d;
-  }
-  .rotate-x-12 {
-    transform: rotateX(12deg);
-  }
-  
-  @keyframes slow-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  @keyframes slow-spin-reverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
-  }
-  .animate-slow-spin {
-    animation: slow-spin 60s linear infinite;
-  }
-  .animate-slow-spin-reverse {
-    animation: slow-spin-reverse 60s linear infinite;
-  }
-</style>
-
-<script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    if (prefersReducedMotion) {
-      document.querySelectorAll('.fade-up').forEach(el => {
-        if (el instanceof HTMLElement) {
-          el.style.opacity = '1';
-          el.style.transform = 'none';
-        }
-      });
-      return;
-    }
-
-    // Standard Fade Ups
-    gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
-      gsap.fromTo(el,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            once: true,
-          },
-        }
-      );
-    });
-
-    // 3D Mouse Parallax for Hero Sculpture
-    const container = document.querySelector('.hero-sculpture');
-    const rig = document.querySelector('.sculpture-rig');
-    
-    if (container && rig) {
-      container.addEventListener('mousemove', (e) => {
-        const ev = e as MouseEvent;
-        const rect = container.getBoundingClientRect();
-        const x = (ev.clientX - rect.left) / rect.width - 0.5;
-        const y = (ev.clientY - rect.top) / rect.height - 0.5;
-
-        gsap.to(rig, {
-          rotationY: x * 30,
-          rotationX: -y * 30,
-          duration: 1.5,
-          ease: 'power1.out'
-        });
-      });
-      
-      container.addEventListener('mouseleave', () => {
-        gsap.to(rig, { rotationY: 0, rotationX: 0, duration: 2, ease: 'power2.out' });
-      });
-    }
-  });
-</script>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70" fill="none" role="img" aria-label="Heritage Insurance">
+  <rect width="260" height="70" rx="8" fill="#FFFFFF"/>
+  <g transform="translate(18, 14)">
+    <!-- Heritage Shield / Crest Mark -->
+    <g transform="translate(0, 2)">
+      <!-- Outer Shield -->
+      <path d="M18 0 C28 0 36 6 36 16 C36 28 24 38 18 40 C12 38 0 28 0 16 C0 6 8 0 18 0 Z" fill="#0A2B4C"/>
+      <!-- Inner Gold Chevron / Flame -->
+      <path d="M18 6 C23 6 29 11 29 18 C29 27 20 33 18 35 C16 33 7 27 7 18 C7 11 13 6 18 6 Z" fill="#D4A853"/>
+      <!-- Inner core deep accent -->
+      <path d="M18 12 C20.5 12 23 15 23 19 C23 24 19 28 18 29 C17 28 13 24 13 19 C13 15 15.5 12 18 12 Z" fill="#0A2B4C"/>
+    </g>
+    <!-- Heritage Wordmark -->
+    <text x="46" y="23" font-family="'Cormorant Garamond', 'Georgia', serif" font-weight="700" font-size="23" fill="#0A2B4C" letter-spacing="0.5">Heritage</text>
+    <text x="138" y="23" font-family="'DM Sans', 'Inter', Arial, sans-serif" font-weight="600" font-size="13" fill="#D4A853" letter-spacing="1">INSURANCE</text>
+    <text x="47" y="36" font-family="'DM Sans', 'Inter', Arial, sans-serif" font-weight="500" font-size="8" fill="#666666" letter-spacing="1.2">A MEMBER OF LIBERTY</text>
+  </g>
+</svg>

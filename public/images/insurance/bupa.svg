@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" fill="none" role="img" aria-label="Bupa Global Insurance">
+  <!-- Bupa Iconic Blue Wordmark with Soft Pill Accent -->
+  <rect width="240" height="70" rx="8" fill="#FFFFFF"/>
+  <g transform="translate(30, 15)">
+    <!-- Bupa rounded brand lettering -->
+    <path d="M12 0 C5.373 0 0 5.373 0 12 L0 40 L10 40 L10 26 C12 28 15 29 18 29 C27 29 33 22 33 13 C33 4 26 0 17 0 L12 0 Z M15 8 C20 8 23 11 23 14.5 C23 18 20 21 15 21 L10 21 L10 8 L15 8 Z" fill="#0079C1"/>
+    <path d="M42 10 L42 27 C42 33 46 36 52 36 C58 36 62 33 62 27 L62 10 L52 10 L52 26 C52 28 50 29 48 29 C46 29 44 28 44 26 L44 10 L42 10 Z" fill="#0079C1"/>
+    <path d="M72 10 L72 40 L82 40 L82 27 C84 29 87 30 91 30 C99 30 106 23 106 14 C106 5 99 0 91 0 C86 0 82 2 80 5 L80 0 L72 0 L72 10 Z M89 8 C94 8 97 11 97 15 C97 19 94 22 89 22 C84 22 81 19 81 15 C81 11 84 8 89 8 Z" fill="#0079C1"/>
+    <path d="M136 10 L136 15 C133 11 129 10 124 10 C114 10 108 17 108 25 C108 33 114 40 124 40 C129 40 133 38 136 34 L136 39 L145 39 L145 10 L136 10 Z M127 18 C132 18 136 21 136 25 C136 29 132 32 127 32 C122 32 118 29 118 25 C118 21 122 18 127 18 Z" fill="#0079C1"/>
+    <!-- Small healthcare cross mark accent -->
+    <path d="M158 14 L164 14 L164 8 L170 8 L170 14 L176 14 L176 20 L170 20 L170 26 L164 26 L164 20 L158 20 Z" fill="#00A3E0"/>
+  </g>
+</svg>

@@ -1,314 +1,315 @@
 ---
 // JourneyTimeline.astro
-// Interactive 3D/Spatial timeline for Dr. Sylvia Shitsama's career journey
+// Interactive, scroll-animated career milestones timeline for Dr. Sylvia Shitsama
+// Features scroll-powered dynamic beam progression, luminous active nodes, and alternating entrance animations
 
 const milestones = [
   {
     id: '01',
-    title: 'Medical Training',
+    title: 'Bachelor of Medicine & Surgery (MBChB)',
     institution: 'University of Nairobi',
-    description: 'Graduated with a Bachelor of Medicine and Surgery (MBChB) before completing a Master of Medicine in Neurosurgery (MMed), emerging as Kenya\'s first qualified female neurosurgeon.',
-    year: '2008 – 2014',
-    align: 'right'
+    description: 'Undergraduate medical training graduating with MBChB, establishing a rigorous clinical foundation in anatomy, diagnostic medicine, surgical principles, and dedicated patient care.',
+    year: 'Medical School',
+    badge: 'Undergraduate Medical Foundation',
+    icon: 'academic'
   },
   {
     id: '02',
-    title: 'International Training',
-    institution: 'University of Toronto',
-    description: 'Completed a Clinical and Research Fellowship in General Neurosurgery at one of the world\'s leading neurosurgical centres, deepening expertise in evidence-based practice.',
-    year: '2019',
-    align: 'left'
+    title: 'Master of Medicine in Neurosurgery (MMed)',
+    institution: 'University of Nairobi',
+    description: 'Completed comprehensive postgraduate residency and specialist surgical training in neurosurgery, earning the Master of Medicine in Neurosurgery (MMed) in 2015.',
+    year: 'Completed in 2015',
+    badge: 'Specialist Surgical Degree',
+    icon: 'specialist'
   },
   {
     id: '03',
-    title: 'Neurosurgical Practice',
-    institution: 'Sage Clinic & Thika Level V',
-    description: 'Co-founded Sage Brain & Spine Clinic and serves as an Honorary Consultant at Thika Level V Hospital, expanding access to specialised neurosurgical care.',
-    year: '2017 – Present',
-    align: 'right'
+    title: 'Senior Lecturer in Neurosurgery',
+    institution: 'Jomo Kenyatta University of Agriculture & Technology (JKUAT)',
+    description: 'Serving as Senior Lecturer since 2016, training neurosurgery residents and medical students, guiding clinical research, and advancing peer-reviewed surgical literature.',
+    year: '2016 – Present',
+    badge: 'Academic & Clinical Faculty',
+    icon: 'faculty'
   },
   {
     id: '04',
-    title: 'Research & Academia',
-    institution: 'JKUAT & Global Journals',
-    description: 'Senior Lecturer at Jomo Kenyatta University of Agriculture & Technology. An active researcher with 20 peer-reviewed publications driving clinical and policy improvements.',
-    year: '2016 – Present',
-    align: 'left'
+    title: 'Clinical & Research Fellowship in General Neurosurgery',
+    institution: 'University of Toronto, Canada',
+    description: 'Completed an advanced Clinical and Research Fellowship in General Neurosurgery, acquiring international specialist expertise in advanced cranial microsurgery, skull base techniques, and global surgery systems.',
+    year: '2019',
+    badge: 'International Fellowship',
+    icon: 'fellowship'
   },
   {
     id: '05',
-    title: 'Leadership & Advocacy',
-    institution: 'Global Surgical Equity',
-    description: 'Former board member of the Hydrocephalus Society and a tireless advocate for global surgical equity, mentorship, and advancing neurosurgery across Africa.',
-    year: 'Present',
-    align: 'right'
+    title: 'Founder & Lead Neurosurgeon',
+    institution: 'Sage Brain & Spine Clinic',
+    description: 'Established Sage Brain & Spine Clinic in Nairobi at KNH Doctors Plaza, Suite 43, providing patient-focused, evidence-based neurosurgical consultation and operative care.',
+    year: 'Practice Founder',
+    badge: 'Private Specialist Practice',
+    icon: 'clinic'
   }
 ];
 ---
 
-<!-- Section Intro -->
-<section class="relative min-h-[60vh] flex items-center bg-midnight overflow-hidden pt-32 pb-16">
-  <!-- Subtle Animated Neurological Line Pattern -->
-  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-[0.03]">
-    <svg class="w-full h-full animate-slow-spin-reverse origin-center" viewBox="0 0 100 100" fill="none" preserveAspectRatio="xMidYMid slice">
-      <path d="M-50,50 Q25,-50 150,50 T350,50" stroke="#F3EFE6" stroke-width="0.2" fill="none"/>
-      <path d="M-50,60 Q25,-40 150,60 T350,60" stroke="#C17A3E" stroke-width="0.1" fill="none"/>
-      <path d="M-50,40 Q25,-60 150,40 T350,40" stroke="#F3EFE6" stroke-width="0.2" fill="none"/>
-    </svg>
-  </div>
-  
-  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-up">
-    <span class="font-mono-label text-copper tracking-[0.2em] uppercase mb-6 block">Journey</span>
-    <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-ivory leading-[1.1] mb-8">
-      The Journey So Far
-    </h1>
-    <p class="text-sage text-lg sm:text-xl font-light max-w-3xl mx-auto leading-relaxed">
-      From medical training to pioneering neurosurgery, research, mentorship and advocacy — a journey shaped by purpose and a commitment to advancing care.
-    </p>
-  </div>
-</section>
-
-<!-- The 3D Journey Pathway -->
-<!-- On mobile, it degrades to a clean vertical list. On desktop, it uses spatial positioning and scroll interactions. -->
-<section class="relative bg-midnight overflow-hidden pb-48" id="journey-scene">
-  
-  <!-- 3D Background Atmosphere -->
-  <div class="absolute inset-0 z-0 pointer-events-none" id="journey-atmosphere">
-    <div class="absolute top-[10%] left-[20%] w-96 h-96 bg-copper/5 rounded-full blur-[120px] mix-blend-screen"></div>
-    <div class="absolute top-[60%] right-[10%] w-[500px] h-[500px] bg-gold/5 rounded-full blur-[150px] mix-blend-screen"></div>
-    <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(ellipse_at_center,_rgba(243,239,230,0.8)_0%,_transparent_100%)] bg-[length:4px_4px]"></div>
+<section class="py-20 sm:py-28 bg-midnight relative overflow-hidden" id="milestones-section">
+  <!-- Subtle Ambient Glows -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-copper/5 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[120px]"></div>
   </div>
 
-  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-5xl">
     
-    <!-- Desktop Curved SVG Pathway -->
-    <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[600px] -translate-x-1/2 pointer-events-none opacity-20" aria-hidden="true">
-      <!-- A beautifully curved bezier path for the timeline -->
-      <svg class="w-full h-full" viewBox="0 0 600 2500" fill="none" preserveAspectRatio="none" id="journey-svg">
-        <path id="journey-path-bg" d="M300,0 C300,100 500,200 500,400 C500,700 100,800 100,1100 C100,1400 500,1500 500,1800 C500,2100 300,2200 300,2500" stroke="#F3EFE6" stroke-width="2" stroke-dasharray="10 15" opacity="0.3"/>
-        <path id="journey-path-fill" d="M300,0 C300,100 500,200 500,400 C500,700 100,800 100,1100 C100,1400 500,1500 500,1800 C500,2100 300,2200 300,2500" stroke="#C17A3E" stroke-width="4" fill="none" class="journey-draw-path"/>
-      </svg>
+    <!-- Section Heading with Scroll Entrance -->
+    <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-24 timeline-header opacity-0 translate-y-6 transition-all duration-700 ease-out">
+      <div class="flex items-center justify-center gap-3 mb-3">
+        <span class="w-8 h-[2px] bg-copper"></span>
+        <span class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs">Career Path</span>
+        <span class="w-8 h-[2px] bg-copper"></span>
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory tracking-tight mb-4">
+        Verified Career Milestones
+      </h2>
+      <p class="text-sage text-base sm:text-lg font-light leading-relaxed">
+        A progressive career grounded in rigorous medical education, specialist surgical training, international fellowship, academic faculty leadership, and dedicated clinical practice.
+      </p>
     </div>
 
-    <!-- Mobile Vertical Line -->
-    <div class="lg:hidden absolute left-8 top-0 bottom-0 w-[2px] bg-ivory/10 pointer-events-none" aria-hidden="true">
-      <div class="w-full bg-copper journey-draw-path-mobile origin-top"></div>
-    </div>
-
-    <div class="relative py-20 lg:py-0 flex flex-col gap-16 lg:gap-0 lg:h-[2500px]">
+    <!-- Timeline Wrapper -->
+    <div class="relative" id="timeline-container">
       
-      {milestones.map((milestone, i) => (
-        <div class={`journey-milestone relative flex flex-col lg:absolute w-full group ${
-          i === 0 ? 'lg:top-[300px]' : 
-          i === 1 ? 'lg:top-[850px]' : 
-          i === 2 ? 'lg:top-[1400px]' : 
-          i === 3 ? 'lg:top-[1950px]' : 
-          'lg:top-[2450px]'
-        }`}>
-          
-          <div class={`flex flex-col lg:flex-row items-start lg:items-center w-full max-w-[900px] mx-auto relative ${milestone.align === 'left' ? 'lg:flex-row-reverse' : ''}`}>
-            
-            <!-- Floating 3D Node -->
-            <!-- Mobile positioning vs Desktop precise positioning -->
-            <div class={`
-              flex-shrink-0 z-20 
-              ml-4 mb-6 lg:mb-0 lg:ml-0 lg:absolute 
-              ${milestone.align === 'left' ? 'lg:left-auto lg:right-[calc(50%-220px)]' : 'lg:left-[calc(50%-220px)]'}
-              lg:top-1/2 lg:-translate-y-1/2 
-              journey-node-container
-            `}>
-              <div class="journey-node w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 rounded-full border border-ivory/20 bg-midnight/80 backdrop-blur-md flex items-center justify-center relative shadow-[0_0_30px_rgba(243,239,230,0.05)] transition-all duration-700 preserve-3d">
-                <!-- Inner geometric rings for 3D effect -->
-                <div class="absolute inset-2 rounded-full border border-copper/10 inner-ring-1 transition-all duration-700"></div>
-                <div class="absolute inset-4 rounded-full border border-gold/10 inner-ring-2 transition-all duration-700"></div>
-                <span class="font-mono text-copper text-lg sm:text-xl lg:text-2xl font-medium node-number transition-colors duration-500">{milestone.id}</span>
-                <!-- Glow effect when active -->
-                <div class="absolute inset-0 rounded-full bg-copper/0 node-glow transition-all duration-700 blur-xl -z-10"></div>
-              </div>
-            </div>
+      <!-- Static Background Guide Track -->
+      <div class="absolute left-4 sm:left-1/2 top-4 bottom-4 w-[2px] bg-ivory/10 -translate-x-1/2" aria-hidden="true"></div>
 
-            <!-- Glassmorphism Information Panel -->
-            <!-- Mobile positioning vs Desktop precise positioning -->
-            <div class={`
-              w-full lg:w-[400px] z-10 pl-16 lg:pl-0 
-              ${milestone.align === 'left' ? 'lg:mr-auto' : 'lg:ml-auto'}
-              journey-panel-container
-            `}>
-              <div class="journey-panel bg-midnight-light/40 backdrop-blur-xl border border-ivory/10 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl opacity-50 lg:opacity-0 lg:translate-y-10 transition-all duration-700 hover:border-copper/30 group-hover:bg-midnight-light/60">
-                <span class="font-mono text-gold text-sm font-medium tracking-wide block mb-2">{milestone.year}</span>
-                <span class="font-mono-label text-copper text-[10px] tracking-widest uppercase block mb-4" style={milestone.id === '03' ? 'color: #8B7355;' : ''}>{milestone.institution}</span>
-                <h3 class="font-display text-2xl font-semibold text-ivory mb-4 leading-snug">
-                  {milestone.title}
-                </h3>
-                <p class="text-sage font-light text-sm leading-relaxed mb-6">
-                  {milestone.description}
-                </p>
-                <div class="flex items-center gap-2 text-copper font-medium text-xs font-mono-label uppercase tracking-widest opacity-0 lg:group-hover:opacity-100 transition-opacity">
-                  <span>Explore</span>
-                  <svg class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                  </svg>
+      <!-- Scroll-Driven Animated Active Beam -->
+      <div 
+        id="timeline-active-beam"
+        class="absolute left-4 sm:left-1/2 top-4 w-[2.5px] bg-gradient-to-b from-copper via-gold to-copper -translate-x-1/2 rounded-full shadow-[0_0_14px_rgba(193,122,62,0.85)] origin-top transition-[height] duration-200 ease-out z-10"
+        style="height: 0px;"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Milestone Items List -->
+      <div class="space-y-12 sm:space-y-20 relative z-20">
+        {milestones.map((item, index) => {
+          const isEven = index % 2 === 1;
+          const slideDirection = isEven ? 'from-right' : 'from-left';
+          return (
+            <div 
+              class={`timeline-item group relative flex flex-col sm:flex-row items-start sm:items-center ${slideDirection}`}
+              data-index={index}
+            >
+              
+              <!-- Timeline Marker Node -->
+              <div 
+                class="timeline-node absolute left-4 sm:left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-midnight border-2 border-ivory/20 flex items-center justify-center z-30 transition-all duration-500 shadow-md group-hover:scale-110"
+              >
+                <!-- Inner indicator dot -->
+                <span class="timeline-node-dot w-2.5 h-2.5 rounded-full bg-ivory/40 transition-all duration-500"></span>
+                <!-- Ripple ring effect -->
+                <span class="timeline-node-ripple absolute inset-0 rounded-full border border-copper opacity-0 transition-opacity duration-500 pointer-events-none"></span>
+              </div>
+
+              <!-- Content Card Container -->
+              <div class={`w-full sm:w-[calc(50%-2.75rem)] pl-12 sm:pl-0 ${isEven ? 'sm:ml-auto' : 'sm:mr-auto'}`}>
+                <div class="timeline-card p-6 sm:p-8 rounded-2xl bg-midnight-light/80 border border-ivory/10 hover:border-copper/40 transition-all duration-500 shadow-xl relative overflow-hidden backdrop-blur-sm hover:shadow-[0_12px_30px_-10px_rgba(193,122,62,0.15)] hover:-translate-y-1">
+                  
+                  <!-- Top Decorative Edge Glow -->
+                  <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-copper/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  <!-- Top Badge & Year -->
+                  <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <span class="font-mono text-xs font-semibold text-copper tracking-wider uppercase flex items-center gap-1.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-copper inline-block"></span>
+                      {item.year}
+                    </span>
+                    <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-ivory/5 text-sage border border-ivory/10 tracking-wide font-medium">
+                      {item.badge}
+                    </span>
+                  </div>
+
+                  <!-- Degree / Role Title -->
+                  <h3 class="font-display text-xl sm:text-2xl font-bold text-ivory mb-2 group-hover:text-copper transition-colors duration-300">
+                    {item.title}
+                  </h3>
+
+                  <!-- Institution -->
+                  <p class="text-xs font-mono text-gold tracking-wide mb-3 flex items-center gap-1.5 font-medium">
+                    <svg class="w-3.5 h-3.5 text-gold/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    {item.institution}
+                  </p>
+
+                  <!-- Narrative Description -->
+                  <p class="text-sage text-sm font-light leading-relaxed">
+                    {item.description}
+                  </p>
+
                 </div>
               </div>
+
             </div>
-
-          </div>
-        </div>
-      ))}
-      
-    </div>
-  </div>
-</section>
-
-<!-- "THEN -> NOW" Transformation & Final Statement -->
-<section class="relative py-32 bg-midnight overflow-hidden text-center">
-  
-  <div class="absolute inset-0 pointer-events-none opacity-[0.02] bg-[radial-gradient(circle_at_center,_rgba(193,122,62,1)_0%,_transparent_50%)]"></div>
-
-  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-up">
-    
-    <div class="flex flex-col items-center justify-center mb-16">
-      <div class="font-mono-label text-sage tracking-[0.2em] uppercase text-xs mb-4">Then</div>
-      <div class="text-ivory font-display text-2xl font-light italic mb-8">Medical student & emerging specialist</div>
-      
-      <!-- Central Illuminated Node -->
-      <div class="w-px h-16 bg-gradient-to-b from-ivory/10 to-copper mb-4"></div>
-      <div class="w-4 h-4 rounded-full bg-copper shadow-[0_0_20px_rgba(193,122,62,0.8)] mb-8"></div>
-      
-      <div class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs mb-4">Now</div>
-      <div class="text-ivory font-display text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed max-w-4xl mx-auto">
-        Neurosurgeon <span class="text-copper mx-2">·</span> Researcher <span class="text-copper mx-2">·</span> Educator <span class="text-copper mx-2">·</span> Mentor <span class="text-copper mx-2">·</span> Advocate
+          );
+        })}
       </div>
-    </div>
 
-    <div class="max-w-2xl mx-auto border-t border-ivory/10 pt-16">
-      <h2 class="font-display text-4xl sm:text-5xl font-semibold text-ivory mb-6">The journey continues.</h2>
-      <p class="text-sage text-lg font-light leading-relaxed mb-10">
-        Driven by the belief that better knowledge, better access and better care can transform neurosurgical outcomes across Africa.
-      </p>
-      
-      <a href="/research" class="inline-flex items-center justify-center gap-3 bg-copper hover:bg-copper-dark text-white px-8 py-4 rounded-lg font-medium transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-copper/20 group">
-        Explore Her Work
-        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-        </svg>
-      </a>
     </div>
 
   </div>
 </section>
 
 <style>
-  .preserve-3d {
-    transform-style: preserve-3d;
-    perspective: 1000px;
+  /* Entrance initial states */
+  .timeline-header.is-inview {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .animate-slow-spin-reverse {
-    animation: spin-reverse 40s linear infinite;
+
+  .timeline-item.from-left {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  @keyframes spin-reverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
+
+  @media (min-width: 640px) {
+    .timeline-item.from-left {
+      transform: translateX(-40px);
+    }
+    .timeline-item.from-right {
+      transform: translateX(40px);
+    }
   }
-  
-  /* When node is active via GSAP */
-  .journey-node.active .node-glow {
-    background-color: rgba(193, 122, 62, 0.4);
+
+  .timeline-item.from-right {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .journey-node.active .inner-ring-1 {
-    transform: rotate(45deg) scale(1.1);
-    border-color: rgba(193, 122, 62, 0.5);
-  }
-  .journey-node.active .inner-ring-2 {
-    transform: rotate(-45deg) scale(0.9);
-    border-color: rgba(243, 239, 230, 0.5);
-  }
-  .journey-node.active .node-number {
-    color: #F3EFE6;
-  }
-  .journey-panel.active {
+
+  /* Revealed states */
+  .timeline-item.is-revealed {
     opacity: 1 !important;
-    transform: translateY(0) !important;
+    transform: translate(0, 0) !important;
+  }
+
+  /* Node active glowing state */
+  .timeline-node.is-active {
+    border-color: #C17A3E !important;
+    background-color: #071522 !important;
+    box-shadow: 0 0 16px rgba(193, 122, 62, 0.6) !important;
+  }
+
+  .timeline-node.is-active .timeline-node-dot {
+    background-color: #C17A3E !important;
+    box-shadow: 0 0 8px #C17A3E !important;
+    transform: scale(1.2);
+  }
+
+  .timeline-node.is-active .timeline-node-ripple {
+    opacity: 0.8;
+    animation: ripple 2s infinite cubic-bezier(0, 0.2, 0.8, 1);
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(2.2);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-header,
+    .timeline-item {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .timeline-node-ripple {
+      animation: none !important;
+    }
   }
 </style>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  function initTimelineScroll() {
+    const container = document.getElementById('timeline-container');
+    const activeBeam = document.getElementById('timeline-active-beam');
+    const items = document.querySelectorAll('.timeline-item');
+    const header = document.querySelector('.timeline-header');
 
-  gsap.registerPlugin(ScrollTrigger);
+    if (!container || !activeBeam) return;
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    // Draw SVG Path
-    const svgPath = document.querySelector('.journey-draw-path') as SVGPathElement;
-    if (svgPath && !prefersReducedMotion) {
-      const length = svgPath.getTotalLength();
-      gsap.set(svgPath, { strokeDasharray: length, strokeDashoffset: length });
+    // 1. Observe header reveal
+    if (header) {
+      const headerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            header.classList.add('is-inview');
+            headerObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.2 });
+      headerObserver.observe(header);
+    }
+
+    // 2. Observe milestone items entrance
+    const itemObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+        }
+      });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0.15 });
+
+    items.forEach(item => itemObserver.observe(item));
+
+    // 3. Dynamic beam fill on scroll
+    function updateBeam() {
+      const rect = container.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
       
-      gsap.to(svgPath, {
-        strokeDashoffset: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#journey-scene',
-          start: 'top center',
-          end: 'bottom center',
-          scrub: true
+      // Calculate how far down the timeline container the user has scrolled
+      const startTrigger = windowHeight * 0.7; // Start beam when top of timeline is at 70% viewport
+      const totalHeight = container.offsetHeight;
+      const currentScroll = startTrigger - rect.top;
+      
+      let progress = currentScroll / totalHeight;
+      progress = Math.max(0, Math.min(1, progress));
+
+      const beamHeight = progress * totalHeight;
+      activeBeam.style.height = `${beamHeight}px`;
+
+      // Activate nodes as the beam reaches them
+      items.forEach(item => {
+        const node = item.querySelector('.timeline-node');
+        if (!node) return;
+
+        const nodeRect = node.getBoundingClientRect();
+        // If node has passed into the active beam zone
+        if (nodeRect.top <= windowHeight * 0.65) {
+          node.classList.add('is-active');
+        } else {
+          node.classList.remove('is-active');
         }
       });
     }
 
-    // Mobile Line
-    const mobileLine = document.querySelector('.journey-draw-path-mobile');
-    if (mobileLine && !prefersReducedMotion) {
-      gsap.fromTo(mobileLine,
-        { height: '0%' },
-        {
-          height: '100%',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#journey-scene',
-            start: 'top center',
-            end: 'bottom center',
-            scrub: true
-          }
-        }
-      );
-    }
+    window.addEventListener('scroll', updateBeam, { passive: true });
+    window.addEventListener('resize', updateBeam);
+    // Initial call
+    updateBeam();
+  }
 
-    // Node & Panel Activation
-    const milestones = gsap.utils.toArray('.journey-milestone');
-    milestones.forEach((milestone: any) => {
-      const node = milestone.querySelector('.journey-node');
-      const panel = milestone.querySelector('.journey-panel');
-
-      if (!prefersReducedMotion) {
-        ScrollTrigger.create({
-          trigger: milestone,
-          start: 'top center+=100',
-          end: 'bottom center-=100',
-          onEnter: () => {
-            node.classList.add('active');
-            panel.classList.add('active');
-          },
-          onLeave: () => {
-            node.classList.remove('active');
-            panel.classList.remove('active');
-          },
-          onEnterBack: () => {
-            node.classList.add('active');
-            panel.classList.add('active');
-          },
-          onLeaveBack: () => {
-            node.classList.remove('active');
-            panel.classList.remove('active');
-          }
-        });
-      } else {
-        node.classList.add('active');
-        panel.classList.add('active');
-      }
-    });
-  });
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTimelineScroll);
+  } else {
+    initTimelineScroll();
+  }
 </script>

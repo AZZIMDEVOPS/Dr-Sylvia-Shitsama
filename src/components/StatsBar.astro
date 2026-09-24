@@ -1,15 +1,14 @@
 ---
 const stats = [
-  { number: 20, suffix: '+', label: 'Years Experience', id: 'stat-years' },
-  { number: 1, suffix: ' of 5', label: 'Female NSGs in Kenya', id: 'stat-female' },
-  { number: 20, suffix: '+', label: 'Research Published', id: 'stat-pubs' },
+  { number: 20, suffix: '+', label: 'Years of Experience', id: 'stat-years' },
+  { number: 20, suffix: '+', label: 'Peer-Reviewed Publications', id: 'stat-pubs' },
   { number: 1000, suffix: 's+', label: 'Lives Impacted', id: 'stat-lives' },
 ];
 ---
 
 <section class="bg-midnight py-12 lg:py-16 border-y border-ivory/5" id="stats-bar">
-  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
       {stats.map((stat) => (
         <div class="text-center" id={stat.id}>
           <div class="flex items-center justify-center gap-1">
@@ -21,7 +20,7 @@ const stats = [
             </span>
             <span class="font-mono text-xl sm:text-2xl lg:text-3xl text-gold/70">{stat.suffix}</span>
           </div>
-          <p class="text-sage text-sm mt-2 tracking-wide">{stat.label}</p>
+          <p class="text-sage text-sm mt-2 tracking-wide font-light">{stat.label}</p>
         </div>
       ))}
     </div>

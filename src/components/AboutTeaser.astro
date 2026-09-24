@@ -1,17 +1,17 @@
 ---
-// About Teaser - Two-column section with image and bio preview
+// About Teaser - Clean, concise homepage preview of Dr. Shitsama's background
 ---
 
 <section class="section-padding bg-midnight" id="about-teaser">
   <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-      <!-- Image Column (Layered Presentation Photo) -->
+      <!-- Image Column -->
       <div class="relative">
         <div class="rounded-3xl overflow-hidden shadow-2xl border border-ivory/15 bg-midnight-light relative group">
           <img
-            src="/images/dr-sylvia-amee-speaker-podium.jpg"
-            alt="Dr. Sylvia V. Shitsama delivering a research presentation at AMEE Vienna"
+            src="/images/dr-sylvia-neurosurgery-theatre.jpg"
+            alt="Dr. Sylvia Shitsama in neurosurgical operating theatre"
             class="w-full h-auto block object-cover group-hover:scale-105 transition-transform duration-700"
             width="800"
             height="900"
@@ -23,54 +23,49 @@
           <div class="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-midnight/90 backdrop-blur-md border border-copper/30 shadow-xl">
             <div class="flex items-center gap-2 mb-1">
               <span class="w-2 h-2 rounded-full bg-copper animate-pulse"></span>
-              <span class="text-xs font-mono text-copper uppercase tracking-wider font-semibold">AMEE Vienna Keynote Presenter</span>
+              <span class="text-xs font-mono text-copper uppercase tracking-wider font-semibold">Specialist Surgical Fellowship</span>
             </div>
             <p class="text-xs text-ivory/90 font-light">
-              "Faculty Perspectives on Mentorship & Culture in Sub-Saharan Africa" — Maastricht University & UoN
+              General Neurosurgery Fellowship &middot; University of Toronto, Canada (2019)
             </p>
           </div>
         </div>
-        <!-- Decorative element -->
+        <!-- Decorative elements -->
         <div class="absolute -bottom-4 -right-4 w-28 h-28 border-2 border-copper/30 rounded-3xl -z-10 hidden lg:block"></div>
         <div class="absolute -top-4 -left-4 w-20 h-20 bg-copper/10 rounded-3xl -z-10 hidden lg:block"></div>
       </div>
 
       <!-- Text Column -->
       <div>
-        <span class="font-mono-label text-copper mb-4 block">About</span>
-        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-ivory mb-8">
-          A Surgeon, A Scientist, A Changemaker
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-[1px] bg-copper"></span>
+          <span class="font-mono-label text-copper uppercase tracking-[0.2em] text-xs">About Dr. Shitsama</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-ivory mb-8 leading-tight">
+          Surgical Precision.<br />
+          <span class="text-copper">Compassionate Healing.</span>
         </h2>
 
-        <div class="space-y-5 text-sage leading-relaxed">
+        <div class="space-y-5 text-sage leading-relaxed font-light">
           <p>
-            Born in Kakamega County in 1983, Dr. Sylvia V. Shitsama grew up with a singular vision: to heal. 
-            That vision carried her through the University of Nairobi — first for her Bachelor of Medicine and Surgery, 
-            then for her Master of Medicine in Neurosurgery — making her <strong class="text-ivory">Kenya's first qualified female neurosurgeon</strong>.
+            Dr. Sylvia Shitsama is a Consultant Neurosurgeon with over two decades of dedicated medical and surgical experience. She completed her MBChB and Master of Medicine in Neurosurgery (MMed) at the University of Nairobi, followed by a prestigious Clinical and Research Fellowship in General Neurosurgery at the <strong class="text-ivory font-medium">University of Toronto, Canada</strong> in 2019.
           </p>
 
           <p>
-            In 2019, she completed a Clinical and Research Fellowship in General Neurosurgery at the 
-            <strong class="text-ivory">University of Toronto, Canada</strong>, bringing world-class training 
-            and research methodology back to East Africa. Today, she serves as a Consultant Neurosurgeon at 
-            Kenyatta National Referral Hospital and Senior Lecturer at JKUAT.
-          </p>
-
-          <p>
-            But Dr. Shitsama is more than her credentials. She is a mentor to aspiring surgeons, 
-            a voice for women in medicine, and a tireless advocate for expanding neurosurgical access 
-            across the continent. Recognised twice among Kenya's 
-            <strong class="text-ivory">Top 40 Under 40 Women</strong>, 
-            she doesn't just operate on brains — she opens minds.
+            As the founder of <strong class="text-ivory font-medium">Sage Brain &amp; Spine Clinic</strong> and Senior Lecturer at JKUAT, Dr. Shitsama pairs meticulous microsurgical technique with deep clinical empathy. Her practice focuses on providing individualized, patient-centered care for brain, spine, trauma, and pediatric conditions.
           </p>
         </div>
 
-        <div class="mt-8">
+        <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <a href="/about" class="btn-primary">
-            Read Full Story
+            Read Full Profile
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/sylvia-shitsama" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-sage hover:text-copper transition-colors py-2 px-3">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <span>LinkedIn Profile</span>
           </a>
         </div>
       </div>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 70" fill="none" role="img" aria-label="CIC Insurance Group">
+  <rect width="250" height="70" rx="8" fill="#FFFFFF"/>
+  <g transform="translate(18, 14)">
+    <!-- CIC Geometric Prism Emblem -->
+    <g transform="translate(0, 2)">
+      <polygon points="12,36 24,14 36,36" fill="#1B753B"/>
+      <polygon points="24,14 36,36 48,14" fill="#E88B22"/>
+      <polygon points="36,36 48,14 60,36" fill="#005B94"/>
+    </g>
+    <!-- CIC Text -->
+    <text x="74" y="27" font-family="'DM Sans', 'Inter', Arial, sans-serif" font-weight="900" font-size="24" fill="#005B94" letter-spacing="1.5">CIC</text>
+    <text x="126" y="27" font-family="'DM Sans', 'Inter', Arial, sans-serif" font-weight="700" font-size="20" fill="#1B753B" letter-spacing="1">GROUP</text>
+    <text x="75" y="38" font-family="'DM Sans', 'Inter', Arial, sans-serif" font-weight="600" font-size="8.5" fill="#555555" letter-spacing="2.2">GENERAL INSURANCE</text>
+  </g>
+</svg>

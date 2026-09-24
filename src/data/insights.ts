@@ -1,3 +1,11 @@
+export interface InsightSection {
+  patientQuestion: string;
+  whatYouShouldKnow: string;
+  whenToSeekAttention: string[];
+  whatHappensNext: string;
+  keyTakeaway: string;
+}
+
 export interface Insight {
   slug: string;
   title: string;
@@ -6,133 +14,79 @@ export interface Insight {
   readTime: string;
   excerpt: string;
   image: string;
-  medicalTopic?: string; // e.g. 'hydrocephalus', 'research', 'head-injury-trauma'
-  content: string;
-  relatedResearch?: string;
-  relatedResearchSlug?: string;
+  medicalTopic: string;
+  sections: InsightSection;
 }
+
+export const categories = ['All Articles', 'Brain Health', 'Spine Care', 'Neurotrauma'];
 
 export const insights: Insight[] = [
   {
     slug: 'understanding-hydrocephalus',
     title: 'Understanding Hydrocephalus: When Should You Seek Specialist Care?',
     category: 'Brain Health',
-    date: '08 AUG 2026',
-    readTime: '6 min read',
-    excerpt: 'What every family needs to know about hydrocephalus — from early warning signs to modern treatment options and long-term care management.',
-    image: '/images/medical/hydrocephalus.png',
+    date: '10 AUG 2026',
+    readTime: '5 min read',
+    excerpt: 'What families need to know about hydrocephalus in infants and adults — recognizing symptoms early, modern endoscopic options, and what happens during a consultation.',
+    image: '/images/services/hydrocephalus_patient.jpg',
     medicalTopic: 'hydrocephalus',
-    relatedResearch: 'Hydrocephalus outcomes in paediatric patients in East Africa',
-    relatedResearchSlug: '/research',
-    content: `
-      <h2>What is Hydrocephalus?</h2>
-      <p>Hydrocephalus is a complex neurological condition characterised by an abnormal buildup of cerebrospinal fluid (CSF) deep within the brain's cavities, known as ventricles. This excess fluid widens the ventricles, placing potentially dangerous pressure on the brain's delicate tissues.</p>
-      
-      <p>While often associated with infants, hydrocephalus can affect individuals at any stage of life, from congenital presentations to normal pressure hydrocephalus (NPH) commonly seen in the elderly.</p>
-      
-      <div class="key-callout">
-        <div class="key-callout-header">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          KEY INFORMATION
-        </div>
-        <p>Cerebrospinal fluid normally flows through the ventricles and bathes the brain and spinal column. Hydrocephalus occurs when this delicate balance of production and absorption is disrupted.</p>
-      </div>
-      
-      <h2 id="ventricular-system">The Ventricular System</h2>
-      <p>To understand the condition, one must understand the ventricular system. The brain contains four main ventricles connected by narrow pathways. CSF is produced within these ventricles, flows through the brain and spinal cord, and is eventually absorbed into the bloodstream.</p>
-      <p>When an obstruction occurs—whether from a tumour, hemorrhage, infection, or congenital malformation—the fluid accumulates, causing the ventricles to dilate and compress surrounding neural networks.</p>
-
-      <h2>Causes</h2>
-      <p>The aetiology of hydrocephalus is diverse. In paediatric cases, it is frequently congenital (present at birth) or caused by events shortly after birth, such as intraventricular hemorrhage in premature infants. In adults, it can result from head trauma, stroke, brain tumours, or central nervous system infections like meningitis.</p>
-
-      <h2>Symptoms</h2>
-      <p>Symptoms vary drastically by age group. In infants, the most obvious sign is an unusually large head size or rapid increase in head circumference, accompanied by a bulging soft spot (fontanel). Older children and adults typically present with severe headaches, nausea, blurred vision, balance issues, and cognitive decline.</p>
-
-      <h2>Diagnosis</h2>
-      <p>Accurate diagnosis relies on advanced neuroimaging. Magnetic Resonance Imaging (MRI) is the gold standard, providing detailed cross-sectional views of the brain to identify ventricular enlargement and pinpoint potential blockages. Cranial ultrasounds are also highly effective for infants whose fontanels remain open.</p>
-
-      <h2>Treatment</h2>
-      <p>Hydrocephalus almost exclusively requires surgical intervention. The traditional and most common treatment is the surgical insertion of a shunt—a flexible tube that diverts excess CSF from the brain to another part of the body, usually the abdomen, where it can be absorbed.</p>
-      <p>Increasingly, we are utilising Endoscopic Third Ventriculostomy (ETV), a minimally invasive procedure where a small hole is made in the floor of the third ventricle, allowing fluid to bypass the obstruction entirely.</p>
-      
-      <blockquote>
-        "The shift towards endoscopic management is not just a surgical preference—it is a critical strategy to ensure sustainable, long-term neurological health."
-      </blockquote>
-
-      <h2>When to Seek Specialist Care</h2>
-      <p>Hydrocephalus is a progressive condition. If you notice persistent severe headaches, unexplained cognitive decline, or gait disturbances in adults, or rapid head growth and excessive irritability in infants, it is imperative to seek neurosurgical consultation immediately.</p>
-    `
-  },
-  {
-    slug: 'breaking-glass-ceiling',
-    title: 'Breaking the Glass Ceiling in African Neurosurgery',
-    category: 'Neurosurgery',
-    date: '15 JUL 2026',
-    readTime: '8 min read',
-    excerpt: 'Reflections on becoming Kenya\'s first female neurosurgeon and why mentorship is the key to lasting change.',
-    image: '/images/dr-sylvia-amee-speaker-podium.jpg',
-    medicalTopic: 'research',
-    relatedResearch: 'Faculty perspectives on mentorship and culture in Sub-Saharan Africa',
-    relatedResearchSlug: '/research',
-    content: `
-      <h2>The Global Workforce Gap</h2>
-      <p>Neurosurgery remains one of the most demanding and historically male-dominated specialties in medicine. While female enrollment in medical schools across East Africa continues to grow, a steep attrition occurs during residency and specialized surgical fellowship training. Structural barriers, limited institutional mentorship, and inflexible training culture are key drivers of this disparity.</p>
-      
-      <h2>Redefining Surgical Culture & Active Sponsorship</h2>
-      <p>Creating sustainable pathways for women in neurosurgery requires moving beyond passive mentorship toward intentional sponsorship. Sponsors actively advocate for candidates in crucial appointment committees, open doors to complex surgical rotations, and facilitate international research collaborations.</p>
-      
-      <div class="key-callout">
-        <div class="key-callout-header">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          KEY RESEARCH TAKEAWAY
-        </div>
-        <p>In our qualitative study with Maastricht University presented at AMEE Vienna, faculty across Sub-Saharan Africa emphasized that mentorship must be tailored to local institutional realities, resource constraints, and cultural contexts.</p>
-      </div>
-      
-      <h2>Diverse Teams Drive Superior Surgical Outcomes</h2>
-      <p>Diversity in the operating theatre is not merely an equity metric—it directly enhances clinical outcomes. Multidisciplinary surgical teams with diverse perspectives demonstrate higher situational awareness, enhanced patient communication, and greater diagnostic precision.</p>
-    `
+    sections: {
+      patientQuestion: 'What causes fluid to accumulate in the brain, and how do we know if our child or elderly relative needs to see a specialist?',
+      whatYouShouldKnow: 'The brain and spinal cord are cushioned by cerebrospinal fluid (CSF), which continuously circulates through interconnected cavities called ventricles. In a healthy state, CSF is produced and absorbed into the bloodstream at an equal rate. Hydrocephalus occurs when this natural circulation or absorption is disrupted, causing excess fluid to build up and exert pressure on surrounding neural tissue. In infants, it is often congenital or arises after premature birth or infection. In older adults, it can present as Normal Pressure Hydrocephalus (NPH), where fluid accumulates gradually over time.',
+      whenToSeekAttention: [
+        'Infants: Unusually rapid increase in head circumference, a tense or bulging soft spot (fontanel), prominent scalp veins, or downward deviation of the eyes ("sunset eyes").',
+        'Children & Young Adults: Persistent morning headaches with nausea or vomiting, double vision, unexplained balance difficulty, or sudden lethargy.',
+        'Older Adults: The classic triad of progressive walking difficulty (shuffling or "magnetic" gait), gradual cognitive slowing or memory loss, and urinary urgency or incontinence.',
+      ],
+      whatHappensNext: 'Your consultation with Dr. Sylvia Shitsama begins with a comprehensive neurological examination and a careful review of cranial imaging (ultrasound for infants, or MRI/CT for adults). If intervention is indicated, surgical options include a Ventriculoperitoneal (VP) Shunt—a thin, flexible tube that diverts excess fluid to the abdomen—or Endoscopic Third Ventriculostomy (ETV), a minimally invasive procedure that creates a natural bypass without implanting permanent hardware when patient anatomy allows.',
+      keyTakeaway: 'Hydrocephalus is a treatable condition. Timely neurosurgical evaluation preserves cognitive and developmental function, and modern microsurgical techniques offer safe, long-term management.',
+    },
   },
   {
     slug: 'head-injury-warning-signs',
-    title: 'When to See a Neurosurgeon After a Head Injury',
-    category: 'Patient Education',
-    date: '22 JUN 2026',
+    title: 'Head Injury & Concussion: When to See a Neurosurgeon After Trauma',
+    category: 'Neurotrauma',
+    date: '15 JUL 2026',
+    readTime: '4 min read',
+    excerpt: 'Practical guidance on recognizing red-flag symptoms following falls, motor vehicle accidents, or head trauma, and understanding urgent evaluation pathways.',
+    image: '/images/services/head_injury_trauma_1.jpg',
+    medicalTopic: 'brain-trauma',
+    sections: {
+      patientQuestion: 'After a blow to the head from an accident or fall, how can I tell if an injury requires urgent neurosurgical assessment?',
+      whatYouShouldKnow: 'A head injury can range from a mild concussion (a temporary disruption in brain function) to an intracranial hemorrhage (bleeding inside the skull that places critical pressure on brain tissue). Because the skull is a rigid bone box, any internal bleeding or brain swelling can rapidly increase pressure. While a mild bump with a brief headache is common, certain "red flag" symptoms indicate that deeper intracranial trauma may have occurred and must be evaluated without delay.',
+      whenToSeekAttention: [
+        'Any loss of consciousness, even if brief (seconds to minutes).',
+        'Repeated episodes of vomiting or persistent nausea following the impact.',
+        'Worsening headache that does not respond to ordinary pain relief.',
+        'Unequal pupil size, double vision, or slurred speech.',
+        'Weakness, numbness, or clumsiness in any arm or leg.',
+        'Clear fluid or blood draining from the nose or ear.',
+        'Any seizure, convulsion, or unusual confusion and behavioral change.',
+      ],
+      whatHappensNext: 'When you arrive at an emergency facility or clinic for evaluation, a non-contrast Brain CT scan is the standard diagnostic imaging modality to rapidly rule out fractures, epidural hematomas, or subdural bleeding. If imaging is clear, careful clinical observation and cognitive rest are advised. If bleeding or mass effect is identified, Dr. Shitsama will assess whether urgent surgical evacuation (craniectomy/craniotomy) or intensive monitoring is necessary.',
+      keyTakeaway: 'Never ignore a head injury accompanied by loss of consciousness, repeated vomiting, or progressive confusion. Immediate CT neuroimaging is the definitive step to ensure patient safety.',
+    },
+  },
+  {
+    slug: 'persistent-spine-pain',
+    title: 'Persistent Back & Neck Pain: Understanding Spinal Conditions & When Surgery Is Needed',
+    category: 'Spine Care',
+    date: '28 JUN 2026',
     readTime: '5 min read',
-    excerpt: 'Not every bump on the head requires surgery — but knowing the critical warning signs can save a life.',
-    image: '/images/medical/head_injury.png',
-    medicalTopic: 'head-injury-trauma',
-    relatedResearch: 'Traumatic brain injury outcomes at a national referral hospital',
-    relatedResearchSlug: '/research',
-    content: `
-      <h2>The Acute Phase</h2>
-      <p>Traumatic Brain Injury (TBI) is fundamentally a time-critical surgical emergency. The initial focus is on preventing secondary brain injury by managing intracranial pressure, ensuring adequate cerebral perfusion, and performing decompressive craniectomies or hematoma evacuations when indicated.</p>
-      
-      <p>However, surviving the acute phase is only the beginning of a complex, highly individualised journey.</p>
-      
-      <div class="key-callout">
-        <div class="key-callout-header">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          CRITICAL RED FLAGS
-        </div>
-        <p>Immediate medical attention is required if a head injury is followed by loss of consciousness, persistent vomiting, escalating severe headaches, pupil asymmetry, or clear fluid leaking from the nose or ears.</p>
-      </div>
-
-      <h2>The Role of Neuroplasticity</h2>
-      <p>The human brain possesses a remarkable capacity to rewire itself—a process known as neuroplasticity. Following a TBI, undamaged neural networks attempt to compensate for injured areas. This is why aggressive, early rehabilitation is as critical as the initial neurosurgical intervention.</p>
-      
-      <blockquote>
-        "Recovery from a severe TBI is measured in months and years, not days. Setting realistic expectations while fostering hope is a delicate but essential clinical skill."
-      </blockquote>
-    `
-  }
-];
-
-export const categories = [
-  'All',
-  'Brain Health',
-  'Spine',
-  'Neurosurgery',
-  'Research',
-  'Patient Education'
+    excerpt: 'Demystifying back and neck pain: when conservative therapy is appropriate, how to identify genuine nerve compression, and what neurosurgical consultation involves.',
+    image: '/images/services/spine_surgery.jpg',
+    medicalTopic: 'spine',
+    sections: {
+      patientQuestion: 'I have severe back or neck pain that radiates into my leg or arm. How do I know if I need spine surgery or if it will resolve with therapy?',
+      whatYouShouldKnow: 'The vast majority of back and neck pain—over 90%—stems from muscular strain or minor degenerative changes that resolve with conservative measures like targeted physiotherapy, ergonomic adjustments, and short-term medication. However, when an intervertebral disc herniates or the spinal canal narrows (spinal stenosis), spinal nerves can become physically compressed. This produces radiculopathy—sharp, shooting pain, numbness, or tingling that travels down the leg (sciatica) or into the arm and hand.',
+      whenToSeekAttention: [
+        'Progressive muscle weakness in the leg, foot (e.g. foot drop or stumbling), or hand grip.',
+        'Severe shooting pain radiating past the knee or elbow that prevents sleep or normal walking.',
+        'Numbness in the "saddle area" (groin, buttocks) or sudden difficulty controlling bowel or bladder function (this is Cauda Equina Syndrome and constitutes a medical emergency).',
+        'Pain that persists relentlessly for more than 6 weeks despite structured physical therapy.',
+      ],
+      whatHappensNext: 'Dr. Shitsama evaluates your neurological reflexes, sensation, and muscle strength alongside a dedicated high-resolution Spinal MRI. Surgery is never the first resort unless neurological emergencies are present. If conservative therapy has failed and MRI confirms nerve root compression, minimally invasive microdiscectomy or targeted decompression can remove the compressing fragment, relieving nerve tension with minimal tissue disruption.',
+      keyTakeaway: 'Spine surgery is reserved for precise mechanical nerve compression with objective neurological signs. Thorough evaluation and accurate imaging ensure you receive the right care at the right time.',
+    },
+  },
 ];

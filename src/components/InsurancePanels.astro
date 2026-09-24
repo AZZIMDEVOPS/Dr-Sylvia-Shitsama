@@ -1,0 +1,171 @@
+---
+// InsurancePanels.astro
+// Clean, minimalist section showcasing accepted insurance providers
+// Focuses cleanly on the official provider logos and their clinical coverage scope
+
+const insuranceProviders = [
+  {
+    name: 'CIC Insurance Group',
+    logo: '/images/insurance/cic-insurance.png',
+    coverage: 'Inpatient & Outpatient Neurosurgical Coverage',
+  },
+  {
+    name: 'Bupa International',
+    logo: '/images/insurance/bupa.png',
+    coverage: 'Global Health & Specialist Surgical Pre-Authorisation',
+  },
+  {
+    name: 'Heritage Insurance',
+    logo: '/images/insurance/heritage-insurance.png',
+    coverage: 'Direct Billing & Specialist Consultation Cover',
+  },
+];
+---
+
+<section 
+  class="py-16 sm:py-24 bg-slate-100/80 dark:bg-midnight-light border-y border-slate-200 dark:border-ivory/5 relative overflow-hidden transition-colors duration-300" 
+  id="insurance-panels"
+>
+  <!-- Ambient Background Glows -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-copper/5 rounded-full blur-[100px] transition-transform duration-1000"></div>
+    <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-gold/5 rounded-full blur-[100px] transition-transform duration-1000"></div>
+  </div>
+
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header with Animated Rules -->
+    <div class="insurance-header text-center max-w-3xl mx-auto mb-14 opacity-0 translate-y-6 transition-all duration-700 ease-out">
+      <div class="flex items-center justify-center gap-3 mb-3">
+        <span class="insurance-rule w-0 h-[2px] bg-copper transition-all duration-700 delay-200"></span>
+        <span class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs">Patient Coverage</span>
+        <span class="insurance-rule w-0 h-[2px] bg-copper transition-all duration-700 delay-200"></span>
+      </div>
+      
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-[2.65rem] font-semibold text-slate-900 dark:text-ivory tracking-tight mb-4">
+        Accepted Insurance Panels
+      </h2>
+      
+      <p class="text-slate-600 dark:text-sage text-base sm:text-lg font-light leading-relaxed">
+        Sage Brain &amp; Spine Clinic works with leading insurance underwriters to facilitate seamless pre-authorisation and direct clinical billing for consultations and surgical care.
+      </p>
+    </div>
+
+    <!-- Provider Cards Grid: Simple, Clean (Logo + Coverage Scope Below) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto items-stretch">
+      {insuranceProviders.map((provider, index) => (
+        <div 
+          class="insurance-card bg-white dark:bg-surface/60 border border-slate-200 dark:border-border-subtle hover:border-copper/50 dark:hover:border-copper/50 rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-between text-center transition-all duration-500 hover:-translate-y-2 shadow-sm hover:shadow-xl dark:shadow-md dark:hover:shadow-2xl group backdrop-blur-sm opacity-0 translate-y-10 scale-95 relative overflow-hidden"
+          style={`transition-delay: ${index * 140}ms;`}
+          data-card-index={index}
+        >
+          <!-- Top Interactive Gradient Accent Beam on hover -->
+          <div class="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-copper to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+          <!-- Logo Container with crisp white backing to ensure 100% brand fidelity -->
+          <div class="w-full bg-white rounded-xl p-5 flex items-center justify-center h-28 mb-6 shadow-sm border border-slate-100 group-hover:shadow-md group-hover:border-copper/20 transition-all duration-300">
+            <img 
+              src={provider.logo} 
+              alt={`${provider.name} Logo`}
+              class="max-h-16 max-w-[210px] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-0.5"
+              loading="lazy"
+            />
+          </div>
+          
+          <!-- Coverage Scope Below -->
+          <div class="w-full my-auto">
+            <h3 class="font-display text-lg font-semibold text-slate-900 dark:text-ivory mb-2 group-hover:text-copper transition-colors duration-300">
+              {provider.name}
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-sage font-light leading-relaxed">
+              {provider.coverage}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Reassurance / Guidance with Staggered Entrance -->
+    <div class="insurance-footer mt-12 text-center max-w-2xl mx-auto opacity-0 translate-y-6 transition-all duration-700 ease-out delay-500">
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-sage/80 font-light">
+        Have questions regarding coverage or pre-authorisation? Our clinic team will assist you with verifying insurance details prior to your consultation.
+      </p>
+      <div class="mt-4">
+        <a 
+          href="https://wa.me/254110090116?text=Hello%2C%20I%20have%20an%20insurance%20inquiry%20regarding%20a%20consultation%20with%20Dr.%20Sylvia%20Shitsama." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-2 text-xs font-mono text-copper hover:text-copper-dark dark:hover:text-gold uppercase tracking-wider transition-colors font-semibold group"
+        >
+          <span>Inquire About Insurance Pre-Authorisation</span>
+          <span class="group-hover:translate-x-1.5 transition-transform duration-300">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Entrance initial & visible states */
+  .insurance-header.is-revealed,
+  .insurance-footer.is-revealed {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .insurance-header.is-revealed .insurance-rule {
+    width: 2rem !important;
+  }
+
+  .insurance-card.is-revealed {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* Accessibility fallback */
+  @media (prefers-reduced-motion: reduce) {
+    .insurance-header,
+    .insurance-card,
+    .insurance-footer {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .insurance-rule {
+      width: 2rem !important;
+    }
+  }
+</style>
+
+<script>
+  function initInsuranceAnimations() {
+    const section = document.getElementById('insurance-panels');
+    const header = section?.querySelector('.insurance-header');
+    const cards = section?.querySelectorAll('.insurance-card');
+    const footer = section?.querySelector('.insurance-footer');
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (header) header.classList.add('is-revealed');
+          if (cards) {
+            cards.forEach(card => card.classList.add('is-revealed'));
+          }
+          if (footer) footer.classList.add('is-revealed');
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+
+    observer.observe(section);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInsuranceAnimations);
+  } else {
+    initInsuranceAnimations();
+  }
+</script>

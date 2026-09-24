@@ -1,666 +1,231 @@
 ---
 // SpecializedServices.astro
-// Clean, authoritative 3-column speciality cards + All Uploaded Clinical & Surgical Photos Showcase
-// Based on drfarajalkizim.com design structure, featuring authentic photos and patient privacy
+// Core Clinical Practice Areas for Dr. Sylvia Shitsama
+// Structured for seamless future insertion of doctor-provided clinical copy and neuroimaging scans.
 
-interface Speciality {
+interface ClinicalSpecialty {
   id: string;
   slug: string;
   title: string;
   category: string;
-  description: string;
-  primaryImage: string;
-  gallery: { src: string; alt: string; label: string }[];
+  summary: string;
+  clinicalScope: string[];
+  image: string;
+  imageAlt: string;
   href: string;
 }
 
-const specialities: Speciality[] = [
+const specialties: ClinicalSpecialty[] = [
   {
-    id: 'brain-tumours',
-    slug: 'brain-tumours',
-    title: 'Brain Tumours & Cranial Surgery',
-    category: 'Cranial Surgery',
-    description: 'Advanced microsurgical management of benign and malignant brain tumours, skull base lesions, meningiomas, and vascular conditions.',
-    primaryImage: '/images/dr-sylvia-neurosurgery-theatre.jpg',
-    gallery: [
-      { src: '/images/dr-sylvia-neurosurgery-theatre.jpg', alt: 'Dr. Sylvia Shitsama performing cranial surgery in theatre', label: 'Dr. Sylvia Operating' },
-      { src: '/images/services/micro_instrument.jpg', alt: 'Precision microsurgical instruments', label: 'Microsurgical Tools' },
-      { src: '/images/services/delicate_surgery.jpg', alt: 'Surgical team during complex procedure', label: 'Theatre Team' }
+    id: 'brain-trauma',
+    slug: 'brain-trauma',
+    title: 'Brain Trauma',
+    category: 'Neurotrauma & Emergency Care',
+    summary: 'Clinical assessment, surgical intervention, and post-traumatic management for traumatic brain injuries, skull fractures, and intracranial hematomas.',
+    clinicalScope: [
+      'Traumatic Brain Injury (TBI)',
+      'Subdural & Epidural Hematomas',
+      'Depressed Skull Fractures',
+      'Cranial Reconstruction & Cranioplasty',
     ],
-    href: '/expertise#brain-tumours',
+    image: '/images/services/head_injury_trauma_1.jpg',
+    imageAlt: 'Clinical management of acute head injury and cranial trauma',
+    href: '/expertise#brain-trauma',
   },
   {
-    id: 'spine-surgery',
-    slug: 'spinal-conditions',
-    title: 'Spine Surgery & Spinal Conditions',
-    category: 'Spine Care',
-    description: 'Specialist surgical and conservative treatment for degenerative disc disease, spinal stenosis, disc herniations, and spinal stabilization.',
-    primaryImage: '/images/services/spine_surgery.jpg',
-    gallery: [
-      { src: '/images/services/spine_surgery.jpg', alt: 'Spine surgery in operating theatre', label: 'Spine Surgery' },
-      { src: '/images/services/delicate_surgery.jpg', alt: 'Intraoperative team coordination', label: 'Intraoperative' },
-      { src: '/images/services/micro_instrument.jpg', alt: 'Micro-instruments for nerve root decompression', label: 'Micro Instruments' }
+    id: 'brain-tumors',
+    slug: 'brain-tumors',
+    title: 'Brain Tumors',
+    category: 'Cranial Surgery & Neuro-Oncology',
+    summary: 'Microsurgical resection and multidisciplinary management of benign and malignant brain tumours, meningiomas, and skull base lesions.',
+    clinicalScope: [
+      'Gliomas & Glioblastomas',
+      'Meningiomas & Skull Base Tumours',
+      'Metastatic Brain Lesions',
+      'Pituitary & Intraventricular Lesions',
     ],
-    href: '/expertise#spinal-conditions',
+    image: '/images/dr-sylvia-neurosurgery-theatre.jpg',
+    imageAlt: 'Dr. Sylvia Shitsama performing microsurgical cranial surgery in theatre',
+    href: '/expertise#brain-tumors',
+  },
+  {
+    id: 'spine',
+    slug: 'spine',
+    title: 'Spine',
+    category: 'Spinal Surgery & Reconstruction',
+    summary: 'Comprehensive evaluation, conservative therapy coordination, and specialist surgical decompression and stabilization for spinal conditions.',
+    clinicalScope: [
+      'Cervical & Lumbar Disc Herniation',
+      'Spinal Stenosis & Neural Compression',
+      'Degenerative Disc Disease & Spondylolisthesis',
+      'Spinal Trauma & Vertebral Stabilization',
+    ],
+    image: '/images/services/spine_surgery.jpg',
+    imageAlt: 'Specialist spinal decompression and surgical stabilisation',
+    href: '/expertise#spine',
   },
   {
     id: 'hydrocephalus',
     slug: 'hydrocephalus',
-    title: 'Hydrocephalus Management',
-    category: 'CSF Disorders',
-    description: 'Comprehensive evaluation and surgical care including VP shunt placement and Endoscopic Third Ventriculostomy (ETV) for children and adults.',
-    primaryImage: '/images/services/hydrocephalus_patient.jpg',
-    gallery: [
-      { src: '/images/services/hydrocephalus_patient.jpg', alt: 'Hydrocephalus cranial examination and maternal care', label: 'Clinical Assessment' }
+    title: 'Hydrocephalus',
+    category: 'CSF Circulation Disorders',
+    summary: 'Evaluation and surgical diversion of cerebrospinal fluid (CSF) in pediatric and adult patients, emphasizing evidence-based, long-term management.',
+    clinicalScope: [
+      'Ventriculoperitoneal (VP) Shunt Placement',
+      'Endoscopic Third Ventriculostomy (ETV)',
+      'Normal Pressure Hydrocephalus (NPH)',
+      'Congenital & Acquired CSF Blockages',
     ],
+    image: '/images/services/hydrocephalus_patient.jpg',
+    imageAlt: 'Clinical examination and care for hydrocephalus',
     href: '/expertise#hydrocephalus',
   },
   {
-    id: 'head-injury',
-    slug: 'head-injury-trauma',
-    title: 'Head Injury & Neurotrauma',
-    category: 'Emergency Trauma',
-    description: 'Emergency and elective intervention for traumatic brain injury, cranial fractures, intracranial hematomas, and post-traumatic reconstruction.',
-    primaryImage: '/images/services/head_injury_trauma_1.jpg',
-    gallery: [
-      { src: '/images/services/head_injury_trauma_1.jpg', alt: 'Workplace fall and hard hat accident trauma', label: 'Trauma Accident' },
-      { src: '/images/services/head_injury_trauma_2.jpg', alt: 'Patient experiencing severe post-concussive headache', label: 'Headache & Concussion' },
-      { src: '/images/services/head_injury_trauma_3.jpg', alt: 'Cranial and cervical spine trauma examination', label: 'Neck & Head Injury' },
-      { src: '/images/services/head_injury_trauma_4.jpg', alt: 'Focal head injury impact pain assessment', label: 'Focal Impact' }
+    id: 'congenital-conditions',
+    slug: 'congenital-conditions',
+    title: 'Congenital Conditions',
+    category: 'Developmental Anomalies',
+    summary: 'Diagnosis and delicate surgical repair of congenital neural tube and cranio-vertebral junction anomalies across infancy through adulthood.',
+    clinicalScope: [
+      'Spina Bifida & Myelomeningocele',
+      'Encephaloceles & Cranial Defects',
+      'Tethered Cord Syndrome',
+      'Chiari Malformations',
     ],
-    href: '/expertise#head-injury-trauma',
+    image: '/images/services/delicate_surgery.jpg',
+    imageAlt: 'Precision microsurgery for congenital neurological malformations',
+    href: '/expertise#congenital-conditions',
   },
   {
-    id: 'paediatric-neurosurgery',
-    slug: 'spina-bifida',
-    title: 'Paediatric Neurosurgery',
-    category: 'Congenital & Paediatric',
-    description: 'Compassionate care for neural tube defects including spina bifida, tethered cord syndrome, hydrocephalus, and congenital malformations.',
-    primaryImage: '/images/services/paediatric_neurosurgery_1.jpg',
-    gallery: [
-      { src: '/images/services/paediatric_neurosurgery_1.jpg', alt: 'Doctor and child with teddy bear in consultation room', label: 'Consultation' },
-      { src: '/images/services/paediatric_neurosurgery_2.jpg', alt: 'Child receiving clinical examination in hospital bed', label: 'Inpatient Care' },
-      { src: '/images/services/paediatric_neurosurgery_3.jpg', alt: 'Recovering paediatric patient with family and clinical team', label: 'Family Recovery' },
-      { src: '/images/services/paediatric_neurosurgery_4.jpg', alt: 'Infant neurological checkup with paediatric team', label: 'Infant Assessment' },
-      { src: '/images/services/paediatric_neurosurgery_5.jpg', alt: 'Infant cardiopulmonary examination with mother present', label: 'Maternal Checkup' }
+    id: 'pediatric-neurosurgery',
+    slug: 'pediatric-neurosurgery',
+    title: 'Pediatric Neurosurgery',
+    category: 'Paediatric Specialist Care',
+    summary: 'Dedicated neurosurgical care tailored specifically to infants, children, and adolescents with compassionate patient-and-family communication.',
+    clinicalScope: [
+      'Infant Head Shape & Craniosynostosis',
+      'Pediatric Hydrocephalus Management',
+      'Neonatal Neural Tube Defect Repair',
+      'Pediatric Cranial & Spinal Trauma',
     ],
-    href: '/expertise#spina-bifida',
+    image: '/images/services/paediatric_neurosurgery_1.jpg',
+    imageAlt: 'Paediatric neurosurgical consultation and clinical assessment',
+    href: '/expertise#pediatric-neurosurgery',
   },
-  {
-    id: 'neuro-oncology',
-    slug: 'neurological-oncology',
-    title: 'Neurological Oncology',
-    category: 'Oncology',
-    description: 'Multidisciplinary neuro-oncological management of gliomas, metastases, and tumours of the brain and spinal cord from diagnosis through surgical excision.',
-    primaryImage: '/images/services/delicate_surgery.jpg',
-    gallery: [
-      { src: '/images/services/delicate_surgery.jpg', alt: 'Operating theatre team performing tumour resection', label: 'Surgical Team' },
-      { src: '/images/services/micro_instrument.jpg', alt: 'High-precision micro-dissectors and bipolar forceps', label: 'Micro Tools' },
-      { src: '/images/dr-sylvia-neurosurgery-theatre.jpg', alt: 'Dr. Sylvia Shitsama in operating theatre', label: 'Lead Surgeon' }
-    ],
-    href: '/expertise#neurological-oncology',
-  },
-];
-
-// Complete list of ALL 13 uploaded photos for the visual gallery
-interface PhotoShowcaseItem {
-  id: string;
-  src: string;
-  alt: string;
-  title: string;
-  category: 'trauma' | 'paediatric' | 'surgery' | 'hydrocephalus';
-  categoryLabel: string;
-  badge: string;
-  description: string;
-}
-
-const allUploadedPhotos: PhotoShowcaseItem[] = [
-  // 1. Hydrocephalus (media_1789208507709.jpg)
-  {
-    id: 'photo-hydro-1',
-    src: '/images/services/hydrocephalus_patient.jpg',
-    alt: 'Hydrocephalus infant with mother, privacy blurred',
-    title: 'Paediatric Hydrocephalus & Compassionate Family Support',
-    category: 'hydrocephalus',
-    categoryLabel: 'Hydrocephalus Care',
-    badge: 'CSF Disorders',
-    description: 'Cranial circumference evaluation, VP shunt management, and Endoscopic Third Ventriculostomy (ETV) care.'
-  },
-  // 2. Head Injury & Neurotrauma (media_1789209813686.jpg)
-  {
-    id: 'photo-trauma-1',
-    src: '/images/services/head_injury_trauma_1.jpg',
-    alt: 'Workplace fall with hard hat on ground',
-    title: 'Workplace Fall & Emergency Head Injury Assessment',
-    category: 'trauma',
-    categoryLabel: 'Head Injury & Trauma',
-    badge: 'Occupational Trauma',
-    description: 'Rapid triage and cranial stabilization following high-impact falls and occupational accidents.'
-  },
-  // 3. Head Injury & Neurotrauma (media_1789209813591.jpg)
-  {
-    id: 'photo-trauma-2',
-    src: '/images/services/head_injury_trauma_2.jpg',
-    alt: 'Patient suffering from severe acute headache and concussion symptoms',
-    title: 'Acute Concussion & Post-Traumatic Headache Evaluation',
-    category: 'trauma',
-    categoryLabel: 'Head Injury & Trauma',
-    badge: 'Concussion Protocol',
-    description: 'Specialist clinical assessment of intracranial pressure, post-concussive syndrome, and cognitive rest.'
-  },
-  // 4. Head Injury & Neurotrauma (media_1789209813704.jpg)
-  {
-    id: 'photo-trauma-3',
-    src: '/images/services/head_injury_trauma_3.jpg',
-    alt: 'Patient holding head and neck following blunt trauma',
-    title: 'Combined Cranial & Cervical Spine Trauma Care',
-    category: 'trauma',
-    categoryLabel: 'Head Injury & Trauma',
-    badge: 'Cervical & Head Trauma',
-    description: 'Holistic evaluation addressing both cranial contusion and cervical spine whiplash mechanics.'
-  },
-  // 5. Head Injury & Neurotrauma (media_1789209813792.jpg)
-  {
-    id: 'photo-trauma-4',
-    src: '/images/services/head_injury_trauma_4.jpg',
-    alt: 'Patient with focal head impact pain',
-    title: 'Focal Cranial Impact & Contusion Management',
-    category: 'trauma',
-    categoryLabel: 'Head Injury & Trauma',
-    badge: 'Emergency Neurotrauma',
-    description: 'Emergency decompression, hematoma evacuation, and cranioplasty following traumatic brain injury.'
-  },
-  // 6. Paediatric Neurosurgery (media_1789210196175.jpg)
-  {
-    id: 'photo-paed-1',
-    src: '/images/services/paediatric_neurosurgery_1.jpg',
-    alt: 'Doctor consulting with young girl holding teddy bear, privacy blurred',
-    title: 'Compassionate Consultation with Young Patients',
-    category: 'paediatric',
-    categoryLabel: 'Paediatric Neurosurgery',
-    badge: 'Outpatient Clinic',
-    description: 'Child-friendly clinical examination ensuring children feel calm, respected, and safe throughout.'
-  },
-  // 7. Paediatric Neurosurgery (media_1789210196136.jpg)
-  {
-    id: 'photo-paed-2',
-    src: '/images/services/paediatric_neurosurgery_2.jpg',
-    alt: 'Child in hospital bed being examined, privacy blurred',
-    title: 'Dedicated Paediatric Inpatient Clinical Care',
-    category: 'paediatric',
-    categoryLabel: 'Paediatric Neurosurgery',
-    badge: 'Inpatient Monitoring',
-    description: 'Gentle cranial assessment and neurological monitoring in hospital recovery settings.'
-  },
-  // 8. Paediatric Neurosurgery (media_1789210196218.jpg)
-  {
-    id: 'photo-paed-3',
-    src: '/images/services/paediatric_neurosurgery_3.jpg',
-    alt: 'Child recovering in bed with family and healthcare team, privacy blurred',
-    title: 'Family-Centred Post-Surgical Recovery',
-    category: 'paediatric',
-    categoryLabel: 'Paediatric Neurosurgery',
-    badge: 'Post-Op Ward',
-    description: 'Supporting both child and guardians through the recovery journey with empathy and clinical excellence.'
-  },
-  // 9. Paediatric Neurosurgery (media_1789210196413.jpg)
-  {
-    id: 'photo-paed-4',
-    src: '/images/services/paediatric_neurosurgery_4.jpg',
-    alt: 'Infant neurological exam by paediatric clinical team, privacy blurred',
-    title: 'Infant Neurological & Fontanelle Examination',
-    category: 'paediatric',
-    categoryLabel: 'Paediatric Neurosurgery',
-    badge: 'Neonatal & Infant Care',
-    description: 'Detailed assessment of cranial shape, sutures, and developmental reflexes in infants.'
-  },
-  // 10. Paediatric Neurosurgery (media_1789210196428.jpg)
-  {
-    id: 'photo-paed-5',
-    src: '/images/services/paediatric_neurosurgery_5.jpg',
-    alt: 'Infant checkup with mother and doctor, privacy blurred',
-    title: 'Maternal-Assisted Infant Health Checkup',
-    category: 'paediatric',
-    categoryLabel: 'Paediatric Neurosurgery',
-    badge: 'Congenital Screening',
-    description: 'Screening for neural tube defects, spina bifida, and spine development alongside attentive parents.'
-  },
-  // 11. Surgery & Theatre (media_1789208004157.jpg)
-  {
-    id: 'photo-surg-1',
-    src: '/images/services/spine_surgery.jpg',
-    alt: 'Operating theatre spine surgery setup',
-    title: 'Intraoperative Spine Decompression & Stabilization',
-    category: 'surgery',
-    categoryLabel: 'Spine & Cranial Surgery',
-    badge: 'Spine Theatre',
-    description: 'Microsurgical decompression and spinal stabilization performed under sterile hospital theatre conditions.'
-  },
-  // 12. Surgery & Theatre (media_1789208003946.jpg)
-  {
-    id: 'photo-surg-2',
-    src: '/images/services/delicate_surgery.jpg',
-    alt: 'Surgical team in operating theatre',
-    title: 'Multidisciplinary Neurosurgical Theatre Team',
-    category: 'surgery',
-    categoryLabel: 'Spine & Cranial Surgery',
-    badge: 'Surgical Theatre',
-    description: 'Collaborative precision in theatre for complex cranial tumour resections and delicate neurovascular operations.'
-  },
-  // 13. Surgery & Theatre (media_1789208004233.jpg)
-  {
-    id: 'photo-surg-3',
-    src: '/images/services/micro_instrument.jpg',
-    alt: 'Precision neurosurgical micro instruments',
-    title: 'Precision Microsurgical Instrumentation',
-    category: 'surgery',
-    categoryLabel: 'Spine & Cranial Surgery',
-    badge: 'Microsurgery Tools',
-    description: 'Specialized micro-instruments enabling millimeter-precise neurosurgical dissection while preserving adjacent neural tissue.'
-  },
-  // 14. Dr. Sylvia Shitsama Operating Theatre
-  {
-    id: 'photo-surg-4',
-    src: '/images/dr-sylvia-neurosurgery-theatre.jpg',
-    alt: 'Dr. Sylvia Shitsama operating in hospital theatre',
-    title: 'Dr. Sylvia Shitsama Performing Cranial Surgery',
-    category: 'surgery',
-    categoryLabel: 'Spine & Cranial Surgery',
-    badge: 'Lead Neurosurgeon',
-    description: 'Consultant Neurosurgeon Dr. Sylvia Shitsama operating at Kenyatta National Hospital and Sage Brain & Spine Clinic.'
-  }
 ];
 ---
 
-<section class="py-16 sm:py-24 bg-white transition-colors duration-300" id="specialities">
+<section class="py-16 lg:py-20 bg-slate-50 dark:bg-midnight-light border-y border-slate-200 dark:border-ivory/5 transition-colors duration-300" id="clinical-expertise">
   <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 fade-up">
       <div class="max-w-2xl">
         <div class="flex items-center gap-3 mb-3">
           <span class="w-8 h-[2px] bg-copper"></span>
-          <span class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs">Clinical Services</span>
+          <span class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs">Areas of Practice</span>
         </div>
-        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.1] tracking-tight">
-          Specialities
+        <h2 class="font-display text-4xl sm:text-5xl font-bold text-slate-900 dark:text-ivory tracking-tight">
+          Clinical Expertise
         </h2>
-        <p class="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed font-normal">
-          Specialist care for conditions of the brain, spine, and nervous system — delivered with clinical precision, authentic patient empathy, and modern surgical techniques.
+        <p class="text-slate-600 dark:text-sage text-base sm:text-lg mt-3 font-light leading-relaxed">
+          Specialist neurosurgical care delivered with surgical precision, deep clinical judgment, and dedicated patient support across Nairobi and East Africa.
         </p>
       </div>
-
-      <div class="shrink-0 flex items-center gap-4">
-        <a 
-          href="#clinical-photo-gallery"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-copper/10 hover:bg-copper/20 text-copper font-medium text-sm transition-colors"
-        >
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-          View Clinical Showcase ({allUploadedPhotos.length})
-        </a>
+      <div>
         <a 
           href="/expertise" 
-          class="inline-flex items-center gap-2 text-slate-800 hover:text-copper transition-colors font-medium border-b border-copper/40 hover:border-copper pb-1 text-sm sm:text-base group"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-copper hover:text-copper-dark dark:hover:text-ivory transition-colors group font-mono uppercase tracking-wider"
         >
-          All conditions & expertise
-          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          View Full Clinical Scope
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
           </svg>
         </a>
       </div>
     </div>
 
-    <!-- 3-Column Specialities Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      {specialities.map((item, index) => (
-        <div 
-          class="speciality-card group flex flex-col bg-white rounded-2xl border border-slate-200/90 hover:border-copper/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
-          data-card-id={item.id}
-        >
-          <!-- Main Image Container with Lightbox Trigger -->
-          <div class="relative w-full aspect-[4/3] rounded-t-xl sm:rounded-xl overflow-hidden bg-slate-100 mb-4">
-            <img
-              id={`card-img-${item.id}`}
-              src={item.primaryImage}
-              alt={item.title}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out cursor-pointer"
+    <!-- 6 Clinical Expertise Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {specialties.map((item) => (
+        <article class="bg-white dark:bg-midnight rounded-2xl overflow-hidden border border-slate-200 dark:border-ivory/10 shadow-sm hover:shadow-xl dark:hover:border-copper/40 transition-all duration-300 flex flex-col group hover:-translate-y-1">
+          
+          <!-- Image Container -->
+          <div class="relative h-56 overflow-hidden bg-slate-900">
+            <img 
+              src={item.image} 
+              alt={item.imageAlt} 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
               loading="lazy"
-              width="600"
-              height="450"
-              onclick={`openPhotoLightbox('${item.primaryImage}', '${item.title.replace(/'/g, "\\'")}')`}
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent pointer-events-none"></div>
             
-            <!-- Category Tag -->
-            <div class="absolute top-3 left-3 pointer-events-none">
-              <span class="inline-block px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-mono font-medium text-slate-900 border border-slate-200/80 shadow-sm">
+            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-white/90 bg-slate-900/70 backdrop-blur-sm px-2.5 py-1 rounded-md border border-white/10">
                 {item.category}
               </span>
             </div>
-
-            <!-- Photo Count Badge if multiple -->
-            {item.gallery.length > 1 && (
-              <div class="absolute top-3 right-3">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-[11px] font-medium text-white shadow-sm">
-                  <svg class="w-3.5 h-3.5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  {item.gallery.length} Photos
-                </span>
-              </div>
-            )}
           </div>
 
-          <!-- Interactive Mini-Thumbnail Switcher if multiple photos -->
-          {item.gallery.length > 1 && (
-            <div class="px-4 mb-3 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-              <span class="text-[11px] font-mono text-slate-400 shrink-0 uppercase tracking-wider">Preview:</span>
-              <div class="flex items-center gap-1.5">
-                {item.gallery.map((photo, pIdx) => (
-                  <button
-                    type="button"
-                    class={`thumb-btn text-xs px-2.5 py-1 rounded-md border text-slate-700 hover:border-copper hover:text-copper transition-all duration-150 flex items-center gap-1.5 ${pIdx === 0 ? 'border-copper bg-copper/10 font-semibold text-copper' : 'border-slate-200 bg-slate-50'}`}
-                    onclick={`switchCardPhoto('${item.id}', '${photo.src}', this)`}
-                    title={photo.label}
-                  >
-                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-                    <span>{photo.label}</span>
-                  </button>
-                ))}
+          <!-- Card Content -->
+          <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-display text-2xl font-bold text-slate-900 dark:text-ivory mb-3 group-hover:text-copper transition-colors">
+                {item.title}
+              </h3>
+              
+              <p class="text-slate-600 dark:text-sage text-sm font-light leading-relaxed mb-6">
+                {item.summary}
+              </p>
+
+              <!-- Clinical Scope Bullet Points -->
+              <div class="border-t border-slate-100 dark:border-ivory/5 pt-4 mb-6">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-sage/60 block mb-2">Scope of Care</span>
+                <ul class="space-y-1.5">
+                  {item.clinicalScope.map((scope) => (
+                    <li class="text-xs text-slate-700 dark:text-ivory/90 flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-copper shrink-0"></span>
+                      <span>{scope}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-          )}
 
-          <!-- Content Below Image -->
-          <div class="flex flex-col flex-grow px-4 pb-4">
-            <h3 class="font-display text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-copper transition-colors duration-200 mb-2 leading-snug">
-              {item.title}
-            </h3>
-            
-            <p class="text-slate-600 text-sm leading-relaxed mb-5 flex-grow font-normal">
-              {item.description}
-            </p>
-
-            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-copper">
-              <a href={item.href} class="hover:underline flex items-center gap-1">
-                <span>Explore condition</span>
-                <svg class="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            <!-- Card Bottom Action -->
+            <div class="pt-4 border-t border-slate-100 dark:border-ivory/5 flex items-center justify-between mt-auto">
+              <a 
+                href={item.href} 
+                class="text-xs font-semibold text-copper hover:text-copper-dark dark:hover:text-ivory transition-colors uppercase tracking-wider font-mono inline-flex items-center gap-1.5"
+              >
+                Learn More
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                 </svg>
               </a>
-              <button 
-                type="button"
-                onclick={`openPhotoLightbox(document.getElementById('card-img-${item.id}').src, '${item.title.replace(/'/g, "\\'")}')`}
-                class="text-xs text-slate-400 hover:text-slate-800 flex items-center gap-1 transition-colors"
-                title="Enlarge photo"
+
+              <a 
+                href="https://wa.me/254110090116?text=Hello%20Sage%20Brain%20%26%20Spine%20Clinic%2C%20I%20would%20like%20to%20enquire%20about%20a%20consultation%20regarding%20" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-xs text-slate-500 hover:text-copper dark:text-sage/80 dark:hover:text-white transition-colors"
+                title="Book consultation for this area"
               >
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-                </svg>
-                Zoom
-              </button>
+                Book Consultation &rarr;
+              </a>
             </div>
+
           </div>
-        </div>
+        </article>
       ))}
     </div>
 
-    <!-- ========================================================================= -->
-    <!-- DEDICATED VISUAL GALLERY: ALL 13 UPLOADED CLINICAL & THEATRE PHOTOS       -->
-    <!-- ========================================================================= -->
-    <div class="mt-20 sm:mt-28 pt-16 border-t border-slate-200" id="clinical-photo-gallery">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <span class="w-8 h-[2px] bg-copper"></span>
-            <span class="font-mono-label text-copper tracking-[0.2em] uppercase text-xs">Authentic Clinical Showcase</span>
-          </div>
-          <h3 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-            Clinical Care in Action
-          </h3>
-          <p class="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl font-normal">
-            Authentic clinical care encompassing real neurosurgical operating theatres, emergency trauma triage, hydrocephalus management, and paediatric patient support (with patient faces softly blurred for privacy).
-          </p>
-        </div>
-
-        <!-- Filter Tabs -->
-        <div class="flex flex-wrap items-center gap-2" id="gallery-filter-tabs">
-          <button 
-            type="button" 
-            class="filter-tab active px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-900 text-white shadow-sm transition-all"
-            data-filter="all"
-          >
-            All Photos ({allUploadedPhotos.length})
-          </button>
-          <button 
-            type="button" 
-            class="filter-tab px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all"
-            data-filter="trauma"
-          >
-            Head Trauma (4)
-          </button>
-          <button 
-            type="button" 
-            class="filter-tab px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all"
-            data-filter="paediatric"
-          >
-            Paediatric (5)
-          </button>
-          <button 
-            type="button" 
-            class="filter-tab px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all"
-            data-filter="surgery"
-          >
-            Theatre & Spine (4)
-          </button>
-          <button 
-            type="button" 
-            class="filter-tab px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all"
-            data-filter="hydrocephalus"
-          >
-            Hydrocephalus (1)
-          </button>
-        </div>
-      </div>
-
-      <!-- Photo Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="photo-grid-container">
-        {allUploadedPhotos.map((photo) => (
-          <div 
-            class="photo-card group bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:border-copper/50 transition-all duration-300 flex flex-col"
-            data-category={photo.category}
-          >
-            <div 
-              class="relative aspect-[4/3] w-full overflow-hidden bg-slate-100 cursor-pointer"
-              onclick={`openPhotoLightbox('${photo.src}', '${photo.title.replace(/'/g, "\\'")}', '${photo.description.replace(/'/g, "\\'")}')`}
-            >
-              <img 
-                src={photo.src} 
-                alt={photo.alt}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                loading="lazy"
-                width="400"
-                height="300"
-              />
-              <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span class="px-3 py-1.5 rounded-full bg-white/95 text-slate-900 text-xs font-semibold shadow-md flex items-center gap-1.5">
-                  <svg class="w-3.5 h-3.5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-                  </svg>
-                  Click to Expand
-                </span>
-              </div>
-              <div class="absolute top-2.5 left-2.5">
-                <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-mono font-medium text-slate-900 border border-slate-200/80 shadow-sm">
-                  {photo.badge}
-                </span>
-              </div>
-            </div>
-
-            <div class="p-3.5 flex flex-col flex-grow">
-              <h4 class="font-display text-sm font-bold text-slate-900 leading-snug group-hover:text-copper transition-colors mb-1.5">
-                {photo.title}
-              </h4>
-              <p class="text-slate-500 text-xs leading-relaxed flex-grow">
-                {photo.description}
-              </p>
-              <div class="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-                <span>{photo.categoryLabel}</span>
-                <span class="text-copper group-hover:underline">View photo →</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- Bottom Quick Action Strip -->
-    <div class="mt-14 sm:mt-18 pt-10 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6">
-      <p class="text-slate-600 text-sm sm:text-base text-center sm:text-left">
-        Have questions regarding a diagnosis, scan review, or specialist consultation?
+    <!-- Clear Section Guidance Note -->
+    <div class="mt-16 p-6 rounded-2xl bg-white dark:bg-midnight border border-slate-200 dark:border-ivory/10 max-w-4xl mx-auto text-center shadow-sm">
+      <p class="text-sm text-slate-600 dark:text-sage font-light leading-relaxed">
+        Consultations are held at Sage Brain &amp; Spine Clinic at <strong>KNH Doctors Plaza, Suite 43, Hospital Road, Nairobi</strong>. Both self-referrals and physician referrals are welcome.
       </p>
-      <div class="flex items-center gap-4 shrink-0">
-        <a href="/contact" class="btn-primary text-sm !py-2.5 !px-5">
-          Book Consultation
-        </a>
-      </div>
     </div>
 
   </div>
 </section>
-
-<!-- Lightbox Modal for Enlarge View -->
-<div 
-  id="photo-lightbox-modal" 
-  class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6"
-  onclick="closePhotoLightbox(event)"
->
-  <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
-    <!-- Close Button -->
-    <button 
-      type="button" 
-      onclick="closePhotoLightbox(null)"
-      class="absolute -top-10 right-0 sm:top-2 sm:right-2 z-10 w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-colors"
-      aria-label="Close lightbox"
-    >
-      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-
-    <!-- Main Lightbox Image -->
-    <img 
-      id="lightbox-img" 
-      src="" 
-      alt="" 
-      class="max-h-[75vh] w-auto max-w-full rounded-lg shadow-2xl object-contain"
-    />
-
-    <!-- Caption -->
-    <div class="mt-4 text-center max-w-2xl px-4">
-      <h4 id="lightbox-title" class="!text-white font-display text-lg sm:text-xl font-bold"></h4>
-      <p id="lightbox-desc" class="!text-slate-200 text-sm mt-1"></p>
-    </div>
-  </div>
-</div>
-
-<script is:inline>
-  // Interactive thumbnail switcher on speciality cards
-  function switchCardPhoto(cardId, newSrc, btnEl) {
-    const cardImg = document.getElementById(`card-img-${cardId}`);
-    if (!cardImg) return;
-    
-    // Smooth fade effect
-    cardImg.style.opacity = '0.5';
-    setTimeout(() => {
-      cardImg.src = newSrc;
-      cardImg.style.opacity = '1';
-    }, 150);
-
-    // Update active button state
-    const card = document.querySelector(`[data-card-id="${cardId}"]`);
-    if (card) {
-      const buttons = card.querySelectorAll('.thumb-btn');
-      buttons.forEach(b => {
-        b.classList.remove('border-copper', 'bg-copper/10', 'font-semibold', 'text-copper');
-        b.classList.add('border-slate-200', 'bg-slate-50', 'text-slate-700');
-      });
-      if (btnEl) {
-        btnEl.classList.remove('border-slate-200', 'bg-slate-50', 'text-slate-700');
-        btnEl.classList.add('border-copper', 'bg-copper/10', 'font-semibold', 'text-copper');
-      }
-    }
-  }
-
-  // Lightbox functions
-  function openPhotoLightbox(src, title, desc) {
-    const modal = document.getElementById('photo-lightbox-modal');
-    const img = document.getElementById('lightbox-img');
-    const titleEl = document.getElementById('lightbox-title');
-    const descEl = document.getElementById('lightbox-desc');
-    
-    if (!modal || !img) return;
-
-    img.src = src;
-    img.alt = title || '';
-    if (titleEl) titleEl.textContent = title || '';
-    if (descEl) descEl.textContent = desc || '';
-
-    modal.classList.remove('hidden');
-    requestAnimationFrame(() => {
-      modal.classList.remove('opacity-0');
-      modal.classList.add('opacity-100');
-    });
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closePhotoLightbox(e) {
-    if (e && e.target.id !== 'photo-lightbox-modal' && !e.target.closest('button')) return;
-    const modal = document.getElementById('photo-lightbox-modal');
-    if (!modal) return;
-
-    modal.classList.remove('opacity-100');
-    modal.classList.add('opacity-0');
-    setTimeout(() => {
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-    }, 250);
-  }
-
-  // Filter tabs logic
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('#gallery-filter-tabs .filter-tab');
-    const photoCards = document.querySelectorAll('#photo-grid-container .photo-card');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-
-        // Update active tab styles
-        filterButtons.forEach(b => {
-          b.classList.remove('active', 'bg-slate-900', 'text-white');
-          b.classList.add('bg-slate-100', 'text-slate-700');
-        });
-        btn.classList.add('active', 'bg-slate-900', 'text-white');
-        btn.classList.remove('bg-slate-100', 'text-slate-700');
-
-        // Filter cards
-        photoCards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closePhotoLightbox(null);
-    });
-  });
-</script>
