@@ -457,22 +457,35 @@
         `;
       }
 
-      // 3. Insurance Panels
-      if (q.includes('insurance') || q.includes('cover') || q.includes('jubilee') || q.includes('britam') || q.includes('cic') || q.includes('old mutual') || q.includes('apa') || q.includes('aar') || q.includes('madison') || q.includes('first assurance') || q.includes('nhif') || q.includes('sha') || q.includes('pay')) {
+      // 3. Insurance Panels (The 3 official providers)
+      if (q.includes('insurance') || q.includes('cover') || q.includes('cic') || q.includes('bupa') || q.includes('heritage') || q.includes('panel') || q.includes('direct billing') || q.includes('pay')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Accepted Insurance Panels</p>
-          <p class="mb-1.5 text-slate-700">Sage Brain &amp; Spine Clinic accepts major insurance providers with active direct billing for consultations and neurosurgeries:</p>
-          <div class="grid grid-cols-2 gap-1 mb-2 text-[11px]">
-            <div class="p-1 rounded bg-slate-50 border border-slate-200 text-slate-700">✓ Jubilee</div>
-            <div class="p-1 rounded bg-slate-50 border border-slate-200 text-slate-700">✓ Britam</div>
-            <div class="p-1 rounded bg-slate-50 border border-slate-200 text-slate-700">✓ CIC Group</div>
-            <div class="p-1 rounded bg-slate-50 border border-slate-200 text-slate-700">✓ Old Mutual</div>
-            <div class="p-1 rounded bg-slate-50 border border-slate-200 text-slate-700">✓ APA Insurance</div>
-            <div class="p-1 rounded bg-slate-50 border border-slate-200 text-slate-700">✓ AAR Insurance</div>
-            <div class="p-1 rounded bg-slate-50 border border-slate-200 text-slate-700">✓ Madison</div>
-            <div class="p-1 rounded bg-slate-50 border border-slate-200 text-slate-700">✓ First Assurance</div>
+          <p class="mb-1.5 text-slate-700">Sage Brain &amp; Spine Clinic accepts 3 primary insurance underwriters with direct clinical billing and pre-authorisation:</p>
+          <div class="space-y-1.5 mb-2.5 text-[11px]">
+            <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-start gap-2">
+              <span class="text-[#c17a3e] font-bold">✓</span>
+              <div>
+                <strong class="text-slate-900">CIC Insurance Group</strong>
+                <p class="text-slate-500 text-[10px] leading-tight">Inpatient &amp; Outpatient Neurosurgical Coverage</p>
+              </div>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-start gap-2">
+              <span class="text-[#c17a3e] font-bold">✓</span>
+              <div>
+                <strong class="text-slate-900">Bupa International</strong>
+                <p class="text-slate-500 text-[10px] leading-tight">Global Health &amp; Specialist Surgical Pre-Authorisation</p>
+              </div>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-start gap-2">
+              <span class="text-[#c17a3e] font-bold">✓</span>
+              <div>
+                <strong class="text-slate-900">Heritage Insurance</strong>
+                <p class="text-slate-500 text-[10px] leading-tight">Direct Billing &amp; Specialist Consultation Cover</p>
+              </div>
+            </div>
           </div>
-          <p class="text-[11px] text-slate-500 mb-2">Our clinic coordinates pre-authorization for surgical procedures directly with case managers.</p>
+          <p class="text-[11px] text-slate-500 mb-2">Our clinic coordinates pre-authorization directly with case managers for seamless care.</p>
           <div class="flex gap-1.5">
             <button type="button" class="bot-action-chip quick-chip" data-prompt="How do I book a consultation with Dr. Sylvia?">
               📅 Book Consultation
