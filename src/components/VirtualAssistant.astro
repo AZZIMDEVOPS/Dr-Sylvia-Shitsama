@@ -530,6 +530,30 @@
         `;
       }
 
+      // 4b. LinkedIn & Professional Social Profiles
+      if (q.includes('linkedin') || q.includes('linked in') || q.includes('resume') || q.includes('cv') || q.includes('social media') || q.includes('profile link')) {
+        return `
+          <p class="font-bold text-[#c17a3e] mb-1">Dr. Sylvia Shitsama on LinkedIn</p>
+          <p class="mb-1.5 text-slate-700">Connect with <strong>Dr. Sylvia Shitsama</strong> directly on LinkedIn to follow her surgical insights, academic research, and clinical updates.</p>
+          <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 space-y-1 mb-2 text-[11px]">
+            <div class="font-semibold text-slate-900">Dr. Sylvia Shitsama-Nyamweya</div>
+            <div class="text-slate-600">Consultant Neurosurgeon &bull; Senior Lecturer in Surgery at JKUAT &bull; Lead Surgeon at Sage Brain &amp; Spine Clinic</div>
+            <div class="text-slate-500">Nairobi, Kenya &bull; 500+ Connections</div>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <a href="https://www.linkedin.com/in/sylvia-shitsama" target="_blank" rel="noopener noreferrer" class="quick-chip bg-[#0077b5] text-white hover:bg-[#005f93] border-[#0077b5]">
+              🔗 View LinkedIn Profile &rarr;
+            </a>
+            <a href="/about" class="quick-chip">
+              📖 Full Biography &rarr;
+            </a>
+            <a href="/research" class="quick-chip">
+              🔬 Publications (15+) &rarr;
+            </a>
+          </div>
+        `;
+      }
+
       // 5. About Dr. Sylvia Shitsama
       if (q.includes('about') || q.includes('who is') || q.includes('sylvia') || q.includes('shitsama') || q.includes('qualif') || q.includes('experience') || q.includes('education') || q.includes('background') || q.includes('fellowship') || q.includes('toronto') || q.includes('jkuat')) {
         return `
@@ -544,6 +568,9 @@
           <div class="flex flex-wrap gap-1.5">
             <a href="/about" class="quick-chip">
               📖 Full Biography &rarr;
+            </a>
+            <a href="https://www.linkedin.com/in/sylvia-shitsama" target="_blank" rel="noopener noreferrer" class="quick-chip">
+              🔗 LinkedIn &rarr;
             </a>
             <a href="/research" class="quick-chip">
               🔬 Publications (15+) &rarr;
