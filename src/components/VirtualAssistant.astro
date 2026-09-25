@@ -448,7 +448,7 @@
       }
 
       // 2. Clinic Location, Address, Hours & Directions (Priority Match)
-      if (q.includes('where') || q.includes('location') || q.includes('address') || q.includes('hours') || q.includes('open') || q.includes('time') || q.includes('directions') || q.includes('knh') || q.includes('hospital road') || q.includes('plaza') || q.includes('suite 43')) {
+      if ((q.includes('where') || q.includes('location') || q.includes('address') || q.includes('hours') || q.includes('open') || q.includes('time') || q.includes('directions') || q.includes('hospital road') || q.includes('plaza') || q.includes('suite 43') || q.includes('knh doctors plaza')) && !q.includes('operate') && !q.includes('theatre') && !q.includes('which hospital') && !q.includes('what hospital')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Clinic Location &amp; Hours</p>
           <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 space-y-1 mb-2 text-[11px]">
@@ -530,8 +530,29 @@
         `;
       }
 
-      // 4b. LinkedIn & Professional Social Profiles
-      if (q.includes('linkedin') || q.includes('linked in') || q.includes('resume') || q.includes('cv') || q.includes('social media') || q.includes('profile link')) {
+      // 5. Conditions Treated & Surgical Specialties (Priority Match for "What conditions does Dr. Sylvia treat?")
+      if (q.includes('treat') || q.includes('condition') || q.includes('specialt') || q.includes('service') || q.includes('what do you do') || q.includes('help with') || q.includes('disease') || q.includes('illness') || q.includes('procedure') || q.includes('surgery do you') || q.includes('surgeries do you')) {
+        return `
+          <p class="font-bold text-[#c17a3e] mb-1">Conditions Treated &amp; Surgical Specialties</p>
+          <p class="mb-1.5 text-slate-700">Dr. Sylvia Shitsama provides specialized neurosurgical evaluation and treatment across 3 core clinical pillars:</p>
+          <ul class="list-disc pl-3.5 space-y-1 mb-2 text-[11px] text-slate-600">
+            <li><strong>Brain &amp; Cranial Care:</strong> Brain tumors (meningiomas, gliomas, pituitary adenomas, skull base tumors), traumatic brain injury (TBI), acute subdural/epidural hematomas, and vascular malformations/aneurysms.</li>
+            <li><strong>Spine Surgery:</strong> Herniated / slipped discs, sciatica, cervical &amp; lumbar spinal stenosis, microdiscectomy, and spinal fusion/stabilization.</li>
+            <li><strong>Pediatric Neurosurgery:</strong> Pediatric hydrocephalus (VP Shunts &amp; ETV), spina bifida (myelomeningoceles), and congenital cranial anomalies.</li>
+          </ul>
+          <div class="flex flex-wrap gap-1.5">
+            <a href="/expertise" class="quick-chip">
+              🧠 All Clinical Specialties &rarr;
+            </a>
+            <button type="button" class="bot-action-chip quick-chip" data-prompt="How do I book a consultation with Dr. Sylvia?">
+              📅 Book Consultation
+            </button>
+          </div>
+        `;
+      }
+
+      // 6. LinkedIn & Professional Social Profiles
+      if (q.includes('linkedin') || q.includes('linked in') || q.includes('social media') || q.includes('profile link')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Dr. Sylvia Shitsama on LinkedIn</p>
           <p class="mb-1.5 text-slate-700">Connect with <strong>Dr. Sylvia Shitsama</strong> directly on LinkedIn to follow her surgical insights, academic research, and clinical updates.</p>
@@ -554,53 +575,37 @@
         `;
       }
 
-      // 5. About Dr. Sylvia Shitsama
-      if (q.includes('about') || q.includes('who is') || q.includes('sylvia') || q.includes('shitsama') || q.includes('qualif') || q.includes('experience') || q.includes('education') || q.includes('background') || q.includes('fellowship') || q.includes('toronto') || q.includes('jkuat')) {
+      // 7. Operating Hospitals & Facilities
+      if (q.includes('operate') || q.includes('theatre') || q.includes('hospital') || q.includes('admission') || q.includes('facility')) {
         return `
-          <p class="font-bold text-[#c17a3e] mb-1">About Dr. Sylvia Shitsama</p>
-          <p class="mb-1.5 text-slate-700"><strong>Dr. Sylvia Shitsama</strong> is a Neurosurgeon with over two decades of dedicated surgical experience in Nairobi, Kenya.</p>
+          <p class="font-bold text-[#c17a3e] mb-1">Operating Hospitals &amp; Privileges</p>
+          <p class="mb-1.5 text-slate-700">Dr. Sylvia Shitsama operates at leading accredited surgical facilities in Nairobi:</p>
           <ul class="list-disc pl-3.5 space-y-0.5 mb-2 text-[11px] text-slate-600">
-            <li><strong>Degrees:</strong> MBChB and MMed in Neurosurgery (University of Nairobi).</li>
-            <li><strong>Fellowship:</strong> General Neurosurgery Clinical &amp; Research Fellowship at the <strong>University of Toronto, Canada (2019)</strong>.</li>
-            <li><strong>Academic:</strong> Senior Lecturer in Surgery at JKUAT; Neurosurgeon at Kenyatta National Referral Hospital (KNH).</li>
-            <li><strong>Clinic:</strong> Founder &amp; Lead Neurosurgeon at Sage Brain &amp; Spine Clinic.</li>
+            <li>Kenyatta National Referral Hospital (KNH)</li>
+            <li>The Nairobi Hospital</li>
+            <li>Aga Khan University Hospital, Nairobi</li>
+            <li>MP Shah Hospital</li>
+            <li>The Karen Hospital &amp; Nairobi West Hospital</li>
           </ul>
-          <div class="flex flex-wrap gap-1.5">
-            <a href="/about" class="quick-chip">
-              📖 Full Biography &rarr;
-            </a>
-            <a href="https://www.linkedin.com/in/sylvia-shitsama" target="_blank" rel="noopener noreferrer" class="quick-chip">
-              🔗 LinkedIn &rarr;
-            </a>
-            <a href="/research" class="quick-chip">
-              🔬 Publications (15+) &rarr;
-            </a>
-          </div>
+          <button type="button" class="bot-action-chip quick-chip" data-prompt="How do I book a consultation with Dr. Sylvia?">
+            📅 Book a Surgical Review
+          </button>
         `;
       }
 
-      // 6. What conditions are treated / Specialties Overview
-      if (q.includes('treat') || q.includes('condition') || q.includes('specialt') || q.includes('service') || q.includes('what do you do') || q.includes('help with')) {
+      // 8. Research & Academic
+      if (q.includes('research') || q.includes('paper') || q.includes('publication') || q.includes('scholar') || q.includes('teach') || q.includes('lecture')) {
         return `
-          <p class="font-bold text-[#c17a3e] mb-1">Clinical Care &amp; Surgical Specialties</p>
-          <p class="mb-1.5 text-slate-700">Dr. Sylvia Shitsama provides specialized neurosurgical evaluation and treatment across 3 core clinical pillars:</p>
-          <ul class="list-disc pl-3.5 space-y-1 mb-2 text-[11px] text-slate-600">
-            <li><strong>Brain &amp; Cranial Care:</strong> Resection of brain tumors (meningiomas, gliomas, pituitary adenomas), traumatic brain injury (TBI), acute hematomas, and vascular conditions.</li>
-            <li><strong>Spine Surgery:</strong> Herniated discs, sciatica, cervical/lumbar spinal stenosis, microdiscectomy, and spinal fusion.</li>
-            <li><strong>Pediatric Neurosurgery:</strong> Pediatric hydrocephalus (VP Shunts &amp; ETV), spina bifida, and congenital cranial anomalies.</li>
-          </ul>
-          <div class="flex flex-wrap gap-1.5">
-            <a href="/expertise" class="quick-chip">
-              🧠 All Clinical Specialties &rarr;
-            </a>
-            <button type="button" class="bot-action-chip quick-chip" data-prompt="How do I book a consultation with Dr. Sylvia?">
-              📅 Book Consultation
-            </button>
-          </div>
+          <p class="font-bold text-[#c17a3e] mb-1">Academic &amp; Clinical Research</p>
+          <p class="mb-1.5 text-slate-700">Dr. Sylvia Shitsama is an active researcher and Senior Lecturer at JKUAT with over 15+ peer-reviewed neurosurgical publications in international journals (Lancet Oncology, Journal of Neurosurgery, World Neurosurgery).</p>
+          <p class="text-[11px] text-slate-500 mb-2">Her work addresses neuro-oncology capacity in Sub-Saharan Africa and pediatric hydrocephalus outcomes.</p>
+          <a href="/research" class="quick-chip">
+            🔬 Browse All Published Papers &rarr;
+          </a>
         `;
       }
 
-      // 7. Brain Surgery & Cranial Conditions (using cleanQ to prevent clinic name false positives)
+      // 9. Specific Conditions: Brain Surgery & Cranial
       if (cleanQ.includes('brain') || cleanQ.includes('tumor') || cleanQ.includes('tumour') || cleanQ.includes('meningioma') || cleanQ.includes('glioma') || cleanQ.includes('pituitary') || cleanQ.includes('head injury') || cleanQ.includes('concussion') || cleanQ.includes('trauma') || cleanQ.includes('hematoma') || cleanQ.includes('skull') || cleanQ.includes('cranial') || cleanQ.includes('aneurysm')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Brain Surgery &amp; Cranial Care</p>
@@ -622,7 +627,7 @@
         `;
       }
 
-      // 8. Spine Surgery & Back Pain (using cleanQ to prevent clinic name false positives)
+      // 10. Specific Conditions: Spine Surgery & Back Pain
       if (cleanQ.includes('spine') || cleanQ.includes('back') || cleanQ.includes('neck') || cleanQ.includes('disc') || cleanQ.includes('sciatica') || cleanQ.includes('lumbar') || cleanQ.includes('cervical') || cleanQ.includes('stenosis') || cleanQ.includes('pain') || cleanQ.includes('tingling') || cleanQ.includes('numbness') || cleanQ.includes('radiculopathy')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Spine Surgery &amp; Back Care</p>
@@ -644,7 +649,7 @@
         `;
       }
 
-      // 9. Pediatric Neurosurgery & Hydrocephalus
+      // 11. Specific Conditions: Pediatric Neurosurgery & Hydrocephalus
       if (q.includes('pediatric') || q.includes('child') || q.includes('baby') || q.includes('hydrocephalus') || q.includes('shunt') || q.includes('etv') || q.includes('spina bifida') || q.includes('head size')) {
         return `
           <p class="font-bold text-[#c17a3e] mb-1">Pediatric Neurosurgery &amp; Hydrocephalus</p>
@@ -666,33 +671,28 @@
         `;
       }
 
-      // 10. Operating Hospitals & Facilities
-      if (q.includes('operate') || q.includes('theatre') || q.includes('hospital') || q.includes('admission')) {
+      // 12. About Dr. Sylvia Shitsama (Matches when specifically inquiring about her person, background, education, or just her name)
+      if (q.includes('about') || q.includes('who is') || q.includes('who is she') || q.includes('qualif') || q.includes('experience') || q.includes('education') || q.includes('background') || q.includes('fellowship') || q.includes('toronto') || q.includes('jkuat') || q.includes('degree') || q.includes('credentials') || q.includes('resume') || q.includes('cv') || q.includes('biography') || q.includes('bio') || cleanQ === '') {
         return `
-          <p class="font-bold text-[#c17a3e] mb-1">Operating Hospitals &amp; Privileges</p>
-          <p class="mb-1.5 text-slate-700">Dr. Sylvia Shitsama operates at leading accredited surgical facilities in Nairobi:</p>
+          <p class="font-bold text-[#c17a3e] mb-1">About Dr. Sylvia Shitsama</p>
+          <p class="mb-1.5 text-slate-700"><strong>Dr. Sylvia Shitsama</strong> is a Neurosurgeon with over two decades of dedicated surgical experience in Nairobi, Kenya.</p>
           <ul class="list-disc pl-3.5 space-y-0.5 mb-2 text-[11px] text-slate-600">
-            <li>Kenyatta National Referral Hospital (KNH)</li>
-            <li>The Nairobi Hospital</li>
-            <li>Aga Khan University Hospital, Nairobi</li>
-            <li>MP Shah Hospital</li>
-            <li>The Karen Hospital &amp; Nairobi West Hospital</li>
+            <li><strong>Degrees:</strong> MBChB and MMed in Neurosurgery (University of Nairobi).</li>
+            <li><strong>Fellowship:</strong> General Neurosurgery Clinical &amp; Research Fellowship at the <strong>University of Toronto, Canada (2019)</strong>.</li>
+            <li><strong>Academic:</strong> Senior Lecturer in Surgery at JKUAT; Neurosurgeon at Kenyatta National Referral Hospital (KNH).</li>
+            <li><strong>Clinic:</strong> Founder &amp; Lead Neurosurgeon at Sage Brain &amp; Spine Clinic.</li>
           </ul>
-          <button type="button" class="bot-action-chip quick-chip" data-prompt="How do I book a consultation with Dr. Sylvia?">
-            📅 Book a Surgical Review
-          </button>
-        `;
-      }
-
-      // 11. Research & Academic
-      if (q.includes('research') || q.includes('paper') || q.includes('publication') || q.includes('scholar') || q.includes('teach') || q.includes('lecture')) {
-        return `
-          <p class="font-bold text-[#c17a3e] mb-1">Academic &amp; Clinical Research</p>
-          <p class="mb-1.5 text-slate-700">Dr. Sylvia Shitsama is an active researcher and Senior Lecturer at JKUAT with over 15+ peer-reviewed neurosurgical publications in international journals (Lancet Oncology, Journal of Neurosurgery, World Neurosurgery).</p>
-          <p class="text-[11px] text-slate-500 mb-2">Her work addresses neuro-oncology capacity in Sub-Saharan Africa and pediatric hydrocephalus outcomes.</p>
-          <a href="/research" class="quick-chip">
-            🔬 Browse All Published Papers &rarr;
-          </a>
+          <div class="flex flex-wrap gap-1.5">
+            <a href="/about" class="quick-chip">
+              📖 Full Biography &rarr;
+            </a>
+            <a href="https://www.linkedin.com/in/sylvia-shitsama" target="_blank" rel="noopener noreferrer" class="quick-chip">
+              🔗 LinkedIn &rarr;
+            </a>
+            <a href="/research" class="quick-chip">
+              🔬 Publications (15+) &rarr;
+            </a>
+          </div>
         `;
       }
 
