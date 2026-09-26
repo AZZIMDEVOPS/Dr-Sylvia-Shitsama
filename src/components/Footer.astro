@@ -12,10 +12,10 @@ const quickLinks = [
 <footer class="bg-midnight-light text-text-secondary border-t border-border-subtle transition-colors duration-300">
   <!-- Main Footer Content -->
   <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 lg:gap-12">
       <!-- Column 1: Brand + Social -->
-      <div class="lg:col-span-1">
-        <a href="/" class="inline-block mb-4 group" aria-label="Sage Brain & Spine Clinic - Home">
+      <div class="md:col-span-5 space-y-4">
+        <a href="/" class="inline-block group" aria-label="Sage Brain & Spine Clinic - Home">
           <img
             src="/images/sage-clinic-official-logo.png"
             alt="Sage Brain & Spine Clinic"
@@ -25,11 +25,11 @@ const quickLinks = [
             loading="lazy"
           />
         </a>
-        <p class="text-sm text-sage leading-relaxed mb-6 font-light">
+        <p class="text-sm text-sage leading-relaxed font-light max-w-sm">
           Dr. Sylvia Shitsama &middot; Neurosurgeon
         </p>
         <!-- Social Icons -->
-        <div class="flex gap-4">
+        <div class="flex items-center gap-3 pt-2">
           <a href="https://www.linkedin.com/in/sylvia-shitsama" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-surface border border-border-subtle flex items-center justify-center text-sage hover:text-copper hover:bg-copper/10 transition-colors" aria-label="LinkedIn">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
@@ -43,14 +43,14 @@ const quickLinks = [
       </div>
 
       <!-- Column 2: Quick Links -->
-      <div>
+      <div class="md:col-span-3 md:pl-4 lg:pl-10">
         <h3 class="font-display text-ivory text-lg font-semibold mb-6">Navigation</h3>
-        <ul class="space-y-3">
+        <ul class="space-y-3.5">
           {quickLinks.map((link) => (
             <li>
-              <a href={link.href} class="text-sm text-sage hover:text-copper transition-colors flex items-center gap-2">
-                <svg class="w-3 h-3 text-copper/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                {link.label}
+              <a href={link.href} class="text-sm text-sage hover:text-copper transition-colors inline-flex items-center gap-2 group">
+                <svg class="w-3 h-3 text-copper/50 group-hover:text-copper transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                <span>{link.label}</span>
               </a>
             </li>
           ))}
@@ -58,38 +58,24 @@ const quickLinks = [
       </div>
 
       <!-- Column 3: Clinic Location & Contact -->
-      <div>
-        <h3 class="font-display text-ivory text-lg font-semibold mb-6">Clinic Location</h3>
+      <div class="md:col-span-4 lg:pl-4">
+        <h3 class="font-display text-ivory text-lg font-semibold mb-6">Clinic &amp; Contact</h3>
         <div class="space-y-4 text-sm text-sage">
           <div>
             <p class="font-medium text-ivory">Sage Brain &amp; Spine Clinic</p>
-            <p class="font-light">KNH Doctors Plaza, Suite 43</p>
+            <p class="font-light mt-0.5">KNH Doctors Plaza, Suite 43</p>
             <p class="font-light">Hospital Road, Nairobi, Kenya</p>
           </div>
-          <div class="pt-2">
-            <p class="font-mono-label text-copper text-[11px] uppercase mb-1">Hours</p>
+          <div class="pt-1">
+            <p class="font-mono-label text-copper text-[11px] uppercase tracking-wider mb-1">Hours</p>
             <p class="text-ivory font-medium">Monday – Friday: 8:00 AM – 5:00 PM</p>
           </div>
-          <div class="pt-2">
-            <p class="font-mono-label text-copper text-[11px] uppercase mb-1">Direct Contact</p>
-            <p class="text-ivory font-mono text-sm">0110 090 116</p>
-            <p class="text-sage text-xs font-light mt-0.5">WhatsApp: +254 110 090 116</p>
-            <p class="text-sage text-xs font-light mt-0.5">info@drsylviashitsama.com</p>
+          <div class="pt-1">
+            <p class="font-mono-label text-copper text-[11px] uppercase tracking-wider mb-1">Direct Contact</p>
+            <p><a href="tel:+254110090116" class="text-ivory font-mono text-sm hover:text-copper transition-colors inline-block">0110 090 116</a></p>
+            <p class="text-xs font-light mt-1"><a href="https://wa.me/254110090116" target="_blank" rel="noopener noreferrer" class="text-sage hover:text-copper transition-colors inline-block">WhatsApp: +254 110 090 116</a></p>
+            <p class="text-xs font-light mt-0.5"><a href="mailto:info@drsylviashitsama.com" class="text-sage hover:text-copper transition-colors inline-block">info@drsylviashitsama.com</a></p>
           </div>
-        </div>
-      </div>
-
-      <!-- Column 4: Credentials -->
-      <div>
-        <h3 class="font-display text-ivory text-lg font-semibold mb-6">Credentials</h3>
-        <div class="space-y-3">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="font-mono text-[11px] text-gold px-2.5 py-1 bg-gold/10 rounded font-semibold border border-gold/20">MBChB</span>
-            <span class="font-mono text-[11px] text-gold px-2.5 py-1 bg-gold/10 rounded font-semibold border border-gold/20">MMed Neurosurgery</span>
-          </div>
-          <p class="text-xs text-sage font-light mt-2">
-            Clinical &amp; Research Fellowship in General Neurosurgery, University of Toronto (2019)
-          </p>
         </div>
       </div>
     </div>
