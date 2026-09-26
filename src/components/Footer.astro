@@ -12,9 +12,9 @@ const quickLinks = [
 <footer class="bg-midnight-light text-text-secondary border-t border-border-subtle transition-colors duration-300">
   <!-- Main Footer Content -->
   <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 lg:gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-8 lg:gap-8 xl:gap-12">
       <!-- Column 1: Brand + Social -->
-      <div class="md:col-span-5 space-y-4">
+      <div class="md:col-span-1 lg:col-span-4 space-y-4">
         <a href="/" class="inline-block group" aria-label="Sage Brain & Spine Clinic - Home">
           <img
             src="/images/sage-clinic-official-logo.png"
@@ -42,8 +42,8 @@ const quickLinks = [
         </div>
       </div>
 
-      <!-- Column 2: Quick Links -->
-      <div class="md:col-span-3 md:pl-4 lg:pl-10">
+      <!-- Column 2 (Info 1): Quick Links -->
+      <div class="md:col-span-1 lg:col-span-2 lg:pl-2">
         <h3 class="font-display text-ivory text-lg font-semibold mb-6">Navigation</h3>
         <ul class="space-y-3.5">
           {quickLinks.map((link) => (
@@ -57,20 +57,25 @@ const quickLinks = [
         </ul>
       </div>
 
-      <!-- Column 3: Clinic Location & Contact -->
-      <div class="md:col-span-4 lg:pl-4">
-        <h3 class="font-display text-ivory text-lg font-semibold mb-6">Clinic &amp; Contact</h3>
+      <!-- Column 3 (Info 2): Clinic Location -->
+      <div class="md:col-span-1 lg:col-span-3 lg:pl-4">
+        <h3 class="font-display text-ivory text-lg font-semibold mb-6">Clinic Location</h3>
+        <div class="space-y-3 text-sm text-sage">
+          <p class="font-medium text-ivory">Sage Brain &amp; Spine Clinic</p>
+          <p class="font-light">KNH Doctors Plaza, Suite 43</p>
+          <p class="font-light">Hospital Road, Nairobi, Kenya</p>
+        </div>
+      </div>
+
+      <!-- Column 4 (Info 3): Hours & Contact -->
+      <div class="md:col-span-1 lg:col-span-3 lg:pl-2">
+        <h3 class="font-display text-ivory text-lg font-semibold mb-6">Hours &amp; Contact</h3>
         <div class="space-y-4 text-sm text-sage">
           <div>
-            <p class="font-medium text-ivory">Sage Brain &amp; Spine Clinic</p>
-            <p class="font-light mt-0.5">KNH Doctors Plaza, Suite 43</p>
-            <p class="font-light">Hospital Road, Nairobi, Kenya</p>
-          </div>
-          <div class="pt-1">
             <p class="font-mono-label text-copper text-[11px] uppercase tracking-wider mb-1">Hours</p>
             <p class="text-ivory font-medium">Monday – Friday: 8:00 AM – 5:00 PM</p>
           </div>
-          <div class="pt-1">
+          <div>
             <p class="font-mono-label text-copper text-[11px] uppercase tracking-wider mb-1">Direct Contact</p>
             <p><a href="tel:+254110090116" class="text-ivory font-mono text-sm hover:text-copper transition-colors inline-block">0110 090 116</a></p>
             <p class="text-xs font-light mt-1"><a href="https://wa.me/254110090116" target="_blank" rel="noopener noreferrer" class="text-sage hover:text-copper transition-colors inline-block">WhatsApp: +254 110 090 116</a></p>
