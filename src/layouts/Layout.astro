@@ -29,7 +29,7 @@ import VirtualAssistant from '../components/VirtualAssistant.astro';
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-white">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,14 +73,13 @@ import VirtualAssistant from '../components/VirtualAssistant.astro';
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-  <!-- Theme Detection (defaults to light mode) -->
+  <!-- Theme: Enforce clean white background at all times -->
   <script is:inline>
-    const theme = localStorage.getItem('theme') || 'light';
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.remove('dark');
+    try {
+      localStorage.removeItem('theme');
+      localStorage.setItem('theme', 'light');
+    } catch (e) {}
   </script>
 
   <!-- JSON-LD Structured Data: Person -->
@@ -140,7 +139,7 @@ import VirtualAssistant from '../components/VirtualAssistant.astro';
     "address": [
       {
         "@type": "PostalAddress",
-        "streetAddress": "KNH Doctors Plaza, Suite 43, Hospital Road",
+        "streetAddress": "KNH Doctors Plaza, 4th Floor Suite 43, Hospital Road (Adjacent to National Bank)",
         "addressLocality": "Nairobi",
         "addressCountry": "KE"
       }
@@ -172,7 +171,7 @@ import VirtualAssistant from '../components/VirtualAssistant.astro';
 
   <slot name="head" />
 </head>
-<body class="bg-bg-primary text-text-primary antialiased selection:bg-accent/20 selection:text-accent font-body min-h-screen flex flex-col overflow-x-hidden">
+<body class="bg-white text-text-primary antialiased selection:bg-accent/20 selection:text-accent font-body min-h-screen flex flex-col overflow-x-hidden">
   <!-- Skip to main content (accessibility) -->
   <a href="#main-content" class="skip-to-main">Skip to main content</a>
 

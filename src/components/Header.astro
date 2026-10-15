@@ -14,18 +14,18 @@ const navLinks = [
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
   x-data="{ scrolled: false, mobileOpen: false }"
   x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })"
-  :class="scrolled ? 'bg-midnight/90 backdrop-blur-xl shadow-sm dark:shadow-lg border-b border-border-subtle' : 'bg-transparent'"
+  :class="scrolled ? 'bg-white/95 backdrop-blur-xl shadow-xs border-b border-border-subtle' : 'bg-transparent'"
 >
   <nav class="container-custom mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
     <div class="flex items-center justify-between h-20">
       <!-- Logo / Name -->
       <a href="/" class="flex items-center group py-1" aria-label="Sage Brain & Spine Clinic - Home">
         <img
-          src="/images/sage-clinic-official-logo.png"
+          src="/images/sage-clinic-original-logo.png"
           alt="Sage Brain & Spine Clinic"
           class="h-14 sm:h-16 md:h-17 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-          width="670"
-          height="506"
+          width="764"
+          height="1013"
           loading="eager"
         />
       </a>
@@ -43,7 +43,7 @@ const navLinks = [
                 'text-sm font-medium transition-colors duration-200 relative whitespace-nowrap',
                 isActive
                   ? 'text-copper font-semibold'
-                  : 'text-ivory hover:text-copper',
+                  : 'text-primary-navy hover:text-copper',
               ]}
             >
               {link.label}
@@ -55,35 +55,8 @@ const navLinks = [
         })}
       </div>
 
-      <!-- Right: Theme Toggle + CTA + Mobile Menu -->
+      <!-- Right: Consultation CTA + Mobile Menu -->
       <div class="flex items-center gap-3">
-        <!-- Theme Toggle -->
-        <div
-          x-data="{
-            dark: document.documentElement.classList.contains('dark')
-          }"
-          x-init="$watch('dark', val => {
-            localStorage.setItem('theme', val ? 'dark' : 'light');
-            document.documentElement.classList.toggle('dark', val);
-          })"
-        >
-          <button
-            @click="dark = !dark"
-            class="p-2.5 rounded-xl text-ivory hover:text-copper hover:bg-ivory/10 transition-all cursor-pointer"
-            :aria-label="dark ? 'Switch to light mode' : 'Switch to dark mode'"
-            title="Toggle theme"
-          >
-            <!-- Sun Icon (shown in dark mode) -->
-            <svg x-show="dark" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-            <!-- Moon Icon (shown in light mode) -->
-            <svg x-show="!dark" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display: none;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
-          </button>
-        </div>
-
         <!-- CTA Button (Desktop) -->
         <a href="/contact" class="!hidden lg:!inline-flex btn-primary text-sm !py-2.5 !px-5 whitespace-nowrap">
           Book a Consultation
@@ -92,7 +65,7 @@ const navLinks = [
         <!-- Mobile Menu Button -->
         <button
           @click="mobileOpen = !mobileOpen"
-          class="lg:hidden p-2 text-ivory hover:text-copper transition-colors"
+          class="lg:hidden p-2 text-primary-navy hover:text-copper transition-colors"
           :aria-expanded="mobileOpen"
           aria-label="Toggle navigation menu"
         >
@@ -115,7 +88,7 @@ const navLinks = [
       x-transition:leave="transition ease-in duration-150"
       x-transition:leave-start="opacity-100 translate-y-0"
       x-transition:leave-end="opacity-0 -translate-y-4"
-      class="lg:hidden pb-6 border-t border-border-subtle mt-2 bg-midnight/95 backdrop-blur-xl px-4 rounded-2xl shadow-xl"
+      class="lg:hidden pb-6 border border-slate-200/80 mt-2 bg-white/98 backdrop-blur-xl px-4 rounded-2xl shadow-xl"
       @click.outside="mobileOpen = false"
       style="display: none;"
     >
@@ -131,7 +104,7 @@ const navLinks = [
                 'px-4 py-3 rounded-lg text-sm font-medium transition-colors',
                 isActive
                   ? 'text-copper bg-copper/10 font-semibold'
-                  : 'text-ivory hover:text-copper hover:bg-ivory/5',
+                  : 'text-primary-navy hover:text-copper hover:bg-slate-50',
               ]}
             >
               {link.label}

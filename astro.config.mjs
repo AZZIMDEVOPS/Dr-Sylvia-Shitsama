@@ -10,6 +10,9 @@ export default defineConfig({
     port: 4000,
     host: '127.0.0.1'
   },
+  devToolbar: {
+    enabled: false
+  },
   vite: {
     plugins: [tailwindcss()],
   },
