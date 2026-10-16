@@ -41,12 +41,11 @@ jobs:
       - name: Make Gradle Wrapper Executable
         run: chmod +x android/gradlew
 
-      - name: Configure Android SDK & Accept Licenses
+      - name: Configure Android SDK & Install Platforms
         run: |
           echo "sdk.dir=$ANDROID_HOME" > android/local.properties
-          mkdir -p "$ANDROID_HOME/licenses"
-          printf "24333f8a63b6825ea9c5514f83c2829b004d1fee\nd56f5187479451eabf01fb78af6dfcb131a6481e\n84831b9409646a918e30573bab4c9c91346d8abd\n" > "$ANDROID_HOME/licenses/android-sdk-license"
-          printf "84831b9409646a918e30573bab4c9c91346d8abd\n" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-35" "platforms;android-36" || true
 
       - name: Build Debug APK
         run: |
@@ -59,3 +58,16 @@ jobs:
           name: dr-sylvia-app-debug-apk
           path: android/app/build/outputs/apk/debug/*.apk
           retention-days: 14
+
+      - name: Build Release App Bundle (AAB)
+        run: |
+          cd android
+          ./gradlew bundleRelease --stacktrace
+
+      - name: Upload Release AAB Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dr-sylvia-app-release-aab
+          path: android/app/build/outputs/bundle/release/*.aab
+          retention-days: 14
+
