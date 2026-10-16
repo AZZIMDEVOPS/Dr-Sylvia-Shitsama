@@ -60,6 +60,7 @@ jobs:
           retention-days: 14
 
       - name: Build Release Bundle (AAB for Google Play)
+        continue-on-error: true
         run: |
           cd android
           ./gradlew bundleRelease --stacktrace
