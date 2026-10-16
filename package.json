@@ -10,15 +10,28 @@
     "build": "astro build",
     "build:cpanel": "astro build && powershell -Command \"if (Test-Path cpanel_build.zip) { Remove-Item cpanel_build.zip }; Compress-Archive -Path 'dist\\*', 'dist\\.htaccess' -DestinationPath 'cpanel_build.zip'\"",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "mobile:sync": "astro build && npx cap sync",
+    "mobile:android": "npx cap open android",
+    "mobile:ios": "npx cap open ios",
+    "mobile:build": "astro build && npx cap sync"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.5.3",
+    "@capacitor/ios": "^8.5.3",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.1.6",
     "gsap": "^3.15.0",
     "shiki": "^4.4.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.3"
   }
 }
