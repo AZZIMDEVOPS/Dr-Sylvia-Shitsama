@@ -44,39 +44,29 @@ jobs:
       - name: Configure Android SDK & Licenses
         run: |
           echo "sdk.dir=$ANDROID_HOME" > android/local.properties
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-35" "platforms;android-36" || true
+          yes | sdkmanager --licenses || true
 
       - name: Build Debug APK
-        run: |
-          cd android
-          ./gradlew assembleDebug --stacktrace 2>&1 | tee ../gradle-build.log
+        run: cd android && ./gradlew assembleDebug --stacktrace
+
+      - name: List Generated APK Files
+        run: find android/app/build/outputs/ -type f || true
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: dr-sylvia-app-debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: android/app/build/outputs/apk/**/*.apk
           retention-days: 14
 
       - name: Build Release Bundle (AAB for Google Play)
         continue-on-error: true
-        run: |
-          cd android
-          ./gradlew bundleRelease --stacktrace
+        run: cd android && ./gradlew bundleRelease --stacktrace
 
       - name: Upload Release AAB Artifact (Google Play)
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: dr-sylvia-app-release-aab
-          path: android/app/build/outputs/bundle/release/app-release.aab
-          retention-days: 14
-
-      - name: Upload Build Log on Failure
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gradle-build-log
-          path: gradle-build.log
-          retention-days: 7
+          name: dr-sylvia-app-release-aab
+          path: android/app/build/outputs/bundle/**/*.aab
+          retention-days: 14
