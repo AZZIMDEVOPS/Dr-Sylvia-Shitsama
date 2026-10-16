@@ -65,22 +65,6 @@ const specialties: ClinicalSpecialty[] = [
     href: '/expertise#spine',
   },
   {
-    id: 'hydrocephalus',
-    slug: 'hydrocephalus',
-    title: 'Hydrocephalus',
-    category: 'CSF Circulation Disorders',
-    summary: 'Evaluation and surgical diversion of cerebrospinal fluid (CSF) in pediatric and adult patients, emphasizing evidence-based, long-term management.',
-    clinicalScope: [
-      'Ventriculoperitoneal (VP) Shunt Placement',
-      'Endoscopic Third Ventriculostomy (ETV)',
-      'Normal Pressure Hydrocephalus (NPH)',
-      'Congenital & Acquired CSF Blockages',
-    ],
-    image: '/images/services/hydrocephalus_patient.jpg',
-    imageAlt: 'Clinical examination and care for hydrocephalus',
-    href: '/expertise#hydrocephalus',
-  },
-  {
     id: 'congenital-conditions',
     slug: 'congenital-conditions',
     title: 'Congenital Conditions',
@@ -99,17 +83,17 @@ const specialties: ClinicalSpecialty[] = [
   {
     id: 'pediatric-neurosurgery',
     slug: 'pediatric-neurosurgery',
-    title: 'Pediatric Neurosurgery',
-    category: 'Paediatric Specialist Care',
-    summary: 'Dedicated neurosurgical care tailored specifically to infants, children, and adolescents with compassionate patient-and-family communication.',
+    title: 'Pediatric Neurosurgery & Hydrocephalus',
+    category: 'Pediatric Care & CSF Diversion',
+    summary: 'Dedicated neurosurgical care tailored specifically to infants, children, and adolescents, including expert surgical management and endoscopic diversion (ETV / VP shunts) of pediatric hydrocephalus.',
     clinicalScope: [
+      'Pediatric Hydrocephalus (VP Shunt & ETV)',
       'Infant Head Shape & Craniosynostosis',
-      'Pediatric Hydrocephalus Management',
-      'Neonatal Neural Tube Defect Repair',
-      'Pediatric Cranial & Spinal Trauma',
+      'Congenital Aqueductal Stenosis & Ventricular Cysts',
+      'Pediatric Cranial & Spinal Tumours',
     ],
     image: '/images/services/paediatric_neurosurgery_1.jpg',
-    imageAlt: 'Paediatric neurosurgical consultation and clinical assessment',
+    imageAlt: 'Pediatric neurosurgical care and hydrocephalus management by Dr. Sylvia Shitsama',
     href: '/expertise#pediatric-neurosurgery',
   },
 ];
@@ -145,10 +129,12 @@ const specialties: ClinicalSpecialty[] = [
       </div>
     </div>
 
-    <!-- 6 Clinical Expertise Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {specialties.map((item) => (
-        <article class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:border-copper/40 transition-all duration-300 flex flex-col group hover:-translate-y-1">
+    <!-- 5 Clinical Expertise Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+      {specialties.map((item, idx) => (
+        <article class={`bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:border-copper/40 transition-all duration-300 flex flex-col group hover:-translate-y-1 ${
+          idx < 3 ? 'lg:col-span-2' : idx === 3 ? 'lg:col-span-2 lg:col-start-2' : 'md:col-span-2 md:max-w-md md:mx-auto lg:max-w-none lg:col-span-2 w-full'
+        }`}>
           
           <!-- Image Container -->
           <div class="relative h-56 overflow-hidden bg-slate-900">
@@ -205,7 +191,7 @@ const specialties: ClinicalSpecialty[] = [
               </a>
 
               <a 
-                href="https://wa.me/254110090116?text=Hello%20Sage%20Brain%20%26%20Spine%20Clinic%2C%20I%20would%20like%20to%20enquire%20about%20a%20consultation%20regarding%20" 
+                href={`https://wa.me/254110090116?text=Hello%20Sage%20Brain%20%26%20Spine%20Clinic%2C%20I%20would%20like%20to%20enquire%20about%20a%20consultation%20regarding%20${encodeURIComponent(item.title)}`}
                 target="_blank" 
                 rel="noopener noreferrer"
                 class="text-xs text-slate-500 hover:text-copper transition-colors"

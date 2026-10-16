@@ -1,6 +1,6 @@
 ---
 // expertise.astro
-// Topic-based neurosurgical expertise page across 6 primary practice areas
+// Topic-based neurosurgical expertise page across 5 primary practice areas
 // Enhanced with interactive scroll animations, dynamic active spy navigation, and clinical timeline beam
 
 import Layout from '../layouts/Layout.astro';
@@ -117,36 +117,6 @@ const specialties: SpecialtyTopic[] = [
   },
   {
     id: '04',
-    slug: 'hydrocephalus',
-    title: 'Hydrocephalus',
-    shortTitle: 'Hydrocephalus',
-    category: 'CSF Circulation & Diversion',
-    intro: 'Expert diagnosis, surgical management, and long-term surveillance of hydrocephalus across all age groups, including infants, children, and adults with Normal Pressure Hydrocephalus (NPH).',
-    clinicalScope: [
-      'Ventriculoperitoneal (VP) Shunt Insertion & Revision',
-      'Endoscopic Third Ventriculostomy (ETV)',
-      'Normal Pressure Hydrocephalus (NPH) Evaluation',
-      'Congenital Aqueductal Stenosis',
-      'Post-Meningitic & Post-Hemorrhagic Hydrocephalus',
-    ],
-    imaging: {
-      src: '/images/services/hydrocephalus_patient.jpg',
-      alt: 'Clinical assessment and cranial examination for hydrocephalus',
-      caption: 'Clinical monitoring and long-term care management for hydrocephalus.',
-    },
-    patientFaq: [
-      {
-        question: 'What is the difference between a VP Shunt and ETV?',
-        answer: 'A VP Shunt uses a flexible tube with a regulating valve to divert excess cerebrospinal fluid from the brain to the abdomen. ETV is a minimally invasive endoscopic procedure that creates a small opening in the floor of the third ventricle, bypassing blockages without an implant when anatomy permits.',
-      },
-      {
-        question: 'What are the classic symptoms of Normal Pressure Hydrocephalus (NPH) in adults?',
-        answer: 'The classic triad involves progressive gait disturbance (shuffling walk), mild cognitive impairment or memory decline, and urinary urgency or incontinence.',
-      },
-    ],
-  },
-  {
-    id: '05',
     slug: 'congenital-conditions',
     title: 'Congenital Conditions',
     shortTitle: 'Congenital Conditions',
@@ -176,25 +146,36 @@ const specialties: SpecialtyTopic[] = [
     ],
   },
   {
-    id: '06',
+    id: '05',
     slug: 'pediatric-neurosurgery',
-    title: 'Pediatric Neurosurgery',
-    shortTitle: 'Pediatric Neurosurgery',
-    category: 'Pediatric Specialist Neurosurgery',
-    intro: 'Gentle, compassionate, highly specialized neurosurgical care tailored specifically to infants, young children, and adolescents, working closely with pediatricians, parents, and rehabilitative teams.',
+    title: 'Pediatric Neurosurgery & Hydrocephalus',
+    shortTitle: 'Pediatric & Hydrocephalus',
+    category: 'Pediatric Specialist Care & CSF Diversion',
+    intro: 'Gentle, compassionate, and highly specialized neurosurgical care tailored specifically to infants, children, and adolescents. This encompasses comprehensive management of pediatric hydrocephalus (ETV & VP shunts), infant head shape assessment, craniosynostosis, and childhood cranial/spinal conditions in close coordination with families.',
     clinicalScope: [
+      'Infant & Pediatric Hydrocephalus (VP Shunt Insertion & Revision)',
+      'Endoscopic Third Ventriculostomy (ETV & ETV/CPC)',
+      'Infant Head Shape Abnormality Assessment & Craniofacial Evaluation',
+      'Craniosynostosis & Cranial Vault Reconstruction',
+      'Congenital Aqueductal Stenosis & Ventricular Cysts',
       'Pediatric Cranial & Spinal Tumours',
-      'Craniosynostosis & Cranial Vault Remodeling',
-      'Infant Head Shape Abnormality Assessment',
+      'Normal Pressure Hydrocephalus (NPH) & CSF Diversion',
       'Pediatric Neurotrauma & Accidental Fall Injuries',
-      'Arachnoid Cysts & Congenital Ventricular Cysts',
     ],
     imaging: {
       src: '/images/services/paediatric_neurosurgery_1.jpg',
-      alt: 'Pediatric neurosurgical consultation and gentle clinical examination',
-      caption: 'Child-friendly consultation environment supporting young patients and families.',
+      alt: 'Pediatric neurosurgical consultation and gentle clinical examination for hydrocephalus and pediatric conditions',
+      caption: 'Child-friendly consultation environment supporting young patients, parents, and families.',
     },
     patientFaq: [
+      {
+        question: 'What is hydrocephalus, and what signs should parents look for in infants?',
+        answer: 'Hydrocephalus occurs when excess cerebrospinal fluid (CSF) builds up within the brain’s ventricles. In infants, warning signs include an unusually rapid increase in head circumference, a bulging or tense fontanelle (soft spot), prominent scalp veins, downward-directed eyes (“sunset sign”), poor feeding, or persistent irritability.',
+      },
+      {
+        question: 'What is the difference between a VP Shunt and an ETV procedure?',
+        answer: 'A Ventriculoperitoneal (VP) Shunt diverts excess fluid from the brain to the abdominal cavity via a fine catheter and pressure-regulating valve. Endoscopic Third Ventriculostomy (ETV) is a minimally invasive neuro-endoscopic procedure that creates an internal bypass opening in the third ventricle floor, resolving blockages without a permanent shunt implant when anatomy is favorable.',
+      },
       {
         question: 'How is a pediatric neurosurgical consultation conducted?',
         answer: 'Consultations are conducted in an unhurried, reassuring environment where Dr. Shitsama evaluates the child, thoroughly reviews all imaging, and answers parents’ questions in clear, accessible language.',
@@ -210,7 +191,7 @@ const specialties: SpecialtyTopic[] = [
 
 <Layout
   title="Clinical Expertise — Dr. Sylvia Shitsama | Sage Brain & Spine Clinic"
-  description="Explore the six core areas of neurosurgical practice led by Dr. Sylvia Shitsama in Nairobi: Brain Trauma, Brain Tumors, Spine, Hydrocephalus, Congenital Conditions, and Pediatric Neurosurgery."
+  description="Explore the five core areas of neurosurgical practice led by Dr. Sylvia Shitsama in Nairobi: Brain Trauma, Brain Tumors, Spine, Congenital Conditions, and Pediatric Neurosurgery & Hydrocephalus."
   canonicalUrl="/expertise"
 >
   <!-- Global Top Scroll Progress Beam -->
@@ -239,7 +220,7 @@ const specialties: SpecialtyTopic[] = [
           Clinical Expertise
         </h1>
         <p class="text-sage text-lg sm:text-xl font-light leading-relaxed mb-6">
-          Dr. Sylvia Shitsama brings more than two decades of specialist medical experience to consultations and surgical interventions across six primary disciplines.
+          Dr. Sylvia Shitsama brings more than two decades of specialist medical experience to consultations and surgical interventions across five primary clinical disciplines.
         </p>
         
         <!-- Physical Location Clarity -->
@@ -274,7 +255,7 @@ const specialties: SpecialtyTopic[] = [
     </div>
   </nav>
 
-  <!-- 6 Clinical Specialty Detailed Sections with Connecting Spine Guide -->
+  <!-- 5 Clinical Specialty Detailed Sections with Connecting Spine Guide -->
   <div class="divide-y divide-ivory/5 bg-midnight relative">
 
     {specialties.map((item, index) => (
@@ -283,6 +264,9 @@ const specialties: SpecialtyTopic[] = [
         class="expertise-specialty-section py-20 sm:py-28 relative scroll-mt-32 overflow-hidden"
         data-specialty-id={item.slug}
       >
+        {item.slug === 'pediatric-neurosurgery' && (
+          <span id="hydrocephalus" class="absolute -top-32" aria-hidden="true"></span>
+        )}
         <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
