@@ -44,6 +44,8 @@ jobs:
       - name: Configure Android SDK & Licenses
         run: |
           echo "sdk.dir=$ANDROID_HOME" > android/local.properties
+          echo "Available SDK platforms:"
+          ls -la $ANDROID_HOME/platforms/
           yes | sdkmanager --licenses || true
 
       - name: Build Debug APK
