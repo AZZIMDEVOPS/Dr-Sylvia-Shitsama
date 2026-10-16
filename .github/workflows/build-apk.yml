@@ -45,7 +45,20 @@ jobs:
         run: echo "sdk.dir=$ANDROID_HOME" > android/local.properties
 
       - name: Build Debug APK
-        run: cd android && ./gradlew assembleDebug --stacktrace
+        run: |
+          cd android
+          ./gradlew assembleDebug --stacktrace > ../gradle.log 2>&1 || BUILD_FAILED=true
+          echo "## Gradle Build Summary" >> $GITHUB_STEP_SUMMARY
+          if [ "$BUILD_FAILED" = "true" ]; then
+            echo "### Build Failed with Output:" >> $GITHUB_STEP_SUMMARY
+            echo '```text' >> $GITHUB_STEP_SUMMARY
+            tail -n 60 ../gradle.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            cat ../gradle.log
+            exit 1
+          else
+            echo "### Build Succeeded!" >> $GITHUB_STEP_SUMMARY
+          fi
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
