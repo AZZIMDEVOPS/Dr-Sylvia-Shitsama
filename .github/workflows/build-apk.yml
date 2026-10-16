@@ -41,24 +41,18 @@ jobs:
       - name: Make Gradle Wrapper Executable
         run: chmod +x android/gradlew
 
-      - name: Configure Android SDK & Licenses
-        run: |
-          echo "sdk.dir=$ANDROID_HOME" > android/local.properties
-          echo "Available SDK platforms:"
-          ls -la $ANDROID_HOME/platforms/
-          yes | sdkmanager --licenses || true
+      - name: Configure Local Properties
+        run: echo "sdk.dir=$ANDROID_HOME" > android/local.properties
 
       - name: Build Debug APK
         run: cd android && ./gradlew assembleDebug --stacktrace
-
-      - name: List Generated APK Files
-        run: find android/app/build/outputs/ -type f || true
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: dr-sylvia-app-debug-apk
-          path: android/app/build/outputs/apk/**/*.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
           retention-days: 14
 
       - name: Build Release Bundle (AAB for Google Play)
@@ -66,9 +60,9 @@ jobs:
         run: cd android && ./gradlew bundleRelease --stacktrace
 
       - name: Upload Release AAB Artifact (Google Play)
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: dr-sylvia-app-release-aab
-          path: android/app/build/outputs/bundle/**/*.aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
+          if-no-files-found: warn
           retention-days: 14
