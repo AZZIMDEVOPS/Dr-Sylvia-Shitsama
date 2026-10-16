@@ -52,11 +52,6 @@ jobs:
           cd android
           ./gradlew assembleDebug --stacktrace 2>&1 | tee ../gradle-build.log
 
-      - name: Build Release Bundle (AAB for Google Play)
-        run: |
-          cd android
-          ./gradlew bundleRelease --stacktrace
-
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -64,7 +59,13 @@ jobs:
           path: android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 14
 
+      - name: Build Release Bundle (AAB for Google Play)
+        run: |
+          cd android
+          ./gradlew bundleRelease --stacktrace
+
       - name: Upload Release AAB Artifact (Google Play)
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: dr-sylvia-app-release-aab
