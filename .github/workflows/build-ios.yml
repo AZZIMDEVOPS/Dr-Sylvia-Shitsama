@@ -34,107 +34,10 @@ jobs:
           xcodebuild -version
           xcrun --show-sdk-version
 
-      - name: Build iOS Application (Release ARM64)
+      - name: Build iOS IPA & Simulator App
         run: |
-          mkdir -p ios/App/build
-          BUILD_FAILED=false
-          xcodebuild build \
-            -project ios/App/App.xcodeproj \
-            -scheme App \
-            -configuration Release \
-            -destination "generic/platform=iOS" \
-            -derivedDataPath ios/App/build/DerivedData \
-            -skipPackagePluginValidation \
-            -xcconfig ios/ci.xcconfig \
-            2>&1 | tee ios_release_build.log || BUILD_FAILED=true
-
-          echo "## iOS Release Build Summary" >> $GITHUB_STEP_SUMMARY
-          if [ "$BUILD_FAILED" = "true" ]; then
-            echo "### Release Build Failed! Log output:" >> $GITHUB_STEP_SUMMARY
-            echo '```text' >> $GITHUB_STEP_SUMMARY
-            tail -n 80 ios_release_build.log >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            exit 1
-          else
-            echo "### Release Build Succeeded!" >> $GITHUB_STEP_SUMMARY
-          fi
-
-      - name: Package Unsigned iOS IPA & Archive
-        run: |
-          mkdir -p ios/App/build/Payload
-          APP_PATH=$(find ios/App/build/DerivedData/Build/Products/Release-iphoneos -name "*.app" | head -n 1)
-          if [ -z "$APP_PATH" ]; then
-            echo "Error: App.app not found in Release-iphoneos"
-            exit 1
-          fi
-          echo "Found app at: $APP_PATH"
-          cp -R "$APP_PATH" ios/App/build/Payload/
-          cd ios/App/build
-          zip -r -q DrSylviaShitsama-unsigned.ipa Payload
-
-          # Create xcarchive structure
-          ARCHIVE_DIR="DrSylviaShitsama.xcarchive"
-          mkdir -p "$ARCHIVE_DIR/Products/Applications"
-          cp -R "Payload/$(basename "$APP_PATH")" "$ARCHIVE_DIR/Products/Applications/"
-          cat << 'EOF' > "$ARCHIVE_DIR/Info.plist"
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>ApplicationProperties</key>
-    <dict>
-        <key>ApplicationPath</key>
-        <string>Applications/App.app</string>
-        <key>CFBundleIdentifier</key>
-        <string>com.drsylviashitsama.app</string>
-        <key>CFBundleShortVersionString</key>
-        <string>1.0</string>
-        <key>CFBundleVersion</key>
-        <string>1</string>
-        <key>SigningIdentity</key>
-        <string></string>
-    </dict>
-    <key>ArchiveVersion</key>
-    <integer>2</integer>
-    <key>CreationDate</key>
-    <date>2026-10-17T05:00:00Z</date>
-    <key>Name</key>
-    <string>App</string>
-    <key>SchemeName</key>
-    <string>App</string>
-</dict>
-</plist>
-EOF
-          zip -r -q DrSylviaShitsama.xcarchive.zip "$ARCHIVE_DIR"
-
-      - name: Build iOS Simulator App (Debug)
-        run: |
-          BUILD_FAILED=false
-          xcodebuild build \
-            -project ios/App/App.xcodeproj \
-            -scheme App \
-            -configuration Debug \
-            -destination "generic/platform=iOS Simulator" \
-            -derivedDataPath ios/App/build/DerivedDataSimulator \
-            -skipPackagePluginValidation \
-            -xcconfig ios/ci.xcconfig \
-            2>&1 | tee ios_sim_build.log || BUILD_FAILED=true
-
-          echo "## iOS Simulator Build Summary" >> $GITHUB_STEP_SUMMARY
-          if [ "$BUILD_FAILED" = "true" ]; then
-            echo "### Simulator Build Failed! Log output:" >> $GITHUB_STEP_SUMMARY
-            echo '```text' >> $GITHUB_STEP_SUMMARY
-            tail -n 80 ios_sim_build.log >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            exit 1
-          else
-            echo "### Simulator Build Succeeded!" >> $GITHUB_STEP_SUMMARY
-          fi
-
-          SIM_APP=$(find ios/App/build/DerivedDataSimulator/Build/Products/Debug-iphonesimulator -name "*.app" | head -n 1)
-          echo "Found simulator app at: $SIM_APP"
-          cd "$(dirname "$SIM_APP")"
-          zip -r -q "$GITHUB_WORKSPACE/ios/App/build/DrSylviaShitsama-Simulator.zip" "$(basename "$SIM_APP")"
+          chmod +x scripts/build-ios.sh
+          ./scripts/build-ios.sh
 
       - name: Upload Unsigned IPA Artifact
         uses: actions/upload-artifact@v4
@@ -148,11 +51,4 @@ EOF
         with:
           name: dr-sylvia-app-ios-simulator
           path: ios/App/build/DrSylviaShitsama-Simulator.zip
-          retention-days: 14
-
-      - name: Upload Xcode Archive Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dr-sylvia-app-ios-xcarchive
-          path: ios/App/build/DrSylviaShitsama.xcarchive.zip
           retention-days: 14
