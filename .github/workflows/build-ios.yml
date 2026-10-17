@@ -52,3 +52,10 @@ jobs:
           name: dr-sylvia-app-ios-simulator
           path: ios/App/build/DrSylviaShitsama-Simulator.zip
           retention-days: 14
+
+      - name: Upload Xcode Archive Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dr-sylvia-app-ios-xcarchive
+          path: ios/App/build/DrSylviaShitsama.xcarchive.zip
+          retention-days: 14
