@@ -15,6 +15,7 @@ const config: CapacitorConfig = {
       backgroundColor: '#FFFFFF',
       androidSplashResourceName: 'splash',
       androidScaleType: 'CENTER_CROP',
+      iosSplashResourceName: 'Splash',
       showSpinner: false,
       splashFullScreen: true,
       splashImmersive: true,
@@ -23,6 +24,10 @@ const config: CapacitorConfig = {
       style: 'DARK',
       backgroundColor: '#FFFFFF',
     },
+  },
+  ios: {
+    contentInset: 'automatic',
+    preferredContentMode: 'mobile',
   },
 };
 
