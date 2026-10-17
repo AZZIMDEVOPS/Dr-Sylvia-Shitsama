@@ -70,9 +70,9 @@ const specialties: SpecialtyTopic[] = [
       'Intraventricular Tumours & Colloid Cysts',
     ],
     imaging: {
-      src: '/images/dr-sylvia-neurosurgery-theatre.jpg',
-      alt: 'Dr. Sylvia Shitsama performing microsurgical cranial surgery',
-      caption: 'Microsurgical cranial tumour resection under surgical loupes & illumination.',
+      src: '/images/dr-sylvia-operating-theatre-lamp.jpg',
+      alt: 'Dr. Sylvia Shitsama performing microsurgical cranial surgery under theatre illumination',
+      caption: 'Microsurgical cranial tumour resection under high-intensity surgical illumination.',
     },
     patientFaq: [
       {
@@ -100,9 +100,9 @@ const specialties: SpecialtyTopic[] = [
       'Spinal Trauma, Fractures & Instrument-Assisted Fusion',
     ],
     imaging: {
-      src: '/images/services/spine_surgery.jpg',
-      alt: 'Spine surgery in operating theatre',
-      caption: 'Precision spinal decompression and nerve root preservation.',
+      src: '/images/neurosurgery-theatre-team-instruments.jpg',
+      alt: 'Spine surgery in operating theatre with sterile field preparation',
+      caption: 'Advanced spinal decompression and stabilization within a dedicated sterile theatre environment.',
     },
     patientFaq: [
       {
@@ -130,9 +130,9 @@ const specialties: SpecialtyTopic[] = [
       'Dermal Sinus Tracts & Spinal Dysraphism',
     ],
     imaging: {
-      src: '/images/services/delicate_surgery.jpg',
-      alt: 'Delicate microsurgery for congenital neural conditions',
-      caption: 'Delicate neural reconstruction under operating microscope magnification.',
+      src: '/images/precision-neurosurgical-instruments.jpg',
+      alt: 'Precision micro-neurosurgical instruments for delicate congenital repairs',
+      caption: 'Delicate neural reconstruction using specialized micro-dissection instrumentation.',
     },
     patientFaq: [
       {
@@ -373,6 +373,97 @@ const specialties: SpecialtyTopic[] = [
       </section>
     ))}
   </div>
+
+  <!-- Theatre Technology & Surgical Facilities Section -->
+  <section class="py-20 sm:py-24 bg-white border-t border-slate-200" id="theatre-facilities">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-14">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-copper/10 border border-copper/20 text-copper text-xs font-mono uppercase tracking-widest font-semibold mb-3">
+          Surgical Infrastructure
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-text-primary tracking-tight mb-4">
+          Advanced Neurosurgical Facilities &amp; Technology
+        </h2>
+        <p class="text-text-secondary text-base sm:text-lg font-light leading-relaxed">
+          Operating in accredited tertiary neurosurgical centres equipped with precision optical magnification, continuous intraoperative neuro-monitoring, and dedicated surgical support teams.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1: Operating Microscope -->
+        <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col group">
+          <div class="aspect-[16/11] overflow-hidden bg-slate-900 relative">
+            <img 
+              src="/images/advanced-neurosurgical-microscope.jpg" 
+              alt="High-magnification surgical neuro-microscope in theatre" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              width="600"
+              height="412"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-4 right-4 text-white">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-copper font-semibold">Optical Precision</span>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="font-display text-xl font-bold text-text-primary mb-2">High-Resolution Neuro-Microscopy</h3>
+            <p class="text-xs sm:text-sm text-text-secondary font-light leading-relaxed">
+              Provides stereoscopic depth perception and intense illumination necessary for delicate microneurosurgery around critical neurovascular bundles and cranial nerves.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Patient Monitoring Station -->
+        <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col group">
+          <div class="aspect-[16/11] overflow-hidden bg-slate-900 relative">
+            <img 
+              src="/images/theatre-vital-monitoring-station.jpg" 
+              alt="Multi-parameter patient vital signs and anesthetic monitoring station" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              width="600"
+              height="412"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-4 right-4 text-white">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-copper font-semibold">Intraoperative Safety</span>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="font-display text-xl font-bold text-text-primary mb-2">Continuous Neuro-Monitoring</h3>
+            <p class="text-xs sm:text-sm text-text-secondary font-light leading-relaxed">
+              Real-time physiological tracking, hemodynamic stabilization, and specialized neuro-anesthesia care safeguarding brain perfusion throughout every phase of surgery.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Theatre Team & Protocol -->
+        <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col group">
+          <div class="aspect-[16/11] overflow-hidden bg-slate-900 relative">
+            <img 
+              src="/images/neurosurgery-theatre-team-instruments.jpg" 
+              alt="Sterile surgical instrumentation and theatre team preparation" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              width="600"
+              height="412"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-4 right-4 text-white">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-copper font-semibold">Aseptic Protocols</span>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="font-display text-xl font-bold text-text-primary mb-2">Sterile Field &amp; Synchronized Team</h3>
+            <p class="text-xs sm:text-sm text-text-secondary font-light leading-relaxed">
+              Stringent international sterility protocols, dedicated neurosurgical scrub nursing, and meticulous preparation of microsurgical instrument sets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Bottom Conversion Section with Staggered Entrance -->
   <section id="expertise-bottom-cta" class="py-24 bg-midnight-light border-t border-ivory/10 text-center relative overflow-hidden">
