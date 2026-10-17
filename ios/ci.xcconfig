@@ -1,0 +1,7 @@
+// CI configuration to allow building unsigned iOS binaries without a development team
+CODE_SIGN_IDENTITY = 
+CODE_SIGNING_REQUIRED = NO
+CODE_SIGNING_ALLOWED = NO
+CODE_SIGN_STYLE = Manual
+DEVELOPMENT_TEAM = 
+PROVISIONING_PROFILE_SPECIFIER = 
