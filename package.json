@@ -17,6 +17,7 @@
     "mobile:build": "astro build && npx cap sync"
   },
   "dependencies": {
+    "@alpinejs/collapse": "^3.17.4",
     "@astrojs/check": "^0.9.10",
     "@capacitor/android": "^8.5.3",
     "@capacitor/app": "^8.1.2",
@@ -25,6 +26,7 @@
     "@capacitor/splash-screen": "^8.0.2",
     "@capacitor/status-bar": "^8.0.4",
     "@tailwindcss/vite": "^4.3.3",
+    "alpinejs": "^3.17.4",
     "astro": "^7.1.6",
     "gsap": "^3.15.0",
     "shiki": "^4.4.1",
